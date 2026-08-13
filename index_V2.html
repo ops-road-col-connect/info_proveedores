@@ -111,14 +111,6 @@
   .copy-icon-btn:focus-visible{outline:2px solid var(--orange-500);outline-offset:1px;}
   .copy-icon-btn.copied{background:var(--teal-500);border-color:var(--teal-500);color:#fff;}
 
-  .bitacora-item{
-    padding:8px 0;border-bottom:1px dashed var(--border);font-size:12.5px;
-  }
-  .bitacora-item:last-child{border-bottom:none;}
-  .bitacora-item b{font-family:'Poppins',sans-serif;}
-  .bitacora-item .bitacora-coords{font-family:'JetBrains Mono',monospace;color:var(--text-600);font-size:11.5px;}
-  .bitacora-item .bitacora-meta{color:var(--text-400);font-size:11px;margin-top:2px;}
-
   .modal-overlay{
     position:fixed;inset:0;background:rgba(10,25,48,.55);z-index:9999;
     display:flex;align-items:center;justify-content:center;padding:20px;
@@ -202,6 +194,14 @@
   table.zones-table td{padding:9px 10px;border-bottom:1px solid var(--border);font-family:'JetBrains Mono',monospace;}
   table.zones-table td.name-col{font-family:'Poppins',sans-serif;font-weight:500;}
   .warn-badge{display:inline-block;background:#FFF1DE;color:var(--orange-600);border-radius:5px;padding:1px 6px;font-size:10.5px;margin-left:6px;font-family:'Poppins',sans-serif;}
+
+  .zones-toggle-row td{padding:6px 10px;border-bottom:1px solid var(--border);}
+  .zones-toggle-btn{
+    background:none;border:none;padding:4px 0;font-size:12px;font-weight:500;color:var(--text-600);
+    cursor:pointer;font-family:'Poppins',sans-serif;display:inline-flex;align-items:center;gap:4px;
+  }
+  .zones-toggle-btn:hover{color:var(--orange-600);}
+  .zones-toggle-arrow{display:inline-block;font-size:10px;width:10px;}
 
   .resolved-loc{
     display:flex;gap:8px;align-items:flex-start;font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--border);
@@ -787,21 +787,6 @@
           </button>
         </div>
         <pre id="resumenText" class="resumen-box"></pre>
-      </div>
-
-      <div class="card" id="bitacoraCard" style="display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-          <h2 style="margin:0;">Zonas manuales guardadas (<span id="bitacoraCount">0</span>)</h2>
-          <div style="display:flex;gap:8px;">
-            <button type="button" id="btnCopyBitacora" class="copy-icon-btn" title="Copiar todas, listas para pegar en el Sheet">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="8" y="11" width="8" height="7" rx="1"/></svg>
-              <span id="btnCopyBitacoraLabel">Copiar todas</span>
-            </button>
-            <button type="button" id="btnClearBitacora" class="copy-icon-btn" title="Borrar la lista (hazlo solo después de pasarlas al Sheet)">Limpiar</button>
-          </div>
-        </div>
-        <div class="hint" style="margin-bottom:10px;">Guardadas en este navegador cada vez que copias un resumen con una zona manual. "Copiar todas" las deja listas para pegar directo en las columnas de la pestaña "Zonas especiales" del Sheet.</div>
-        <div id="bitacoraList"></div>
       </div>
     </div>
 
@@ -1649,12 +1634,12 @@ loadData();
       <div class="stat teal">
         <div class="stat-label">Zona normal</div>
         <div class="stat-value" style="font-size:16px;">${formatCOP(costoNormal)}</div>
-        <div class="stat-sub">${lastNormalKm.toFixed(1)} km × ${formatCOP(selected.normal)}/km</div>
+        <div class="stat-sub">${lastNormalKm} km × ${formatCOP(selected.normal)}/km</div>
       </div>
       <div class="stat red">
         <div class="stat-label">Zona especial</div>
         <div class="stat-value" style="font-size:16px;">${formatCOP(costoEspecial)}</div>
-        <div class="stat-sub">${lastZonasKm.toFixed(1)} km × ${formatCOP(selected.special)}/km</div>
+        <div class="stat-sub">${lastZonasKm} km × ${formatCOP(selected.special)}/km</div>
       </div>
       <div class="stat">
         <div class="stat-label">Total estimado</div>
@@ -1677,9 +1662,9 @@ loadData();
       `Tipo de vehículo: ${selected.name}`,
       `Hora del cálculo: ${fecha}`,
       '',
-      `Distancia total: ${totalKm.toFixed(1)} km`,
-      `Km zona normal: ${lastNormalKm.toFixed(1)} km`,
-      `Km zona especial: ${lastZonasKm.toFixed(1)} km`
+      `Distancia total: ${totalKm} km`,
+      `Km zona normal: ${lastNormalKm} km`,
+      `Km zona especial: ${lastZonasKm} km`
     ];
     if(lastApplicableZones.length){
       lines.push('Zona(s) especial(es):');
@@ -1743,86 +1728,41 @@ loadData();
   document.getElementById('btnCopyResumen').addEventListener('click', copyResumenText);
 
   // ---------- guardar zonas manuales al copiar el resumen ----------
-  // No hay backend propio: se guarda localmente (localStorage, sirve de respaldo inmediato
-  // en este navegador) y, si se configura ZONAS_WEBHOOK_URL con un webhook de n8n que agregue
-  // filas a la pestaña "Zonas especiales" del Sheet, también se intenta enviar ahí para que
-  // le llegue a todo el equipo. Si el webhook falla o no está configurado, no bloquea nada.
+  // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
+  // del Sheet — así le llega a todo el equipo por igual, sin depender de lo que cada
+  // persona tenga guardado en su propio navegador.
   const ZONAS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/guardar-zona-especial';
-  const BITACORA_KEY = 'connect_zonas_manuales_bitacora';
 
-  function leerBitacora(){
-    try{ return JSON.parse(localStorage.getItem(BITACORA_KEY) || '[]'); }
-    catch(e){ return []; }
-  }
+  // Deduplicación solo para esta sesión (en memoria, se pierde al recargar la página) —
+  // evita mandar la misma zona repetida si le dan "Copiar" varias veces a la misma ruta.
+  const zonasEnviadasEnSesion = new Set();
 
   function guardarZonasManualesUsadas(){
+    if(!ZONAS_WEBHOOK_URL) return;
     if(!currentRoute || !lastApplicableZones.length) return;
     const manuales = lastApplicableZones.filter(z => z.source === 'manual');
     if(!manuales.length) return;
 
-    const bitacora = leerBitacora();
     manuales.forEach(z => {
       const [p1, p2] = z.snappedPoints;
       const inicio = `${p1.lat}, ${p1.lon}`;
       const fin = `${p2.lat}, ${p2.lon}`;
-      // evitar duplicar la misma zona si ya se guardó antes (mismo nombre + coordenadas)
-      const yaExiste = bitacora.some(b => b.nombre === z.name && b.inicio === inicio && b.fin === fin);
-      if(yaExiste) return;
+      const clave = `${z.name}|${inicio}|${fin}`;
+      if(zonasEnviadasEnSesion.has(clave)) return;
+      zonasEnviadasEnSesion.add(clave);
 
       const entry = {
         nombre: z.name, inicio, fin,
         origen: currentRoute.origin.label, destino: currentRoute.dest.label,
         guardado_en: new Date().toISOString()
       };
-      bitacora.push(entry);
-
-      if(ZONAS_WEBHOOK_URL){
-        fetch(ZONAS_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(entry)
-        }).catch(e => console.warn('No se pudo enviar la zona al webhook de n8n:', e.message));
-      }
+      fetch(ZONAS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(entry)
+      }).catch(e => console.warn('No se pudo enviar la zona al webhook de n8n:', e.message));
     });
-
-    try{ localStorage.setItem(BITACORA_KEY, JSON.stringify(bitacora)); }
-    catch(e){ console.warn('No se pudo guardar en localStorage:', e.message); }
-
-    renderBitacora();
   }
-
-  function renderBitacora(){
-    const bitacora = leerBitacora();
-    const card = document.getElementById('bitacoraCard');
-    if(!bitacora.length){ card.style.display = 'none'; return; }
-    card.style.display = 'block';
-    document.getElementById('bitacoraCount').textContent = bitacora.length;
-    document.getElementById('bitacoraList').innerHTML = bitacora.map(z => `
-      <div class="bitacora-item">
-        <div><b>${z.nombre}</b></div>
-        <div class="bitacora-coords">${z.inicio} → ${z.fin}</div>
-        <div class="bitacora-meta">${z.origen} → ${z.destino} · ${new Date(z.guardado_en).toLocaleString('es-CO')}</div>
-      </div>
-    `).join('');
-  }
-
-  document.getElementById('btnCopyBitacora').addEventListener('click', async () => {
-    const bitacora = leerBitacora();
-    // formato separado por tabulaciones: al pegar en Google Sheets llena las columnas
-    // Coordenada inicio / Coordenada fin / Tipo de zona especial directamente.
-    const tsv = bitacora.map(z => `${z.inicio}\t${z.fin}\t${z.nombre}\t`).join('\n');
-    const ok = await copyTextToClipboard(tsv);
-    flashCopyFeedback('btnCopyBitacora', 'btnCopyBitacoraLabel', ok);
-  });
-
-  document.getElementById('btnClearBitacora').addEventListener('click', () => {
-    if(confirm('¿Borrar la lista de zonas manuales guardadas en este navegador? Hazlo solo después de pasarlas al Google Sheet.')){
-      localStorage.removeItem(BITACORA_KEY);
-      renderBitacora();
-    }
-  });
-
-  renderBitacora();
 
   async function resolveZonePoints(zonesRaw){
     const zones = [];
@@ -2049,18 +1989,18 @@ loadData();
     stats.innerHTML = `
       <div class="stat">
         <div class="stat-label">Distancia total</div>
-        <div class="stat-value">${totalKm.toFixed(1)} km</div>
+        <div class="stat-value">${totalKm} km</div>
         <div class="stat-sub">≈ ${h}h ${m}min en ruta</div>
       </div>
       <div class="stat teal">
         <div class="stat-label">Zona normal</div>
-        <div class="stat-value">${normalKm.toFixed(1)} km</div>
-        <div class="stat-sub">${((normalKm/totalKm)*100).toFixed(0)}% de la ruta</div>
+        <div class="stat-value">${normalKm} km</div>
+        <div class="stat-sub">${totalKm ? ((normalKm/totalKm)*100).toFixed(0) : '0'}% de la ruta</div>
       </div>
       <div class="stat red">
         <div class="stat-label">Zona roja / especial</div>
-        <div class="stat-value">${zonasKm.toFixed(1)} km</div>
-        <div class="stat-sub">${((zonasKm/totalKm)*100).toFixed(0)}% de la ruta</div>
+        <div class="stat-value">${zonasKm} km</div>
+        <div class="stat-sub">${totalKm ? ((zonasKm/totalKm)*100).toFixed(0) : '0'}% de la ruta</div>
       </div>
     `;
   }
@@ -2092,7 +2032,7 @@ loadData();
       seg.style.width = (((totalKm-cursor)/totalKm)*100) + '%';
       strip.appendChild(seg);
     }
-    document.getElementById('stripTotalLabel').textContent = totalKm.toFixed(1) + ' km';
+    document.getElementById('stripTotalLabel').textContent = Math.ceil(totalKm) + ' km';
   }
 
   function renderTable(zonesResolved){
@@ -2101,9 +2041,42 @@ loadData();
     body.innerHTML = '';
     if(zonesResolved.length === 0){ table.style.display='none'; return; }
     table.style.display = 'table';
-    zonesResolved.forEach(z => {
+
+    const applicable = zonesResolved.filter(z => z.applicable);
+    const noApplicable = zonesResolved.filter(z => !z.applicable);
+
+    applicable.forEach(z => {
       const tr = document.createElement('tr');
-      if(!z.applicable){
+      const warn = z.maxOffset > 1 ? `<span class="warn-badge">desvío ${z.maxOffset.toFixed(1)} km</span>` : '';
+      tr.innerHTML = `
+        <td class="name-col"><span class="zone-swatch"></span>${z.name}${warn}</td>
+        <td>${Math.ceil(z.startKm)}</td>
+        <td>${Math.ceil(z.endKm)}</td>
+        <td>${Math.ceil(z.endKm-z.startKm)} km</td>
+        <td>${z.pct.toFixed(1)}%</td>
+        <td>${z.maxOffset.toFixed(2)} km</td>
+      `;
+      body.appendChild(tr);
+    });
+
+    if(noApplicable.length){
+      const toggleRow = document.createElement('tr');
+      toggleRow.className = 'zones-toggle-row';
+      const labelMostrar = `Mostrar ${noApplicable.length} zona${noApplicable.length===1?'':'s'} que no aplica${noApplicable.length===1?'':'n'} a esta ruta`;
+      const labelOcultar = `Ocultar ${noApplicable.length} zona${noApplicable.length===1?'':'s'} que no aplica${noApplicable.length===1?'':'n'} a esta ruta`;
+      toggleRow.innerHTML = `
+        <td colspan="6">
+          <button type="button" id="btnToggleNoApplicable" class="zones-toggle-btn">
+            <span class="zones-toggle-arrow">▸</span> <span id="zonesToggleLabel">${labelMostrar}</span>
+          </button>
+        </td>
+      `;
+      body.appendChild(toggleRow);
+
+      noApplicable.forEach(z => {
+        const tr = document.createElement('tr');
+        tr.className = 'zone-notapplicable-row';
+        tr.style.display = 'none';
         tr.style.opacity = '0.55';
         tr.innerHTML = `
           <td class="name-col"><span class="zone-swatch" style="background:var(--text-400)"></span>${z.name}
@@ -2113,19 +2086,17 @@ loadData();
           <td>${z.maxOffset.toFixed(1)} km</td>
         `;
         body.appendChild(tr);
-        return;
-      }
-      const warn = z.maxOffset > 1 ? `<span class="warn-badge">desvío ${z.maxOffset.toFixed(1)} km</span>` : '';
-      tr.innerHTML = `
-        <td class="name-col"><span class="zone-swatch"></span>${z.name}${warn}</td>
-        <td>${z.startKm.toFixed(1)}</td>
-        <td>${z.endKm.toFixed(1)}</td>
-        <td>${(z.endKm-z.startKm).toFixed(1)} km</td>
-        <td>${z.pct.toFixed(1)}%</td>
-        <td>${z.maxOffset.toFixed(2)} km</td>
-      `;
-      body.appendChild(tr);
-    });
+      });
+
+      document.getElementById('btnToggleNoApplicable').addEventListener('click', (e) => {
+        const btn = e.currentTarget;
+        const rows = body.querySelectorAll('.zone-notapplicable-row');
+        const expanded = rows[0] && rows[0].style.display !== 'none';
+        rows.forEach(r => { r.style.display = expanded ? 'none' : 'table-row'; });
+        btn.querySelector('.zones-toggle-arrow').textContent = expanded ? '▸' : '▾';
+        document.getElementById('zonesToggleLabel').textContent = expanded ? labelMostrar : labelOcultar;
+      });
+    }
   }
 
   // ---------- calculo principal ----------
@@ -2163,17 +2134,23 @@ loadData();
     const zonasKm = merged.reduce((sum,[s,e])=>sum+(e-s), 0);
     const normalKm = distanceKm - zonasKm;
 
+    // Se trabaja con km enteros (redondeados hacia arriba). Se redondea especial y total
+    // primero, y normal se deriva de la resta — así siempre suman exacto entre sí.
+    const totalKmInt = Math.ceil(distanceKm);
+    const zonasKmInt = Math.ceil(zonasKm);
+    const normalKmInt = Math.max(0, totalKmInt - zonasKmInt);
+
     ensureMap();
     drawRoute(coords, cumRaw, scale, applicableZones, origin, dest);
     document.getElementById('pickZoneBar').style.display = 'block';
 
     renderResolvedLocations(origin, dest);
-    renderSummary(distanceKm, durationMin, zonasKm, normalKm);
+    renderSummary(totalKmInt, durationMin, zonasKmInt, normalKmInt);
     renderStrip(distanceKm, applicableZones);
     renderTable(zonesResolved);
 
-    lastNormalKm = normalKm;
-    lastZonasKm = zonasKm;
+    lastNormalKm = normalKmInt;
+    lastZonasKm = zonasKmInt;
     routeReady = true;
     syncVehicleSelect();
     document.getElementById('costCard').style.display = 'block';
