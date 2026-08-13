@@ -111,6 +111,36 @@
   .copy-icon-btn:focus-visible{outline:2px solid var(--orange-500);outline-offset:1px;}
   .copy-icon-btn.copied{background:var(--teal-500);border-color:var(--teal-500);color:#fff;}
 
+  .bitacora-item{
+    padding:8px 0;border-bottom:1px dashed var(--border);font-size:12.5px;
+  }
+  .bitacora-item:last-child{border-bottom:none;}
+  .bitacora-item b{font-family:'Poppins',sans-serif;}
+  .bitacora-item .bitacora-coords{font-family:'JetBrains Mono',monospace;color:var(--text-600);font-size:11.5px;}
+  .bitacora-item .bitacora-meta{color:var(--text-400);font-size:11px;margin-top:2px;}
+
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(10,25,48,.55);z-index:9999;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .modal-box{
+    background:#fff;border-radius:12px;padding:22px;max-width:360px;width:100%;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);
+  }
+  .modal-box h3{margin:0 0 6px;font-size:15px;color:var(--navy-900);}
+  .modal-box p{margin:0 0 16px;font-size:12.5px;color:var(--text-400);}
+  .modal-option{
+    display:block;width:100%;padding:11px;margin-bottom:8px;border:1px solid var(--border);
+    border-radius:8px;background:#FAFBFC;font-size:13.5px;font-weight:500;color:var(--navy-900);
+    cursor:pointer;text-align:left;font-family:'Poppins',sans-serif;
+  }
+  .modal-option:hover{border-color:var(--orange-500);background:#FFF7F0;}
+  .modal-cancel{
+    display:block;width:100%;padding:9px;margin-top:6px;border:none;background:none;
+    color:var(--text-400);font-size:12.5px;cursor:pointer;
+  }
+  .modal-cancel:hover{color:var(--red-500);}
+
   .btn-add{
     width:100%;padding:8px;border:1.5px dashed var(--border);border-radius:7px;background:transparent;
     color:var(--text-600);font-size:12.5px;font-weight:500;cursor:pointer;
@@ -758,6 +788,21 @@
         </div>
         <pre id="resumenText" class="resumen-box"></pre>
       </div>
+
+      <div class="card" id="bitacoraCard" style="display:none;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <h2 style="margin:0;">Zonas manuales guardadas (<span id="bitacoraCount">0</span>)</h2>
+          <div style="display:flex;gap:8px;">
+            <button type="button" id="btnCopyBitacora" class="copy-icon-btn" title="Copiar todas, listas para pegar en el Sheet">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="8" y="11" width="8" height="7" rx="1"/></svg>
+              <span id="btnCopyBitacoraLabel">Copiar todas</span>
+            </button>
+            <button type="button" id="btnClearBitacora" class="copy-icon-btn" title="Borrar la lista (hazlo solo después de pasarlas al Sheet)">Limpiar</button>
+          </div>
+        </div>
+        <div class="hint" style="margin-bottom:10px;">Guardadas en este navegador cada vez que copias un resumen con una zona manual. "Copiar todas" las deja listas para pegar directo en las columnas de la pestaña "Zonas especiales" del Sheet.</div>
+        <div id="bitacoraList"></div>
+      </div>
     </div>
 
   </div>
@@ -834,6 +879,17 @@
   </div>
   <!-- fin #tabProveedores -->
 
+</div>
+
+<div id="zonaTypeModal" class="modal-overlay" style="display:none;">
+  <div class="modal-box">
+    <h3>¿Qué tipo de zona es?</h3>
+    <p>Esto se guarda tal cual en la columna "Tipo de zona especial" del Sheet.</p>
+    <button type="button" class="modal-option" data-tipo="Zona roja">Zona roja</button>
+    <button type="button" class="modal-option" data-tipo="Via destapada">Vía destapada</button>
+    <button type="button" class="modal-option" id="modalOtroBtn">Otro…</button>
+    <button type="button" id="btnCancelZonaType" class="modal-cancel">Cancelar</button>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -1538,7 +1594,7 @@ loadData();
 
   // ---------- zonas: cargadas del Sheet, no editables en el HTML ----------
   function addZoneFromSheet(name, inicio, fin){
-    zonesFromSheet.push({ name: name || 'Zona sin nombre', lines: [inicio, fin] });
+    zonesFromSheet.push({ name: name || 'Zona sin nombre', lines: [inicio, fin], source: 'sheet' });
   }
 
   document.getElementById('btnSwap').addEventListener('click', () => {
@@ -1643,8 +1699,8 @@ loadData();
     document.getElementById('resumenCard').style.display = 'block';
   }
 
-  async function copyResumenText(){
-    const text = document.getElementById('resumenText').textContent;
+  // ---------- copiar al portapapeles (con respaldo) ----------
+  async function copyTextToClipboard(text){
     let ok = false;
     try{
       if(navigator.clipboard && navigator.clipboard.writeText){
@@ -1665,15 +1721,108 @@ loadData();
         document.body.removeChild(ta);
       } catch(e){ ok = false; }
     }
-    const btn = document.getElementById('btnCopyResumen');
-    const label = document.getElementById('btnCopyResumenLabel');
+    return ok;
+  }
+
+  function flashCopyFeedback(btnId, labelId, ok){
+    const btn = document.getElementById(btnId);
+    const label = document.getElementById(labelId);
     const original = label.textContent;
     label.textContent = ok ? '¡Copiado!' : 'Error — copia manual';
     btn.classList.toggle('copied', ok);
     setTimeout(() => { label.textContent = original; btn.classList.remove('copied'); }, 1800);
   }
 
+  async function copyResumenText(){
+    const text = document.getElementById('resumenText').textContent;
+    const ok = await copyTextToClipboard(text);
+    flashCopyFeedback('btnCopyResumen', 'btnCopyResumenLabel', ok);
+    guardarZonasManualesUsadas();
+  }
+
   document.getElementById('btnCopyResumen').addEventListener('click', copyResumenText);
+
+  // ---------- guardar zonas manuales al copiar el resumen ----------
+  // No hay backend propio: se guarda localmente (localStorage, sirve de respaldo inmediato
+  // en este navegador) y, si se configura ZONAS_WEBHOOK_URL con un webhook de n8n que agregue
+  // filas a la pestaña "Zonas especiales" del Sheet, también se intenta enviar ahí para que
+  // le llegue a todo el equipo. Si el webhook falla o no está configurado, no bloquea nada.
+  const ZONAS_WEBHOOK_URL = ''; // ej: 'https://iagb.app.n8n.cloud/webhook/xxxxxxxx-xxxx-...'
+  const BITACORA_KEY = 'connect_zonas_manuales_bitacora';
+
+  function leerBitacora(){
+    try{ return JSON.parse(localStorage.getItem(BITACORA_KEY) || '[]'); }
+    catch(e){ return []; }
+  }
+
+  function guardarZonasManualesUsadas(){
+    if(!currentRoute || !lastApplicableZones.length) return;
+    const manuales = lastApplicableZones.filter(z => z.source === 'manual');
+    if(!manuales.length) return;
+
+    const bitacora = leerBitacora();
+    manuales.forEach(z => {
+      const [p1, p2] = z.snappedPoints;
+      const inicio = `${p1.lat}, ${p1.lon}`;
+      const fin = `${p2.lat}, ${p2.lon}`;
+      // evitar duplicar la misma zona si ya se guardó antes (mismo nombre + coordenadas)
+      const yaExiste = bitacora.some(b => b.nombre === z.name && b.inicio === inicio && b.fin === fin);
+      if(yaExiste) return;
+
+      const entry = {
+        nombre: z.name, inicio, fin,
+        origen: currentRoute.origin.label, destino: currentRoute.dest.label,
+        guardado_en: new Date().toISOString()
+      };
+      bitacora.push(entry);
+
+      if(ZONAS_WEBHOOK_URL){
+        fetch(ZONAS_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        }).catch(e => console.warn('No se pudo enviar la zona al webhook de n8n:', e.message));
+      }
+    });
+
+    try{ localStorage.setItem(BITACORA_KEY, JSON.stringify(bitacora)); }
+    catch(e){ console.warn('No se pudo guardar en localStorage:', e.message); }
+
+    renderBitacora();
+  }
+
+  function renderBitacora(){
+    const bitacora = leerBitacora();
+    const card = document.getElementById('bitacoraCard');
+    if(!bitacora.length){ card.style.display = 'none'; return; }
+    card.style.display = 'block';
+    document.getElementById('bitacoraCount').textContent = bitacora.length;
+    document.getElementById('bitacoraList').innerHTML = bitacora.map(z => `
+      <div class="bitacora-item">
+        <div><b>${z.nombre}</b></div>
+        <div class="bitacora-coords">${z.inicio} → ${z.fin}</div>
+        <div class="bitacora-meta">${z.origen} → ${z.destino} · ${new Date(z.guardado_en).toLocaleString('es-CO')}</div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('btnCopyBitacora').addEventListener('click', async () => {
+    const bitacora = leerBitacora();
+    // formato separado por tabulaciones: al pegar en Google Sheets llena las columnas
+    // Coordenada inicio / Coordenada fin / Tipo de zona especial directamente.
+    const tsv = bitacora.map(z => `${z.inicio}\t${z.fin}\t${z.nombre}\t`).join('\n');
+    const ok = await copyTextToClipboard(tsv);
+    flashCopyFeedback('btnCopyBitacora', 'btnCopyBitacoraLabel', ok);
+  });
+
+  document.getElementById('btnClearBitacora').addEventListener('click', () => {
+    if(confirm('¿Borrar la lista de zonas manuales guardadas en este navegador? Hazlo solo después de pasarlas al Google Sheet.')){
+      localStorage.removeItem(BITACORA_KEY);
+      renderBitacora();
+    }
+  });
+
+  renderBitacora();
 
   async function resolveZonePoints(zonesRaw){
     const zones = [];
@@ -1687,7 +1836,7 @@ loadData();
           console.warn('No se pudo resolver el punto de zona "'+line+'": '+e.message);
         }
       }
-      if(points.length >= 2) zones.push({ name: z.name, points });
+      if(points.length >= 2) zones.push({ name: z.name, points, source: z.source || 'sheet' });
     }
     return zones;
   }
@@ -1818,14 +1967,37 @@ loadData();
     stopPicking();
   }
 
+  function askZonaTipo(){
+    return new Promise(resolve => {
+      const modal = document.getElementById('zonaTypeModal');
+      modal.style.display = 'flex';
+      const opciones = modal.querySelectorAll('.modal-option[data-tipo]');
+      const btnOtro = document.getElementById('modalOtroBtn');
+      const btnCancel = document.getElementById('btnCancelZonaType');
+      function cleanup(value){
+        modal.style.display = 'none';
+        opciones.forEach(b => b.onclick = null);
+        btnOtro.onclick = null;
+        btnCancel.onclick = null;
+        resolve(value);
+      }
+      opciones.forEach(b => { b.onclick = () => cleanup(b.dataset.tipo); });
+      btnOtro.onclick = () => {
+        const custom = window.prompt('Nombre del tipo de zona (se guardará tal cual en el Sheet):', '');
+        cleanup(custom && custom.trim() ? custom.trim() : null);
+      };
+      btnCancel.onclick = () => cleanup(null);
+    });
+  }
+
   async function finishPicking(p1, p2){
     stopPicking();
-    const nombreSugerido = 'Zona manual ' + (zonesManual.length + 1);
-    const name = window.prompt('Nombre para esta zona (ej. "Derrumbe vía Cali-Buenaventura"):', nombreSugerido);
-    if(name === null){ pickLayerGroup.clearLayers(); return; } // el usuario canceló el prompt
+    const tipo = await askZonaTipo();
+    if(tipo === null){ pickLayerGroup.clearLayers(); return; } // el usuario canceló
     zonesManual.push({
-      name: name.trim() || nombreSugerido,
-      lines: [`${p1.lat}, ${p1.lon}`, `${p2.lat}, ${p2.lon}`]
+      name: tipo,
+      lines: [`${p1.lat}, ${p1.lon}`, `${p2.lat}, ${p2.lon}`],
+      source: 'manual'
     });
     pickLayerGroup.clearLayers();
     renderManualZonesList();
@@ -1975,7 +2147,7 @@ loadData();
       const startKm = Math.min(...kms), endKm = Math.max(...kms);
       const maxOffset = Math.max(...snappedPoints.map(p=>p.dist));
       const applicable = maxOffset <= MAX_OFFSET_KM;
-      return { name: z.name, startKm, endKm, pct: ((endKm-startKm)/distanceKm)*100, snappedPoints, maxOffset, applicable };
+      return { name: z.name, startKm, endKm, pct: ((endKm-startKm)/distanceKm)*100, snappedPoints, maxOffset, applicable, source: z.source };
     });
 
     const applicableZones = zonesResolved.filter(z => z.applicable);
