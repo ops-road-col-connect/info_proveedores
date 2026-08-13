@@ -172,6 +172,16 @@
   .stat.teal .stat-value{color:var(--teal-500);}
   .stat .stat-sub{font-size:11px;color:var(--text-400);margin-top:2px;}
 
+  /* Barra de resumen+costo, compacta y fija mientras se hace scroll por proveedores */
+  .sticky-summary{position:sticky;top:8px;z-index:30;margin-bottom:16px;}
+  .card.compact{padding:10px 12px;box-shadow:0 4px 14px rgba(16,22,42,.10);}
+  .summary-row.compact{margin-top:0;gap:8px;}
+  .summary-row.compact + .summary-row.compact{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);}
+  .summary-row.compact .stat{padding:6px 10px;min-width:100px;}
+  .summary-row.compact .stat .stat-value{font-size:15px;margin-top:1px;}
+  .summary-row.compact .stat .stat-label{font-size:9.5px;}
+  .summary-row.compact .stat .stat-sub{font-size:9.5px;}
+
   /* Franja de ruta - elemento firma */
   .strip-wrap{margin-top:20px;}
   .strip-wrap h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-400);margin:0 0 10px;font-weight:600;}
@@ -218,7 +228,7 @@
   .resolved-loc .dot{width:9px;height:9px;border-radius:50%;margin-top:3px;flex-shrink:0;}
   .resolved-loc .txt b{font-family:'Poppins',sans-serif;}
   .resolved-loc .txt .addr{color:var(--text-600);font-family:'JetBrains Mono',monospace;font-size:11.5px;}
-  .resolved-loc .precision-warn{color:var(--orange-600);font-size:11px;font-weight:600;margin-top:2px;}
+  .precision-warn{color:var(--orange-600);font-size:11px;font-weight:600;margin-top:2px;background:#FFF7ED;padding:8px 10px;border-radius:6px;}
 
   .empty-state{
     display:flex;align-items:center;justify-content:center;height:360px;color:var(--text-400);
@@ -361,15 +371,6 @@
   }
   .pv-field{display:flex;align-items:center;gap:9px;}
 
-  .pv-cost-bar{
-    display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;
-    background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px;margin-bottom:16px;
-    position:sticky;top:8px;z-index:20;box-shadow:0 4px 16px rgba(14,21,38,.25);
-  }
-  .pv-cost-bar-item{display:flex;flex-direction:column;gap:1px;}
-  .pv-cost-bar-label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);font-weight:600;}
-  .pv-cost-bar-value{font-size:13.5px;font-weight:600;color:#fff;font-family:var(--font-display);}
-  .pv-cost-bar-item.highlight .pv-cost-bar-value{color:var(--tier1);font-size:15px;}
   .pv-field label{
     font-family:var(--font-display);
     font-size:10.5px;
@@ -727,15 +728,11 @@
 
     <!-- PANEL DERECHO: RESULTADOS -->
     <div>
-      <div class="card" id="resultsCard" style="display:none;">
-        <h2>Resumen</h2>
-        <div id="resolvedLocations" style="margin-bottom:14px;"></div>
-        <div class="summary-row" id="summaryStats"></div>
-      </div>
-
-      <div class="card" id="costCard" style="display:none;">
-        <h2>Costo del servicio</h2>
-        <div class="summary-row" id="costStats"></div>
+      <div class="sticky-summary" id="stickySummary" style="display:none;">
+        <div class="card compact">
+          <div class="summary-row compact" id="summaryStats"></div>
+          <div class="summary-row compact" id="costStats"></div>
+        </div>
       </div>
 
       <div class="card" id="detailsCard" style="display:none;">
@@ -744,6 +741,8 @@
         </button>
 
         <div id="detailsCardBody" style="display:none;">
+
+          <div id="resolvedLocations"></div>
 
           <div style="margin-top:16px;">
             <h2>Mapa de ruta</h2>
@@ -798,7 +797,6 @@
 
       <div class="card">
         <h2>Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
-        <div id="pvCostBar" class="pv-cost-bar" style="display:none;"></div>
         <div class="filters" id="pvOriginBanner">
           <div class="pv-field" style="flex:1;min-width:220px;">
             <span class="start-badge">1</span>
@@ -918,35 +916,9 @@ function findDeptoInLabel(label){
 const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
 
-// ---------- barra fija de costo/ruta (alimentada desde la pestaña "Ruta y Costo") ----------
+// ---------- contexto de costo/ruta (alimentado desde la sección "Ruta y Costo") ----------
 function formatCOPPv(n){
   return '$' + Math.round(n).toLocaleString('es-CO');
-}
-
-function renderPvCostBar(){
-  const bar = document.getElementById('pvCostBar');
-  if(!bar) return;
-  const ctx = window.__connectServiceContext;
-  if(!ctx){ bar.style.display = 'none'; return; }
-  bar.style.display = 'flex';
-  bar.innerHTML = `
-    <div class="pv-cost-bar-item">
-      <span class="pv-cost-bar-label">Origen → Destino</span>
-      <span class="pv-cost-bar-value">${ctx.origen} → ${ctx.destino}</span>
-    </div>
-    <div class="pv-cost-bar-item">
-      <span class="pv-cost-bar-label">Distancia total</span>
-      <span class="pv-cost-bar-value">${ctx.totalKm} km</span>
-    </div>
-    <div class="pv-cost-bar-item">
-      <span class="pv-cost-bar-label">Vehículo</span>
-      <span class="pv-cost-bar-value">${ctx.vehiculo}</span>
-    </div>
-    <div class="pv-cost-bar-item highlight">
-      <span class="pv-cost-bar-label">Costo estimado</span>
-      <span class="pv-cost-bar-value">${formatCOPPv(ctx.costoTotal)}</span>
-    </div>
-  `;
 }
 
 // Mensaje pre-llenado para WhatsApp: solo origen/destino/distancia/costo (sin desglose de
@@ -957,7 +929,7 @@ function buildWhatsappMessage(){
   return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\nCosto estimado: ${formatCOPPv(ctx.costoTotal)}\n\n¿Podrías atenderlo?`;
 }
 
-// Origen/destino compartidos con la pestaña "Ruta y Costo" — se fijan desde afuera
+// Origen/destino compartidos con la sección "Ruta y Costo" — se fijan desde afuera
 // vía setPvOrigin() cuando se calcula una ruta ahí. No hay inputs propios de ciudad aquí.
 let pvOrigin = null;   // {lat, lon, label}
 let pvDestino = null;  // {lat, lon, label}
@@ -1695,7 +1667,6 @@ loadData();
       vehiculo: selected.name,
       costoTotal: total
     };
-    if(typeof renderPvCostBar === 'function') renderPvCostBar();
   }
 
   function renderResumen(selected, costoNormal, costoEspecial, total){
@@ -2026,19 +1997,13 @@ loadData();
   // ---------- render resultados ----------
   function renderResolvedLocations(origin, dest){
     const box = document.getElementById('resolvedLocations');
-    function row(tag, color, loc){
-      const warn = loc.precision && !loc.precision.startsWith('exacta')
-        ? `<div class="precision-warn">⚠ coincidencia ${loc.precision} — verifica el pin en el mapa</div>` : '';
-      return `
-        <div class="resolved-loc">
-          <span class="dot" style="background:${color}"></span>
-          <div class="txt">
-            <b>${tag}:</b> <span class="addr">${loc.label}</span>
-            ${warn}
-          </div>
-        </div>`;
-    }
-    box.innerHTML = row('Origen', '#122A4E', origin) + row('Destino', '#FF7A29', dest);
+    if(!box) return;
+    const warnings = [];
+    if(origin.precision && !origin.precision.startsWith('exacta')) warnings.push(`⚠ <b>Origen</b> — coincidencia ${origin.precision}: ${origin.label}. Verifica el pin en el mapa.`);
+    if(dest.precision && !dest.precision.startsWith('exacta')) warnings.push(`⚠ <b>Destino</b> — coincidencia ${dest.precision}: ${dest.label}. Verifica el pin en el mapa.`);
+    box.innerHTML = warnings.length
+      ? warnings.map(w => `<div class="precision-warn" style="margin-bottom:8px;">${w}</div>`).join('')
+      : '';
   }
 
   function renderSummary(totalKm, durationMin, zonasKm, normalKm){
@@ -2212,7 +2177,7 @@ loadData();
     lastZonasKm = zonasKmInt;
     routeReady = true;
     syncVehicleSelect();
-    document.getElementById('costCard').style.display = 'block';
+    document.getElementById('stickySummary').style.display = 'block';
 
     setStatus('Ruta calculada correctamente.', 'ok');
   }
@@ -2245,9 +2210,7 @@ loadData();
 
       await processZonesAndRender();
 
-      document.getElementById('resultsCard').style.display = 'block';
-
-      // Pasar el origen/destino ya geocodificado a la pestaña de Proveedores Cercanos.
+      // Pasar el origen/destino ya geocodificado a la sección de Proveedores Cercanos.
       if (typeof setPvOrigin === 'function') {
         setPvOrigin(origin, dest);
       }
