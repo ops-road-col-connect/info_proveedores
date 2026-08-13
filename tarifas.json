@@ -1,8 +1,38 @@
 [
-  { "tipo": "Liviano", "banderazo": 70000, "normal": 3500, "especial": 5000 },
-  { "tipo": "350", "banderazo": 140000, "normal": 4000, "especial": 5000 },
-  { "tipo": "600", "banderazo": 190000, "normal": 6500, "especial": 7500 },
-  { "tipo": "900", "banderazo": 250000, "normal": 7500, "especial": 8500 },
-  { "tipo": "LV", "banderazo": 350000, "normal": 8500, "especial": 8500 },
-  { "tipo": "Especial Vac, Compatadores", "banderazo": 450000, "normal": 10000, "especial": 10000 }
+  {
+    "tipo": "Liviano",
+    "banderazo": 70000,
+    "normal": 3500,
+    "especial": 5000
+  },
+  {
+    "tipo": 350,
+    "banderazo": 140000,
+    "normal": 4000,
+    "especial": 5000
+  },
+  {
+    "tipo": 600,
+    "banderazo": 190000,
+    "normal": 6500,
+    "especial": 7500
+  },
+  {
+    "tipo": 900,
+    "banderazo": 250000,
+    "normal": 7500,
+    "especial": 8500
+  },
+  {
+    "tipo": "LV",
+    "banderazo": 350000,
+    "normal": 8500,
+    "especial": 8500
+  },
+  {
+    "tipo": "Especial Vac, Compatadores",
+    "banderazo": 450000,
+    "normal": 10000,
+    "especial": 10000
+  }
 ]
