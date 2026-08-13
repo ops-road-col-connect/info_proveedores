@@ -47,6 +47,11 @@
   header.topbar h1{font-size:16px;margin:0;font-weight:600;letter-spacing:.2px;}
   header.topbar p{margin:2px 0 0;font-size:12.5px;color:#B9C6DD;}
 
+  header.topbar.topbar-compact{padding:12px 16px;margin-bottom:16px;gap:10px;}
+  header.topbar.topbar-compact .mark{width:30px;height:30px;font-size:12px;border-radius:8px;}
+  header.topbar.topbar-compact h1{font-size:13.5px;line-height:1.3;}
+  header.topbar.topbar-compact p{font-size:11px;margin-top:1px;}
+
   .grid{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;}
   @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
 
@@ -58,18 +63,18 @@
 
   .card{
     background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-    padding:18px;
+    padding:14px 16px;
   }
   .card + .card{margin-top:16px;}
 
   .card h2{
     font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-400);
-    margin:0 0 14px;font-weight:600;
+    margin:0 0 10px;font-weight:600;
   }
 
-  label{display:block;font-size:12.5px;font-weight:500;color:var(--text-600);margin-bottom:5px;}
+  label{display:block;font-size:10.5px;font-weight:500;color:var(--text-600);margin-bottom:3px;}
   input[type=text]{
-    width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
+    width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:7px;
     font-family:'JetBrains Mono',monospace;font-size:13px;background:#FAFBFC;color:var(--text-900);
   }
   input[type=text]:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
@@ -78,17 +83,18 @@
     font-family:'JetBrains Mono',monospace;font-size:12.5px;background:#FAFBFC;color:var(--text-900);resize:vertical;
   }
   textarea:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
-  .field{margin-bottom:9px;}
+  .field{margin-bottom:7px;}
   .hint{font-size:11px;color:var(--text-400);margin-top:4px;}
-  .hint-compact{line-height:1.5;}
-  .hint-toggle{color:var(--orange-600);cursor:pointer;font-weight:600;text-decoration:underline;}
-  .hint-toggle:hover{color:var(--orange-500);}
-  .hint-examples{color:var(--text-400);}
+  .hint-icon{
+    display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--text-400);
+    cursor:help;margin-top:2px;border-bottom:1px dotted var(--text-400);
+  }
+  .hint-icon:hover{color:var(--orange-600);border-color:var(--orange-600);}
 
-  .swap-row{display:flex;gap:8px;align-items:center;margin:0 0 9px;}
+  .swap-row{display:flex;gap:8px;align-items:center;margin:-2px 0 4px;}
   .swap-row button{
-    border:1px solid var(--border);background:#fff;border-radius:7px;padding:6px 10px;
-    font-size:12px;cursor:pointer;color:var(--text-600);
+    border:1px solid var(--border);background:#fff;border-radius:6px;padding:3px 8px;
+    font-size:11px;cursor:pointer;color:var(--text-600);line-height:1.4;
   }
   .swap-row button:hover{border-color:var(--orange-500);color:var(--orange-600);}
 
@@ -150,7 +156,7 @@
   .btn-add:hover{border-color:var(--orange-500);color:var(--orange-600);}
 
   select{
-    width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
+    width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:7px;
     font-family:'Poppins',sans-serif;font-size:13px;background:#FAFBFC;color:var(--text-900);
   }
   select:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
@@ -695,14 +701,6 @@
 <body>
 <div class="app">
 
-  <header class="topbar">
-    <div class="mark">CR</div>
-    <div>
-      <h1>Herramienta de Despacho — Ruta, Costo y Proveedores</h1>
-      <p>Distribución real de kilómetros en ruta y proveedores más cercanos — para gestión de servicios de grúa</p>
-    </div>
-  </header>
-
   <div class="grid">
 
     <!-- PANEL IZQUIERDO: FORMULARIO -->
@@ -729,7 +727,7 @@
           <select id="vehicleSelect"></select>
         </div>
 
-        <div class="hint hint-compact">Acepta dirección, lugar, GPS o Plus Code. <span class="hint-toggle" id="hintToggle">Ver ejemplos</span><span class="hint-examples" id="hintExamples" style="display:none;"><br>"Hotel Suite Royal, Cra. 16 #7a-13, Melgar, Tolima" · "3.4516, -76.5320" · "RCM5+52 Restrepo, Valle del Cauca"</span></div>
+        <span class="hint-icon" title="Acepta dirección completa (&quot;Hotel Suite Royal, Cra. 16 #7a-13, Melgar, Tolima&quot;), nombre de lugar, coordenadas GPS (&quot;3.4516, -76.5320&quot;) o Plus Code (&quot;RCM5+52 Restrepo, Valle del Cauca&quot;).">ⓘ Formatos aceptados (origen/destino)</span>
       </div>
 
       <button class="btn-main" id="btnCalc" type="button">Calcular ruta</button>
@@ -761,6 +759,14 @@
 
     <!-- PANEL DERECHO: RESULTADOS -->
     <div>
+      <header class="topbar topbar-compact">
+        <div class="mark">CR</div>
+        <div>
+          <h1>Herramienta de Despacho — Ruta, Costo y Proveedores</h1>
+          <p>Distribución real de kilómetros en ruta y proveedores más cercanos — para gestión de servicios de grúa</p>
+        </div>
+      </header>
+
       <div class="card sticky-toggle" id="detailsToggleCard" style="display:none;">
         <button type="button" id="btnToggleDetails" class="details-toggle-btn">
           <span class="details-toggle-arrow">▸</span> Ver mapa, zonas y resumen copiable
@@ -1607,13 +1613,6 @@ loadData();
     const o = document.getElementById('origen');
     const d = document.getElementById('destino');
     const tmp = o.value; o.value = d.value; d.value = tmp;
-  });
-
-  document.getElementById('hintToggle').addEventListener('click', (e) => {
-    const examples = document.getElementById('hintExamples');
-    const shown = examples.style.display !== 'none';
-    examples.style.display = shown ? 'none' : 'inline';
-    e.currentTarget.textContent = shown ? 'Ver ejemplos' : 'Ocultar ejemplos';
   });
 
   // ---------- UI: tarifas por tipo de vehículo ----------
