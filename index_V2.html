@@ -1609,7 +1609,7 @@ loadData();
 
   function addTariffData(name, banderazo, normal, special){
     tariffsData.push({
-      name,
+      name: String(name), // el Sheet a veces manda "350"/"600"/"900" como número, no texto
       banderazo: Number(banderazo) || 0,
       normal: Number(normal) || 0,
       special: Number(special) || 0
