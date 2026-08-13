@@ -203,6 +203,14 @@
   .zones-toggle-btn:hover{color:var(--orange-600);}
   .zones-toggle-arrow{display:inline-block;font-size:10px;width:10px;}
 
+  .details-toggle-btn{
+    width:100%;text-align:left;background:none;border:none;padding:4px 0;
+    font-size:13.5px;font-weight:600;color:var(--navy-800);cursor:pointer;
+    display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif;
+  }
+  .details-toggle-btn:hover{color:var(--orange-600);}
+  .details-toggle-arrow{display:inline-block;font-size:11px;width:11px;}
+
   .resolved-loc{
     display:flex;gap:8px;align-items:flex-start;font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--border);
   }
@@ -220,23 +228,11 @@
   footer.note{margin-top:26px;font-size:11.5px;color:var(--text-400);line-height:1.6;}
   footer.note code{background:#EEF1F5;padding:1px 5px;border-radius:4px;}
 
-  .tabs{
-    display:flex;gap:6px;margin-bottom:18px;border-bottom:1px solid var(--border);
+  .tab-count{
+    display:inline-block;background:#EEF0F5;color:var(--text-600);
+    border-radius:10px;padding:1px 8px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace;
+    vertical-align:middle;
   }
-  .tab-btn{
-    background:none;border:none;padding:10px 4px;margin-right:18px;
-    font-family:'Poppins',sans-serif;font-size:13.5px;font-weight:600;color:var(--text-400);
-    cursor:pointer;position:relative;top:1px;
-  }
-  .tab-btn .tab-count{
-    display:inline-block;margin-left:6px;background:#EEF0F5;color:var(--text-600);
-    border-radius:10px;padding:1px 7px;font-size:11px;font-family:'JetBrains Mono',monospace;
-  }
-  .tab-btn.active{color:var(--navy-900);border-bottom:2.5px solid var(--orange-500);}
-  .tab-btn.active .tab-count{background:#FFF1E6;color:var(--orange-600);}
-  .tab-btn:hover{color:var(--navy-800);}
-  .tab-panel{display:none;}
-  .tab-panel.active{display:block;}
 </style>
 <style>
 /* ===== Estilos del Buscador de Proveedores (pestana 2) ===== */
@@ -364,6 +360,16 @@
     box-shadow:0 1px 3px rgba(16,22,42,.05);
   }
   .pv-field{display:flex;align-items:center;gap:9px;}
+
+  .pv-cost-bar{
+    display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;
+    background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px;margin-bottom:16px;
+    position:sticky;top:8px;z-index:20;box-shadow:0 4px 16px rgba(14,21,38,.25);
+  }
+  .pv-cost-bar-item{display:flex;flex-direction:column;gap:1px;}
+  .pv-cost-bar-label{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);font-weight:600;}
+  .pv-cost-bar-value{font-size:13.5px;font-weight:600;color:#fff;font-family:var(--font-display);}
+  .pv-cost-bar-item.highlight .pv-cost-bar-value{color:var(--tier1);font-size:15px;}
   .pv-field label{
     font-family:var(--font-display);
     font-size:10.5px;
@@ -681,13 +687,6 @@
     </div>
   </header>
 
-  <div class="tabs">
-    <button class="tab-btn active" data-tab="tabRuta" type="button">Ruta y Costo</button>
-    <button class="tab-btn" data-tab="tabProveedores" type="button">Proveedores Cercanos<span class="tab-count" id="tabProvCount" style="display:none;"></span></button>
-  </div>
-
-  <div id="tabRuta" class="tab-panel active">
-
   <div class="grid">
 
     <!-- PANEL IZQUIERDO: FORMULARIO -->
@@ -728,49 +727,10 @@
 
     <!-- PANEL DERECHO: RESULTADOS -->
     <div>
-      <div class="card">
-        <h2>Mapa de ruta</h2>
-        <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
-        <div id="pickZoneBar" style="display:none;">
-          <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
-          <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
-          <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
-          <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
-        </div>
-        <div id="map" style="display:none;"></div>
-      </div>
-
       <div class="card" id="resultsCard" style="display:none;">
         <h2>Resumen</h2>
         <div id="resolvedLocations" style="margin-bottom:14px;"></div>
         <div class="summary-row" id="summaryStats"></div>
-
-        <div class="strip-wrap">
-          <h3>Franja de ruta (proporcional a distancia real)</h3>
-          <div class="strip" id="routeStrip"></div>
-          <div class="strip-labels">
-            <span>0 km</span>
-            <span id="stripTotalLabel">— km</span>
-          </div>
-          <div class="strip-legend">
-            <span><i style="background:var(--teal-500)"></i>Zona normal</span>
-            <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
-          </div>
-        </div>
-
-        <table class="zones-table" id="zonesTable" style="display:none;">
-          <thead>
-            <tr>
-              <th>Zona</th>
-              <th>Desde (km)</th>
-              <th>Hasta (km)</th>
-              <th>Longitud</th>
-              <th>% ruta</th>
-              <th>Desvío pto.</th>
-            </tr>
-          </thead>
-          <tbody id="zonesTableBody"></tbody>
-        </table>
       </div>
 
       <div class="card" id="costCard" style="display:none;">
@@ -778,15 +738,120 @@
         <div class="summary-row" id="costStats"></div>
       </div>
 
-      <div class="card" id="resumenCard" style="display:none;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-          <h2 style="margin:0;">Resumen del servicio</h2>
-          <button type="button" id="btnCopyResumen" class="copy-icon-btn" title="Copiar resumen">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="8" y="11" width="8" height="7" rx="1"/></svg>
-            <span id="btnCopyResumenLabel">Copiar</span>
+      <div class="card" id="detailsCard" style="display:none;">
+        <button type="button" id="btnToggleDetails" class="details-toggle-btn">
+          <span class="details-toggle-arrow">▸</span> Ver mapa, zonas y resumen copiable
+        </button>
+
+        <div id="detailsCardBody" style="display:none;">
+
+          <div style="margin-top:16px;">
+            <h2>Mapa de ruta</h2>
+            <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
+            <div id="pickZoneBar" style="display:none;">
+              <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
+              <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
+              <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
+              <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+            </div>
+            <div id="map" style="display:none;"></div>
+          </div>
+
+          <div class="strip-wrap">
+            <h3>Franja de ruta (proporcional a distancia real)</h3>
+            <div class="strip" id="routeStrip"></div>
+            <div class="strip-labels">
+              <span>0 km</span>
+              <span id="stripTotalLabel">— km</span>
+            </div>
+            <div class="strip-legend">
+              <span><i style="background:var(--teal-500)"></i>Zona normal</span>
+              <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
+            </div>
+          </div>
+
+          <table class="zones-table" id="zonesTable" style="display:none;">
+            <thead>
+              <tr>
+                <th>Zona</th>
+                <th>Desde (km)</th>
+                <th>Hasta (km)</th>
+                <th>Longitud</th>
+                <th>% ruta</th>
+                <th>Desvío pto.</th>
+              </tr>
+            </thead>
+            <tbody id="zonesTableBody"></tbody>
+          </table>
+
+          <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <h2 style="margin:0;">Resumen del servicio</h2>
+            <button type="button" id="btnCopyResumen" class="copy-icon-btn" title="Copiar resumen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3"/><rect x="8" y="11" width="8" height="7" rx="1"/></svg>
+              <span id="btnCopyResumenLabel">Copiar</span>
+            </button>
+          </div>
+          <pre id="resumenText" class="resumen-box"></pre>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
+        <div id="pvCostBar" class="pv-cost-bar" style="display:none;"></div>
+        <div class="filters" id="pvOriginBanner">
+          <div class="pv-field" style="flex:1;min-width:220px;">
+            <span class="start-badge">1</span>
+            <span id="pvOriginText" style="font-size:13px;color:var(--muted);">Calcula una ruta arriba para ver proveedores cercanos al origen.</span>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="pv-field services">
+            <label>Servicio *</label>
+            <div class="chips" id="serviceChips">
+              <div class="chip" data-key="gl">Grúa liviana</div>
+              <div class="chip" data-key="gancho">Gancho</div>
+              <div class="chip" data-key="legal">Legal</div>
+              <div class="chip" data-key="ct">CT</div>
+              <div class="chip" data-key="cu">Custodia</div>
+              <div class="chip" data-key="ce">CE</div>
+              <div class="chip" data-key="de">Desplazamiento</div>
+            </div>
+            <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
+          </div>
+          <div class="divider"></div>
+          <div class="pv-field">
+            <label for="search">Proveedor</label>
+            <div class="input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="search" placeholder="Buscar por nombre…" style="min-width:190px;">
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="pv-field">
+            <label for="sort">Ordenar por</label>
+            <select id="sort" class="sort-select">
+              <option value="prio">Prioridad (mejor primero)</option>
+              <option value="score">Score (de mayor a menor)</option>
+              <option value="servicios">Servicios realizados (30 días)</option>
+              <option value="name">Nombre (A-Z)</option>
+            </select>
+          </div>
+          <div class="divider"></div>
+          <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
+          <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
           </button>
         </div>
-        <pre id="resumenText" class="resumen-box"></pre>
+
+        <div class="summary">
+          <span id="resultCount">— resultados</span>
+        </div>
+
+        <div class="pv-grid" id="grid"></div>
+        <div class="empty" id="emptyState" style="display:none;">No hay proveedores que cumplan con los filtros seleccionados.</div>
+
+        <p class="pv-note">Los datos se actualizan automáticamente todos los días a las 5:00 AM (hora Bogotá) mediante un flujo de n8n conectado a Google Sheets.</p>
       </div>
     </div>
 
@@ -798,71 +863,6 @@
     lejos estaba la coordenada ingresada de la ruta calculada; valores mayores a ~1-2&nbsp;km sugieren revisar la coordenada.
     Geocodificación de lugares vía Nominatim/OpenStreetMap.
   </footer>
-
-  </div>
-  <!-- fin #tabRuta -->
-
-  <div id="tabProveedores" class="tab-panel">
-
-<div class="container">
-  <div class="filters" id="pvOriginBanner">
-    <div class="pv-field" style="flex:1;min-width:220px;">
-      <span class="start-badge">1</span>
-      <span id="pvOriginText" style="font-size:13px;color:var(--muted);">Calcula una ruta en la pestaña "Ruta y Costo" para ver proveedores cercanos al origen.</span>
-    </div>
-  </div>
-  <div class="filters">
-    <div class="pv-field services">
-      <label>Servicio *</label>
-      <div class="chips" id="serviceChips">
-        <div class="chip" data-key="gl">Grúa liviana</div>
-        <div class="chip" data-key="gancho">Gancho</div>
-        <div class="chip" data-key="legal">Legal</div>
-        <div class="chip" data-key="ct">CT</div>
-        <div class="chip" data-key="cu">Custodia</div>
-        <div class="chip" data-key="ce">CE</div>
-        <div class="chip" data-key="de">Desplazamiento</div>
-      </div>
-      <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
-    </div>
-    <div class="divider"></div>
-    <div class="pv-field">
-      <label for="search">Proveedor</label>
-      <div class="input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="search" placeholder="Buscar por nombre…" style="min-width:190px;">
-      </div>
-    </div>
-    <div class="divider"></div>
-    <div class="pv-field">
-      <label for="sort">Ordenar por</label>
-      <select id="sort" class="sort-select">
-        <option value="prio">Prioridad (mejor primero)</option>
-        <option value="score">Score (de mayor a menor)</option>
-        <option value="servicios">Servicios realizados (30 días)</option>
-        <option value="name">Nombre (A-Z)</option>
-      </select>
-    </div>
-    <div class="divider"></div>
-    <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
-    <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
-    </button>
-  </div>
-
-  <div class="summary">
-    <span id="resultCount">— resultados</span>
-  </div>
-
-  <div class="pv-grid" id="grid"></div>
-  <div class="empty" id="emptyState" style="display:none;">No hay proveedores que cumplan con los filtros seleccionados.</div>
-
-  <p class="pv-note">Los datos se actualizan automáticamente todos los días a las 5:00 AM (hora Bogotá) mediante un flujo de n8n conectado a Google Sheets.</p>
-</div>
-
-
-  </div>
-  <!-- fin #tabProveedores -->
 
 </div>
 
@@ -878,16 +878,6 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script>
-document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-</script>
 <script>
 
 let PROVIDERS = [];
@@ -927,6 +917,45 @@ function findDeptoInLabel(label){
 
 const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
+
+// ---------- barra fija de costo/ruta (alimentada desde la pestaña "Ruta y Costo") ----------
+function formatCOPPv(n){
+  return '$' + Math.round(n).toLocaleString('es-CO');
+}
+
+function renderPvCostBar(){
+  const bar = document.getElementById('pvCostBar');
+  if(!bar) return;
+  const ctx = window.__connectServiceContext;
+  if(!ctx){ bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  bar.innerHTML = `
+    <div class="pv-cost-bar-item">
+      <span class="pv-cost-bar-label">Origen → Destino</span>
+      <span class="pv-cost-bar-value">${ctx.origen} → ${ctx.destino}</span>
+    </div>
+    <div class="pv-cost-bar-item">
+      <span class="pv-cost-bar-label">Distancia total</span>
+      <span class="pv-cost-bar-value">${ctx.totalKm} km</span>
+    </div>
+    <div class="pv-cost-bar-item">
+      <span class="pv-cost-bar-label">Vehículo</span>
+      <span class="pv-cost-bar-value">${ctx.vehiculo}</span>
+    </div>
+    <div class="pv-cost-bar-item highlight">
+      <span class="pv-cost-bar-label">Costo estimado</span>
+      <span class="pv-cost-bar-value">${formatCOPPv(ctx.costoTotal)}</span>
+    </div>
+  `;
+}
+
+// Mensaje pre-llenado para WhatsApp: solo origen/destino/distancia/costo (sin desglose de
+// zonas, a propósito — esa parte queda solo para uso interno del equipo).
+function buildWhatsappMessage(){
+  const ctx = window.__connectServiceContext;
+  if(!ctx) return '';
+  return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\nCosto estimado: ${formatCOPPv(ctx.costoTotal)}\n\n¿Podrías atenderlo?`;
+}
 
 // Origen/destino compartidos con la pestaña "Ruta y Costo" — se fijan desde afuera
 // vía setPvOrigin() cuando se calcula una ruta ahí. No hay inputs propios de ciudad aquí.
@@ -981,7 +1010,9 @@ function buildCard(p, distInfo){
   const WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm0 18.2h-.01a8.24 8.24 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.26-8.25 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.42 5.84c0 4.55-3.71 8.25-8.25 8.25Zm4.52-6.18c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.24-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.24.25-.41.08-.16.04-.31-.02-.43-.06-.13-.56-1.34-.77-1.84-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01a.93.93 0 0 0-.67.31c-.23.24-.87.85-.87 2.08 0 1.22.89 2.4 1.02 2.57.12.16 1.75 2.67 4.24 3.74.59.26 1.05.4 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>';
 
   const wa = (p.wa||'').split('-')[0].trim().replace(/\s+/g,'');
-  const waLink = wa && wa !== '-' ? `<span class="contact-item wa">${WA_ICON}<a href="https://wa.me/57${wa}" target="_blank">${p.wa}</a></span>` : '';
+  const waMsg = buildWhatsappMessage();
+  const waHref = `https://wa.me/57${wa}${waMsg ? '?text=' + encodeURIComponent(waMsg) : ''}`;
+  const waLink = wa && wa !== '-' ? `<span class="contact-item wa">${WA_ICON}<a href="${waHref}" target="_blank">${p.wa}</a></span>` : '';
   const tel1 = p.t1 && p.t1 !== '-' ? `<span class="contact-item">${PHONE_ICON}${p.t1}</span>` : '';
   const tel2 = p.t2 && p.t2 !== '-' ? `<span class="contact-item">${PHONE_ICON}${p.t2}</span>` : '';
 
@@ -1106,7 +1137,7 @@ function render(){
 
   if(!pvOrigin && !query){
     grid.innerHTML = '';
-    document.getElementById('resultCount').textContent = 'Calcula una ruta en la pestaña "Ruta y Costo" o busca un proveedor por nombre';
+    document.getElementById('resultCount').textContent = 'Calcula una ruta arriba o busca un proveedor por nombre';
     document.getElementById('emptyState').style.display = 'none';
     updateTabBadge(null);
     return;
@@ -1649,9 +1680,23 @@ loadData();
     `;
 
     renderResumen(selected, costoNormal, costoEspecial, total);
+    updateServiceContext(selected, total);
   }
 
   document.getElementById('vehicleSelect').addEventListener('change', renderCost);
+
+  // Puente hacia la pestaña de Proveedores (script separado, sin acceso a este cierre):
+  // se publica el contexto en window y se le avisa para que refresque su barra de costo.
+  function updateServiceContext(selected, total){
+    window.__connectServiceContext = {
+      origen: currentRoute.origin.label,
+      destino: currentRoute.dest.label,
+      totalKm: lastNormalKm + lastZonasKm,
+      vehiculo: selected.name,
+      costoTotal: total
+    };
+    if(typeof renderPvCostBar === 'function') renderPvCostBar();
+  }
 
   function renderResumen(selected, costoNormal, costoEspecial, total){
     const totalKm = lastNormalKm + lastZonasKm;
@@ -1681,7 +1726,7 @@ loadData();
       `Total: ${formatCOP(total)}`
     );
     document.getElementById('resumenText').textContent = lines.join('\n');
-    document.getElementById('resumenCard').style.display = 'block';
+    document.getElementById('detailsCard').style.display = 'block';
   }
 
   // ---------- copiar al portapapeles (con respaldo) ----------
@@ -1963,6 +2008,19 @@ loadData();
   }
 
   document.getElementById('btnPickZone').addEventListener('click', startPicking);
+
+  document.getElementById('btnToggleDetails').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const body = document.getElementById('detailsCardBody');
+    const arrow = btn.querySelector('.details-toggle-arrow');
+    const expanded = body.style.display !== 'none';
+    body.style.display = expanded ? 'none' : 'block';
+    arrow.textContent = expanded ? '▸' : '▾';
+    if(!expanded && map){
+      // el mapa estaba en un contenedor oculto: Leaflet necesita recalcular su tamaño
+      setTimeout(() => { map.invalidateSize(); }, 50);
+    }
+  });
   document.getElementById('btnCancelPick').addEventListener('click', cancelPicking);
 
   // ---------- render resultados ----------
@@ -2143,6 +2201,7 @@ loadData();
     ensureMap();
     drawRoute(coords, cumRaw, scale, applicableZones, origin, dest);
     document.getElementById('pickZoneBar').style.display = 'block';
+    document.getElementById('detailsCard').style.display = 'block';
 
     renderResolvedLocations(origin, dest);
     renderSummary(totalKmInt, durationMin, zonasKmInt, normalKmInt);
