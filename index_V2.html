@@ -221,6 +221,11 @@
   .details-toggle-btn:hover{color:var(--orange-600);}
   .details-toggle-arrow{display:inline-block;font-size:11px;width:11px;}
 
+  .sticky-toggle{
+    position:sticky;top:8px;z-index:25;margin-bottom:16px;
+    padding:10px 14px;box-shadow:0 4px 14px rgba(16,22,42,.10);
+  }
+
   .resolved-loc{
     display:flex;gap:8px;align-items:flex-start;font-size:12.5px;padding:6px 0;border-bottom:1px dashed var(--border);
   }
@@ -714,7 +719,7 @@
           <select id="vehicleSelect"></select>
         </div>
 
-        <div class="hint">Acepta dirección completa ("Hotel Suite Royal, Cra. 16 #7a-13, Melgar, Tolima"), nombre de lugar, coordenadas GPS ("3.4516, -76.5320") o Plus Code ("RCM5+52 Restrepo, Valle del Cauca").</div>
+        <div class="hint hint-compact">Acepta dirección, lugar, GPS o Plus Code. <span class="hint-toggle" id="hintToggle">Ver ejemplos</span><span class="hint-examples" id="hintExamples" style="display:none;"><br>"Hotel Suite Royal, Cra. 16 #7a-13, Melgar, Tolima" · "3.4516, -76.5320" · "RCM5+52 Restrepo, Valle del Cauca"</span></div>
       </div>
 
       <div class="card">
@@ -724,23 +729,24 @@
 
       <button class="btn-main" id="btnCalc" type="button">Calcular ruta</button>
       <div id="status"></div>
-    </div>
 
-    <!-- PANEL DERECHO: RESULTADOS -->
-    <div>
       <div class="sticky-summary" id="stickySummary" style="display:none;">
         <div class="card compact">
           <div class="summary-row compact" id="summaryStats"></div>
           <div class="summary-row compact" id="costStats"></div>
         </div>
       </div>
+    </div>
 
-      <div class="card" id="detailsCard" style="display:none;">
+    <!-- PANEL DERECHO: RESULTADOS -->
+    <div>
+      <div class="card sticky-toggle" id="detailsToggleCard" style="display:none;">
         <button type="button" id="btnToggleDetails" class="details-toggle-btn">
           <span class="details-toggle-arrow">▸</span> Ver mapa, zonas y resumen copiable
         </button>
+      </div>
 
-        <div id="detailsCardBody" style="display:none;">
+      <div class="card" id="detailsCardBody" style="display:none;">
 
           <div id="resolvedLocations"></div>
 
@@ -792,7 +798,6 @@
           </div>
           <pre id="resumenText" class="resumen-box"></pre>
 
-        </div>
       </div>
 
       <div class="card">
@@ -1336,6 +1341,7 @@ loadData();
   let zonesManual = []; // [{name, lines:[inicio, fin]}] agregadas a mano sobre el mapa, solo para esta sesión
   let currentRoute = null; // {coords, cumRaw, refLat, scale, distanceKm, durationMin, origin, dest} de la última ruta calculada
   let pickLayerGroup = null;
+  let lastRouteBounds = null; // para re-centrar el mapa si se calculó estando el desplegable colapsado
   let pickingState = null; // {step:1|2, p1:null}
   let map = null;
   let routeLayerGroup = null;
@@ -1697,7 +1703,7 @@ loadData();
       `Total: ${formatCOP(total)}`
     );
     document.getElementById('resumenText').textContent = lines.join('\n');
-    document.getElementById('detailsCard').style.display = 'block';
+    document.getElementById('detailsToggleCard').style.display = 'block';
   }
 
   // ---------- copiar al portapapeles (con respaldo) ----------
@@ -1874,6 +1880,7 @@ loadData();
     });
 
     const bounds = L.latLngBounds(coords);
+    lastRouteBounds = bounds;
     map.fitBounds(bounds, { padding: [24,24] });
   }
 
@@ -1989,7 +1996,11 @@ loadData();
     arrow.textContent = expanded ? '▸' : '▾';
     if(!expanded && map){
       // el mapa estaba en un contenedor oculto: Leaflet necesita recalcular su tamaño
-      setTimeout(() => { map.invalidateSize(); }, 50);
+      // y volver a centrarse en la ruta (el centrado calculado mientras estaba oculto no sirve)
+      setTimeout(() => {
+        map.invalidateSize();
+        if(lastRouteBounds) map.fitBounds(lastRouteBounds, { padding: [24,24] });
+      }, 50);
     }
   });
   document.getElementById('btnCancelPick').addEventListener('click', cancelPicking);
@@ -2166,7 +2177,7 @@ loadData();
     ensureMap();
     drawRoute(coords, cumRaw, scale, applicableZones, origin, dest);
     document.getElementById('pickZoneBar').style.display = 'block';
-    document.getElementById('detailsCard').style.display = 'block';
+    document.getElementById('detailsToggleCard').style.display = 'block';
 
     renderResolvedLocations(origin, dest);
     renderSummary(totalKmInt, durationMin, zonasKmInt, normalKmInt);
