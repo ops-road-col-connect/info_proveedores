@@ -201,12 +201,17 @@
   /* Barra de resumen+costo, compacta y fija mientras se hace scroll por proveedores */
   .sticky-summary{margin-bottom:16px;}
   .card.compact{padding:10px 12px;box-shadow:0 4px 14px rgba(16,22,42,.10);}
-  .summary-row.compact{margin-top:0;gap:8px;}
-  .summary-row.compact + .summary-row.compact{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);}
-  .summary-row.compact .stat{padding:6px 10px;min-width:100px;}
+  .summary-row.compact{margin-top:0;gap:6px;flex-wrap:nowrap;}
+  .summary-row.compact + .summary-row.compact{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);flex-wrap:wrap;}
+  .summary-row.compact .stat{padding:6px 8px;min-width:0;flex:1;}
   .summary-row.compact .stat .stat-value{font-size:15px;margin-top:1px;}
-  .summary-row.compact .stat .stat-label{font-size:9.5px;}
+  .summary-row.compact .stat .stat-label{font-size:9.5px;line-height:1.25;}
   .summary-row.compact .stat .stat-sub{font-size:9.5px;}
+
+  .stat.highlight{background:#FFF3EA;border-color:var(--orange-500);}
+  .stat.highlight .stat-label{color:var(--orange-600);}
+  .summary-row.compact .stat.highlight{flex:1.25;}
+  .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
 
   /* Franja de ruta - elemento firma */
   .strip-wrap{margin-top:20px;}
@@ -1677,7 +1682,7 @@ loadData();
         <div class="stat-value" style="font-size:16px;">${formatCOP(costoEspecial)}</div>
         <div class="stat-sub">${lastZonasKm} km × ${formatCOP(selected.special)}/km</div>
       </div>
-      <div class="stat">
+      <div class="stat highlight">
         <div class="stat-label">Total estimado</div>
         <div class="stat-value">${formatCOP(total)}</div>
         <div class="stat-sub">${selected.name}</div>
@@ -2048,7 +2053,7 @@ loadData();
     const stats = document.getElementById('summaryStats');
     const h = Math.floor(durationMin/60), m = Math.round(durationMin%60);
     stats.innerHTML = `
-      <div class="stat">
+      <div class="stat highlight">
         <div class="stat-label">Distancia total</div>
         <div class="stat-value">${totalKm} km</div>
         <div class="stat-sub">≈ ${h}h ${m}min en ruta</div>
