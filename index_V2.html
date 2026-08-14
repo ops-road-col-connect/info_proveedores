@@ -52,6 +52,16 @@
   header.topbar.topbar-compact h1{font-size:13.5px;line-height:1.3;}
   header.topbar.topbar-compact p{font-size:11px;margin-top:1px;}
 
+  header.topbar.topbar-brand{display:block;}
+  .brand-tagline{font-size:9px;color:#B9C6DD;letter-spacing:.02em;margin-top:3px;}
+  .brand-tagline b{color:var(--tier1);font-weight:700;}
+  .brand-label{
+    display:flex;align-items:center;gap:7px;margin-top:14px;
+    font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--tier1);text-transform:uppercase;
+  }
+  .brand-label-line{width:14px;height:2px;background:var(--tier1);display:inline-block;flex-shrink:0;}
+  header.topbar.topbar-brand p{margin-top:5px;}
+
   .grid{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;}
   @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
 
@@ -705,12 +715,11 @@
 
     <!-- PANEL IZQUIERDO: FORMULARIO -->
     <div class="left-panel" id="leftPanel">
-      <header class="topbar topbar-compact">
-        <div class="mark">CR</div>
-        <div>
-          <h1>Herramienta de Despacho — Ruta, Costo y Proveedores</h1>
-          <p>Distribución real de kilómetros en ruta y proveedores más cercanos — para gestión de servicios de grúa</p>
-        </div>
+      <header class="topbar topbar-compact topbar-brand">
+        <div class="brand-connect">Connect<sup>®</sup></div>
+        <div class="brand-tagline">asistencia<b>extraordinaria</b></div>
+        <div class="brand-label"><span class="brand-label-line"></span>HERRAMIENTA DE DESPACHO</div>
+        <p>Ruta, costo y proveedores — para gestión de servicios de grúa</p>
       </header>
 
       <div class="card">
