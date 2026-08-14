@@ -2053,11 +2053,6 @@ loadData();
     const stats = document.getElementById('summaryStats');
     const h = Math.floor(durationMin/60), m = Math.round(durationMin%60);
     stats.innerHTML = `
-      <div class="stat highlight">
-        <div class="stat-label">Distancia total</div>
-        <div class="stat-value">${totalKm} km</div>
-        <div class="stat-sub">≈ ${h}h ${m}min en ruta</div>
-      </div>
       <div class="stat teal">
         <div class="stat-label">Zona normal</div>
         <div class="stat-value">${normalKm} km</div>
@@ -2067,6 +2062,11 @@ loadData();
         <div class="stat-label">Zona roja / especial</div>
         <div class="stat-value">${zonasKm} km</div>
         <div class="stat-sub">${totalKm ? ((zonasKm/totalKm)*100).toFixed(0) : '0'}% de la ruta</div>
+      </div>
+      <div class="stat highlight">
+        <div class="stat-label">Distancia total</div>
+        <div class="stat-value">${totalKm} km</div>
+        <div class="stat-sub">≈ ${h}h ${m}min en ruta</div>
       </div>
     `;
   }
