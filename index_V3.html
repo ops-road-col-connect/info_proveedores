@@ -2022,7 +2022,7 @@ loadData();
   // ---------- registrar acceso a la herramienta (IP + hora) ----------
   // Igual patrón que las zonas manuales: se envía a un webhook de n8n que agrega la fila
   // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
-  const ACCESOS_WEBHOOK_URL = ''; // ej: 'https://iagb.app.n8n.cloud/webhook/registrar-acceso'
+  const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
 
   async function registrarAcceso(){
     if(!ACCESOS_WEBHOOK_URL) return;
