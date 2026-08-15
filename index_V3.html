@@ -2027,16 +2027,13 @@ loadData();
   async function registrarAcceso(){
     if(!ACCESOS_WEBHOOK_URL) return;
     try{
-      const res = await fetch('https://api.ipify.org?format=json');
-      const data = await res.json();
+      // La IP real y el user-agent ya llegan solos en los headers de esta petición
+      // (n8n los lee de cf-connecting-ip / x-real-ip) — no hace falta consultar
+      // ningún servicio externo para averiguar la IP propia.
       await fetch(ACCESOS_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ip: data.ip,
-          fecha: new Date().toISOString(),
-          userAgent: navigator.userAgent
-        })
+        body: JSON.stringify({ fecha: new Date().toISOString() })
       });
     } catch(e){ console.warn('No se pudo registrar el acceso:', e.message); }
   }
