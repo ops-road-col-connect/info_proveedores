@@ -123,6 +123,7 @@
     display:grid;grid-template-columns:1.3fr 0.8fr 0.9fr;gap:6px;align-items:center;
   }
   .barrido-input-row input[type=text]{padding:7px 8px;font-size:12px;}
+  #barridoPrecio{font-size:15px;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:.2px;}
   .barrido-btn-row{display:flex;gap:6px;margin-top:6px;}
   .barrido-btn-row button{
     flex:1;border:none;border-radius:7px;padding:7px 10px;
@@ -157,7 +158,7 @@
     padding:2px 7px;border-radius:20px;margin-left:8px;vertical-align:middle;
   }
   .barrido-badge.quoted{background:#E4F5F0;color:var(--teal-500);}
-  .barrido-badge.no-dispo{background:#F1F2F4;color:var(--muted);}
+  .barrido-badge.no-dispo{background:var(--red-100);color:var(--red-500);}
 
   .resumen-box{
     background:#FAFBFC;border:1px solid var(--border);border-radius:8px;padding:14px 16px;
@@ -1890,6 +1891,13 @@ loadData();
     document.getElementById(id).addEventListener('keydown', (e) => {
       if(e.key === 'Enter') addBarridoEntry();
     });
+  });
+
+  // Formatea el precio con separador de miles mientras se escribe, para que sea fácil
+  // detectar a simple vista un cero de más o de menos (ej. "500.000" vs "5.000.000").
+  document.getElementById('barridoPrecio').addEventListener('input', (e) => {
+    const digits = e.target.value.replace(/[^0-9]/g, '');
+    e.target.value = digits ? Number(digits).toLocaleString('es-CO') : '';
   });
 
   // Puente hacia la pestaña de Proveedores (script separado, sin acceso a este cierre):
