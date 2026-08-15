@@ -254,6 +254,7 @@
   .stat.highlight .stat-label{color:var(--orange-600);}
   .summary-row.compact .stat.highlight{flex:1.25;}
   .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
+  #costStats.summary-row.compact .stat.highlight{text-align:right;}
 
   /* Franja de ruta - elemento firma */
   .strip-wrap{margin-top:20px;}
@@ -1195,6 +1196,27 @@ function updateTabBadge(n){
   badge.style.display = 'inline-block';
 }
 
+// Reordena el datalist de "Proveedor" del barrido: primero los que están visibles en la
+// lista de la derecha (en el mismo orden en que se ven), separador, y el resto alfabético.
+function updateBarridoDatalistOrder(displayedNamesInOrder){
+  const datalist = document.getElementById('barridoProvList');
+  if(!datalist) return;
+  const allNames = [...new Set(PROVIDERS.map(p => p.n))];
+  const displayedUnique = [];
+  (displayedNamesInOrder||[]).forEach(n => {
+    if(allNames.includes(n) && !displayedUnique.includes(n)) displayedUnique.push(n);
+  });
+  const top10 = displayedUnique.slice(0, 10);
+  const rest = allNames.filter(n => !top10.includes(n)).sort((a,b) => a.localeCompare(b, 'es'));
+
+  const options = top10.map(n => `<option value="${n}">`);
+  if(top10.length && rest.length){
+    options.push(`<option value="───────── resto alfabético ─────────">`);
+  }
+  rest.forEach(n => options.push(`<option value="${n}">`));
+  datalist.innerHTML = options.join('');
+}
+
 function render(){
   const sortBy = document.getElementById('sort').value;
   const query = document.getElementById('search').value.trim().toLowerCase();
@@ -1209,6 +1231,7 @@ function render(){
     document.getElementById('resultCount').textContent = 'Selecciona al menos un tipo de servicio para ver resultados';
     document.getElementById('emptyState').style.display = 'none';
     updateTabBadge(null);
+    updateBarridoDatalistOrder([]);
     return;
   }
 
@@ -1217,6 +1240,7 @@ function render(){
     document.getElementById('resultCount').textContent = 'Calcula una ruta arriba o busca un proveedor por nombre';
     document.getElementById('emptyState').style.display = 'none';
     updateTabBadge(null);
+    updateBarridoDatalistOrder([]);
     return;
   }
 
@@ -1262,6 +1286,7 @@ function render(){
     document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}${contextParts.length ? ' · ' + contextParts.join(' · ') : ''}`;
     document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
     updateTabBadge(list.length);
+    updateBarridoDatalistOrder(list.map(p => p.n));
     list.forEach(p=> grid.appendChild(buildCard(p, null)));
     return;
   }
@@ -1295,6 +1320,7 @@ function render(){
   document.getElementById('resultCount').textContent = `${total} resultado${total===1?'':'s'} · ${contextParts.join(' · ')}`;
   document.getElementById('emptyState').style.display = total ? 'none' : 'block';
   updateTabBadge(total);
+  updateBarridoDatalistOrder([...tier1, ...tier2].map(e => e.p.n));
 
   if(tier1.length) grid.appendChild(buildBanner(`Hasta ${TIER1_KM}km de ${origenName}`, tier1, 'tier1', true));
   if(tier2.length) grid.appendChild(buildBanner(`Entre ${TIER1_KM}km y ${RADIO_KM}km de ${origenName}`, tier2, 'tier2', true));
@@ -1402,12 +1428,6 @@ async function loadData(){
 
     if(PROVIDERS.length && PROVIDERS[0]._updated_at){
       document.getElementById('lastUpdated').textContent = 'Datos actualizados: ' + PROVIDERS[0]._updated_at;
-    }
-
-    const barridoList = document.getElementById('barridoProvList');
-    if(barridoList){
-      const uniqueNames = [...new Set(PROVIDERS.map(p => p.n))];
-      barridoList.innerHTML = uniqueNames.map(n => `<option value="${n}">`).join('');
     }
 
     render();
@@ -1998,6 +2018,30 @@ loadData();
   }
 
   document.getElementById('btnCopyResumen').addEventListener('click', copyResumenText);
+
+  // ---------- registrar acceso a la herramienta (IP + hora) ----------
+  // Igual patrón que las zonas manuales: se envía a un webhook de n8n que agrega la fila
+  // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
+  const ACCESOS_WEBHOOK_URL = ''; // ej: 'https://iagb.app.n8n.cloud/webhook/registrar-acceso'
+
+  async function registrarAcceso(){
+    if(!ACCESOS_WEBHOOK_URL) return;
+    try{
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json();
+      await fetch(ACCESOS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ip: data.ip,
+          fecha: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        })
+      });
+    } catch(e){ console.warn('No se pudo registrar el acceso:', e.message); }
+  }
+
+  registrarAcceso();
 
   // ---------- guardar zonas manuales al copiar el resumen ----------
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
