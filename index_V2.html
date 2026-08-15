@@ -62,7 +62,7 @@
   .brand-label-line{width:14px;height:2px;background:var(--tier1);display:inline-block;flex-shrink:0;}
   header.topbar.topbar-brand p{margin-top:5px;}
 
-  .grid{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;}
+  .grid{display:grid;grid-template-columns:442px 1fr;gap:18px;align-items:start;}
   @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
 
   .left-panel{
@@ -118,6 +118,47 @@
     background:none;border:none;color:#6B2FA0;cursor:pointer;font-size:13px;line-height:1;padding:2px 4px;border-radius:50%;
   }
   .manual-zone-chip .manual-zone-del:hover{background:#E3CFF5;}
+
+  .barrido-input-row{
+    display:grid;grid-template-columns:1.3fr 0.8fr 0.9fr;gap:6px;align-items:center;
+  }
+  .barrido-input-row input[type=text]{padding:7px 8px;font-size:12px;}
+  #barridoPrecio{font-size:15px;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:.2px;}
+  .barrido-btn-row{display:flex;gap:6px;margin-top:6px;}
+  .barrido-btn-row button{
+    flex:1;border:none;border-radius:7px;padding:7px 10px;
+    font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;
+  }
+  #btnAddBarrido{background:var(--orange-500);color:#fff;}
+  #btnAddBarrido:hover{background:var(--orange-600);}
+  .btn-sin-dispo{background:#EEF0F5;color:var(--text-600);}
+  .btn-sin-dispo:hover{background:#E2E5ED;color:var(--navy-900);}
+
+  .barrido-row{
+    display:grid;grid-template-columns:1.3fr 0.7fr 0.9fr 1fr 20px;gap:6px;align-items:center;
+    padding:7px 2px;font-size:12px;
+  }
+  .barrido-header{
+    font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-400);font-weight:600;
+    padding:8px 2px 4px;border-bottom:1px solid var(--border);margin-top:6px;
+  }
+  .barrido-row:not(.barrido-header){border-bottom:1px dashed var(--border);}
+  .barrido-row:not(.barrido-header):last-child{border-bottom:none;}
+  .barrido-row .barrido-name{font-weight:500;color:var(--navy-900);font-family:'Poppins',sans-serif;}
+  .barrido-row .barrido-diff{font-family:'JetBrains Mono',monospace;font-weight:600;}
+  .barrido-row .barrido-diff.negative{color:var(--red-500);}
+  .barrido-row .barrido-diff.positive{color:var(--teal-500);}
+  .barrido-row .barrido-del{
+    background:none;border:none;color:var(--text-400);cursor:pointer;font-size:13px;padding:0;
+  }
+  .barrido-row .barrido-del:hover{color:var(--red-500);}
+
+  .barrido-badge{
+    display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:700;
+    padding:2px 7px;border-radius:20px;margin-left:8px;vertical-align:middle;
+  }
+  .barrido-badge.quoted{background:#E4F5F0;color:var(--teal-500);}
+  .barrido-badge.no-dispo{background:var(--red-100);color:var(--red-500);}
 
   .resumen-box{
     background:#FAFBFC;border:1px solid var(--border);border-radius:8px;padding:14px 16px;
@@ -213,6 +254,7 @@
   .stat.highlight .stat-label{color:var(--orange-600);}
   .summary-row.compact .stat.highlight{flex:1.25;}
   .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
+  #costStats.summary-row.compact .stat.highlight{text-align:right;}
 
   /* Franja de ruta - elemento firma */
   .strip-wrap{margin-top:20px;}
@@ -763,6 +805,25 @@
         </div>
       </div>
 
+      <div class="card" id="barridoCard" style="display:none;">
+        <h2>Barrido de proveedores</h2>
+        <div class="barrido-input-row">
+          <input type="text" id="barridoNombre" list="barridoProvList" placeholder="Proveedor">
+          <datalist id="barridoProvList"></datalist>
+          <input type="text" id="barridoTiempo" placeholder="Tiempo (min)">
+          <input type="text" id="barridoPrecio" placeholder="Precio $">
+        </div>
+        <div class="barrido-btn-row">
+          <button type="button" id="btnAddBarrido">+ Agregar</button>
+          <button type="button" id="btnSinDispo" class="btn-sin-dispo">Sin disponibilidad</button>
+        </div>
+        <div id="barridoEmpty" class="hint" style="margin-top:8px;">Aún no hay cotizaciones registradas.</div>
+        <div id="barridoListHeader" class="barrido-row barrido-header" style="display:none;">
+          <span>Proveedor</span><span>Tiempo</span><span>Precio</span><span>Diferencia</span><span></span>
+        </div>
+        <div id="barridoList"></div>
+      </div>
+
       <div class="card" id="resumenCard" style="display:none;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
           <h2 style="margin:0;">Resumen del servicio</h2>
@@ -1058,6 +1119,13 @@ function buildCard(p, distInfo){
     ? `<span class="score-badge" title="Distancia 50% + Servicios 30% + Tiempo 20%">${distInfo.dist === null ? 'Mismo depto.' : '~' + Math.round(distInfo.dist) + 'km'} · Score ${distInfo.distScore}</span>`
     : `<span class="score-badge" title="Servicios 30% + Tiempo 20% (sin componente de distancia)">Score ${p.score||0}</span>`;
 
+  const barridoStatus = (window.__barridoStatus && window.__barridoStatus[p.n]) || null;
+  const barridoBadge = barridoStatus === 'sinDispo'
+    ? `<span class="barrido-badge no-dispo" title="Respondió: sin disponibilidad">✕ Sin dispo</span>`
+    : barridoStatus === 'quoted'
+      ? `<span class="barrido-badge quoted" title="Ya suministró cotización">✓ Cotizó</span>`
+      : '';
+
   card.innerHTML = `
     <div class="rail ${prioClass(p.pr)}">
       <span class="rail-num">${railNum(p.pr)}</span>
@@ -1066,7 +1134,7 @@ function buildCard(p, distInfo){
     <div class="card-body">
       <div class="card-row">
         <div class="card-top">
-          <span class="card-name">${p.n}</span>
+          <span class="card-name">${p.n}</span>${barridoBadge}
           <span class="card-dept">${p.d}${p.ciudad ? ' · ' + p.ciudad : ''}</span>
         </div>
         <div class="card-row-actions">
@@ -1128,6 +1196,27 @@ function updateTabBadge(n){
   badge.style.display = 'inline-block';
 }
 
+// Reordena el datalist de "Proveedor" del barrido: primero los que están visibles en la
+// lista de la derecha (en el mismo orden en que se ven), separador, y el resto alfabético.
+function updateBarridoDatalistOrder(displayedNamesInOrder){
+  const datalist = document.getElementById('barridoProvList');
+  if(!datalist) return;
+  const allNames = [...new Set(PROVIDERS.map(p => p.n))];
+  const displayedUnique = [];
+  (displayedNamesInOrder||[]).forEach(n => {
+    if(allNames.includes(n) && !displayedUnique.includes(n)) displayedUnique.push(n);
+  });
+  const top10 = displayedUnique.slice(0, 10);
+  const rest = allNames.filter(n => !top10.includes(n)).sort((a,b) => a.localeCompare(b, 'es'));
+
+  const options = top10.map(n => `<option value="${n}">`);
+  if(top10.length && rest.length){
+    options.push(`<option value="───────── resto alfabético ─────────">`);
+  }
+  rest.forEach(n => options.push(`<option value="${n}">`));
+  datalist.innerHTML = options.join('');
+}
+
 function render(){
   const sortBy = document.getElementById('sort').value;
   const query = document.getElementById('search').value.trim().toLowerCase();
@@ -1142,6 +1231,7 @@ function render(){
     document.getElementById('resultCount').textContent = 'Selecciona al menos un tipo de servicio para ver resultados';
     document.getElementById('emptyState').style.display = 'none';
     updateTabBadge(null);
+    updateBarridoDatalistOrder([]);
     return;
   }
 
@@ -1150,6 +1240,7 @@ function render(){
     document.getElementById('resultCount').textContent = 'Calcula una ruta arriba o busca un proveedor por nombre';
     document.getElementById('emptyState').style.display = 'none';
     updateTabBadge(null);
+    updateBarridoDatalistOrder([]);
     return;
   }
 
@@ -1195,6 +1286,7 @@ function render(){
     document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}${contextParts.length ? ' · ' + contextParts.join(' · ') : ''}`;
     document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
     updateTabBadge(list.length);
+    updateBarridoDatalistOrder(list.map(p => p.n));
     list.forEach(p=> grid.appendChild(buildCard(p, null)));
     return;
   }
@@ -1228,6 +1320,7 @@ function render(){
   document.getElementById('resultCount').textContent = `${total} resultado${total===1?'':'s'} · ${contextParts.join(' · ')}`;
   document.getElementById('emptyState').style.display = total ? 'none' : 'block';
   updateTabBadge(total);
+  updateBarridoDatalistOrder([...tier1, ...tier2].map(e => e.p.n));
 
   if(tier1.length) grid.appendChild(buildBanner(`Hasta ${TIER1_KM}km de ${origenName}`, tier1, 'tier1', true));
   if(tier2.length) grid.appendChild(buildBanner(`Entre ${TIER1_KM}km y ${RADIO_KM}km de ${origenName}`, tier2, 'tier2', true));
@@ -1633,6 +1726,7 @@ loadData();
   // ---------- UI: tarifas por tipo de vehículo ----------
   let tariffsData = []; // [{name, banderazo, normal, special}] cargado desde tarifas.json o el snapshot embebido
   let lastNormalKm = 0, lastZonasKm = 0, routeReady = false, lastCalcTime = null, lastApplicableZones = [];
+  let barridoEntries = [], lastCostBreakdown = null;
 
   function addTariffData(name, banderazo, normal, special){
     tariffsData.push({
@@ -1692,9 +1786,139 @@ loadData();
 
     renderResumen(selected, costoNormal, costoEspecial, total);
     updateServiceContext(selected, total);
+    lastCostBreakdown = { selected, costoNormal, costoEspecial, total };
   }
 
   document.getElementById('vehicleSelect').addEventListener('change', renderCost);
+
+  // ---------- barrido de proveedores (cotizaciones registradas a mano) ----------
+  function parseBarridoMoney(str){
+    const digits = String(str).replace(/[^0-9]/g,'');
+    const n = parseInt(digits, 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function ordenarBarrido(entries){
+    return entries.slice().sort((a,b) => {
+      if(a.sinDispo && !b.sinDispo) return 1;
+      if(!a.sinDispo && b.sinDispo) return -1;
+      if(a.sinDispo && b.sinDispo) return 0;
+      return a.tiempoMin - b.tiempoMin;
+    });
+  }
+
+  // Le avisa al script de Proveedores (global, sin acceso a este cierre) cuáles proveedores
+  // ya respondieron, para que pinte el badge correspondiente en sus tarjetas.
+  function syncBarridoStatusGlobal(){
+    const status = {};
+    barridoEntries.forEach(e => { status[e.nombre] = e.sinDispo ? 'sinDispo' : 'quoted'; });
+    window.__barridoStatus = status;
+    if(typeof render === 'function') render();
+  }
+
+  function renderBarridoList(){
+    const listBox = document.getElementById('barridoList');
+    const header = document.getElementById('barridoListHeader');
+    const empty = document.getElementById('barridoEmpty');
+    if(!barridoEntries.length){
+      listBox.innerHTML = '';
+      header.style.display = 'none';
+      empty.style.display = 'block';
+      syncBarridoStatusGlobal();
+      return;
+    }
+    empty.style.display = 'none';
+    header.style.display = 'grid';
+
+    const ordenado = ordenarBarrido(barridoEntries);
+    const estimado = window.__connectServiceContext ? window.__connectServiceContext.costoTotal : null;
+
+    listBox.innerHTML = ordenado.map(entry => {
+      if(entry.sinDispo){
+        return `
+          <div class="barrido-row" data-id="${entry.id}" style="opacity:.6;">
+            <span class="barrido-name">${entry.nombre}</span>
+            <span style="grid-column:span 3;color:var(--text-400);">Sin disponibilidad</span>
+            <button type="button" class="barrido-del" data-id="${entry.id}" title="Quitar">✕</button>
+          </div>`;
+      }
+      let diffHtml = '—';
+      if(estimado !== null){
+        const diff = estimado - entry.precio;
+        const cls = diff < 0 ? 'negative' : 'positive';
+        const sign = diff < 0 ? '-' : '+';
+        diffHtml = `<span class="barrido-diff ${cls}">${sign}${formatCOP(Math.abs(diff))}</span>`;
+      }
+      return `
+        <div class="barrido-row" data-id="${entry.id}">
+          <span class="barrido-name">${entry.nombre}</span>
+          <span>${entry.tiempoMin} min</span>
+          <span>${formatCOP(entry.precio)}</span>
+          ${diffHtml}
+          <button type="button" class="barrido-del" data-id="${entry.id}" title="Quitar">✕</button>
+        </div>`;
+    }).join('');
+
+    listBox.querySelectorAll('.barrido-del').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        barridoEntries = barridoEntries.filter(e => String(e.id) !== id);
+        renderBarridoList();
+        if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+      });
+    });
+
+    syncBarridoStatusGlobal();
+  }
+
+  function addBarridoEntry(){
+    const nombreEl = document.getElementById('barridoNombre');
+    const tiempoEl = document.getElementById('barridoTiempo');
+    const precioEl = document.getElementById('barridoPrecio');
+    const nombre = nombreEl.value.trim();
+    const tiempoMin = parseInt(String(tiempoEl.value).replace(/[^0-9]/g,''), 10);
+    const precio = parseBarridoMoney(precioEl.value);
+    if(!nombre || isNaN(tiempoMin) || !precio){
+      setStatus('Completa proveedor, tiempo (min) y precio para agregarlo al barrido.', 'error');
+      return;
+    }
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin, precio, sinDispo: false });
+    nombreEl.value = ''; tiempoEl.value = ''; precioEl.value = '';
+    nombreEl.focus();
+    renderBarridoList();
+    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+  }
+
+  function addSinDispoEntry(){
+    const nombreEl = document.getElementById('barridoNombre');
+    const nombre = nombreEl.value.trim();
+    if(!nombre){
+      setStatus('Escribe el proveedor antes de marcar "Sin disponibilidad".', 'error');
+      return;
+    }
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin: null, precio: null, sinDispo: true });
+    nombreEl.value = '';
+    document.getElementById('barridoTiempo').value = '';
+    document.getElementById('barridoPrecio').value = '';
+    nombreEl.focus();
+    renderBarridoList();
+    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+  }
+
+  document.getElementById('btnAddBarrido').addEventListener('click', addBarridoEntry);
+  document.getElementById('btnSinDispo').addEventListener('click', addSinDispoEntry);
+  ['barridoNombre','barridoTiempo','barridoPrecio'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') addBarridoEntry();
+    });
+  });
+
+  // Formatea el precio con separador de miles mientras se escribe, para que sea fácil
+  // detectar a simple vista un cero de más o de menos (ej. "500.000" vs "5.000.000").
+  document.getElementById('barridoPrecio').addEventListener('input', (e) => {
+    const digits = e.target.value.replace(/[^0-9]/g, '');
+    e.target.value = digits ? Number(digits).toLocaleString('es-CO') : '';
+  });
 
   // Puente hacia la pestaña de Proveedores (script separado, sin acceso a este cierre):
   // se publica el contexto en window y se le avisa para que refresque su barra de costo.
@@ -1735,6 +1959,19 @@ loadData();
       `Costo zona especial: ${formatCOP(costoEspecial)}`,
       `Total: ${formatCOP(total)}`
     );
+    if(barridoEntries.length){
+      const ordenado = ordenarBarrido(barridoEntries);
+      lines.push('', 'Barrido de proveedores (ordenado por tiempo):');
+      ordenado.forEach((entry, i) => {
+        if(entry.sinDispo){
+          lines.push(`  ${i+1}. ${entry.nombre} — Sin disponibilidad`);
+          return;
+        }
+        const diff = total - entry.precio;
+        const diffTxt = (diff < 0 ? '-' : '+') + formatCOP(Math.abs(diff));
+        lines.push(`  ${i+1}. ${entry.nombre} — ${entry.tiempoMin} min — ${formatCOP(entry.precio)} (Diferencia: ${diffTxt})`);
+      });
+    }
     document.getElementById('resumenText').textContent = lines.join('\n');
     document.getElementById('resumenCard').style.display = 'block';
   }
@@ -1781,6 +2018,27 @@ loadData();
   }
 
   document.getElementById('btnCopyResumen').addEventListener('click', copyResumenText);
+
+  // ---------- registrar acceso a la herramienta (IP + hora) ----------
+  // Igual patrón que las zonas manuales: se envía a un webhook de n8n que agrega la fila
+  // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
+  const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
+
+  async function registrarAcceso(){
+    if(!ACCESOS_WEBHOOK_URL) return;
+    try{
+      // La IP real y el user-agent ya llegan solos en los headers de esta petición
+      // (n8n los lee de cf-connecting-ip / x-real-ip) — no hace falta consultar
+      // ningún servicio externo para averiguar la IP propia.
+      await fetch(ACCESOS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fecha: new Date().toISOString() })
+      });
+    } catch(e){ console.warn('No se pudo registrar el acceso:', e.message); }
+  }
+
+  registrarAcceso();
 
   // ---------- guardar zonas manuales al copiar el resumen ----------
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
@@ -2222,6 +2480,8 @@ loadData();
     routeReady = true;
     syncVehicleSelect();
     document.getElementById('stickySummary').style.display = 'block';
+    document.getElementById('barridoCard').style.display = 'block';
+    renderBarridoList();
 
     setStatus('Ruta calculada correctamente.', 'ok');
   }
@@ -2251,6 +2511,10 @@ loadData();
         distanceKm: route.distanceKm, durationMin: route.durationMin,
         origin, dest
       };
+
+      // Nueva ruta = nuevo barrido de proveedores (no tiene sentido arrastrar cotizaciones
+      // de un servicio distinto al que se acaba de calcular).
+      barridoEntries = [];
 
       await processZonesAndRender();
 
