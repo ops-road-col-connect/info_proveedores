@@ -110,6 +110,12 @@
 
   .zone-swatch{width:10px;height:10px;border-radius:3px;background:var(--red-500);display:inline-block;margin-right:6px;flex-shrink:0;}
 
+  .popup-remove-btn{
+    margin-top:6px;background:var(--red-100);color:var(--red-500);border:none;border-radius:6px;
+    padding:4px 8px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;
+  }
+  .popup-remove-btn:hover{background:var(--red-500);color:#fff;}
+
   .manual-zone-chip{
     display:inline-flex;align-items:center;gap:6px;background:#F3EAFB;color:#6B2FA0;border:1px solid #E3CFF5;
     border-radius:20px;padding:4px 6px 4px 10px;font-size:12px;
@@ -861,6 +867,7 @@
               <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
               <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
               <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+              <div id="zonasExcluidasList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
             </div>
             <div id="map" style="display:none;"></div>
           </div>
@@ -1468,6 +1475,7 @@ loadData();
   let currentRoute = null; // {coords, cumRaw, refLat, scale, distanceKm, durationMin, origin, dest} de la última ruta calculada
   let pickLayerGroup = null;
   let lastRouteBounds = null; // para re-centrar el mapa si se calculó estando el desplegable colapsado
+  let zonasExcluidas = new Set(); // nombres de zonas del Sheet excluidas solo para este cálculo (no toca el Sheet)
   let pickingState = null; // {step:1|2, p1:null}
   let map = null;
   let routeLayerGroup = null;
@@ -2163,9 +2171,14 @@ loadData();
 
     // marcadores de zonas
     zonesResolved.forEach(z => {
+      const puedeExcluir = z.source === 'sheet';
       z.snappedPoints.forEach(pt => {
+        const popupHtml = `<b>${z.name}</b><br>km ${pt.km.toFixed(1)} · desvío ${(pt.dist).toFixed(2)} km` +
+          (puedeExcluir
+            ? `<br><button type="button" class="popup-remove-btn" onclick="excluirZonaDelCalculo('${z.name.replace(/'/g,"\\'")}')">Quitar esta zona de este cálculo</button>`
+            : '');
         L.circleMarker([pt.snapLat, pt.snapLon], { radius:5, color:'#E14B4B', fillColor:'#fff', fillOpacity:1, weight:2 })
-          .bindPopup(`<b>${z.name}</b><br>km ${pt.km.toFixed(1)} · desvío ${(pt.dist).toFixed(2)} km`)
+          .bindPopup(popupHtml)
           .addTo(routeLayerGroup);
       });
     });
@@ -2275,6 +2288,33 @@ loadData();
       });
     });
   }
+
+  function renderZonasExcluidas(){
+    const box = document.getElementById('zonasExcluidasList');
+    if(!zonasExcluidas.size){ box.innerHTML = ''; return; }
+    box.innerHTML = [...zonasExcluidas].map(nombre => `
+      <span class="manual-zone-chip" style="background:#F1F2F4;color:var(--text-600);border-color:var(--border);">
+        <span>Excluida: ${nombre}</span>
+        <button type="button" class="zona-restaurar" data-nombre="${nombre.replace(/"/g,'&quot;')}" title="Volver a incluir esta zona">↺</button>
+      </span>
+    `).join('');
+    box.querySelectorAll('.zona-restaurar').forEach(b => {
+      b.addEventListener('click', async () => {
+        zonasExcluidas.delete(b.dataset.nombre);
+        renderZonasExcluidas();
+        if(currentRoute) await processZonesAndRender();
+      });
+    });
+  }
+
+  // Se llama desde el botón dentro del popup del mapa (por eso va en window: los popups de
+  // Leaflet insertan HTML crudo, y ese onclick necesita encontrar la función en el scope global).
+  window.excluirZonaDelCalculo = function(nombre){
+    zonasExcluidas.add(nombre);
+    if(map) map.closePopup();
+    renderZonasExcluidas();
+    if(currentRoute) processZonesAndRender();
+  };
 
   document.getElementById('btnPickZone').addEventListener('click', startPicking);
 
@@ -2431,7 +2471,9 @@ loadData();
     const { coords, cumRaw, refLat, scale, distanceKm, durationMin, origin, dest } = currentRoute;
 
     setStatus('Resolviendo coordenadas de zonas…', 'loading');
-    const zonesInput = await resolveZonePoints(zonesFromSheet.concat(zonesManual));
+    const zonesInput = await resolveZonePoints(
+      zonesFromSheet.filter(z => !zonasExcluidas.has(z.name)).concat(zonesManual)
+    );
 
     setStatus('Calculando distribución de kilómetros…', 'loading');
     const zonesResolved = zonesInput.map(z => {
@@ -2515,6 +2557,8 @@ loadData();
       // Nueva ruta = nuevo barrido de proveedores (no tiene sentido arrastrar cotizaciones
       // de un servicio distinto al que se acaba de calcular).
       barridoEntries = [];
+      zonasExcluidas = new Set();
+      renderZonasExcluidas();
 
       await processZonesAndRender();
 
