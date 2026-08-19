@@ -100,6 +100,8 @@
     cursor:help;margin-top:2px;border-bottom:1px dotted var(--text-400);
   }
   .hint-icon:hover{color:var(--orange-600);border-color:var(--orange-600);}
+  .quitar-parada-link{font-weight:400;color:var(--text-400);cursor:pointer;text-decoration:underline;font-size:10px;}
+  .quitar-parada-link:hover{color:var(--red-500);}
 
   .swap-row{display:flex;gap:8px;align-items:center;margin:-2px 0 4px;}
   .swap-row button{
@@ -851,8 +853,9 @@
           <input type="text" id="destino" value="Cali, Colombia" placeholder="Ciudad o lat, lon">
         </div>
 
-        <div class="field">
-          <label for="parada">Parada (opcional)</label>
+        <button type="button" id="btnToggleParada" class="btn-add" style="margin-bottom:9px;">+ Agregar parada</button>
+        <div class="field" id="paradaField" style="display:none;">
+          <label for="parada">Parada (opcional) <span id="btnQuitarParada" class="quitar-parada-link">— quitar</span></label>
           <input type="text" id="parada" placeholder="Punto intermedio entre origen y destino">
         </div>
 
@@ -1804,6 +1807,17 @@ loadData();
     const o = document.getElementById('origen');
     const d = document.getElementById('destino');
     const tmp = o.value; o.value = d.value; d.value = tmp;
+  });
+
+  document.getElementById('btnToggleParada').addEventListener('click', () => {
+    document.getElementById('btnToggleParada').style.display = 'none';
+    document.getElementById('paradaField').style.display = 'block';
+    document.getElementById('parada').focus();
+  });
+  document.getElementById('btnQuitarParada').addEventListener('click', () => {
+    document.getElementById('parada').value = '';
+    document.getElementById('paradaField').style.display = 'none';
+    document.getElementById('btnToggleParada').style.display = 'block';
   });
 
   // ---------- UI: tarifas por tipo de vehículo ----------
