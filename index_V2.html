@@ -197,7 +197,17 @@
   .auth-gate-box .brand-tagline b{color:var(--tier1);}
   .auth-gate-title{font-size:15px;font-weight:600;color:var(--navy-900);margin:0 0 6px;}
   .auth-gate-sub{font-size:12.5px;color:var(--text-400);margin:0 0 22px;line-height:1.5;}
-  #googleSignInBtn{display:flex;justify-content:center;margin-bottom:14px;}
+  .auth-email-row{display:flex;gap:8px;margin-bottom:6px;}
+  .auth-email-row input{
+    flex:1;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
+    font-family:'JetBrains Mono',monospace;font-size:13px;background:#FAFBFC;color:var(--text-900);
+  }
+  .auth-email-row input:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
+  .auth-email-row button{
+    background:var(--orange-500);color:#fff;border:none;border-radius:7px;padding:9px 16px;
+    font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+  }
+  .auth-email-row button:hover{background:var(--orange-600);}
   .auth-error{
     display:none;background:var(--red-100);color:var(--red-500);border-radius:8px;
     padding:10px 12px;font-size:12px;text-align:left;margin-top:8px;
@@ -797,8 +807,11 @@
     <div class="brand-connect">Connect<sup>®</sup></div>
     <div class="brand-tagline">asistencia<b>extraordinaria</b></div>
     <p class="auth-gate-title">Herramienta de Despacho</p>
-    <p class="auth-gate-sub">Acceso restringido al equipo de Connect. Inicia sesión con tu cuenta corporativa de Google.</p>
-    <div id="googleSignInBtn"></div>
+    <p class="auth-gate-sub">Acceso restringido al equipo de Connect. Escribe tu correo corporativo para entrar.</p>
+    <div class="auth-email-row">
+      <input type="text" id="gateEmail" placeholder="tu.nombre@connect.inc" autocomplete="email">
+      <button type="button" id="btnGateEntrar">Entrar</button>
+    </div>
     <div id="authError" class="auth-error"></div>
   </div>
 </div>
@@ -2086,7 +2099,7 @@ loadData();
   // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
   const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
 
-  async function registrarAcceso(){
+  async function registrarAcceso(email){
     if(!ACCESOS_WEBHOOK_URL) return;
     try{
       // La IP real y el user-agent ya llegan solos en los headers de esta petición
@@ -2095,12 +2108,11 @@ loadData();
       await fetch(ACCESOS_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fecha: new Date().toISOString() })
+        body: JSON.stringify({ fecha: new Date().toISOString(), email: email || '' })
       });
     } catch(e){ console.warn('No se pudo registrar el acceso:', e.message); }
   }
-
-  registrarAcceso();
+  window.registrarAcceso = registrarAcceso; // el portón de acceso la llama con el correo ingresado
 
   // ---------- guardar zonas manuales al copiar el resumen ----------
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
@@ -2701,25 +2713,12 @@ loadData();
 })();
 </script>
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-  // ---------- acceso restringido con Google Sign-In ----------
-  // CONFIGURAR ESTOS DOS VALORES ANTES DE PUBLICAR:
-  // 1) GOOGLE_CLIENT_ID: se crea en Google Cloud Console > APIs & Services > Credentials >
-  //    "Create OAuth client ID" > tipo "Web application". En "Authorized JavaScript origins"
-  //    agrega exactamente: https://ops-road-col-connect.github.io
-  // 2) ALLOWED_EMAIL_DOMAIN: el dominio real de Google Workspace del equipo (el que aparece
-  //    después de la @ en los correos corporativos).
-  const GOOGLE_CLIENT_ID = 'TU_CLIENT_ID_AQUI.apps.googleusercontent.com';
-  const ALLOWED_EMAIL_DOMAIN = 'connect.inc'; // ⚠ confirmar que este es el dominio real
-
-  function decodeJwt(token){
-    const base64 = token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
-    const json = decodeURIComponent(
-      atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')
-    );
-    return JSON.parse(json);
-  }
+  // ---------- acceso restringido: solo se valida el dominio del correo ----------
+  // Sin verificación real de identidad (no hay Google de por medio) — es un filtro por
+  // honestidad para mantener afuera al público en general, no una autenticación a prueba
+  // de balas. Ajusta el dominio si no es el correcto.
+  const ALLOWED_EMAIL_DOMAIN = 'connect.inc';
 
   function mostrarApp(email){
     document.getElementById('authGate').style.display = 'none';
@@ -2728,47 +2727,33 @@ loadData();
     document.getElementById('authUserEmail').textContent = email;
   }
 
-  function handleCredentialResponse(response){
-    let data;
-    try { data = decodeJwt(response.credential); }
-    catch(e){ console.error('No se pudo leer la credencial de Google:', e.message); return; }
-
-    const dominioOk = data.hd === ALLOWED_EMAIL_DOMAIN ||
-      (typeof data.email === 'string' && data.email.toLowerCase().endsWith('@' + ALLOWED_EMAIL_DOMAIN.toLowerCase()));
-
+  function intentarEntrar(){
+    const input = document.getElementById('gateEmail');
     const errorBox = document.getElementById('authError');
-    if(data.email_verified && dominioOk){
+    const email = input.value.trim().toLowerCase();
+    const dominioOk = email.endsWith('@' + ALLOWED_EMAIL_DOMAIN.toLowerCase());
+
+    if(email && dominioOk){
       errorBox.style.display = 'none';
-      mostrarApp(data.email);
+      mostrarApp(email);
+      if(typeof window.registrarAcceso === 'function') window.registrarAcceso(email);
     } else {
-      errorBox.textContent = `La cuenta ${data.email || ''} no pertenece a @${ALLOWED_EMAIL_DOMAIN}. Inicia sesión con tu cuenta corporativa de Connect.`;
+      errorBox.textContent = email
+        ? `"${email}" no pertenece a @${ALLOWED_EMAIL_DOMAIN}. Escribe tu correo corporativo de Connect.`
+        : `Escribe tu correo @${ALLOWED_EMAIL_DOMAIN} para entrar.`;
       errorBox.style.display = 'block';
     }
   }
 
-  window.addEventListener('load', () => {
-    if(typeof google === 'undefined' || !google.accounts){
-      document.getElementById('authError').textContent = 'No se pudo cargar el inicio de sesión de Google (revisa tu conexión) o falta configurar GOOGLE_CLIENT_ID.';
-      document.getElementById('authError').style.display = 'block';
-      return;
-    }
-    google.accounts.id.initialize({
-      client_id: GOOGLE_CLIENT_ID,
-      callback: handleCredentialResponse
-    });
-    google.accounts.id.renderButton(
-      document.getElementById('googleSignInBtn'),
-      { theme: 'outline', size: 'large', text: 'signin_with', width: 280 }
-    );
-    google.accounts.id.prompt(); // intenta reconectar solo si ya había sesión de Google activa
+  document.getElementById('btnGateEntrar').addEventListener('click', intentarEntrar);
+  document.getElementById('gateEmail').addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') intentarEntrar();
   });
 
   document.getElementById('btnSignOut').addEventListener('click', () => {
-    if(typeof google !== 'undefined' && google.accounts){
-      google.accounts.id.disableAutoSelect();
-    }
     document.querySelector('.app').style.display = 'none';
     document.getElementById('authUserbar').style.display = 'none';
+    document.getElementById('gateEmail').value = '';
     document.getElementById('authGate').style.display = 'flex';
   });
 </script>
