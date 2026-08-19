@@ -31,7 +31,7 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text-900);font-family:'Poppins',sans-serif;}
   .mono{font-family:'JetBrains Mono',monospace;}
 
-  .app{max-width:1600px;margin:0 auto;padding:20px 20px 60px;}
+  .app{max-width:1600px;margin:0 auto;padding:20px 20px 60px;display:none;}
 
   header.topbar{
     display:flex;align-items:center;gap:14px;
@@ -183,6 +183,34 @@
   .copy-icon-btn:hover{border-color:var(--orange-500);color:var(--orange-600);}
   .copy-icon-btn:focus-visible{outline:2px solid var(--orange-500);outline-offset:1px;}
   .copy-icon-btn.copied{background:var(--teal-500);border-color:var(--teal-500);color:#fff;}
+
+  .auth-gate{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));padding:20px;
+  }
+  .auth-gate-box{
+    background:#fff;border-radius:16px;padding:36px 32px;max-width:380px;width:100%;
+    text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);
+  }
+  .auth-gate-box .brand-connect{font-size:26px;margin-bottom:2px;}
+  .auth-gate-box .brand-tagline{font-size:11px;margin-bottom:20px;color:var(--text-400);}
+  .auth-gate-box .brand-tagline b{color:var(--tier1);}
+  .auth-gate-title{font-size:15px;font-weight:600;color:var(--navy-900);margin:0 0 6px;}
+  .auth-gate-sub{font-size:12.5px;color:var(--text-400);margin:0 0 22px;line-height:1.5;}
+  #googleSignInBtn{display:flex;justify-content:center;margin-bottom:14px;}
+  .auth-error{
+    display:none;background:var(--red-100);color:var(--red-500);border-radius:8px;
+    padding:10px 12px;font-size:12px;text-align:left;margin-top:8px;
+  }
+  .auth-userbar{
+    display:none;align-items:center;justify-content:flex-end;gap:10px;font-size:11.5px;
+    color:var(--text-400);margin-bottom:10px;
+  }
+  .auth-userbar button{
+    background:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;
+    font-size:11px;color:var(--text-600);cursor:pointer;
+  }
+  .auth-userbar button:hover{border-color:var(--red-500);color:var(--red-500);}
 
   .modal-overlay{
     position:fixed;inset:0;background:rgba(10,25,48,.55);z-index:9999;
@@ -763,7 +791,24 @@
 </style>
 </head>
 <body>
+
+<div id="authGate" class="auth-gate">
+  <div class="auth-gate-box">
+    <div class="brand-connect">Connect<sup>®</sup></div>
+    <div class="brand-tagline">asistencia<b>extraordinaria</b></div>
+    <p class="auth-gate-title">Herramienta de Despacho</p>
+    <p class="auth-gate-sub">Acceso restringido al equipo de Connect. Inicia sesión con tu cuenta corporativa de Google.</p>
+    <div id="googleSignInBtn"></div>
+    <div id="authError" class="auth-error"></div>
+  </div>
+</div>
+
 <div class="app">
+
+  <div class="auth-userbar" id="authUserbar">
+    <span>Conectado como: <b id="authUserEmail"></b></span>
+    <button type="button" id="btnSignOut">Cerrar sesión</button>
+  </div>
 
   <div class="grid">
 
@@ -2654,6 +2699,78 @@ loadData();
   loadZonasYTarifas();
 
 })();
+</script>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  // ---------- acceso restringido con Google Sign-In ----------
+  // CONFIGURAR ESTOS DOS VALORES ANTES DE PUBLICAR:
+  // 1) GOOGLE_CLIENT_ID: se crea en Google Cloud Console > APIs & Services > Credentials >
+  //    "Create OAuth client ID" > tipo "Web application". En "Authorized JavaScript origins"
+  //    agrega exactamente: https://ops-road-col-connect.github.io
+  // 2) ALLOWED_EMAIL_DOMAIN: el dominio real de Google Workspace del equipo (el que aparece
+  //    después de la @ en los correos corporativos).
+  const GOOGLE_CLIENT_ID = 'TU_CLIENT_ID_AQUI.apps.googleusercontent.com';
+  const ALLOWED_EMAIL_DOMAIN = 'connect.inc'; // ⚠ confirmar que este es el dominio real
+
+  function decodeJwt(token){
+    const base64 = token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+    const json = decodeURIComponent(
+      atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')
+    );
+    return JSON.parse(json);
+  }
+
+  function mostrarApp(email){
+    document.getElementById('authGate').style.display = 'none';
+    document.querySelector('.app').style.display = 'block';
+    document.getElementById('authUserbar').style.display = 'flex';
+    document.getElementById('authUserEmail').textContent = email;
+  }
+
+  function handleCredentialResponse(response){
+    let data;
+    try { data = decodeJwt(response.credential); }
+    catch(e){ console.error('No se pudo leer la credencial de Google:', e.message); return; }
+
+    const dominioOk = data.hd === ALLOWED_EMAIL_DOMAIN ||
+      (typeof data.email === 'string' && data.email.toLowerCase().endsWith('@' + ALLOWED_EMAIL_DOMAIN.toLowerCase()));
+
+    const errorBox = document.getElementById('authError');
+    if(data.email_verified && dominioOk){
+      errorBox.style.display = 'none';
+      mostrarApp(data.email);
+    } else {
+      errorBox.textContent = `La cuenta ${data.email || ''} no pertenece a @${ALLOWED_EMAIL_DOMAIN}. Inicia sesión con tu cuenta corporativa de Connect.`;
+      errorBox.style.display = 'block';
+    }
+  }
+
+  window.addEventListener('load', () => {
+    if(typeof google === 'undefined' || !google.accounts){
+      document.getElementById('authError').textContent = 'No se pudo cargar el inicio de sesión de Google (revisa tu conexión) o falta configurar GOOGLE_CLIENT_ID.';
+      document.getElementById('authError').style.display = 'block';
+      return;
+    }
+    google.accounts.id.initialize({
+      client_id: GOOGLE_CLIENT_ID,
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById('googleSignInBtn'),
+      { theme: 'outline', size: 'large', text: 'signin_with', width: 280 }
+    );
+    google.accounts.id.prompt(); // intenta reconectar solo si ya había sesión de Google activa
+  });
+
+  document.getElementById('btnSignOut').addEventListener('click', () => {
+    if(typeof google !== 'undefined' && google.accounts){
+      google.accounts.id.disableAutoSelect();
+    }
+    document.querySelector('.app').style.display = 'none';
+    document.getElementById('authUserbar').style.display = 'none';
+    document.getElementById('authGate').style.display = 'flex';
+  });
 </script>
 </body>
 </html>
