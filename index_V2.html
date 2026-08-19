@@ -2097,7 +2097,7 @@ loadData();
           console.warn('No se pudo resolver el punto de zona "'+line+'": '+e.message);
         }
       }
-      if(points.length >= 2) zones.push({ name: z.name, points, source: z.source || 'sheet' });
+      if(points.length >= 2) zones.push({ name: z.name, points, source: z.source || 'sheet', id: z.id });
     }
     return zones;
   }
@@ -2171,12 +2171,11 @@ loadData();
 
     // marcadores de zonas
     zonesResolved.forEach(z => {
-      const puedeExcluir = z.source === 'sheet';
+      const quitarBtn = z.source === 'sheet'
+        ? `<br><button type="button" class="popup-remove-btn" onclick="excluirZonaDelCalculo('${z.name.replace(/'/g,"\\'")}')">Quitar esta zona de este cálculo</button>`
+        : `<br><button type="button" class="popup-remove-btn" onclick="quitarZonaManualDesdeMapa('${z.id}')">Quitar esta zona de este cálculo</button>`;
       z.snappedPoints.forEach(pt => {
-        const popupHtml = `<b>${z.name}</b><br>km ${pt.km.toFixed(1)} · desvío ${(pt.dist).toFixed(2)} km` +
-          (puedeExcluir
-            ? `<br><button type="button" class="popup-remove-btn" onclick="excluirZonaDelCalculo('${z.name.replace(/'/g,"\\'")}')">Quitar esta zona de este cálculo</button>`
-            : '');
+        const popupHtml = `<b>${z.name}</b><br>km ${pt.km.toFixed(1)} · desvío ${(pt.dist).toFixed(2)} km` + quitarBtn;
         L.circleMarker([pt.snapLat, pt.snapLon], { radius:5, color:'#E14B4B', fillColor:'#fff', fillOpacity:1, weight:2 })
           .bindPopup(popupHtml)
           .addTo(routeLayerGroup);
@@ -2262,6 +2261,7 @@ loadData();
     const tipo = await askZonaTipo();
     if(tipo === null){ pickLayerGroup.clearLayers(); return; } // el usuario canceló
     zonesManual.push({
+      id: Date.now() + Math.random(),
       name: tipo,
       lines: [`${p1.lat}, ${p1.lon}`, `${p2.lat}, ${p2.lon}`],
       source: 'manual'
@@ -2313,6 +2313,16 @@ loadData();
     zonasExcluidas.add(nombre);
     if(map) map.closePopup();
     renderZonasExcluidas();
+    if(currentRoute) processZonesAndRender();
+  };
+
+  // Misma idea, pero para una zona marcada a mano: en vez de "excluir por nombre" (que podría
+  // haber duplicados), se borra por id exacto directo de zonesManual — misma lógica que el
+  // botón ✕ del chip morado, solo que disparada desde el mapa.
+  window.quitarZonaManualDesdeMapa = function(id){
+    zonesManual = zonesManual.filter(z => String(z.id) !== String(id));
+    if(map) map.closePopup();
+    renderManualZonesList();
     if(currentRoute) processZonesAndRender();
   };
 
@@ -2485,7 +2495,7 @@ loadData();
       const startKm = Math.min(...kms), endKm = Math.max(...kms);
       const maxOffset = Math.max(...snappedPoints.map(p=>p.dist));
       const applicable = maxOffset <= MAX_OFFSET_KM;
-      return { name: z.name, startKm, endKm, pct: ((endKm-startKm)/distanceKm)*100, snappedPoints, maxOffset, applicable, source: z.source };
+      return { name: z.name, startKm, endKm, pct: ((endKm-startKm)/distanceKm)*100, snappedPoints, maxOffset, applicable, source: z.source, id: z.id };
     });
 
     const applicableZones = zonesResolved.filter(z => z.applicable);
