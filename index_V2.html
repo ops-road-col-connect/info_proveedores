@@ -1480,8 +1480,17 @@ loadData();
   let map = null;
   let routeLayerGroup = null;
 
-  const ZONE_COLORS = ['#E14B4B','#C0392B','#B5311F']; // variaciones de rojo si hay varias zonas superpuestas etiquetadas
   const NORMAL_COLOR = '#259C82';
+
+  // Color por tipo de zona: "Zona roja" en rojo, "Vía destapada" en ámbar/naranja para
+  // diferenciarla a simple vista; cualquier otro tipo personalizado (ej. "Otro…") usa un
+  // rojo oscuro de respaldo, distinto de ambos.
+  function getZoneColor(name){
+    const n = (name || '').toLowerCase();
+    if(n.includes('destapada')) return '#F2A900';
+    if(n.includes('roja')) return '#E14B4B';
+    return '#B5311F';
+  }
 
   // ---------- utilidades geo ----------
   function toRad(d){ return d*Math.PI/180; }
@@ -2128,32 +2137,34 @@ loadData();
     // construir tramos coloreados segun si el punto medio del tramo cae en alguna zona
     const totalKm = cumRaw[cumRaw.length-1]*scale;
 
-    function isInZone(km){
+    function zoneAt(km){
       for(const z of zonesResolved){
-        if(km >= z.startKm - 1e-6 && km <= z.endKm + 1e-6) return true;
+        if(km >= z.startKm - 1e-6 && km <= z.endKm + 1e-6) return z;
       }
-      return false;
+      return null;
     }
 
-    // recorrer vertices y agrupar en tramos contiguos del mismo "estado" (dentro/fuera de zona)
+    // recorrer vertices y agrupar en tramos contiguos de la misma zona (o "sin zona")
     let segStart = 0;
-    let currentState = null;
+    let currentZone; // undefined = aún sin asignar (primer punto)
     const segments = [];
     for(let i=0;i<coords.length;i++){
       const km = cumRaw[i]*scale;
-      const state = isInZone(km);
-      if(currentState === null){ currentState = state; segStart = i; }
-      else if(state !== currentState){
-        segments.push({ from: segStart, to: i, state: currentState });
-        segStart = i; currentState = state;
+      const zone = zoneAt(km);
+      const zoneKey = zone ? (zone.id || zone.name) : null;
+      const currentKey = currentZone === undefined ? undefined : (currentZone ? (currentZone.id || currentZone.name) : null);
+      if(currentZone === undefined){ currentZone = zone; segStart = i; }
+      else if(zoneKey !== currentKey){
+        segments.push({ from: segStart, to: i, zone: currentZone });
+        segStart = i; currentZone = zone;
       }
     }
-    segments.push({ from: segStart, to: coords.length-1, state: currentState });
+    segments.push({ from: segStart, to: coords.length-1, zone: currentZone });
 
     segments.forEach(seg => {
       const latlngs = coords.slice(seg.from, seg.to+1);
       L.polyline(latlngs, {
-        color: seg.state ? '#E14B4B' : '#259C82',
+        color: seg.zone ? getZoneColor(seg.zone.name) : NORMAL_COLOR,
         weight: 5,
         opacity: 0.9
       }).addTo(routeLayerGroup);
@@ -2176,7 +2187,7 @@ loadData();
         : `<br><button type="button" class="popup-remove-btn" onclick="quitarZonaManualDesdeMapa('${z.id}')">Quitar esta zona de este cálculo</button>`;
       z.snappedPoints.forEach(pt => {
         const popupHtml = `<b>${z.name}</b><br>km ${pt.km.toFixed(1)} · desvío ${(pt.dist).toFixed(2)} km` + quitarBtn;
-        L.circleMarker([pt.snapLat, pt.snapLon], { radius:5, color:'#E14B4B', fillColor:'#fff', fillOpacity:1, weight:2 })
+        L.circleMarker([pt.snapLat, pt.snapLon], { radius:5, color: getZoneColor(z.name), fillColor:'#fff', fillOpacity:1, weight:2 })
           .bindPopup(popupHtml)
           .addTo(routeLayerGroup);
       });
@@ -2381,25 +2392,26 @@ loadData();
   }
 
   function renderStrip(totalKm, zonesResolved){
-    // construir intervalos ordenados y unidos para la franja visual
-    const intervals = zonesResolved.map(z => [z.startKm, z.endKm]).sort((a,b)=>a[0]-b[0]);
+    // construir intervalos ordenados (conservando el nombre, para poder colorear por tipo)
+    const intervals = zonesResolved.map(z => ({ s: z.startKm, e: z.endKm, name: z.name })).sort((a,b) => a.s - b.s);
     const strip = document.getElementById('routeStrip');
     strip.innerHTML = '';
     let cursor = 0;
-    intervals.forEach(([s,e]) => {
-      s = Math.max(s, cursor);
-      if(e <= s) return;
+    intervals.forEach(iv => {
+      const s = Math.max(iv.s, cursor);
+      if(iv.e <= s) return;
       if(s > cursor){
         const seg = document.createElement('div');
         seg.className = 'strip-seg normal';
         seg.style.width = (((s-cursor)/totalKm)*100) + '%';
         strip.appendChild(seg);
       }
-      const redSeg = document.createElement('div');
-      redSeg.className = 'strip-seg red';
-      redSeg.style.width = (((e-s)/totalKm)*100) + '%';
-      strip.appendChild(redSeg);
-      cursor = e;
+      const zoneSeg = document.createElement('div');
+      zoneSeg.className = 'strip-seg';
+      zoneSeg.style.background = getZoneColor(iv.name);
+      zoneSeg.style.width = (((iv.e-s)/totalKm)*100) + '%';
+      strip.appendChild(zoneSeg);
+      cursor = iv.e;
     });
     if(cursor < totalKm){
       const seg = document.createElement('div');
@@ -2424,7 +2436,7 @@ loadData();
       const tr = document.createElement('tr');
       const warn = z.maxOffset > 1 ? `<span class="warn-badge">desvío ${z.maxOffset.toFixed(1)} km</span>` : '';
       tr.innerHTML = `
-        <td class="name-col"><span class="zone-swatch"></span>${z.name}${warn}</td>
+        <td class="name-col"><span class="zone-swatch" style="background:${getZoneColor(z.name)}"></span>${z.name}${warn}</td>
         <td>${Math.ceil(z.startKm)}</td>
         <td>${Math.ceil(z.endKm)}</td>
         <td>${Math.ceil(z.endKm-z.startKm)} km</td>
