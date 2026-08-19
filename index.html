@@ -31,7 +31,7 @@
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text-900);font-family:'Poppins',sans-serif;}
   .mono{font-family:'JetBrains Mono',monospace;}
 
-  .app{max-width:1600px;margin:0 auto;padding:20px 20px 60px;}
+  .app{max-width:1600px;margin:0 auto;padding:20px 20px 60px;display:none;}
 
   header.topbar{
     display:flex;align-items:center;gap:14px;
@@ -183,6 +183,44 @@
   .copy-icon-btn:hover{border-color:var(--orange-500);color:var(--orange-600);}
   .copy-icon-btn:focus-visible{outline:2px solid var(--orange-500);outline-offset:1px;}
   .copy-icon-btn.copied{background:var(--teal-500);border-color:var(--teal-500);color:#fff;}
+
+  .auth-gate{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--navy-900),var(--navy-700));padding:20px;
+  }
+  .auth-gate-box{
+    background:#fff;border-radius:16px;padding:36px 32px;max-width:380px;width:100%;
+    text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);
+  }
+  .auth-gate-box .brand-connect{font-size:26px;margin-bottom:2px;}
+  .auth-gate-box .brand-tagline{font-size:11px;margin-bottom:20px;color:var(--text-400);}
+  .auth-gate-box .brand-tagline b{color:var(--tier1);}
+  .auth-gate-title{font-size:15px;font-weight:600;color:var(--navy-900);margin:0 0 6px;}
+  .auth-gate-sub{font-size:12.5px;color:var(--text-400);margin:0 0 22px;line-height:1.5;}
+  .auth-email-row{display:flex;gap:8px;margin-bottom:6px;}
+  .auth-email-row input{
+    flex:1;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
+    font-family:'JetBrains Mono',monospace;font-size:13px;background:#FAFBFC;color:var(--text-900);
+  }
+  .auth-email-row input:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
+  .auth-email-row button{
+    background:var(--orange-500);color:#fff;border:none;border-radius:7px;padding:9px 16px;
+    font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;
+  }
+  .auth-email-row button:hover{background:var(--orange-600);}
+  .auth-error{
+    display:none;background:var(--red-100);color:var(--red-500);border-radius:8px;
+    padding:10px 12px;font-size:12px;text-align:left;margin-top:8px;
+  }
+  .auth-userbar{
+    display:none;align-items:center;justify-content:flex-end;gap:10px;font-size:11.5px;
+    color:var(--text-400);margin-bottom:10px;
+  }
+  .auth-userbar button{
+    background:none;border:1px solid var(--border);border-radius:6px;padding:3px 9px;
+    font-size:11px;color:var(--text-600);cursor:pointer;
+  }
+  .auth-userbar button:hover{border-color:var(--red-500);color:var(--red-500);}
 
   .modal-overlay{
     position:fixed;inset:0;background:rgba(10,25,48,.55);z-index:9999;
@@ -763,7 +801,27 @@
 </style>
 </head>
 <body>
+
+<div id="authGate" class="auth-gate">
+  <div class="auth-gate-box">
+    <div class="brand-connect">Connect<sup>®</sup></div>
+    <div class="brand-tagline">asistencia<b>extraordinaria</b></div>
+    <p class="auth-gate-title">Herramienta de Despacho</p>
+    <p class="auth-gate-sub">Acceso restringido al equipo de Connect. Escribe tu correo corporativo para entrar.</p>
+    <div class="auth-email-row">
+      <input type="text" id="gateEmail" placeholder="tu.nombre@connect.inc" autocomplete="email">
+      <button type="button" id="btnGateEntrar">Entrar</button>
+    </div>
+    <div id="authError" class="auth-error"></div>
+  </div>
+</div>
+
 <div class="app">
+
+  <div class="auth-userbar" id="authUserbar">
+    <span>Conectado como: <b id="authUserEmail"></b></span>
+    <button type="button" id="btnSignOut">Cerrar sesión</button>
+  </div>
 
   <div class="grid">
 
@@ -791,6 +849,11 @@
         <div class="field">
           <label for="destino">Destino</label>
           <input type="text" id="destino" value="Cali, Colombia" placeholder="Ciudad o lat, lon">
+        </div>
+
+        <div class="field">
+          <label for="parada">Parada (opcional)</label>
+          <input type="text" id="parada" placeholder="Punto intermedio entre origen y destino">
         </div>
 
         <div class="field">
@@ -1032,7 +1095,8 @@ function formatCOPPv(n){
 function buildWhatsappMessage(){
   const ctx = window.__connectServiceContext;
   if(!ctx) return '';
-  return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\nCosto estimado: ${formatCOPPv(ctx.costoTotal)}\n\n¿Podrías atenderlo?`;
+  const paradaLine = ctx.parada ? `\nParada: ${ctx.parada}` : '';
+  return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}${paradaLine}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\nCosto estimado: ${formatCOPPv(ctx.costoTotal)}\n\n¿Podrías atenderlo?`;
 }
 
 // Origen/destino compartidos con la sección "Ruta y Costo" — se fijan desde afuera
@@ -1712,20 +1776,22 @@ loadData();
     return await geocode(str);
   }
 
-  async function osrmRoute(o, d){
-    const url = `https://router.project-osrm.org/route/v1/driving/${o.lon},${o.lat};${d.lon},${d.lat}?overview=full&geometries=geojson&steps=false`;
+  async function osrmRoute(waypoints){
+    const coordStr = waypoints.map(p => `${p.lon},${p.lat}`).join(';');
+    const url = `https://router.project-osrm.org/route/v1/driving/${coordStr}?overview=full&geometries=geojson&steps=false`;
     const res = await fetch(url);
     if(!res.ok) throw new Error('El servicio de rutas no respondió correctamente.');
     const data = await res.json();
     if(data.code !== 'Ok' || !data.routes || data.routes.length===0){
-      throw new Error('No se encontró una ruta por carretera entre esos dos puntos.');
+      throw new Error('No se encontró una ruta por carretera entre esos puntos.');
     }
     const route = data.routes[0];
     const coordsLatLon = route.geometry.coordinates.map(c => [c[1], c[0]]); // geojson es [lon,lat] -> pasamos a [lat,lon]
     return {
       distanceKm: route.distance/1000,
       durationMin: route.duration/60,
-      coords: coordsLatLon
+      coords: coordsLatLon,
+      legs: (route.legs || []).map(l => ({ distanceKm: l.distance/1000, durationMin: l.duration/60 }))
     };
   }
 
@@ -1942,6 +2008,7 @@ loadData();
   function updateServiceContext(selected, total){
     window.__connectServiceContext = {
       origen: currentRoute.origin.label,
+      parada: currentRoute.parada ? currentRoute.parada.label : null,
       destino: currentRoute.dest.label,
       totalKm: lastNormalKm + lastZonasKm,
       vehiculo: selected.name,
@@ -1954,6 +2021,7 @@ loadData();
     const fecha = lastCalcTime ? lastCalcTime.toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' }) : '—';
     const lines = [
       `Origen: ${currentRoute.origin.label}`,
+      ...(currentRoute.parada ? [`Parada: ${currentRoute.parada.label}`] : []),
       `Destino: ${currentRoute.dest.label}`,
       `Tipo de vehículo: ${selected.name}`,
       `Hora del cálculo: ${fecha}`,
@@ -2041,7 +2109,7 @@ loadData();
   // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
   const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
 
-  async function registrarAcceso(){
+  async function registrarAcceso(email){
     if(!ACCESOS_WEBHOOK_URL) return;
     try{
       // La IP real y el user-agent ya llegan solos en los headers de esta petición
@@ -2050,12 +2118,11 @@ loadData();
       await fetch(ACCESOS_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fecha: new Date().toISOString() })
+        body: JSON.stringify({ fecha: new Date().toISOString(), email: email || '' })
       });
     } catch(e){ console.warn('No se pudo registrar el acceso:', e.message); }
   }
-
-  registrarAcceso();
+  window.registrarAcceso = registrarAcceso; // el portón de acceso la llama con el correo ingresado
 
   // ---------- guardar zonas manuales al copiar el resumen ----------
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
@@ -2133,7 +2200,7 @@ loadData();
     routeLayerGroup = L.layerGroup().addTo(map);
   }
 
-  function drawRoute(coords, cumRaw, scale, zonesResolved, origin, dest){
+  function drawRoute(coords, cumRaw, scale, zonesResolved, origin, dest, parada){
     // construir tramos coloreados segun si el punto medio del tramo cae en alguna zona
     const totalKm = cumRaw[cumRaw.length-1]*scale;
 
@@ -2179,6 +2246,13 @@ loadData();
     L.circleMarker(coords[coords.length-1], { radius:7, color:'#FF7A29', fillColor:'#FF7A29', fillOpacity:1, weight:2 })
       .bindPopup('<b>Destino</b><br>' + (dest.label || '') + destWarn)
       .addTo(routeLayerGroup);
+
+    if(parada){
+      const paradaWarn = parada.precision && !parada.precision.startsWith('exacta') ? `<br><span style="color:#E14B4B;">⚠ ${parada.precision}</span>` : '';
+      L.circleMarker([parada.lat, parada.lon], { radius:7, color:'#6B2FA0', fillColor:'#6B2FA0', fillOpacity:1, weight:2 })
+        .bindPopup('<b>Parada</b><br>' + (parada.label || '') + paradaWarn)
+        .addTo(routeLayerGroup);
+    }
 
     // marcadores de zonas
     zonesResolved.forEach(z => {
@@ -2358,11 +2432,12 @@ loadData();
   document.getElementById('btnCancelPick').addEventListener('click', cancelPicking);
 
   // ---------- render resultados ----------
-  function renderResolvedLocations(origin, dest){
+  function renderResolvedLocations(origin, dest, parada){
     const box = document.getElementById('resolvedLocations');
     if(!box) return;
     const warnings = [];
     if(origin.precision && !origin.precision.startsWith('exacta')) warnings.push(`⚠ <b>Origen</b> — coincidencia ${origin.precision}: ${origin.label}. Verifica el pin en el mapa.`);
+    if(parada && parada.precision && !parada.precision.startsWith('exacta')) warnings.push(`⚠ <b>Parada</b> — coincidencia ${parada.precision}: ${parada.label}. Verifica el pin en el mapa.`);
     if(dest.precision && !dest.precision.startsWith('exacta')) warnings.push(`⚠ <b>Destino</b> — coincidencia ${dest.precision}: ${dest.label}. Verifica el pin en el mapa.`);
     box.innerHTML = warnings.length
       ? warnings.map(w => `<div class="precision-warn" style="margin-bottom:8px;">${w}</div>`).join('')
@@ -2490,7 +2565,7 @@ loadData();
   async function processZonesAndRender(){
     lastCalcTime = new Date();
     const MAX_OFFSET_KM = 3; // si el punto más cercano de la ruta está más lejos que esto, la zona no aplica a esta ruta
-    const { coords, cumRaw, refLat, scale, distanceKm, durationMin, origin, dest } = currentRoute;
+    const { coords, cumRaw, refLat, scale, distanceKm, durationMin, origin, dest, parada } = currentRoute;
 
     setStatus('Resolviendo coordenadas de zonas…', 'loading');
     const zonesInput = await resolveZonePoints(
@@ -2530,11 +2605,11 @@ loadData();
     const normalKmInt = Math.max(0, totalKmInt - zonasKmInt);
 
     ensureMap();
-    drawRoute(coords, cumRaw, scale, applicableZones, origin, dest);
+    drawRoute(coords, cumRaw, scale, applicableZones, origin, dest, parada);
     document.getElementById('pickZoneBar').style.display = 'block';
     document.getElementById('detailsToggleCard').style.display = 'block';
 
-    renderResolvedLocations(origin, dest);
+    renderResolvedLocations(origin, dest, parada);
     renderSummary(totalKmInt, durationMin, zonasKmInt, normalKmInt);
     renderStrip(distanceKm, applicableZones);
     renderTable(zonesResolved);
@@ -2557,13 +2632,16 @@ loadData();
     try{
       const origenStr = document.getElementById('origen').value.trim();
       const destinoStr = document.getElementById('destino').value.trim();
+      const paradaStr = document.getElementById('parada').value.trim();
       if(!origenStr || !destinoStr){ throw new Error('Ingresa origen y destino.'); }
 
       const origin = await resolveLocation(origenStr);
+      const parada = paradaStr ? await resolveLocation(paradaStr) : null;
       const dest = await resolveLocation(destinoStr);
 
       setStatus('Calculando ruta real por carretera…', 'loading');
-      const route = await osrmRoute(origin, dest);
+      const waypoints = parada ? [origin, parada, dest] : [origin, dest];
+      const route = await osrmRoute(waypoints);
 
       const cumRaw = buildCumulative(route.coords);
       const refLat = route.coords.reduce((s,c)=>s+c[0],0)/route.coords.length;
@@ -2573,7 +2651,7 @@ loadData();
       currentRoute = {
         coords: route.coords, cumRaw, refLat, scale,
         distanceKm: route.distanceKm, durationMin: route.durationMin,
-        origin, dest
+        origin, dest, parada, legs: route.legs
       };
 
       // Nueva ruta = nuevo barrido de proveedores (no tiene sentido arrastrar cotizaciones
@@ -2654,6 +2732,51 @@ loadData();
   loadZonasYTarifas();
 
 })();
+</script>
+
+<script>
+  // ---------- acceso restringido: solo se valida el dominio del correo ----------
+  // Sin verificación real de identidad (no hay Google de por medio) — es un filtro por
+  // honestidad para mantener afuera al público en general, no una autenticación a prueba
+  // de balas. Ajusta el dominio si no es el correcto.
+  const ALLOWED_EMAIL_DOMAIN = 'connect.inc';
+
+  function mostrarApp(email){
+    document.getElementById('authGate').style.display = 'none';
+    document.querySelector('.app').style.display = 'block';
+    document.getElementById('authUserbar').style.display = 'flex';
+    document.getElementById('authUserEmail').textContent = email;
+  }
+
+  function intentarEntrar(){
+    const input = document.getElementById('gateEmail');
+    const errorBox = document.getElementById('authError');
+    const email = input.value.trim().toLowerCase();
+    const dominioOk = email.endsWith('@' + ALLOWED_EMAIL_DOMAIN.toLowerCase());
+
+    if(email && dominioOk){
+      errorBox.style.display = 'none';
+      mostrarApp(email);
+      if(typeof window.registrarAcceso === 'function') window.registrarAcceso(email);
+    } else {
+      errorBox.textContent = email
+        ? `"${email}" no pertenece a @${ALLOWED_EMAIL_DOMAIN}. Escribe tu correo corporativo de Connect.`
+        : `Escribe tu correo @${ALLOWED_EMAIL_DOMAIN} para entrar.`;
+      errorBox.style.display = 'block';
+    }
+  }
+
+  document.getElementById('btnGateEntrar').addEventListener('click', intentarEntrar);
+  document.getElementById('gateEmail').addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') intentarEntrar();
+  });
+
+  document.getElementById('btnSignOut').addEventListener('click', () => {
+    document.querySelector('.app').style.display = 'none';
+    document.getElementById('authUserbar').style.display = 'none';
+    document.getElementById('gateEmail').value = '';
+    document.getElementById('authGate').style.display = 'flex';
+  });
 </script>
 </body>
 </html>
