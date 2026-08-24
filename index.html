@@ -1132,15 +1132,17 @@ document.getElementById('search').addEventListener('input', render);
 
 
 function prioClass(pr){
-  if(pr==='0') return 'p0';
-  if(pr==='1') return 'p1';
-  if(pr==='2') return 'p2';
-  if(pr==='3') return 'p3';
+  const p = String(pr);
+  if(p==='0') return 'p0';
+  if(p==='1') return 'p1';
+  if(p==='2') return 'p2';
+  if(p==='3') return 'p3';
   return 'px';
 }
 function railNum(pr){
-  if(pr==='0') return 'G';
-  if(pr==='1'||pr==='2'||pr==='3') return pr;
+  const p = String(pr);
+  if(p==='0') return 'G';
+  if(p==='1'||p==='2'||p==='3') return p;
   return '–';
 }
 
@@ -1353,7 +1355,8 @@ function render(){
     if(sortBy==='score') return scoreB - scoreA;
     // 'prio' (default): Tier primero, luego Score
     const rank = {'0':0,'1':1,'2':2,'3':3,'-':4};
-    const ra = rank[pa.pr] || 4, rb = rank[pb.pr] || 4;
+    const rankOf = pr => { const r = rank[String(pr)]; return r !== undefined ? r : 4; };
+    const ra = rankOf(pa.pr), rb = rankOf(pb.pr);
     if(ra !== rb) return ra - rb;
     return scoreB - scoreA;
   }
