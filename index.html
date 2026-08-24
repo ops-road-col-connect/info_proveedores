@@ -167,6 +167,7 @@
   }
   .barrido-badge.quoted{background:#E4F5F0;color:var(--teal-500);}
   .barrido-badge.no-dispo{background:var(--red-100);color:var(--red-500);}
+  .barrido-badge.sin-respuesta{background:#F1F2F4;color:var(--text-400);}
 
   .resumen-box{
     background:#FAFBFC;border:1px solid var(--border);border-radius:8px;padding:14px 16px;
@@ -635,6 +636,7 @@
     color:#fff;
     position:relative;
   }
+  .rail.p0{background:linear-gradient(160deg, #FF2D95, #C40064);}
   .rail.p1{background:linear-gradient(160deg, var(--tier1), var(--tier1-deep));}
   .rail.p2{background:linear-gradient(160deg, #2B9BFF, #0868D1);}
   .rail.p3{background:linear-gradient(160deg, #FFC23D, #D18E00);}
@@ -888,6 +890,7 @@
         <div class="barrido-btn-row">
           <button type="button" id="btnAddBarrido">+ Agregar</button>
           <button type="button" id="btnSinDispo" class="btn-sin-dispo">Sin disponibilidad</button>
+          <button type="button" id="btnSinRespuesta" class="btn-sin-dispo">Sin respuesta</button>
         </div>
         <div id="barridoEmpty" class="hint" style="margin-top:8px;">Aún no hay cotizaciones registradas.</div>
         <div id="barridoListHeader" class="barrido-row barrido-header" style="display:none;">
@@ -1129,12 +1132,14 @@ document.getElementById('search').addEventListener('input', render);
 
 
 function prioClass(pr){
+  if(pr==='0') return 'p0';
   if(pr==='1') return 'p1';
   if(pr==='2') return 'p2';
   if(pr==='3') return 'p3';
   return 'px';
 }
 function railNum(pr){
+  if(pr==='0') return 'G';
   if(pr==='1'||pr==='2'||pr==='3') return pr;
   return '–';
 }
@@ -1196,9 +1201,11 @@ function buildCard(p, distInfo){
   const barridoStatus = (window.__barridoStatus && window.__barridoStatus[p.n]) || null;
   const barridoBadge = barridoStatus === 'sinDispo'
     ? `<span class="barrido-badge no-dispo" title="Respondió: sin disponibilidad">✕ Sin dispo</span>`
-    : barridoStatus === 'quoted'
-      ? `<span class="barrido-badge quoted" title="Ya suministró cotización">✓ Cotizó</span>`
-      : '';
+    : barridoStatus === 'sinRespuesta'
+      ? `<span class="barrido-badge sin-respuesta" title="No respondió">○ Sin respuesta</span>`
+      : barridoStatus === 'quoted'
+        ? `<span class="barrido-badge quoted" title="Ya suministró cotización">✓ Cotizó</span>`
+        : '';
 
   card.innerHTML = `
     <div class="rail ${prioClass(p.pr)}">
@@ -1345,7 +1352,7 @@ function render(){
     if(sortBy==='servicios') return (pb.servicios_30d||0) - (pa.servicios_30d||0);
     if(sortBy==='score') return scoreB - scoreA;
     // 'prio' (default): Tier primero, luego Score
-    const rank = {'1':1,'2':2,'3':3,'-':4};
+    const rank = {'0':0,'1':1,'2':2,'3':3,'-':4};
     const ra = rank[pa.pr] || 4, rb = rank[pb.pr] || 4;
     if(ra !== rb) return ra - rb;
     return scoreB - scoreA;
@@ -1897,9 +1904,10 @@ loadData();
 
   function ordenarBarrido(entries){
     return entries.slice().sort((a,b) => {
-      if(a.sinDispo && !b.sinDispo) return 1;
-      if(!a.sinDispo && b.sinDispo) return -1;
-      if(a.sinDispo && b.sinDispo) return 0;
+      const aCotizado = a.estado === 'cotizado', bCotizado = b.estado === 'cotizado';
+      if(aCotizado && !bCotizado) return -1;
+      if(!aCotizado && bCotizado) return 1;
+      if(!aCotizado && !bCotizado) return 0;
       return a.tiempoMin - b.tiempoMin;
     });
   }
@@ -1908,7 +1916,7 @@ loadData();
   // ya respondieron, para que pinte el badge correspondiente en sus tarjetas.
   function syncBarridoStatusGlobal(){
     const status = {};
-    barridoEntries.forEach(e => { status[e.nombre] = e.sinDispo ? 'sinDispo' : 'quoted'; });
+    barridoEntries.forEach(e => { status[e.nombre] = e.estado === 'cotizado' ? 'quoted' : e.estado; });
     window.__barridoStatus = status;
     if(typeof render === 'function') render();
   }
@@ -1931,11 +1939,12 @@ loadData();
     const estimado = window.__connectServiceContext ? window.__connectServiceContext.costoTotal : null;
 
     listBox.innerHTML = ordenado.map(entry => {
-      if(entry.sinDispo){
+      if(entry.estado !== 'cotizado'){
+        const etiqueta = entry.estado === 'sinRespuesta' ? 'Sin respuesta' : 'Sin disponibilidad';
         return `
           <div class="barrido-row" data-id="${entry.id}" style="opacity:.6;">
             <span class="barrido-name">${entry.nombre}</span>
-            <span style="grid-column:span 3;color:var(--text-400);">Sin disponibilidad</span>
+            <span style="grid-column:span 3;color:var(--text-400);">${etiqueta}</span>
             <button type="button" class="barrido-del" data-id="${entry.id}" title="Quitar">✕</button>
           </div>`;
       }
@@ -1979,21 +1988,21 @@ loadData();
       setStatus('Completa proveedor, tiempo (min) y precio para agregarlo al barrido.', 'error');
       return;
     }
-    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin, precio, sinDispo: false });
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin, precio, estado: 'cotizado' });
     nombreEl.value = ''; tiempoEl.value = ''; precioEl.value = '';
     nombreEl.focus();
     renderBarridoList();
     if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
   }
 
-  function addSinDispoEntry(){
+  function addEntrySinCotizacion(estado, mensajeError){
     const nombreEl = document.getElementById('barridoNombre');
     const nombre = nombreEl.value.trim();
     if(!nombre){
-      setStatus('Escribe el proveedor antes de marcar "Sin disponibilidad".', 'error');
+      setStatus(mensajeError, 'error');
       return;
     }
-    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin: null, precio: null, sinDispo: true });
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin: null, precio: null, estado });
     nombreEl.value = '';
     document.getElementById('barridoTiempo').value = '';
     document.getElementById('barridoPrecio').value = '';
@@ -2002,8 +2011,17 @@ loadData();
     if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
   }
 
+  function addSinDispoEntry(){
+    addEntrySinCotizacion('sinDispo', 'Escribe el proveedor antes de marcar "Sin disponibilidad".');
+  }
+
+  function addSinRespuestaEntry(){
+    addEntrySinCotizacion('sinRespuesta', 'Escribe el proveedor antes de marcar "Sin respuesta".');
+  }
+
   document.getElementById('btnAddBarrido').addEventListener('click', addBarridoEntry);
   document.getElementById('btnSinDispo').addEventListener('click', addSinDispoEntry);
+  document.getElementById('btnSinRespuesta').addEventListener('click', addSinRespuestaEntry);
   ['barridoNombre','barridoTiempo','barridoPrecio'].forEach(id => {
     document.getElementById(id).addEventListener('keydown', (e) => {
       if(e.key === 'Enter') addBarridoEntry();
@@ -2062,8 +2080,9 @@ loadData();
       const ordenado = ordenarBarrido(barridoEntries);
       lines.push('', 'Barrido de proveedores (ordenado por tiempo):');
       ordenado.forEach((entry, i) => {
-        if(entry.sinDispo){
-          lines.push(`  ${i+1}. ${entry.nombre} — Sin disponibilidad`);
+        if(entry.estado !== 'cotizado'){
+          const etiqueta = entry.estado === 'sinRespuesta' ? 'Sin respuesta' : 'Sin disponibilidad';
+          lines.push(`  ${i+1}. ${entry.nombre} — ${etiqueta}`);
           return;
         }
         const diff = total - entry.precio;
