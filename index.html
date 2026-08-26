@@ -303,6 +303,31 @@
   .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
   #costStats.summary-row.compact .stat.highlight{text-align:right;}
 
+  .manual-adjust-row{margin-top:8px;text-align:right;}
+  .manual-adjust-link{font-size:10px;color:var(--text-400);cursor:pointer;text-decoration:underline;}
+  .manual-adjust-link:hover{color:var(--orange-600);}
+  .manual-adjust-badge{font-size:10px;color:var(--orange-600);font-weight:600;}
+  .manual-adjust-badge #manualAdjustReset{cursor:pointer;text-decoration:underline;margin-left:4px;}
+  .manual-adjust-form{
+    margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);
+    display:flex;flex-wrap:wrap;gap:8px;align-items:end;
+  }
+  .manual-adjust-field{display:flex;flex-direction:column;gap:2px;}
+  .manual-adjust-field label{font-size:9px;color:var(--text-400);margin:0;}
+  .manual-adjust-field input{
+    width:80px;padding:5px 6px;border:1px solid var(--border);border-radius:6px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;background:#FAFBFC;
+  }
+  .manual-adjust-total{font-size:10.5px;color:var(--text-600);font-weight:600;flex-shrink:0;}
+  .manual-adjust-btns{display:flex;gap:6px;margin-left:auto;}
+  .manual-adjust-btns button{
+    border:none;border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;cursor:pointer;
+  }
+  #btnManualAplicar{background:var(--orange-500);color:#fff;}
+  #btnManualAplicar:hover{background:var(--orange-600);}
+  #btnManualCancelar{background:#EEF0F5;color:var(--text-600);}
+
+
   /* Franja de ruta - elemento firma */
   .strip-wrap{margin-top:20px;}
   .strip-wrap h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-400);margin:0 0 10px;font-weight:600;}
@@ -876,6 +901,25 @@
         <div class="card compact">
           <div class="summary-row compact" id="summaryStats"></div>
           <div class="summary-row compact" id="costStats"></div>
+          <div class="manual-adjust-row">
+            <span id="manualAdjustLink" class="manual-adjust-link">✎ Ajustar km manualmente</span>
+            <span id="manualAdjustBadge" class="manual-adjust-badge" style="display:none;">Ajustado manualmente <span id="manualAdjustReset" title="Volver al cálculo automático">↺</span></span>
+          </div>
+          <div id="manualAdjustForm" class="manual-adjust-form" style="display:none;">
+            <div class="manual-adjust-field">
+              <label>Zona normal (km)</label>
+              <input type="text" id="manualNormalKm">
+            </div>
+            <div class="manual-adjust-field">
+              <label>Zona especial (km)</label>
+              <input type="text" id="manualEspecialKm">
+            </div>
+            <div class="manual-adjust-total">Total: <span id="manualTotalPreview">0</span> km</div>
+            <div class="manual-adjust-btns">
+              <button type="button" id="btnManualAplicar">Aplicar</button>
+              <button type="button" id="btnManualCancelar">Cancelar</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1834,6 +1878,7 @@ loadData();
   let tariffsData = []; // [{name, banderazo, normal, special}] cargado desde tarifas.json o el snapshot embebido
   let lastNormalKm = 0, lastZonasKm = 0, routeReady = false, lastCalcTime = null, lastApplicableZones = [];
   let barridoEntries = [], lastCostBreakdown = null;
+  let manualOverride = false, manualNormalValue = 0, manualEspecialValue = 0;
 
   function addTariffData(name, banderazo, normal, special){
     tariffsData.push({
@@ -1897,6 +1942,61 @@ loadData();
   }
 
   document.getElementById('vehicleSelect').addEventListener('change', renderCost);
+
+  // ---------- ajuste manual de km (por si la ruta calculada no coincide con la realidad) ----------
+  function refrescarConAjusteActual(){
+    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+  }
+
+  document.getElementById('manualAdjustLink').addEventListener('click', () => {
+    document.getElementById('manualNormalKm').value = lastNormalKm;
+    document.getElementById('manualEspecialKm').value = lastZonasKm;
+    document.getElementById('manualTotalPreview').textContent = lastNormalKm + lastZonasKm;
+    document.getElementById('manualAdjustForm').style.display = 'flex';
+    document.getElementById('manualAdjustLink').style.display = 'none';
+  });
+
+  document.getElementById('btnManualCancelar').addEventListener('click', () => {
+    document.getElementById('manualAdjustForm').style.display = 'none';
+    if(!manualOverride) document.getElementById('manualAdjustLink').style.display = 'inline';
+  });
+
+  function actualizarPreviewManual(){
+    const n = parseInt(document.getElementById('manualNormalKm').value, 10) || 0;
+    const e = parseInt(document.getElementById('manualEspecialKm').value, 10) || 0;
+    document.getElementById('manualTotalPreview').textContent = n + e;
+  }
+  document.getElementById('manualNormalKm').addEventListener('input', actualizarPreviewManual);
+  document.getElementById('manualEspecialKm').addEventListener('input', actualizarPreviewManual);
+
+  document.getElementById('btnManualAplicar').addEventListener('click', () => {
+    const n = parseInt(document.getElementById('manualNormalKm').value, 10);
+    const e = parseInt(document.getElementById('manualEspecialKm').value, 10);
+    if(isNaN(n) || isNaN(e) || n < 0 || e < 0){
+      setStatus('Ingresa valores numéricos válidos (0 o mayores) para ajustar los km.', 'error');
+      return;
+    }
+    manualOverride = true;
+    manualNormalValue = n;
+    manualEspecialValue = e;
+    lastNormalKm = n;
+    lastZonasKm = e;
+
+    if(currentRoute){
+      renderSummary(n + e, currentRoute.durationMin, e, n);
+    }
+    document.getElementById('manualAdjustForm').style.display = 'none';
+    document.getElementById('manualAdjustBadge').style.display = 'inline';
+    renderCost();
+    refrescarConAjusteActual();
+  });
+
+  document.getElementById('manualAdjustReset').addEventListener('click', async () => {
+    manualOverride = false;
+    document.getElementById('manualAdjustBadge').style.display = 'none';
+    document.getElementById('manualAdjustLink').style.display = 'inline';
+    if(currentRoute) await processZonesAndRender();
+  });
 
   // ---------- barrido de proveedores (cotizaciones registradas a mano) ----------
   function parseBarridoMoney(str){
@@ -2063,7 +2163,8 @@ loadData();
       '',
       `Distancia total: ${totalKm} km`,
       `Km zona normal: ${lastNormalKm} km`,
-      `Km zona especial: ${lastZonasKm} km`
+      `Km zona especial: ${lastZonasKm} km`,
+      ...(manualOverride ? ['⚠ Km ajustados manualmente (no son el cálculo automático de la ruta)'] : [])
     ];
     if(lastApplicableZones.length){
       lines.push('Zona(s) especial(es):');
@@ -2652,6 +2753,16 @@ loadData();
 
     lastNormalKm = normalKmInt;
     lastZonasKm = zonasKmInt;
+
+    // Si hay un ajuste manual activo, se mantiene por encima del cálculo automático
+    // que se acaba de hacer (el mapa/tabla sí muestran la ruta real; los números de
+    // resumen/costo respetan lo que la persona ajustó a mano).
+    if(manualOverride){
+      lastNormalKm = manualNormalValue;
+      lastZonasKm = manualEspecialValue;
+      renderSummary(manualNormalValue + manualEspecialValue, durationMin, manualEspecialValue, manualNormalValue);
+    }
+
     routeReady = true;
     syncVehicleSelect();
     document.getElementById('stickySummary').style.display = 'block';
@@ -2691,10 +2802,14 @@ loadData();
       };
 
       // Nueva ruta = nuevo barrido de proveedores (no tiene sentido arrastrar cotizaciones
-      // de un servicio distinto al que se acaba de calcular).
+      // de un servicio distinto al que se acaba de calcular), y tampoco un ajuste manual
+      // de kilómetros que era para la ruta anterior.
       barridoEntries = [];
       zonasExcluidas = new Set();
       renderZonasExcluidas();
+      manualOverride = false;
+      document.getElementById('manualAdjustBadge').style.display = 'none';
+      document.getElementById('manualAdjustLink').style.display = 'inline';
 
       await processZonesAndRender();
 
