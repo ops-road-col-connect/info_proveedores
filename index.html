@@ -1405,12 +1405,26 @@ function render(){
     return scoreB - scoreA;
   }
 
+  // Dentro del grupo "G" (prioridad 0) el orden debe salir al azar cada vez que se lista,
+  // en vez de seguir el score. Esto solo tiene sentido cuando el orden activo es "Prioridad"
+  // (es el único modo donde "el grupo G" existe como bloque aparte al inicio de la lista).
+  function shuffleGrupoG(arr){
+    if(sortBy !== 'prio') return;
+    let end = 0;
+    while(end < arr.length && String((arr[end].p || arr[end]).pr) === '0') end++;
+    for(let i = end - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
   grid.innerHTML = '';
 
   if(!origenCoords){
     // Sin origen resuelto todavía: lista simple (solo con búsqueda por nombre)
     let list = base.slice();
     list.sort(compareEntries);
+    shuffleGrupoG(list);
     document.getElementById('resultCount').textContent = `${list.length} resultado${list.length===1?'':'s'}${contextParts.length ? ' · ' + contextParts.join(' · ') : ''}`;
     document.getElementById('emptyState').style.display = list.length ? 'none' : 'block';
     updateTabBadge(list.length);
@@ -1442,6 +1456,8 @@ function render(){
 
   tier1.sort(compareEntries);
   tier2.sort(compareEntries);
+  shuffleGrupoG(tier1);
+  shuffleGrupoG(tier2);
 
   contextParts.unshift(`desde ${origenName}`);
   const total = tier1.length + tier2.length;
