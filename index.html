@@ -1132,6 +1132,18 @@ function findDeptoInLabel(label){
   return null;
 }
 
+// Detecta la ciudad exacta (clave de CITY_COORDS) contenida en el label del origen ya
+// geocodificado, ej. "Cota, Cundinamarca, Colombia" -> "COTA". Si varias claves matchean
+// como substring (p.ej. "VEGA" dentro de "LA VEGA"), se queda con la coincidencia más larga.
+function findCityInLabel(label){
+  const norm = normCityFixed(label);
+  let best = null;
+  for(const key of Object.keys(CITY_COORDS)){
+    if(norm.includes(key) && (!best || key.length > best.length)) best = key;
+  }
+  return best;
+}
+
 const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
 const activeServices = new Set();
 
@@ -1376,6 +1388,9 @@ function render(){
   const origenCoords = pvOrigin ? { lat: pvOrigin.lat, lon: pvOrigin.lon, depto: findDeptoInLabel(pvOrigin.label) } : null;
   const origenName = pvOrigin ? pvOrigin.label : '';
   const destinoName = pvDestino ? pvDestino.label : '';
+  // Ciudad exacta del origen (si se reconoce en CITY_COORDS) — usada para que los
+  // proveedores de la MISMA ciudad se muestren primero, por encima de Prioridad/Score.
+  const origenCityKey = pvOrigin ? findCityInLabel(pvOrigin.label) : null;
 
   const base = PROVIDERS.filter(p=>{
     if(query && !p.n.toLowerCase().includes(query)) return false;
@@ -1389,7 +1404,7 @@ function render(){
   if(destinoName) contextParts.push(`destino: ${destinoName} (informativo)`);
 
   // Comparador único: acepta tanto proveedores planos (modo sin origen) como
-  // entries {p, dist, distScore} (modo con banners), y respeta el dropdown "Ordenar por".
+  // entries {p, dist, distScore, sameCity} (modo con banners), y respeta el dropdown "Ordenar por".
   function compareEntries(a, b){
     const pa = a.p || a, pb = b.p || b;
     const scoreA = a.distScore !== undefined ? a.distScore : (pa.score || 0);
@@ -1397,7 +1412,9 @@ function render(){
     if(sortBy==='name') return pa.n.localeCompare(pb.n);
     if(sortBy==='servicios') return (pb.servicios_30d||0) - (pa.servicios_30d||0);
     if(sortBy==='score') return scoreB - scoreA;
-    // 'prio' (default): Tier primero, luego Score
+    // 'prio' (default): misma ciudad que el origen primero, luego Tier de Prioridad, luego Score
+    const sameCityA = a.sameCity ? 1 : 0, sameCityB = b.sameCity ? 1 : 0;
+    if(sameCityA !== sameCityB) return sameCityB - sameCityA;
     const rank = {'0':0,'1':1,'2':2,'3':3,'-':4};
     const rankOf = pr => { const r = rank[String(pr)]; return r !== undefined ? r : 4; };
     const ra = rankOf(pa.pr), rb = rankOf(pb.pr);
@@ -1406,15 +1423,22 @@ function render(){
   }
 
   // Dentro del grupo "G" (prioridad 0) el orden debe salir al azar cada vez que se lista,
-  // en vez de seguir el score. Esto solo tiene sentido cuando el orden activo es "Prioridad"
-  // (es el único modo donde "el grupo G" existe como bloque aparte al inicio de la lista).
+  // en vez de seguir el score. Esto solo tiene sentido cuando el orden activo es "Prioridad".
+  // Como ahora "misma ciudad" puede partir el grupo G en dos bloques (los G de la ciudad
+  // del origen primero, luego los G de otras ciudades), se baraja cada bloque contiguo de
+  // "G" que aparezca en la lista, no solo el que arranca en la posición 0.
   function shuffleGrupoG(arr){
     if(sortBy !== 'prio') return;
-    let end = 0;
-    while(end < arr.length && String((arr[end].p || arr[end]).pr) === '0') end++;
-    for(let i = end - 1; i > 0; i--){
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
+    let i = 0;
+    while(i < arr.length){
+      if(String((arr[i].p || arr[i]).pr) !== '0'){ i++; continue; }
+      let end = i;
+      while(end < arr.length && String((arr[end].p || arr[end]).pr) === '0') end++;
+      for(let k = end - 1; k > i; k--){
+        const j = i + Math.floor(Math.random() * (k - i + 1));
+        [arr[k], arr[j]] = [arr[j], arr[k]];
+      }
+      i = end;
     }
   }
 
@@ -1434,7 +1458,9 @@ function render(){
   }
 
   // Con origen: agrupar en banners de distancia (0-50km / 50-150km), excluir >150km
-  const tier1 = [], tier2 = [];
+  // Dedup: si el mismo proveedor (por nombre) tiene filas en varias ciudades, se
+  // muestra una sola vez usando la ciudad más cercana al origen.
+  const porNombre = new Map();
   base.forEach(p=>{
     const provCoords = resolveCity(p.ciudad);
     let dist = null;
@@ -1448,9 +1474,24 @@ function render(){
       // Ni ciudad del proveedor reconocida ni departamento del origen inferible: se excluye
       return;
     }
+    const key = (p.n || '').trim().toLowerCase();
+    const sameCity = !!(origenCityKey && normCityFixed(p.ciudad) === origenCityKey);
+    const prev = porNombre.get(key);
+    if(prev){
+      // Preferir siempre una fila de la misma ciudad del origen sobre una que no lo es;
+      // si ambas (o ninguna) son de la misma ciudad, se desempata por distancia.
+      const esMejor = prev.sameCity !== sameCity
+        ? sameCity
+        : (dist === null ? false : (prev.dist === null ? true : dist < prev.dist));
+      if(!esMejor) return; // ya había una fila mejor para este mismo proveedor
+    }
     const distScore = computeDistanceScore(p, dist);
-    const entry = { p, dist, distScore };
-    if(dist !== null && dist <= TIER1_KM) tier1.push(entry);
+    porNombre.set(key, { p, dist, distScore, sameCity });
+  });
+
+  const tier1 = [], tier2 = [];
+  porNombre.forEach(entry=>{
+    if(entry.dist !== null && entry.dist <= TIER1_KM) tier1.push(entry);
     else tier2.push(entry);
   });
 
