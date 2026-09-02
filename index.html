@@ -381,6 +381,17 @@
   .resolved-loc .txt .addr{color:var(--text-600);font-family:'JetBrains Mono',monospace;font-size:11.5px;}
   .precision-warn{color:var(--orange-600);font-size:11px;font-weight:600;margin-top:2px;background:#FFF7ED;padding:8px 10px;border-radius:6px;}
 
+  /* Banner de aprobación por % de zona roja/especial */
+  .approval-banner{
+    font-size:12px;font-weight:600;margin-top:4px;padding:9px 12px;border-radius:6px;
+    display:flex;align-items:flex-start;gap:8px;line-height:1.4;
+  }
+  .approval-banner .approval-icon{flex-shrink:0;}
+  .approval-banner.tier1{background:#FFF7ED;color:var(--orange-600);border:1px solid var(--orange-500);}
+  .approval-banner.tier2{background:#FFF3EA;color:#B45309;border:1px solid #F59E0B;}
+  .approval-banner.tier3{background:#FEF2F2;color:var(--red-500);border:1px solid var(--red-500);}
+  .approval-banner b{font-family:'Poppins',sans-serif;}
+
   .empty-state{
     display:flex;align-items:center;justify-content:center;height:360px;color:var(--text-400);
     font-size:13px;border:1px dashed var(--border);border-radius:var(--radius);text-align:center;padding:20px;
@@ -900,6 +911,7 @@
       <div class="sticky-summary" id="stickySummary" style="display:none;">
         <div class="card compact">
           <div class="summary-row compact" id="summaryStats"></div>
+          <div id="approvalBanner" style="display:none;"></div>
           <div class="summary-row compact" id="costStats"></div>
           <div class="manual-adjust-row">
             <span id="manualAdjustLink" class="manual-adjust-link">✎ Ajustar km manualmente</span>
@@ -2237,6 +2249,11 @@ loadData();
       `Costo zona especial: ${formatCOP(costoEspecial)}`,
       `Total: ${formatCOP(total)}`
     );
+    const pctEspecial = totalKm ? (lastZonasKm/totalKm)*100 : 0;
+    const approvalInfo = getApprovalInfo(pctEspecial);
+    if(approvalInfo){
+      lines.push('', `⚠ ${approvalInfo.texto} (${pctEspecial.toFixed(0)}% de zona roja/especial).`);
+    }
     if(barridoEntries.length){
       const ordenado = ordenarBarrido(barridoEntries);
       lines.push('', 'Barrido de proveedores (ordenado por tiempo):');
@@ -2658,6 +2675,34 @@ loadData();
         <div class="stat-sub">≈ ${h}h ${m}min en ruta</div>
       </div>
     `;
+    renderApprovalBanner(totalKm ? (zonasKm/totalKm)*100 : 0);
+  }
+
+  // Proceso de aprobación según el % de zona roja/especial sobre la ruta total.
+  // Puramente informativo: indica quién debe aprobar el servicio, sin bloquear nada.
+  //   20% - 40%  -> Supervisor en turno
+  //   40% - 60%  -> Área de proveedores
+  //   > 60%      -> Yessenia Rodríguez o Iván Granadillo
+  // Devuelve { tier, texto } o null si el % no requiere aprobación (< 20%).
+  function getApprovalInfo(pct){
+    if(pct >= 60) return { tier: 'tier3', texto: 'Requiere aprobación de Yessenia Rodríguez o Iván Granadillo' };
+    if(pct >= 40) return { tier: 'tier2', texto: 'Requiere aprobación del área de Proveedores' };
+    if(pct >= 20) return { tier: 'tier1', texto: 'Requiere aprobación del supervisor en turno' };
+    return null;
+  }
+
+  function renderApprovalBanner(pct){
+    const box = document.getElementById('approvalBanner');
+    if(!box) return;
+    const info = getApprovalInfo(pct);
+    if(!info){
+      box.style.display = 'none';
+      box.innerHTML = '';
+      return;
+    }
+    box.style.display = 'flex';
+    box.className = `approval-banner ${info.tier}`;
+    box.innerHTML = `<span class="approval-icon">⚠</span><span><b>${info.texto}.</b> (${pct.toFixed(0)}% de zona roja/especial en la ruta)</span>`;
   }
 
   function renderStrip(totalKm, zonesResolved){
