@@ -6,6 +6,12 @@
     "especial": 5000
   },
   {
+    "tipo": "300",
+    "banderazo": 100000,
+    "normal": 3500,
+    "especial": 5000
+  },
+  {
     "tipo": "350",
     "banderazo": 140000,
     "normal": 4000,
