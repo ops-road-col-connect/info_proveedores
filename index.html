@@ -2206,6 +2206,7 @@ loadData();
       if(entry) entry.comentario = input.value.trim();
       barridoComentarioAbierto = null;
       renderBarridoList();
+      if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
     }
 
     listBox.querySelectorAll('.barrido-note').forEach(btn => {
