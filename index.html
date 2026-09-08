@@ -143,7 +143,7 @@
   .btn-sin-dispo:hover{background:#E2E5ED;color:var(--navy-900);}
 
   .barrido-row{
-    display:grid;grid-template-columns:1.3fr 0.7fr 0.9fr 1fr 20px;gap:6px;align-items:center;
+    display:grid;grid-template-columns:1.3fr 0.7fr 0.9fr 1fr 20px 20px;gap:6px;align-items:center;
     padding:7px 2px;font-size:12px;
   }
   .barrido-header{
@@ -160,6 +160,30 @@
     background:none;border:none;color:var(--text-400);cursor:pointer;font-size:13px;padding:0;
   }
   .barrido-row .barrido-del:hover{color:var(--red-500);}
+  .barrido-row .barrido-note{
+    background:none;border:none;color:var(--text-400);cursor:pointer;font-size:12px;padding:0;opacity:.5;
+  }
+  .barrido-row .barrido-note:hover{opacity:1;}
+  .barrido-row .barrido-note.has-note{opacity:1;color:var(--orange-500);}
+  .barrido-comment-preview{
+    grid-column:1 / -1;font-size:11px;color:var(--text-400);font-style:italic;
+    padding:0 24px 7px 2px;margin-top:-5px;
+    border-bottom:1px dashed var(--border);
+    white-space:pre-wrap;word-break:break-word;
+  }
+  .barrido-comment-preview:last-child{border-bottom:none;}
+  .barrido-comment-edit{
+    grid-column:1 / -1;display:flex;gap:6px;padding:2px 2px 9px 2px;margin-top:-5px;
+    border-bottom:1px dashed var(--border);
+  }
+  .barrido-comment-edit:last-child{border-bottom:none;}
+  .barrido-comment-edit input{
+    flex:1;padding:6px 8px;font-size:12px;border:1px solid var(--border);border-radius:6px;
+  }
+  .barrido-comment-edit button{
+    border:none;border-radius:6px;padding:0 10px;font-size:11px;font-weight:600;
+    background:var(--orange-500);color:#fff;cursor:pointer;white-space:nowrap;
+  }
 
   .barrido-badge{
     display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:700;
@@ -950,7 +974,7 @@
         </div>
         <div id="barridoEmpty" class="hint" style="margin-top:8px;">Aún no hay cotizaciones registradas.</div>
         <div id="barridoListHeader" class="barrido-row barrido-header" style="display:none;">
-          <span>Proveedor</span><span>Tiempo</span><span>Precio</span><span>Diferencia</span><span></span>
+          <span>Proveedor</span><span>Tiempo</span><span>Precio</span><span>Diferencia</span><span></span><span></span>
         </div>
         <div id="barridoList"></div>
       </div>
@@ -2068,6 +2092,12 @@ loadData();
   });
 
   // ---------- barrido de proveedores (cotizaciones registradas a mano) ----------
+  let barridoComentarioAbierto = null; // id de la entrada cuyo comentario se está editando ahora mismo
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
   function parseBarridoMoney(str){
     const digits = String(str).replace(/[^0-9]/g,'');
     const n = parseInt(digits, 10);
@@ -2111,14 +2141,25 @@ loadData();
     const estimado = window.__connectServiceContext ? window.__connectServiceContext.costoTotal : null;
 
     listBox.innerHTML = ordenado.map(entry => {
+      const idStr = String(entry.id);
+      const abierto = barridoComentarioAbierto === idStr;
+      const notaBtn = `<button type="button" class="barrido-note${entry.comentario ? ' has-note' : ''}" data-id="${idStr}" title="${entry.comentario ? 'Ver/editar comentario' : 'Agregar comentario'}">📝</button>`;
+      const extra = abierto
+        ? `<div class="barrido-comment-edit" data-id="${idStr}">
+             <input type="text" class="barrido-comment-input" data-id="${idStr}" placeholder="Comentario del proveedor..." value="${escapeHtml(entry.comentario || '')}">
+             <button type="button" class="barrido-comment-save" data-id="${idStr}">Guardar</button>
+           </div>`
+        : (entry.comentario ? `<div class="barrido-comment-preview" data-id="${idStr}">${escapeHtml(entry.comentario)}</div>` : '');
+
       if(entry.estado !== 'cotizado'){
         const etiqueta = entry.estado === 'sinRespuesta' ? 'Sin respuesta' : 'Sin disponibilidad';
         return `
           <div class="barrido-row" data-id="${entry.id}" style="opacity:.6;">
             <span class="barrido-name">${entry.nombre}</span>
             <span style="grid-column:span 3;color:var(--text-400);">${etiqueta}</span>
+            ${notaBtn}
             <button type="button" class="barrido-del" data-id="${entry.id}" title="Quitar">✕</button>
-          </div>`;
+          </div>${extra}`;
       }
       let diffHtml = '—';
       if(estimado !== null){
@@ -2133,16 +2174,50 @@ loadData();
           <span>${entry.tiempoMin} min</span>
           <span>${formatCOP(entry.precio)}</span>
           ${diffHtml}
+          ${notaBtn}
           <button type="button" class="barrido-del" data-id="${entry.id}" title="Quitar">✕</button>
-        </div>`;
+        </div>${extra}`;
     }).join('');
 
     listBox.querySelectorAll('.barrido-del').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.id;
         barridoEntries = barridoEntries.filter(e => String(e.id) !== id);
+        if(barridoComentarioAbierto === id) barridoComentarioAbierto = null;
         renderBarridoList();
         if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+      });
+    });
+
+    function guardarComentario(id){
+      const input = listBox.querySelector(`.barrido-comment-input[data-id="${CSS.escape(id)}"]`);
+      if(!input) return;
+      const entry = barridoEntries.find(e => String(e.id) === id);
+      if(entry) entry.comentario = input.value.trim();
+      barridoComentarioAbierto = null;
+      renderBarridoList();
+    }
+
+    listBox.querySelectorAll('.barrido-note').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        barridoComentarioAbierto = (barridoComentarioAbierto === id) ? null : id;
+        renderBarridoList();
+        if(barridoComentarioAbierto){
+          const input = listBox.querySelector(`.barrido-comment-input[data-id="${CSS.escape(id)}"]`);
+          if(input){ input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+        }
+      });
+    });
+
+    listBox.querySelectorAll('.barrido-comment-save').forEach(btn => {
+      btn.addEventListener('click', () => guardarComentario(btn.dataset.id));
+    });
+
+    listBox.querySelectorAll('.barrido-comment-input').forEach(inp => {
+      inp.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter'){ e.preventDefault(); guardarComentario(inp.dataset.id); }
+        if(e.key === 'Escape'){ barridoComentarioAbierto = null; renderBarridoList(); }
       });
     });
 
@@ -2160,7 +2235,7 @@ loadData();
       setStatus('Completa proveedor, tiempo (min) y precio para agregarlo al barrido.', 'error');
       return;
     }
-    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin, precio, estado: 'cotizado' });
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin, precio, estado: 'cotizado', comentario: '' });
     nombreEl.value = ''; tiempoEl.value = ''; precioEl.value = '';
     nombreEl.focus();
     renderBarridoList();
@@ -2174,7 +2249,7 @@ loadData();
       setStatus(mensajeError, 'error');
       return;
     }
-    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin: null, precio: null, estado });
+    barridoEntries.push({ id: Date.now() + Math.random(), nombre, tiempoMin: null, precio: null, estado, comentario: '' });
     nombreEl.value = '';
     document.getElementById('barridoTiempo').value = '';
     document.getElementById('barridoPrecio').value = '';
