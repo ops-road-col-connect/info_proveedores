@@ -316,16 +316,26 @@
   .summary-row.compact{margin-top:0;gap:6px;flex-wrap:nowrap;}
   .summary-row.compact + .summary-row.compact{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);flex-wrap:wrap;}
   .summary-row.compact .stat{padding:6px 8px;min-width:0;flex:1;}
-  #costStats.summary-row.compact .stat{min-width:118px;flex:1 1 118px;}
   .summary-row.compact .stat .stat-value{font-size:15px;margin-top:1px;}
   .summary-row.compact .stat .stat-label{font-size:9.5px;line-height:1.25;}
   .summary-row.compact .stat .stat-sub{font-size:9.5px;}
+
+  /* costStats (banderazo/zona normal/zona especial/total) no se comprime: cada tarjeta
+     conserva un ancho legible y, si no caben todas, la fila entera se desliza horizontalmente
+     en vez de recortar el valor a la derecha. */
+  #costStats.summary-row.compact{
+    overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;
+    scrollbar-width:thin;
+  }
+  #costStats.summary-row.compact::-webkit-scrollbar{height:5px;}
+  #costStats.summary-row.compact::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+  #costStats.summary-row.compact .stat{min-width:118px;flex:0 0 118px;}
 
   .stat.highlight{background:#FFF3EA;border-color:var(--orange-500);}
   .stat.highlight .stat-label{color:var(--orange-600);}
   .summary-row.compact .stat.highlight{flex:1.25;}
   .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
-  #costStats.summary-row.compact .stat.highlight{text-align:right;}
+  #costStats.summary-row.compact .stat.highlight{flex:0 0 132px;text-align:right;}
 
   .manual-adjust-row{margin-top:8px;text-align:right;}
   .manual-adjust-link{font-size:10px;color:var(--text-400);cursor:pointer;text-decoration:underline;}
@@ -2335,12 +2345,12 @@ loadData();
       ordenado.forEach((entry, i) => {
         if(entry.estado !== 'cotizado'){
           const etiqueta = entry.estado === 'sinRespuesta' ? 'Sin respuesta' : 'Sin disponibilidad';
-          lines.push(`  ${i+1}. ${entry.nombre} — ${etiqueta}`);
+          lines.push(`  ${i+1}. ${entry.nombre} — ${etiqueta}${entry.comentario ? ` (Nota: ${entry.comentario})` : ''}`);
           return;
         }
         const diff = total - entry.precio;
         const diffTxt = (diff < 0 ? '-' : '+') + formatCOP(Math.abs(diff));
-        lines.push(`  ${i+1}. ${entry.nombre} — ${entry.tiempoMin} min — ${formatCOP(entry.precio)} (Diferencia: ${diffTxt})`);
+        lines.push(`  ${i+1}. ${entry.nombre} — ${entry.tiempoMin} min — ${formatCOP(entry.precio)} (Diferencia: ${diffTxt})${entry.comentario ? ` (Nota: ${entry.comentario})` : ''}`);
       });
     }
     document.getElementById('resumenText').textContent = lines.join('\n');
