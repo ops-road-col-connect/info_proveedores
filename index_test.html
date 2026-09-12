@@ -62,7 +62,7 @@
   .brand-label-line{width:14px;height:2px;background:var(--tier1);display:inline-block;flex-shrink:0;}
   header.topbar.topbar-brand p{margin-top:5px;}
 
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+  .grid{display:grid;grid-template-columns:40fr 60fr;gap:18px;align-items:start;}
   @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
 
   .left-panel{
@@ -77,7 +77,7 @@
     padding:32px 16px;overflow-y:auto;
   }
   .modal-box{
-    background:var(--card);border-radius:14px;width:100%;max-width:920px;
+    background:var(--card);border-radius:14px;width:94vw;max-width:1400px;
     box-shadow:0 20px 60px rgba(0,0,0,.3);
   }
   .modal-header{
@@ -92,6 +92,8 @@
   }
   .modal-close-btn:hover{border-color:var(--orange-500);color:var(--orange-600);}
   .modal-body{padding:16px 20px 20px;}
+  .details-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start;}
+  @media (max-width:1100px){ .details-grid{grid-template-columns:1fr;} }
   @media (max-width:860px){
     .modal-backdrop{padding:0;}
     .modal-box{max-width:100%;min-height:100%;border-radius:0;}
@@ -115,6 +117,8 @@
     font-family:'JetBrains Mono',monospace;font-size:13px;background:#FAFBFC;color:var(--text-900);
   }
   input[type=text]:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
+  select.field-error{border-color:var(--red-500) !important;box-shadow:0 0 0 3px rgba(225,75,75,.14);}
+  .chips.chips-error{outline:2px solid var(--red-500);outline-offset:3px;border-radius:22px;}
   textarea{
     width:100%;min-height:64px;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
     font-family:'JetBrains Mono',monospace;font-size:12.5px;background:#FAFBFC;color:var(--text-900);resize:vertical;
@@ -324,7 +328,8 @@
   #status.loading{color:var(--text-600);}
   #status.ok{color:var(--teal-500);}
 
-  #map{height:360px;border-radius:var(--radius);border:1px solid var(--border);}
+  #map{height:460px;border-radius:var(--radius);border:1px solid var(--border);}
+  @media (max-width:1100px){ #map{height:360px;} }
 
   .summary-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
   .stat{
@@ -959,7 +964,7 @@
         </div>
 
         <div class="field">
-          <label for="vehicleSelect">Tipo de vehículo</label>
+          <label for="vehicleSelect">Tipo de vehículo *</label>
           <select id="vehicleSelect"></select>
         </div>
 
@@ -1066,45 +1071,49 @@
 
               <div id="resolvedLocations"></div>
 
-              <div style="margin-top:16px;">
-                <h2>Mapa de ruta</h2>
-                <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
-                <div id="pickZoneBar" style="display:none;">
-                  <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
-                  <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
-                  <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
-                  <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
-                  <div id="zonasExcluidasList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+              <div class="details-grid">
+                <div style="margin-top:16px;">
+                  <h2>Mapa de ruta</h2>
+                  <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
+                  <div id="pickZoneBar" style="display:none;">
+                    <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
+                    <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
+                    <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
+                    <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+                    <div id="zonasExcluidasList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+                  </div>
+                  <div id="map" style="display:none;"></div>
                 </div>
-                <div id="map" style="display:none;"></div>
-              </div>
 
-              <div class="strip-wrap">
-                <h3>Franja de ruta (proporcional a distancia real)</h3>
-                <div class="strip" id="routeStrip"></div>
-                <div class="strip-labels">
-                  <span>0 km</span>
-                  <span id="stripTotalLabel">— km</span>
-                </div>
-                <div class="strip-legend">
-                  <span><i style="background:var(--teal-500)"></i>Zona normal</span>
-                  <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
+                <div>
+                  <div class="strip-wrap" style="margin-top:16px;">
+                    <h3>Franja de ruta (proporcional a distancia real)</h3>
+                    <div class="strip" id="routeStrip"></div>
+                    <div class="strip-labels">
+                      <span>0 km</span>
+                      <span id="stripTotalLabel">— km</span>
+                    </div>
+                    <div class="strip-legend">
+                      <span><i style="background:var(--teal-500)"></i>Zona normal</span>
+                      <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
+                    </div>
+                  </div>
+
+                  <table class="zones-table" id="zonesTable" style="display:none;">
+                    <thead>
+                      <tr>
+                        <th>Zona</th>
+                        <th>Desde (km)</th>
+                        <th>Hasta (km)</th>
+                        <th>Longitud</th>
+                        <th>% ruta</th>
+                        <th>Desvío pto.</th>
+                      </tr>
+                    </thead>
+                    <tbody id="zonesTableBody"></tbody>
+                  </table>
                 </div>
               </div>
-
-              <table class="zones-table" id="zonesTable" style="display:none;">
-                <thead>
-                  <tr>
-                    <th>Zona</th>
-                    <th>Desde (km)</th>
-                    <th>Hasta (km)</th>
-                    <th>Longitud</th>
-                    <th>% ruta</th>
-                    <th>Desvío pto.</th>
-                  </tr>
-                </thead>
-                <tbody id="zonesTableBody"></tbody>
-              </table>
 
           </div>
         </div>
@@ -1261,6 +1270,10 @@ document.querySelectorAll('.chip').forEach(chip=>{
     const key = chip.dataset.key;
     if(activeServices.has(key)){ activeServices.delete(key); chip.classList.remove('active'); }
     else { activeServices.add(key); chip.classList.add('active'); }
+    if(activeServices.size > 0){
+      document.getElementById('serviceChips').classList.remove('chips-error');
+      document.getElementById('servicioHint').style.display = 'none';
+    }
     render();
   });
 });
@@ -2031,7 +2044,8 @@ loadData();
   function syncVehicleSelect(){
     const select = document.getElementById('vehicleSelect');
     const prev = select.value;
-    select.innerHTML = tariffsData.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+    const placeholder = `<option value="" disabled ${prev ? '' : 'selected'}>Selecciona un tipo de vehículo…</option>`;
+    select.innerHTML = placeholder + tariffsData.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
     if(tariffsData.some(t => t.name === prev)) select.value = prev;
     if(routeReady) renderCost();
   }
@@ -2046,7 +2060,10 @@ loadData();
     const selected = tariffsData.find(t => t.name === select.value);
     const stats = document.getElementById('costStats');
     if(!selected){
-      stats.innerHTML = `<div class="stat"><div class="stat-sub">Agrega al menos un tipo de vehículo con sus tarifas.</div></div>`;
+      const msg = tariffsData.length === 0
+        ? 'Agrega al menos un tipo de vehículo con sus tarifas.'
+        : 'Selecciona un tipo de vehículo para ver el costo.';
+      stats.innerHTML = `<div class="stat"><div class="stat-sub">${msg}</div></div>`;
       return;
     }
     const costoNormal = lastNormalKm * selected.normal;
@@ -2080,7 +2097,10 @@ loadData();
     lastCostBreakdown = { selected, costoNormal, costoEspecial, total };
   }
 
-  document.getElementById('vehicleSelect').addEventListener('change', renderCost);
+  document.getElementById('vehicleSelect').addEventListener('change', (e) => {
+    e.currentTarget.classList.remove('field-error');
+    renderCost();
+  });
 
   // ---------- ajuste manual de km (por si la ruta calculada no coincide con la realidad) ----------
   function refrescarConAjusteActual(){
@@ -3016,6 +3036,32 @@ loadData();
   }
 
   async function calcular(){
+    const vehicleSelectEl = document.getElementById('vehicleSelect');
+    const serviceChipsEl = document.getElementById('serviceChips');
+    const servicioHint = document.getElementById('servicioHint');
+    const faltantes = [];
+
+    if(!vehicleSelectEl.value){
+      faltantes.push('el tipo de vehículo');
+      vehicleSelectEl.classList.add('field-error');
+    } else {
+      vehicleSelectEl.classList.remove('field-error');
+    }
+
+    if(activeServices.size === 0){
+      faltantes.push('el tipo de servicio');
+      serviceChipsEl.classList.add('chips-error');
+      servicioHint.style.display = 'inline-block';
+    } else {
+      serviceChipsEl.classList.remove('chips-error');
+    }
+
+    if(faltantes.length){
+      setStatus(`Selecciona ${faltantes.join(' y ')} antes de calcular.`, 'error');
+      (faltantes[0] === 'el tipo de vehículo' ? vehicleSelectEl : serviceChipsEl).scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+
     const btn = document.getElementById('btnCalc');
     btn.disabled = true;
     setStatus('Ubicando origen y destino…', 'loading');
