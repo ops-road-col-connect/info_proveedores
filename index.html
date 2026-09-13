@@ -62,7 +62,7 @@
   .brand-label-line{width:14px;height:2px;background:var(--tier1);display:inline-block;flex-shrink:0;}
   header.topbar.topbar-brand p{margin-top:5px;}
 
-  .grid{display:grid;grid-template-columns:442px 1fr;gap:18px;align-items:start;}
+  .grid{display:grid;grid-template-columns:35fr 65fr;gap:18px;align-items:start;}
   @media (max-width:860px){ .grid{grid-template-columns:1fr;} }
 
   .left-panel{
@@ -71,15 +71,42 @@
   }
   @media (max-width:860px){ .left-panel{position:static;max-height:none;overflow-y:visible;} }
 
+  .details-modal-backdrop{
+    position:fixed;inset:0;background:rgba(10,25,48,.55);z-index:1000;
+    display:flex;align-items:flex-start;justify-content:center;
+    padding:32px 16px;overflow-y:auto;
+  }
+  .details-modal-box{
+    background:var(--card);border-radius:14px;width:94vw;max-width:1400px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+  }
+  .details-modal-header{
+    display:flex;align-items:center;justify-content:flex-end;
+    padding:10px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;
+    background:var(--card);border-radius:14px 14px 0 0;z-index:1;
+  }
+  .details-modal-close-btn{
+    border:1px solid var(--border);background:#fff;border-radius:8px;
+    width:30px;height:30px;font-size:14px;color:var(--text-600);cursor:pointer;
+    flex-shrink:0;line-height:1;
+  }
+  .details-modal-close-btn:hover{border-color:var(--orange-500);color:var(--orange-600);}
+  .details-modal-body{padding:16px 20px 20px;}
+  @media (max-width:860px){
+    .details-modal-backdrop{padding:0;}
+    .details-modal-box{max-width:100%;min-height:100%;border-radius:0;}
+    .details-modal-header{border-radius:0;}
+  }
+
   .card{
     background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-    padding:14px 16px;
+    padding:12px 16px;
   }
-  .card + .card{margin-top:16px;}
+  .card + .card{margin-top:14px;}
 
   .card h2{
     font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-400);
-    margin:0 0 10px;font-weight:600;
+    margin:0 0 8px;font-weight:600;
   }
 
   label{display:block;font-size:10.5px;font-weight:500;color:var(--text-600);margin-bottom:3px;}
@@ -88,6 +115,8 @@
     font-family:'JetBrains Mono',monospace;font-size:13px;background:#FAFBFC;color:var(--text-900);
   }
   input[type=text]:focus{outline:2px solid var(--orange-500);outline-offset:1px;border-color:var(--orange-500);}
+  select.field-error{border-color:var(--red-500) !important;box-shadow:0 0 0 3px rgba(225,75,75,.14);}
+  .chips.chips-error{outline:2px solid var(--red-500);outline-offset:3px;border-radius:22px;}
   textarea{
     width:100%;min-height:64px;padding:9px 11px;border:1px solid var(--border);border-radius:7px;
     font-family:'JetBrains Mono',monospace;font-size:12.5px;background:#FAFBFC;color:var(--text-900);resize:vertical;
@@ -297,7 +326,8 @@
   #status.loading{color:var(--text-600);}
   #status.ok{color:var(--teal-500);}
 
-  #map{height:360px;border-radius:var(--radius);border:1px solid var(--border);}
+  #map{height:540px;border-radius:var(--radius);border:1px solid var(--border);}
+  @media (max-width:1100px){ #map{height:400px;} }
 
   .summary-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;}
   .stat{
@@ -320,22 +350,27 @@
   .summary-row.compact .stat .stat-label{font-size:9.5px;line-height:1.25;}
   .summary-row.compact .stat .stat-sub{font-size:9.5px;}
 
-  /* costStats (banderazo/zona normal/zona especial/total) no se comprime: cada tarjeta
-     conserva un ancho legible y, si no caben todas, la fila entera se desliza horizontalmente
-     en vez de recortar el valor a la derecha. */
+  /* costStats (banderazo/zona normal/zona especial/total): grid de 3 columnas para que
+     las 3 tarjetas de costo queden en una sola fila sin espacio huérfano. El total ocupa
+     el ancho completo en la fila de abajo, a modo de resumen destacado. */
   #costStats.summary-row.compact{
-    overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px;
-    scrollbar-width:thin;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
   }
-  #costStats.summary-row.compact::-webkit-scrollbar{height:5px;}
-  #costStats.summary-row.compact::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
-  #costStats.summary-row.compact .stat{min-width:118px;flex:0 0 118px;}
+  #costStats.summary-row.compact .stat{min-width:0;padding:8px 10px;}
+  #costStats.summary-row.compact .stat .stat-value{font-size:14.5px;}
+  #costStats.summary-row.compact .stat.highlight{
+    grid-column:1 / -1;padding:10px 14px;
+  }
+  #costStats.summary-row.compact .stat.highlight .stat-value{font-size:19px;}
+  @media (max-width:480px){
+    #costStats.summary-row.compact{grid-template-columns:1fr 1fr;}
+    #costStats.summary-row.compact .stat.highlight{grid-column:1 / -1;}
+  }
 
   .stat.highlight{background:#FFF3EA;border-color:var(--orange-500);}
   .stat.highlight .stat-label{color:var(--orange-600);}
   .summary-row.compact .stat.highlight{flex:1.25;}
   .summary-row.compact .stat.highlight .stat-value{font-size:17px;color:var(--navy-900);}
-  #costStats.summary-row.compact .stat.highlight{flex:0 0 132px;text-align:right;}
 
   .manual-adjust-row{margin-top:8px;text-align:right;}
   .manual-adjust-link{font-size:10px;color:var(--text-400);cursor:pointer;text-decoration:underline;}
@@ -402,8 +437,8 @@
   .details-toggle-arrow{display:inline-block;font-size:11px;width:11px;}
 
   .sticky-toggle{
-    position:sticky;top:8px;z-index:25;margin-bottom:16px;
-    padding:10px 14px;box-shadow:0 4px 14px rgba(16,22,42,.10);
+    position:sticky;top:8px;z-index:25;margin-bottom:10px;
+    padding:8px 14px;box-shadow:0 4px 14px rgba(16,22,42,.10);
   }
 
   .resolved-loc{
@@ -557,12 +592,12 @@
     background:var(--card);
     border:1px solid var(--border);
     border-radius:14px;
-    padding:16px 20px;
+    padding:11px 16px;
     display:flex;
     align-items:center;
     flex-wrap:wrap;
-    gap:12px 22px;
-    margin-bottom:22px;
+    gap:10px 22px;
+    margin-bottom:12px;
     box-shadow:0 1px 3px rgba(16,22,42,.05);
   }
   .pv-field{display:flex;align-items:center;gap:9px;}
@@ -677,12 +712,12 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:14px;
+    margin-bottom:8px;
     font-size:13.5px;
     color:var(--ink-soft);
   }
 
-  .pv-grid{display:flex;flex-direction:column;gap:9px;}
+  .pv-grid{display:flex;flex-direction:column;gap:7px;}
   .pv-card{
     background:var(--card);
     border:1px solid var(--border);
@@ -718,8 +753,8 @@
     flex:1;
     display:flex;
     flex-direction:column;
-    gap:7px;
-    padding:12px 18px;
+    gap:6px;
+    padding:10px 16px;
   }
   .card-row{
     display:flex;
@@ -932,8 +967,22 @@
         </div>
 
         <div class="field">
-          <label for="vehicleSelect">Tipo de vehículo</label>
+          <label for="vehicleSelect">Tipo de vehículo *</label>
           <select id="vehicleSelect"></select>
+        </div>
+
+        <div class="field pv-field services" style="margin-bottom:9px;">
+          <label>Servicio *</label>
+          <div class="chips" id="serviceChips">
+            <div class="chip" data-key="gl">Grúa liviana</div>
+            <div class="chip" data-key="gancho">Gancho</div>
+            <div class="chip" data-key="legal">Legal</div>
+            <div class="chip" data-key="ct">CT</div>
+            <div class="chip" data-key="cu">Custodia</div>
+            <div class="chip" data-key="ce">CE</div>
+            <div class="chip" data-key="de">Desplazamiento</div>
+          </div>
+          <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
         </div>
 
         <span class="hint-icon" title="Acepta dirección completa (&quot;Hotel Suite Royal, Cra. 16 #7a-13, Melgar, Tolima&quot;), nombre de lugar, coordenadas GPS (&quot;3.4516, -76.5320&quot;) o Plus Code (&quot;RCM5+52 Restrepo, Valle del Cauca&quot;).">ⓘ Formatos aceptados (origen/destino)</span>
@@ -1014,54 +1063,71 @@
         </button>
       </div>
 
-      <div class="card" id="detailsCardBody" style="display:none;">
-
-          <div id="resolvedLocations"></div>
-
-          <div style="margin-top:16px;">
-            <h2>Mapa de ruta</h2>
-            <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
-            <div id="pickZoneBar" style="display:none;">
-              <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
-              <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
-              <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
-              <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
-              <div id="zonasExcluidasList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
-            </div>
-            <div id="map" style="display:none;"></div>
+      <div id="detailsModalBackdrop" class="details-modal-backdrop" style="display:none;">
+        <div class="details-modal-box" id="detailsModalBox">
+          <div class="details-modal-header">
+            <button type="button" id="btnCloseDetailsModal" class="details-modal-close-btn" aria-label="Cerrar">✕</button>
           </div>
 
-          <div class="strip-wrap">
-            <h3>Franja de ruta (proporcional a distancia real)</h3>
-            <div class="strip" id="routeStrip"></div>
-            <div class="strip-labels">
-              <span>0 km</span>
-              <span id="stripTotalLabel">— km</span>
-            </div>
-            <div class="strip-legend">
-              <span><i style="background:var(--teal-500)"></i>Zona normal</span>
-              <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
-            </div>
+          <div class="details-modal-body" id="detailsCardBody">
+
+              <div id="resolvedLocations"></div>
+
+              <h2 style="margin-top:16px;">Mapa de ruta</h2>
+
+              <div class="strip-wrap" style="margin-top:0;">
+                <h3>Franja de ruta (proporcional a distancia real)</h3>
+                <div class="strip" id="routeStrip"></div>
+                <div class="strip-labels">
+                  <span>0 km</span>
+                  <span id="stripTotalLabel">— km</span>
+                </div>
+                <div class="strip-legend">
+                  <span><i style="background:var(--teal-500)"></i>Zona normal</span>
+                  <span><i style="background:var(--red-500)"></i>Zona roja / especial</span>
+                </div>
+              </div>
+
+              <div style="margin-top:16px;">
+                <div id="mapEmpty" class="empty-state">Ingresa origen, destino y calcula la ruta para ver el mapa.</div>
+                <div id="pickZoneBar" style="display:none;">
+                  <button type="button" id="btnPickZone" class="btn-add" style="width:auto;padding:6px 12px;display:inline-block;">+ Marcar zona en el mapa</button>
+                  <button type="button" id="btnCancelPick" style="display:none;margin-left:8px;padding:6px 12px;border:1px solid var(--border);border-radius:7px;background:#fff;color:var(--text-600);font-size:12.5px;cursor:pointer;">Cancelar</button>
+                  <span id="pickStatus" style="margin-left:10px;font-size:12.5px;color:var(--orange-600);font-weight:500;"></span>
+                  <div id="manualZonesList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+                  <div id="zonasExcluidasList" style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;"></div>
+                </div>
+                <div id="map" style="display:none;"></div>
+              </div>
+
+              <table class="zones-table" id="zonesTable" style="display:none;">
+                <thead>
+                  <tr>
+                    <th>Zona</th>
+                    <th>Desde (km)</th>
+                    <th>Hasta (km)</th>
+                    <th>Longitud</th>
+                    <th>% ruta</th>
+                    <th>Desvío pto.</th>
+                  </tr>
+                </thead>
+                <tbody id="zonesTableBody"></tbody>
+              </table>
+
           </div>
-
-          <table class="zones-table" id="zonesTable" style="display:none;">
-            <thead>
-              <tr>
-                <th>Zona</th>
-                <th>Desde (km)</th>
-                <th>Hasta (km)</th>
-                <th>Longitud</th>
-                <th>% ruta</th>
-                <th>Desvío pto.</th>
-              </tr>
-            </thead>
-            <tbody id="zonesTableBody"></tbody>
-          </table>
-
+        </div>
       </div>
 
       <div class="card">
-        <h2>Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+          <h2 style="margin:0;">Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
+            <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+            </button>
+          </div>
+        </div>
         <div class="filters" id="pvOriginBanner">
           <div class="pv-field" style="flex:1;min-width:220px;">
             <span class="start-badge">1</span>
@@ -1069,20 +1135,6 @@
           </div>
         </div>
         <div class="filters">
-          <div class="pv-field services">
-            <label>Servicio *</label>
-            <div class="chips" id="serviceChips">
-              <div class="chip" data-key="gl">Grúa liviana</div>
-              <div class="chip" data-key="gancho">Gancho</div>
-              <div class="chip" data-key="legal">Legal</div>
-              <div class="chip" data-key="ct">CT</div>
-              <div class="chip" data-key="cu">Custodia</div>
-              <div class="chip" data-key="ce">CE</div>
-              <div class="chip" data-key="de">Desplazamiento</div>
-            </div>
-            <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
-          </div>
-          <div class="divider"></div>
           <div class="pv-field">
             <label for="search">Proveedor</label>
             <div class="input-wrap">
@@ -1100,11 +1152,6 @@
               <option value="name">Nombre (A-Z)</option>
             </select>
           </div>
-          <div class="divider"></div>
-          <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
-          <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
-          </button>
         </div>
 
         <div class="summary">
@@ -1225,6 +1272,10 @@ document.querySelectorAll('.chip').forEach(chip=>{
     const key = chip.dataset.key;
     if(activeServices.has(key)){ activeServices.delete(key); chip.classList.remove('active'); }
     else { activeServices.add(key); chip.classList.add('active'); }
+    if(activeServices.size > 0){
+      document.getElementById('serviceChips').classList.remove('chips-error');
+      document.getElementById('servicioHint').style.display = 'none';
+    }
     render();
   });
 });
@@ -1995,7 +2046,8 @@ loadData();
   function syncVehicleSelect(){
     const select = document.getElementById('vehicleSelect');
     const prev = select.value;
-    select.innerHTML = tariffsData.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
+    const placeholder = `<option value="" disabled ${prev ? '' : 'selected'}>Selecciona un tipo de vehículo…</option>`;
+    select.innerHTML = placeholder + tariffsData.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
     if(tariffsData.some(t => t.name === prev)) select.value = prev;
     if(routeReady) renderCost();
   }
@@ -2010,7 +2062,10 @@ loadData();
     const selected = tariffsData.find(t => t.name === select.value);
     const stats = document.getElementById('costStats');
     if(!selected){
-      stats.innerHTML = `<div class="stat"><div class="stat-sub">Agrega al menos un tipo de vehículo con sus tarifas.</div></div>`;
+      const msg = tariffsData.length === 0
+        ? 'Agrega al menos un tipo de vehículo con sus tarifas.'
+        : 'Selecciona un tipo de vehículo para ver el costo.';
+      stats.innerHTML = `<div class="stat"><div class="stat-sub">${msg}</div></div>`;
       return;
     }
     const costoNormal = lastNormalKm * selected.normal;
@@ -2028,14 +2083,16 @@ loadData();
         <div class="stat-sub">${lastNormalKm} km × ${formatCOP(selected.normal)}/km</div>
       </div>
       <div class="stat red">
-        <div class="stat-label">Zona especial</div>
+        <div class="stat-label">Zona roja / especial</div>
         <div class="stat-value" style="font-size:16px;">${formatCOP(costoEspecial)}</div>
         <div class="stat-sub">${lastZonasKm} km × ${formatCOP(selected.special)}/km</div>
       </div>
-      <div class="stat highlight">
-        <div class="stat-label">Total estimado</div>
-        <div class="stat-value">${formatCOP(total)}</div>
-        <div class="stat-sub">${selected.name}</div>
+      <div class="stat highlight" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div>
+          <div class="stat-label">Total estimado</div>
+          <div class="stat-sub">${selected.name}</div>
+        </div>
+        <div class="stat-value" style="margin-top:0;">${formatCOP(total)}</div>
       </div>
     `;
 
@@ -2044,7 +2101,10 @@ loadData();
     lastCostBreakdown = { selected, costoNormal, costoEspecial, total };
   }
 
-  document.getElementById('vehicleSelect').addEventListener('change', renderCost);
+  document.getElementById('vehicleSelect').addEventListener('change', (e) => {
+    e.currentTarget.classList.remove('field-error');
+    renderCost();
+  });
 
   // ---------- ajuste manual de km (por si la ruta calculada no coincide con la realidad) ----------
   function refrescarConAjusteActual(){
@@ -2710,20 +2770,39 @@ loadData();
 
   document.getElementById('btnPickZone').addEventListener('click', startPicking);
 
-  document.getElementById('btnToggleDetails').addEventListener('click', (e) => {
-    const btn = e.currentTarget;
-    const body = document.getElementById('detailsCardBody');
-    const arrow = btn.querySelector('.details-toggle-arrow');
-    const expanded = body.style.display !== 'none';
-    body.style.display = expanded ? 'none' : 'block';
-    arrow.textContent = expanded ? '▸' : '▾';
-    if(!expanded && map){
+  function openDetailsModal(){
+    const backdrop = document.getElementById('detailsModalBackdrop');
+    const arrow = document.querySelector('#btnToggleDetails .details-toggle-arrow');
+    backdrop.style.display = 'flex';
+    arrow.textContent = '▾';
+    if(map){
       // el mapa estaba en un contenedor oculto: Leaflet necesita recalcular su tamaño
       // y volver a centrarse en la ruta (el centrado calculado mientras estaba oculto no sirve)
       setTimeout(() => {
         map.invalidateSize();
         if(lastRouteBounds) map.fitBounds(lastRouteBounds, { padding: [24,24] });
       }, 50);
+    }
+  }
+  function closeDetailsModal(){
+    const backdrop = document.getElementById('detailsModalBackdrop');
+    const arrow = document.querySelector('#btnToggleDetails .details-toggle-arrow');
+    backdrop.style.display = 'none';
+    arrow.textContent = '▸';
+  }
+  document.getElementById('btnToggleDetails').addEventListener('click', (e) => {
+    const backdrop = document.getElementById('detailsModalBackdrop');
+    const isOpen = backdrop.style.display !== 'none' && backdrop.style.display !== '';
+    if(isOpen) closeDetailsModal(); else openDetailsModal();
+  });
+  document.getElementById('btnCloseDetailsModal').addEventListener('click', closeDetailsModal);
+  document.getElementById('detailsModalBackdrop').addEventListener('click', (e) => {
+    if(e.target === e.currentTarget) closeDetailsModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){
+      const backdrop = document.getElementById('detailsModalBackdrop');
+      if(backdrop.style.display !== 'none' && backdrop.style.display !== '') closeDetailsModal();
     }
   });
   document.getElementById('btnCancelPick').addEventListener('click', cancelPicking);
@@ -2826,11 +2905,11 @@ loadData();
     const table = document.getElementById('zonesTable');
     const body = document.getElementById('zonesTableBody');
     body.innerHTML = '';
-    if(zonesResolved.length === 0){ table.style.display='none'; return; }
-    table.style.display = 'table';
 
     const applicable = zonesResolved.filter(z => z.applicable);
-    const noApplicable = zonesResolved.filter(z => !z.applicable);
+
+    if(applicable.length === 0){ table.style.display='none'; return; }
+    table.style.display = 'table';
 
     applicable.forEach(z => {
       const tr = document.createElement('tr');
@@ -2845,45 +2924,6 @@ loadData();
       `;
       body.appendChild(tr);
     });
-
-    if(noApplicable.length){
-      const toggleRow = document.createElement('tr');
-      toggleRow.className = 'zones-toggle-row';
-      const labelMostrar = `Mostrar ${noApplicable.length} zona${noApplicable.length===1?'':'s'} que no aplica${noApplicable.length===1?'':'n'} a esta ruta`;
-      const labelOcultar = `Ocultar ${noApplicable.length} zona${noApplicable.length===1?'':'s'} que no aplica${noApplicable.length===1?'':'n'} a esta ruta`;
-      toggleRow.innerHTML = `
-        <td colspan="6">
-          <button type="button" id="btnToggleNoApplicable" class="zones-toggle-btn">
-            <span class="zones-toggle-arrow">▸</span> <span id="zonesToggleLabel">${labelMostrar}</span>
-          </button>
-        </td>
-      `;
-      body.appendChild(toggleRow);
-
-      noApplicable.forEach(z => {
-        const tr = document.createElement('tr');
-        tr.className = 'zone-notapplicable-row';
-        tr.style.display = 'none';
-        tr.style.opacity = '0.55';
-        tr.innerHTML = `
-          <td class="name-col"><span class="zone-swatch" style="background:var(--text-400)"></span>${z.name}
-            <span class="warn-badge" style="background:#F1F2F4;color:var(--text-600);">no aplica a esta ruta</span>
-          </td>
-          <td colspan="4">Punto más cercano de esta ruta a ${z.maxOffset.toFixed(1)} km — la zona no está sobre este trayecto.</td>
-          <td>${z.maxOffset.toFixed(1)} km</td>
-        `;
-        body.appendChild(tr);
-      });
-
-      document.getElementById('btnToggleNoApplicable').addEventListener('click', (e) => {
-        const btn = e.currentTarget;
-        const rows = body.querySelectorAll('.zone-notapplicable-row');
-        const expanded = rows[0] && rows[0].style.display !== 'none';
-        rows.forEach(r => { r.style.display = expanded ? 'none' : 'table-row'; });
-        btn.querySelector('.zones-toggle-arrow').textContent = expanded ? '▸' : '▾';
-        document.getElementById('zonesToggleLabel').textContent = expanded ? labelMostrar : labelOcultar;
-      });
-    }
   }
 
   // ---------- calculo principal ----------
@@ -2961,6 +3001,32 @@ loadData();
   }
 
   async function calcular(){
+    const vehicleSelectEl = document.getElementById('vehicleSelect');
+    const serviceChipsEl = document.getElementById('serviceChips');
+    const servicioHint = document.getElementById('servicioHint');
+    const faltantes = [];
+
+    if(!vehicleSelectEl.value){
+      faltantes.push('el tipo de vehículo');
+      vehicleSelectEl.classList.add('field-error');
+    } else {
+      vehicleSelectEl.classList.remove('field-error');
+    }
+
+    if(activeServices.size === 0){
+      faltantes.push('el tipo de servicio');
+      serviceChipsEl.classList.add('chips-error');
+      servicioHint.style.display = 'inline-block';
+    } else {
+      serviceChipsEl.classList.remove('chips-error');
+    }
+
+    if(faltantes.length){
+      setStatus(`Selecciona ${faltantes.join(' y ')} antes de calcular.`, 'error');
+      (faltantes[0] === 'el tipo de vehículo' ? vehicleSelectEl : serviceChipsEl).scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+
     const btn = document.getElementById('btnCalc');
     btn.disabled = true;
     setStatus('Ubicando origen y destino…', 'loading');
