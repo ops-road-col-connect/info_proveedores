@@ -1119,7 +1119,15 @@
       </div>
 
       <div class="card">
-        <h2>Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:8px;">
+          <h2 style="margin:0;">Proveedores cercanos<span class="tab-count" id="tabProvCount" style="display:none;margin-left:8px;"></span></h2>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
+            <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+            </button>
+          </div>
+        </div>
         <div class="filters" id="pvOriginBanner">
           <div class="pv-field" style="flex:1;min-width:220px;">
             <span class="start-badge">1</span>
@@ -1143,13 +1151,6 @@
               <option value="servicios">Servicios realizados (30 días)</option>
               <option value="name">Nombre (A-Z)</option>
             </select>
-          </div>
-          <div class="divider"></div>
-          <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
-            <span class="badge-live on-light" id="pvLastUpdatedBadge"><span class="dot"></span><span id="lastUpdated">Cargando fecha de actualización…</span></span>
-            <button id="refreshBtn" class="refresh-btn on-light" title="Actualizar datos ahora (vuelve a leer los Google Sheets y publica lo más reciente)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
-            </button>
           </div>
         </div>
 
