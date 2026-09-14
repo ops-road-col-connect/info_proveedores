@@ -981,6 +981,8 @@
             <div class="chip" data-key="cu">Custodia</div>
             <div class="chip" data-key="ce">CE</div>
             <div class="chip" data-key="de">Desplazamiento</div>
+            <div class="chip" data-key="cerrajeria">Cerrajería</div>
+            <div class="chip" data-key="cerrajeriaAlta">Cerrajería gama alta</div>
           </div>
           <span id="servicioHint" class="hint-badge" style="display:none;">⚠ Elige un servicio</span>
         </div>
@@ -1237,7 +1239,7 @@ function findCityInLabel(label){
   return best;
 }
 
-const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento'};
+const serviceLabels = {gl:'Grúa liviana', gancho:'Gancho', legal:'Legal', ct:'CT', cu:'Custodia', ce:'CE', de:'Desplazamiento', cerrajeria:'Cerrajería', cerrajeriaAlta:'Cerrajería gama alta'};
 const activeServices = new Set();
 
 // ---------- contexto de costo/ruta (alimentado desde la sección "Ruta y Costo") ----------
@@ -1280,6 +1282,7 @@ document.querySelectorAll('.chip').forEach(chip=>{
       document.getElementById('servicioHint').style.display = 'none';
     }
     render();
+    if(routeReady) renderCost();
   });
 });
 
@@ -2069,9 +2072,14 @@ loadData();
   function syncVehicleSelect(){
     const select = document.getElementById('vehicleSelect');
     const prev = select.value;
+    // Ahora puede haber varias filas de tarifa por vehículo (una por cada tipo_servicio),
+    // así que el dropdown debe listar vehículos únicos. "Todos" no es un vehículo real:
+    // es el comodín que usa, por ejemplo, la tarifa de Desplazamiento sin importar el vehículo.
+    const vehiculosUnicos = [...new Set(tariffsData.map(t => t.name))]
+      .filter(name => normalizeServiceName(name) !== 'todos');
     const placeholder = `<option value="" disabled ${prev ? '' : 'selected'}>Selecciona un tipo de vehículo…</option>`;
-    select.innerHTML = placeholder + tariffsData.map(t => `<option value="${t.name}">${t.name}</option>`).join('');
-    if(tariffsData.some(t => t.name === prev)) select.value = prev;
+    select.innerHTML = placeholder + vehiculosUnicos.map(name => `<option value="${name}">${name}</option>`).join('');
+    if(vehiculosUnicos.includes(prev)) select.value = prev;
     if(routeReady) renderCost();
   }
 
@@ -2079,12 +2087,30 @@ loadData();
     return '$' + Math.round(n).toLocaleString('es-CO');
   }
 
+  // Un tarifa "sin tipo_servicio" (dato viejo, antes de que existiera esa columna) aplica
+  // a cualquier servicio. Si tiene tipo_servicio, solo aplica a los que están en la lista.
+  function rowMatchesService(row, normalizedService){
+    if(!row.tipoServicio || row.tipoServicio.length === 0) return true;
+    return row.tipoServicio.some(s => normalizeServiceName(s) === normalizedService);
+  }
+
+  // Busca la fila de tarifa para un vehículo + un único servicio. La fila con vehículo
+  // "Todos" (ej. Desplazamiento) aplica siempre para ese servicio, sin importar el
+  // vehículo elegido, así que se prioriza sobre la tarifa específica del vehículo.
+  function findTariffRow(vehicleName, serviceLabel){
+    const normService = normalizeServiceName(serviceLabel);
+    const todosRow = tariffsData.find(t => normalizeServiceName(t.name) === 'todos' && rowMatchesService(t, normService));
+    if(todosRow) return todosRow;
+    return tariffsData.find(t => t.name === vehicleName && rowMatchesService(t, normService));
+  }
+
   function renderCost(){
     if(!routeReady) return;
     const select = document.getElementById('vehicleSelect');
-    const selected = tariffsData.find(t => t.name === select.value);
+    const vehicleName = select.value;
     const stats = document.getElementById('costStats');
-    if(!selected){
+
+    if(!vehicleName){
       const msg = tariffsData.length === 0
         ? 'Agrega al menos un tipo de vehículo con sus tarifas.'
         : 'Selecciona un tipo de vehículo para ver el costo.';
@@ -2092,27 +2118,42 @@ loadData();
       return;
     }
 
-    // Si la hoja "costos" ya trae tipo_servicio para este vehículo, solo se calcula el costo
-    // cuando TODOS los servicios elegidos están cubiertos por esa tarifa. Sin esa columna
-    // (tipoServicio vacío) se mantiene el comportamiento de siempre, sin restricción.
     const activeLabels = [...activeServices].map(k => serviceLabels[k] || k);
-    const sinRestriccion = !selected.tipoServicio || selected.tipoServicio.length === 0;
-    const normalizedCubiertos = sinRestriccion ? [] : selected.tipoServicio.map(normalizeServiceName);
-    const faltantes = sinRestriccion ? [] : activeLabels.filter(label => !normalizedCubiertos.includes(normalizeServiceName(label)));
 
-    if(!sinRestriccion && faltantes.length){
+    // Cada servicio puede tener una tarifa distinta para el mismo vehículo (ej. Grúa liviana
+    // vs Cerrajería), así que el costo solo se calcula cuando hay exactamente un servicio elegido.
+    if(activeLabels.length !== 1){
       stats.innerHTML = `
         <div class="approval-banner tier1" style="grid-column:1 / -1;margin-top:0;">
           <span class="approval-icon">⚠</span>
-          <div><b>Sin tarifa configurada</b> para ${faltantes.join(', ')} con "${selected.name}". Puedes seguir calculando la ruta y buscando proveedores; el costo estimado aparecerá cuando se agregue esta tarifa en la hoja "costos".</div>
+          <div><b>Selecciona un solo tipo de servicio</b> para ver el costo estimado — cada servicio puede tener una tarifa distinta.</div>
         </div>
       `;
-      renderResumen(selected, null);
-      updateServiceContext(selected, null);
-      lastCostBreakdown = { selected, costoNormal: null, costoEspecial: null, total: null };
+      renderResumen({ name: vehicleName }, null);
+      updateServiceContext({ name: vehicleName }, null);
+      lastCostBreakdown = { selected: { name: vehicleName }, costoNormal: null, costoEspecial: null, total: null };
       return;
     }
 
+    const serviceLabel = activeLabels[0];
+    const row = findTariffRow(vehicleName, serviceLabel);
+
+    if(!row){
+      stats.innerHTML = `
+        <div class="approval-banner tier1" style="grid-column:1 / -1;margin-top:0;">
+          <span class="approval-icon">⚠</span>
+          <div><b>Sin tarifa configurada</b> para ${serviceLabel} con "${vehicleName}". Puedes seguir calculando la ruta y buscando proveedores; el costo estimado aparecerá cuando se agregue esta tarifa en la hoja "costos".</div>
+        </div>
+      `;
+      renderResumen({ name: vehicleName }, null);
+      updateServiceContext({ name: vehicleName }, null);
+      lastCostBreakdown = { selected: { name: vehicleName }, costoNormal: null, costoEspecial: null, total: null };
+      return;
+    }
+
+    // "selected" conserva el nombre del vehículo elegido por el agente (no el de la fila de
+    // tarifa, que para servicios con vehículo "Todos" sería literalmente "Todos").
+    const selected = { name: vehicleName, banderazo: row.banderazo, normal: row.normal, special: row.special };
     const costoNormal = lastNormalKm * selected.normal;
     const costoEspecial = lastZonasKm * selected.special;
     const total = selected.banderazo + costoNormal + costoEspecial;
@@ -2135,7 +2176,7 @@ loadData();
       <div class="stat highlight" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
         <div>
           <div class="stat-label">Total estimado</div>
-          <div class="stat-sub">${selected.name}</div>
+          <div class="stat-sub">${selected.name} · ${serviceLabel}</div>
         </div>
         <div class="stat-value" style="margin-top:0;">${formatCOP(total)}</div>
       </div>
