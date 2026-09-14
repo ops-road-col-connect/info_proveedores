@@ -1251,7 +1251,10 @@ function buildWhatsappMessage(){
   const ctx = window.__connectServiceContext;
   if(!ctx) return '';
   const paradaLine = ctx.parada ? `\nParada: ${ctx.parada}` : '';
-  return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}${paradaLine}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\nCosto estimado: ${formatCOPPv(ctx.costoTotal)}\n\n¿Podrías atenderlo?`;
+  const costoLine = ctx.costoTotal === null || ctx.costoTotal === undefined
+    ? 'Costo estimado: por confirmar'
+    : `Costo estimado: ${formatCOPPv(ctx.costoTotal)}`;
+  return `Hola! Tengo un servicio disponible:\nOrigen: ${ctx.origen}${paradaLine}\nDestino: ${ctx.destino}\nDistancia total: ${ctx.totalKm} km\n${costoLine}\n\n¿Podrías atenderlo?`;
 }
 
 // Origen/destino compartidos con la sección "Ruta y Costo" — se fijan desde afuera
@@ -2034,12 +2037,32 @@ loadData();
   let barridoEntries = [], lastCostBreakdown = null;
   let manualOverride = false, manualNormalValue = 0, manualEspecialValue = 0;
 
-  function addTariffData(name, banderazo, normal, special){
+  // Normaliza nombres de servicio para comparar sin importar tildes/mayúsculas
+  // (ej. "Grúa Liviana" del Sheet vs "Grúa liviana" del chip en el frontend).
+  function normalizeServiceName(s){
+    return String(s || '')
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .trim();
+  }
+
+  function addTariffData(name, banderazo, normal, special, tipoServicio, costoBase){
+    // tipoServicio puede venir como arreglo (ya parseado) o como texto "Grúa Liviana, Gancho"
+    // (tal cual columna del Sheet). Un arreglo vacío = sin restricción (compatibilidad con
+    // datos antiguos, antes de que existiera esta columna en la hoja "costos").
+    const serviciosArr = Array.isArray(tipoServicio)
+      ? tipoServicio.filter(Boolean)
+      : String(tipoServicio || '').split(',').map(s => s.trim()).filter(Boolean);
+    const costoBaseNum = (costoBase === undefined || costoBase === null || costoBase === '')
+      ? null
+      : Number(costoBase);
     tariffsData.push({
       name: String(name), // el Sheet a veces manda "350"/"600"/"900" como número, no texto
       banderazo: Number(banderazo) || 0,
       normal: Number(normal) || 0,
-      special: Number(special) || 0
+      special: Number(special) || 0,
+      tipoServicio: serviciosArr,
+      costoBase: (costoBaseNum !== null && !isNaN(costoBaseNum)) ? costoBaseNum : null
     });
   }
 
@@ -2068,6 +2091,28 @@ loadData();
       stats.innerHTML = `<div class="stat"><div class="stat-sub">${msg}</div></div>`;
       return;
     }
+
+    // Si la hoja "costos" ya trae tipo_servicio para este vehículo, solo se calcula el costo
+    // cuando TODOS los servicios elegidos están cubiertos por esa tarifa. Sin esa columna
+    // (tipoServicio vacío) se mantiene el comportamiento de siempre, sin restricción.
+    const activeLabels = [...activeServices].map(k => serviceLabels[k] || k);
+    const sinRestriccion = !selected.tipoServicio || selected.tipoServicio.length === 0;
+    const normalizedCubiertos = sinRestriccion ? [] : selected.tipoServicio.map(normalizeServiceName);
+    const faltantes = sinRestriccion ? [] : activeLabels.filter(label => !normalizedCubiertos.includes(normalizeServiceName(label)));
+
+    if(!sinRestriccion && faltantes.length){
+      stats.innerHTML = `
+        <div class="approval-banner tier1" style="grid-column:1 / -1;margin-top:0;">
+          <span class="approval-icon">⚠</span>
+          <div><b>Sin tarifa configurada</b> para ${faltantes.join(', ')} con "${selected.name}". Puedes seguir calculando la ruta y buscando proveedores; el costo estimado aparecerá cuando se agregue esta tarifa en la hoja "costos".</div>
+        </div>
+      `;
+      renderResumen(selected, null);
+      updateServiceContext(selected, null);
+      lastCostBreakdown = { selected, costoNormal: null, costoEspecial: null, total: null };
+      return;
+    }
+
     const costoNormal = lastNormalKm * selected.normal;
     const costoEspecial = lastZonasKm * selected.special;
     const total = selected.banderazo + costoNormal + costoEspecial;
@@ -2096,9 +2141,17 @@ loadData();
       </div>
     `;
 
-    renderResumen(selected, costoNormal, costoEspecial, total);
+    renderResumen(selected, { costoNormal, costoEspecial, total });
     updateServiceContext(selected, total);
     lastCostBreakdown = { selected, costoNormal, costoEspecial, total };
+  }
+
+  // Vuelve a pintar el resumen copiable con los últimos datos de costo calculados
+  // (o sin costo, si el servicio elegido no tiene tarifa configurada).
+  function reRenderResumenFromLast(){
+    if(!lastCostBreakdown) return;
+    const { selected, costoNormal, costoEspecial, total } = lastCostBreakdown;
+    renderResumen(selected, (total === null || total === undefined) ? null : { costoNormal, costoEspecial, total });
   }
 
   document.getElementById('vehicleSelect').addEventListener('change', (e) => {
@@ -2108,7 +2161,7 @@ loadData();
 
   // ---------- ajuste manual de km (por si la ruta calculada no coincide con la realidad) ----------
   function refrescarConAjusteActual(){
-    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+    reRenderResumenFromLast();
   }
 
   document.getElementById('manualAdjustLink').addEventListener('click', () => {
@@ -2255,7 +2308,7 @@ loadData();
         barridoEntries = barridoEntries.filter(e => String(e.id) !== id);
         if(barridoComentarioAbierto === id) barridoComentarioAbierto = null;
         renderBarridoList();
-        if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+        reRenderResumenFromLast();
       });
     });
 
@@ -2266,7 +2319,7 @@ loadData();
       if(entry) entry.comentario = input.value.trim();
       barridoComentarioAbierto = null;
       renderBarridoList();
-      if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+      reRenderResumenFromLast();
     }
 
     listBox.querySelectorAll('.barrido-note').forEach(btn => {
@@ -2310,7 +2363,7 @@ loadData();
     nombreEl.value = ''; tiempoEl.value = ''; precioEl.value = '';
     nombreEl.focus();
     renderBarridoList();
-    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+    reRenderResumenFromLast();
   }
 
   function addEntrySinCotizacion(estado, mensajeError){
@@ -2326,7 +2379,7 @@ loadData();
     document.getElementById('barridoPrecio').value = '';
     nombreEl.focus();
     renderBarridoList();
-    if(lastCostBreakdown) renderResumen(lastCostBreakdown.selected, lastCostBreakdown.costoNormal, lastCostBreakdown.costoEspecial, lastCostBreakdown.total);
+    reRenderResumenFromLast();
   }
 
   function addSinDispoEntry(){
@@ -2366,7 +2419,7 @@ loadData();
     };
   }
 
-  function renderResumen(selected, costoNormal, costoEspecial, total){
+  function renderResumen(selected, costInfo){
     const totalKm = lastNormalKm + lastZonasKm;
     const fecha = lastCalcTime ? lastCalcTime.toLocaleString('es-CO', { dateStyle: 'short', timeStyle: 'short' }) : '—';
     const lines = [
@@ -2388,17 +2441,21 @@ loadData();
         lines.push(`  - ${z.name}: ${p1.lat.toFixed(5)}, ${p1.lon.toFixed(5)} → ${p2.lat.toFixed(5)}, ${p2.lon.toFixed(5)}`);
       });
     }
-    lines.push(
-      '',
-      `Banderazo: ${formatCOP(selected.banderazo)}`,
-      `Costo zona normal: ${formatCOP(costoNormal)}`,
-      `Costo zona especial: ${formatCOP(costoEspecial)}`,
-      `Total: ${formatCOP(total)}`
-    );
-    const pctEspecial = totalKm ? (lastZonasKm/totalKm)*100 : 0;
-    const approvalInfo = getApprovalInfo(pctEspecial);
-    if(approvalInfo){
-      lines.push('', `⚠ ${approvalInfo.texto} (${pctEspecial.toFixed(0)}% de zona roja/especial).`);
+    if(costInfo){
+      lines.push(
+        '',
+        `Banderazo: ${formatCOP(selected.banderazo)}`,
+        `Costo zona normal: ${formatCOP(costInfo.costoNormal)}`,
+        `Costo zona especial: ${formatCOP(costInfo.costoEspecial)}`,
+        `Total: ${formatCOP(costInfo.total)}`
+      );
+      const pctEspecial = totalKm ? (lastZonasKm/totalKm)*100 : 0;
+      const approvalInfo = getApprovalInfo(pctEspecial);
+      if(approvalInfo){
+        lines.push('', `⚠ ${approvalInfo.texto} (${pctEspecial.toFixed(0)}% de zona roja/especial).`);
+      }
+    } else {
+      lines.push('', `⚠ Sin tarifa configurada para este tipo de servicio con "${selected.name}". No se calculó un costo estimado.`);
     }
     if(barridoEntries.length){
       const ordenado = ordenarBarrido(barridoEntries);
@@ -2409,8 +2466,8 @@ loadData();
           lines.push(`  ${i+1}. ${entry.nombre} — ${etiqueta}${entry.comentario ? ` (Nota: ${entry.comentario})` : ''}`);
           return;
         }
-        const diff = total - entry.precio;
-        const diffTxt = (diff < 0 ? '-' : '+') + formatCOP(Math.abs(diff));
+        const diff = costInfo ? costInfo.total - entry.precio : null;
+        const diffTxt = diff === null ? 'sin costo estimado' : (diff < 0 ? '-' : '+') + formatCOP(Math.abs(diff));
         lines.push(`  ${i+1}. ${entry.nombre} — ${entry.tiempoMin} min — ${formatCOP(entry.precio)} (Diferencia: ${diffTxt})${entry.comentario ? ` (Nota: ${entry.comentario})` : ''}`);
       });
     }
@@ -3112,7 +3169,7 @@ loadData();
         const tarifas = await res.json();
         const validas = tarifas.filter(t => t.activa !== false && t.tipo);
         if(validas.length){
-          validas.forEach(t => addTariffData(t.tipo, t.banderazo || 0, t.normal || 0, t.especial || 0));
+          validas.forEach(t => addTariffData(t.tipo, t.banderazo || 0, t.normal || 0, t.especial || 0, t.tipo_servicio, t.costo_base));
           tarifasCargadas = true;
         }
       }
@@ -3126,7 +3183,7 @@ loadData();
       zonesStatusEl.textContent = ZONAS_EMBEBIDAS.length + ' zona' + (ZONAS_EMBEBIDAS.length===1?'':'s') + ' (snapshot del Sheet al ' + ZONAS_SNAPSHOT_FECHA + ', incluido en este archivo): ' + ZONAS_EMBEBIDAS.map(z=>z.nombre).join(', ') + '. Si el Sheet cambió desde entonces, pide una versión actualizada.';
     }
     if(!tarifasCargadas){
-      TARIFAS_EMBEBIDAS.forEach(t => addTariffData(t.tipo, t.banderazo, t.normal, t.especial));
+      TARIFAS_EMBEBIDAS.forEach(t => addTariffData(t.tipo, t.banderazo, t.normal, t.especial, t.tipo_servicio, t.costo_base));
     }
     syncVehicleSelect();
 
