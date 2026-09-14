@@ -1,44 +1,119 @@
 [
   {
     "tipo": "Liviano",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 70000,
     "normal": 3500,
-    "especial": 5000
+    "especial": 5000,
+    "costo_base": null
   },
   {
     "tipo": "300",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 100000,
     "normal": 3500,
-    "especial": 5000
+    "especial": 5000,
+    "costo_base": null
   },
   {
     "tipo": "350",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 140000,
     "normal": 4000,
-    "especial": 5000
+    "especial": 5000,
+    "costo_base": null
   },
   {
     "tipo": "600",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 190000,
     "normal": 6500,
-    "especial": 7500
+    "especial": 7500,
+    "costo_base": null
   },
   {
     "tipo": "900",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 250000,
     "normal": 7500,
-    "especial": 8500
+    "especial": 8500,
+    "costo_base": null
   },
   {
     "tipo": "LV",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 350000,
     "normal": 8500,
-    "especial": 8500
+    "especial": 8500,
+    "costo_base": null
   },
   {
     "tipo": "Especial Vac, Compatadores",
+    "tipo_servicio": [
+      "Grúa Liviana",
+      "Gancho"
+    ],
     "banderazo": 450000,
     "normal": 10000,
-    "especial": 10000
+    "especial": 10000,
+    "costo_base": null
+  },
+  {
+    "tipo": "Liviano",
+    "tipo_servicio": [
+      "Cerrajeria"
+    ],
+    "banderazo": 48400,
+    "normal": 2200,
+    "especial": 0,
+    "costo_base": null
+  },
+  {
+    "tipo": "Liviano",
+    "tipo_servicio": [
+      "Cerrajeria gama alta"
+    ],
+    "banderazo": 68400,
+    "normal": 2200,
+    "especial": 0,
+    "costo_base": null
+  },
+  {
+    "tipo": "Liviano",
+    "tipo_servicio": [
+      "Carro taller"
+    ],
+    "banderazo": 36800,
+    "normal": 2200,
+    "especial": 0,
+    "costo_base": null
+  },
+  {
+    "tipo": "Todos",
+    "tipo_servicio": [
+      "Desplazamiento"
+    ],
+    "banderazo": 50000,
+    "normal": 2600,
+    "especial": 3000,
+    "costo_base": null
   }
 ]
