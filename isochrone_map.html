@@ -52,6 +52,21 @@
   }
   .preset-btn:hover { border-color: var(--orange); color: var(--orange); }
 
+  .base-list { display: flex; flex-direction: column; gap: 8px; }
+  .base-row {
+    display: flex; align-items: center; gap: 8px; padding: 8px; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--bg);
+  }
+  .base-row .swatch { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .base-row .info { flex: 1; min-width: 0; }
+  .base-row .info .name { font-size: 12.5px; font-weight: 600; }
+  .base-row .info .coords { font-size: 10.5px; color: var(--text-muted); }
+  .base-row .info .coords input {
+    width: 46%; padding: 3px 5px; font-size: 11px; border: 1px solid var(--border); border-radius: 5px;
+  }
+  .base-row .remove { cursor: pointer; color: var(--text-muted); font-size: 14px; padding: 2px 6px; }
+  .base-row .remove:hover { color: #c0392b; }
+
   .legend {
     margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);
   }
@@ -69,27 +84,17 @@
   <div class="panel">
 
     <div class="field">
-      <label>Base guardada</label>
-      <div class="presets">
-        <button class="preset-btn" data-lat="4.7093" data-lon="-74.0688">Base 1 · Suba/Usaquén</button>
-        <button class="preset-btn" data-lat="4.6245" data-lon="-74.1340">Base 2 · Kennedy/P.Aranda</button>
-      </div>
+      <label>Bases a mostrar</label>
+      <div class="base-list" id="baseList"></div>
+      <button class="preset-btn" id="addCustomBtn" style="margin-top:8px;">+ Agregar base personalizada</button>
     </div>
 
     <div class="field">
-      <label for="lat">Latitud</label>
-      <input type="text" id="lat" value="4.626966">
-    </div>
-    <div class="field">
-      <label for="lon">Longitud</label>
-      <input type="text" id="lon">
-    </div>
-    <div class="field">
-      <label for="duration">Duración (minutos)</label>
+      <label for="duration">Duración (minutos, aplica a todas)</label>
       <input type="number" id="duration" value="50">
     </div>
 
-    <button class="btn" id="generar">Generar isochrone</button>
+    <button class="btn" id="generar">Generar isochrone(s)</button>
     <div class="status" id="status"></div>
 
     <div class="legend">
@@ -117,14 +122,11 @@
     maxZoom: 19
   }).addTo(map);
 
-  let currentLayer = null;
-
-  const latInput = document.getElementById('lat');
-  const lonInput = document.getElementById('lon');
   const durationInput = document.getElementById('duration');
   const statusEl = document.getElementById('status');
   const btn = document.getElementById('generar');
   const webhookUrlInput = document.getElementById('webhookUrl');
+  const baseListEl = document.getElementById('baseList');
 
   webhookUrlInput.value = localStorage.getItem('isochrone_webhook_url') || DEFAULT_WEBHOOK_URL;
 
@@ -133,63 +135,133 @@
     f.style.display = f.style.display === 'none' ? 'block' : 'none';
   });
 
-  document.querySelectorAll('.preset-btn').forEach(b => {
-    b.addEventListener('click', () => {
-      latInput.value = b.dataset.lat;
-      lonInput.value = b.dataset.lon;
+  // ---- Bases: cada una con su propio color, checkbox y capa en el mapa ----
+  let bases = [
+    { id: 'base1', name: 'Base 1 · Suba/Usaquén', lat: 4.7093, lon: -74.0688, color: '#F15A2B', active: true, layer: null, marker: null },
+    { id: 'base2', name: 'Base 2 · Kennedy/P.Aranda', lat: 4.6245, lon: -74.1340, color: '#279bb0', active: true, layer: null, marker: null },
+  ];
+  let customCounter = 0;
+
+  function renderBaseList() {
+    baseListEl.innerHTML = '';
+    bases.forEach(b => {
+      const row = document.createElement('div');
+      row.className = 'base-row';
+      row.innerHTML = `
+        <input type="checkbox" ${b.active ? 'checked' : ''} data-id="${b.id}" class="baseActive">
+        <span class="swatch" style="background:${b.color}"></span>
+        <div class="info">
+          <div class="name">${b.name}</div>
+          <div class="coords">
+            <input type="text" value="${b.lat}" data-id="${b.id}" data-field="lat" class="baseCoord">
+            <input type="text" value="${b.lon}" data-id="${b.id}" data-field="lon" class="baseCoord">
+          </div>
+        </div>
+        ${b.custom ? `<span class="remove" data-id="${b.id}">✕</span>` : ''}
+      `;
+      baseListEl.appendChild(row);
     });
+
+    baseListEl.querySelectorAll('.baseActive').forEach(cb => {
+      cb.addEventListener('change', e => {
+        const b = bases.find(x => x.id === e.target.dataset.id);
+        b.active = e.target.checked;
+        if (!b.active && b.layer) { map.removeLayer(b.layer); b.layer = null; }
+        if (!b.active && b.marker) { map.removeLayer(b.marker); b.marker = null; }
+      });
+    });
+    baseListEl.querySelectorAll('.baseCoord').forEach(inp => {
+      inp.addEventListener('change', e => {
+        const b = bases.find(x => x.id === e.target.dataset.id);
+        b[e.target.dataset.field] = parseFloat(e.target.value);
+      });
+    });
+    baseListEl.querySelectorAll('.remove').forEach(r => {
+      r.addEventListener('click', e => {
+        const id = e.target.dataset.id;
+        const b = bases.find(x => x.id === id);
+        if (b.layer) map.removeLayer(b.layer);
+        if (b.marker) map.removeLayer(b.marker);
+        bases = bases.filter(x => x.id !== id);
+        renderBaseList();
+      });
+    });
+  }
+
+  document.getElementById('addCustomBtn').addEventListener('click', () => {
+    customCounter++;
+    const palette = ['#ffb000', '#9fd1a4', '#7c5cff', '#e0578a'];
+    bases.push({
+      id: 'custom' + customCounter,
+      name: 'Personalizada ' + customCounter,
+      lat: 4.65, lon: -74.1,
+      color: palette[(customCounter - 1) % palette.length],
+      active: true, custom: true, layer: null, marker: null
+    });
+    renderBaseList();
   });
+
+  renderBaseList();
 
   function setStatus(msg, kind) {
     statusEl.textContent = msg;
     statusEl.className = 'status' + (kind ? ' ' + kind : '');
   }
 
+  async function generarUnaBase(b, minutes, webhookUrl) {
+    const resp = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lat: b.lat, lon: b.lon, duration: Math.round(minutes * 60) })
+    });
+    if (!resp.ok) {
+      const text = await resp.text();
+      throw new Error(`${b.name}: HTTP ${resp.status}: ${text.slice(0, 150)}`);
+    }
+    const geoJson = await resp.json();
+
+    if (b.layer) map.removeLayer(b.layer);
+    if (b.marker) map.removeLayer(b.marker);
+
+    b.layer = L.geoJSON(geoJson, {
+      style: { color: b.color, weight: 2, fillColor: b.color, fillOpacity: 0.25 }
+    }).addTo(map);
+    b.marker = L.circleMarker([b.lat, b.lon], {
+      radius: 6, color: 'white', weight: 2, fillColor: b.color, fillOpacity: 1
+    }).addTo(map).bindTooltip(b.name, { permanent: false });
+  }
+
   async function generarIsochrone() {
-    const lat = parseFloat(latInput.value);
-    const lon = parseFloat(lonInput.value);
     const minutes = parseFloat(durationInput.value);
     const webhookUrl = webhookUrlInput.value.trim();
+    const activas = bases.filter(b => b.active);
 
-    if (isNaN(lat) || isNaN(lon)) { setStatus('Latitud/longitud inválidas.', 'error'); return; }
     if (!webhookUrl || webhookUrl.includes('TU-N8N')) {
       setStatus('Configura primero la URL del webhook (⚙️ arriba).', 'error');
       document.getElementById('webhookField').style.display = 'block';
       return;
     }
+    if (activas.length === 0) { setStatus('Activa al menos una base.', 'error'); return; }
     localStorage.setItem('isochrone_webhook_url', webhookUrl);
 
     btn.disabled = true;
-    setStatus('Consultando... esto puede tardar unos segundos.', '');
+    setStatus(`Consultando ${activas.length} base(s)... esto puede tardar unos segundos.`, '');
 
     try {
-      const resp = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lat, lon, duration: Math.round(minutes * 60) })
-      });
+      const results = await Promise.allSettled(activas.map(b => generarUnaBase(b, minutes, webhookUrl)));
+      const errores = results.filter(r => r.status === 'rejected');
 
-      if (!resp.ok) {
-        const text = await resp.text();
-        throw new Error(`HTTP ${resp.status}: ${text.slice(0, 200)}`);
+      const allLayers = bases.filter(b => b.layer).map(b => b.layer);
+      if (allLayers.length) {
+        const group = L.featureGroup(allLayers);
+        map.fitBounds(group.getBounds(), { padding: [30, 30] });
       }
 
-      const geoJson = await resp.json();
-
-      if (currentLayer) map.removeLayer(currentLayer);
-      currentLayer = L.geoJSON(geoJson, {
-        style: { color: '#F15A2B', weight: 2, fillColor: '#F15A2B', fillOpacity: 0.25 }
-      }).addTo(map);
-
-      L.marker([lat, lon]).addTo(map).bindPopup('Origen').openPopup();
-
-      const bounds = currentLayer.getBounds();
-      if (bounds.isValid()) map.fitBounds(bounds, { padding: [30, 30] });
-
-      setStatus(`Listo — polígono generado para ${minutes} min.`, 'ok');
-    } catch (err) {
-      console.error(err);
-      setStatus('Error: ' + err.message, 'error');
+      if (errores.length) {
+        setStatus('Algunas bases fallaron: ' + errores.map(e => e.reason.message).join(' | '), 'error');
+      } else {
+        setStatus(`Listo — ${activas.length} base(s) generadas para ${minutes} min.`, 'ok');
+      }
     } finally {
       btn.disabled = false;
     }
