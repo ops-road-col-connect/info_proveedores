@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Isochrone de grúa — Connect Colombia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --navy: #001D3D; --orange: #F15A2B; --turquoise: #279bb0; --yellow: #ffb000;
+    --bg: #f7f8fa; --card-bg: #ffffff; --text: #1a2433; --text-muted: #5b6b80; --border: #e3e7ed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text);
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, #013a63 100%);
+    color: white; padding: 18px 24px;
+  }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 4px 0 0; font-size: 12.5px; color: #cfe0ee; }
+
+  .layout { display: flex; height: calc(100vh - 68px); }
+  #map { flex: 1; }
+
+  .panel {
+    width: 300px; padding: 18px; background: var(--card-bg); border-right: 1px solid var(--border);
+    overflow-y: auto; flex-shrink: 0;
+  }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+  .field input {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 7px; font-size: 14px;
+  }
+  .btn {
+    width: 100%; padding: 11px; border: none; border-radius: 8px; background: var(--orange); color: white;
+    font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 6px;
+  }
+  .btn:hover { opacity: 0.92; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .status { margin-top: 12px; font-size: 12.5px; color: var(--text-muted); min-height: 18px; }
+  .status.error { color: #c0392b; }
+  .status.ok { color: #2e7d32; }
+
+  .presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .preset-btn {
+    font-size: 11px; padding: 6px 10px; border-radius: 20px; border: 1px solid var(--border);
+    background: var(--bg); cursor: pointer; color: var(--text);
+  }
+  .preset-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .legend {
+    margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);
+  }
+  .config-toggle { font-size: 11px; color: var(--text-muted); cursor: pointer; margin-top: 16px; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🗺️ Isochrone de grúa — 50 min</h1>
+  <p>Connect Colombia · División Road</p>
+</header>
+
+<div class="layout">
+  <div class="panel">
+
+    <div class="field">
+      <label>Base guardada</label>
+      <div class="presets">
+        <button class="preset-btn" data-lat="4.7093" data-lon="-74.0688">Base 1 · Suba/Usaquén</button>
+        <button class="preset-btn" data-lat="4.6245" data-lon="-74.1340">Base 2 · Kennedy/P.Aranda</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="lat">Latitud</label>
+      <input type="text" id="lat" value="4.626966">
+    </div>
+    <div class="field">
+      <label for="lon">Longitud</label>
+      <input type="text" id="lon">
+    </div>
+    <div class="field">
+      <label for="duration">Duración (minutos)</label>
+      <input type="number" id="duration" value="50">
+    </div>
+
+    <button class="btn" id="generar">Generar isochrone</button>
+    <div class="status" id="status"></div>
+
+    <div class="legend">
+      El polígono muestra el área que la grúa puede alcanzar en el tiempo indicado, según tráfico en vivo (TRAFFIC_AWARE). Recuerda: el resultado cambia según la hora real en la que generes el mapa.
+    </div>
+
+    <div class="config-toggle" id="toggleConfig">⚙️ Configurar URL del webhook</div>
+    <div class="field" id="webhookField" style="display:none; margin-top:8px;">
+      <label for="webhookUrl">URL del webhook n8n</label>
+      <input type="text" id="webhookUrl" placeholder="https://tu-n8n.com/webhook/isochrone">
+    </div>
+
+  </div>
+  <div id="map"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // ---- Configuración: pon aquí la URL de tu webhook por defecto ----
+  const DEFAULT_WEBHOOK_URL = "https://TU-N8N.com/webhook/isochrone";
+
+  const map = L.map('map').setView([4.65, -74.1], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  let currentLayer = null;
+
+  const latInput = document.getElementById('lat');
+  const lonInput = document.getElementById('lon');
+  const durationInput = document.getElementById('duration');
+  const statusEl = document.getElementById('status');
+  const btn = document.getElementById('generar');
+  const webhookUrlInput = document.getElementById('webhookUrl');
+
+  webhookUrlInput.value = localStorage.getItem('isochrone_webhook_url') || DEFAULT_WEBHOOK_URL;
+
+  document.getElementById('toggleConfig').addEventListener('click', () => {
+    const f = document.getElementById('webhookField');
+    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+  });
+
+  document.querySelectorAll('.preset-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      latInput.value = b.dataset.lat;
+      lonInput.value = b.dataset.lon;
+    });
+  });
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  async function generarIsochrone() {
+    const lat = parseFloat(latInput.value);
+    const lon = parseFloat(lonInput.value);
+    const minutes = parseFloat(durationInput.value);
+    const webhookUrl = webhookUrlInput.value.trim();
+
+    if (isNaN(lat) || isNaN(lon)) { setStatus('Latitud/longitud inválidas.', 'error'); return; }
+    if (!webhookUrl || webhookUrl.includes('TU-N8N')) {
+      setStatus('Configura primero la URL del webhook (⚙️ arriba).', 'error');
+      document.getElementById('webhookField').style.display = 'block';
+      return;
+    }
+    localStorage.setItem('isochrone_webhook_url', webhookUrl);
+
+    btn.disabled = true;
+    setStatus('Consultando... esto puede tardar unos segundos.', '');
+
+    try {
+      const resp = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lat, lon, duration: Math.round(minutes * 60) })
+      });
+
+      if (!resp.ok) {
+        const text = await resp.text();
+        throw new Error(`HTTP ${resp.status}: ${text.slice(0, 200)}`);
+      }
+
+      const geoJson = await resp.json();
+
+      if (currentLayer) map.removeLayer(currentLayer);
+      currentLayer = L.geoJSON(geoJson, {
+        style: { color: '#F15A2B', weight: 2, fillColor: '#F15A2B', fillOpacity: 0.25 }
+      }).addTo(map);
+
+      L.marker([lat, lon]).addTo(map).bindPopup('Origen').openPopup();
+
+      const bounds = currentLayer.getBounds();
+      if (bounds.isValid()) map.fitBounds(bounds, { padding: [30, 30] });
+
+      setStatus(`Listo — polígono generado para ${minutes} min.`, 'ok');
+    } catch (err) {
+      console.error(err);
+      setStatus('Error: ' + err.message, 'error');
+    } finally {
+      btn.disabled = false;
+    }
+  }
+
+  btn.addEventListener('click', generarIsochrone);
+</script>
+
+</body>
+</html>
