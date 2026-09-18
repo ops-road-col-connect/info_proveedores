@@ -82,7 +82,12 @@
     <div class="field">
       <label>Bases a mostrar</label>
       <div class="base-list" id="baseList"></div>
-      <button class="preset-btn" id="addCustomBtn" style="margin-top:8px;">+ Agregar base personalizada</button>
+    </div>
+
+    <div class="field">
+      <label for="newCoords">Agregar nueva base (lat, lon)</label>
+      <input type="text" id="newCoords" placeholder="4.7139292598496265, -74.10916948685907">
+      <button class="preset-btn" id="addCustomBtn" style="margin-top:8px; width:100%;">+ Agregar base</button>
     </div>
 
     <div class="field">
@@ -175,12 +180,11 @@
   }
 
   document.getElementById('addCustomBtn').addEventListener('click', () => {
-    const latStr = prompt('Latitud de la nueva base:');
-    if (latStr === null) return;
-    const lonStr = prompt('Longitud de la nueva base:');
-    if (lonStr === null) return;
-    const lat = parseFloat(latStr), lon = parseFloat(lonStr);
-    if (isNaN(lat) || isNaN(lon)) { alert('Coordenadas inválidas.'); return; }
+    const raw = document.getElementById('newCoords').value.trim();
+    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+    if (parts.length !== 2) { alert('Formato esperado: lat, lon — ej. 4.7139292598496265, -74.10916948685907'); return; }
+    const lat = parseFloat(parts[0]), lon = parseFloat(parts[1]);
+    if (isNaN(lat) || isNaN(lon)) { alert('No pude leer esas coordenadas. Formato esperado: lat, lon'); return; }
     customCounter++;
     const palette = ['#ffb000', '#9fd1a4', '#7c5cff', '#e0578a'];
     bases.push({
@@ -190,8 +194,15 @@
       color: palette[(customCounter - 1) % palette.length],
       active: true, custom: true, layer: null, marker: null
     });
+    document.getElementById('newCoords').value = '';
     renderBaseList();
   });
+
+  document.getElementById('newCoords').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('addCustomBtn').click();
+  });
+
+  renderBaseList();
 
   renderBaseList();
 
