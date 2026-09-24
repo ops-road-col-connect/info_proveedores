@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Ubicación de grúas — Connect Colombia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --navy: #001D3D; --orange: #F15A2B; --turquoise: #279bb0; --yellow: #ffb000;
+    --bg: #f7f8fa; --card-bg: #ffffff; --text: #1a2433; --text-muted: #5b6b80; --border: #e3e7ed;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg); color: var(--text);
+  }
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, #013a63 100%);
+    color: white; padding: 18px 24px;
+  }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 4px 0 0; font-size: 12.5px; color: #cfe0ee; }
+
+  .layout { display: flex; height: calc(100vh - 68px); }
+  #map { flex: 1; }
+
+  .panel {
+    width: 300px; padding: 18px; background: var(--card-bg); border-right: 1px solid var(--border);
+    overflow-y: auto; flex-shrink: 0;
+  }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 4px; }
+  .field input {
+    width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 7px; font-size: 14px;
+  }
+  .btn {
+    width: 100%; padding: 11px; border: none; border-radius: 8px; background: var(--orange); color: white;
+    font-weight: 700; font-size: 14px; cursor: pointer; margin-top: 6px;
+  }
+  .btn:hover { opacity: 0.92; }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .status { margin-top: 12px; font-size: 12.5px; color: var(--text-muted); min-height: 18px; }
+  .status.error { color: #c0392b; }
+  .status.ok { color: #2e7d32; }
+
+  .presets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .preset-btn {
+    font-size: 11px; padding: 6px 10px; border-radius: 20px; border: 1px solid var(--border);
+    background: var(--bg); cursor: pointer; color: var(--text);
+  }
+  .preset-btn:hover { border-color: var(--orange); color: var(--orange); }
+
+  .base-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .base-btn {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; padding: 7px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+    background: var(--bg); cursor: pointer; color: var(--text); font-weight: 600;
+  }
+  .base-btn .swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .base-btn.active { background: var(--card-bg); box-shadow: 0 0 0 2px currentColor inset; }
+  .base-btn .remove { margin-left: 2px; color: var(--text-muted); font-size: 12px; }
+  .base-btn .remove:hover { color: #c0392b; }
+
+  .legend {
+    margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);
+  }
+  .panel { width: 330px; }
+  .section-title { font-size: 13px; font-weight: 700; color: var(--navy); margin: 22px 0 10px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill {
+    font-size: 11.5px; padding: 6px 11px; border-radius: 20px; border: 1.5px solid var(--border);
+    background: var(--bg); cursor: pointer; color: var(--text); font-weight: 600;
+  }
+  .pill:hover { border-color: var(--orange); }
+  .pill.active { background: var(--navy); border-color: var(--navy); color: white; }
+  .pill.small { font-size: 11px; padding: 5px 9px; }
+  .toggle-pill { font-size: 11px; padding: 4px 10px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--bg); cursor: pointer; font-weight: 600; color: var(--text-muted); }
+  .toggle-pill.on { background: var(--orange); border-color: var(--orange); color: white; }
+  .coverage {
+    margin-top: 12px; padding: 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--border); font-size: 12.5px; line-height: 1.45;
+  }
+  .coverage .big { font-size: 22px; font-weight: 800; color: var(--navy); }
+  .coverage .big.bad { color: #c0392b; }
+  .coverage .big.good { color: #2e7d32; }
+  .zone-list { list-style: none; margin: 10px 0 0; padding: 0; font-size: 12px; }
+  .zone-list li { display: flex; align-items: center; gap: 6px; padding: 4px 0; border-bottom: 1px dashed var(--border); cursor: pointer; }
+  .zone-list li:last-child { border-bottom: none; }
+  .zone-list li:hover .zname { color: var(--orange); }
+  .zone-list .zname { flex: 1; }
+  .zone-list .zcnt { font-weight: 700; color: var(--orange); }
+  .zone-list .zflag { width: 16px; text-align: center; font-size: 11px; }
+  .demand-note { margin-top: 10px; font-size: 11px; color: var(--text-muted); line-height: 1.45; }
+  .demand-legend { display: flex; align-items: center; gap: 8px; margin-top: 10px; font-size: 11px; color: var(--text-muted); }
+  .demand-legend .grad { flex: 1; height: 8px; border-radius: 4px; background: linear-gradient(90deg, rgba(255,176,0,0.5), rgba(241,90,43,0.8), rgba(0,29,61,0.9)); }
+  .crane-icon { background: none; border: none; }
+  .crane-badge {
+    width: 42px; height: 42px; border-radius: 50%; border: 3px solid white;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,29,61,0.35); cursor: grab; transition: transform .15s;
+  }
+  .crane-badge:active { cursor: grabbing; transform: scale(1.12); }
+  .crane-badge.loading { animation: cranePulse 0.9s ease-in-out infinite; }
+  @keyframes cranePulse { 50% { box-shadow: 0 0 0 10px rgba(241,90,43,0.25); } }
+  @media (prefers-reduced-motion: reduce) { .crane-badge.loading { animation: none; opacity: .6; } }
+  .drag-hint { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
+  .config-toggle { font-size: 11px; color: var(--text-muted); cursor: pointer; margin-top: 16px; text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🗺️ Ubicación de grúas — cobertura vs. demanda</h1>
+  <p>Connect Colombia · División Road</p>
+</header>
+
+<div class="layout">
+  <div class="panel">
+
+    <div class="field">
+      <label>Bases a mostrar</label>
+      <div class="base-list" id="baseList"></div>
+      <div class="drag-hint">🚛 Arrastra una grúa en el mapa y su isochrone se recalcula al soltarla.</div>
+    </div>
+
+    <div class="field">
+      <label for="newCoords">Agregar nueva base (lat, lon)</label>
+      <input type="text" id="newCoords" placeholder="4.7139292598496265, -74.10916948685907">
+      <button class="preset-btn" id="addCustomBtn" style="margin-top:8px; width:100%;">+ Agregar base</button>
+    </div>
+
+    <div class="field">
+      <label for="duration">Duración (minutos, aplica a todas)</label>
+      <input type="number" id="duration" value="50">
+    </div>
+
+    <button class="btn" id="generar">Generar isochrone(s)</button>
+    <div class="status" id="status"></div>
+
+    <div class="section-title">
+      <span>Demanda histórica por zona</span>
+      <button class="toggle-pill on" id="demandToggle">Visible</button>
+    </div>
+
+    <div class="field">
+      <label>Ciudad</label>
+      <div class="pills" id="cityPills"></div>
+    </div>
+    <div class="field">
+      <label>Días</label>
+      <div class="pills" id="dayPills"></div>
+    </div>
+    <div class="field">
+      <label>Franja horaria</label>
+      <div class="pills" id="blockPills"></div>
+    </div>
+
+    <div class="demand-legend"><span>Menos</span><div class="grad"></div><span>Más servicios</span></div>
+
+    <div class="coverage" id="coverageBox"></div>
+    <ul class="zone-list" id="zoneList"></ul>
+
+    <div class="demand-note" id="demandNote"></div>
+
+    <div class="legend">
+      El polígono muestra el área que la grúa puede alcanzar en el tiempo indicado, según tráfico en vivo (TRAFFIC_AWARE). Recuerda: el resultado cambia según la hora real en la que generes el mapa.
+    </div>
+
+    <div class="config-toggle" id="toggleConfig">⚙️ Configurar URL del webhook</div>
+    <div class="field" id="webhookField" style="display:none; margin-top:8px;">
+      <label for="webhookUrl">URL del webhook n8n</label>
+      <input type="text" id="webhookUrl" placeholder="https://tu-n8n.com/webhook/isochrone">
+    </div>
+
+  </div>
+  <div id="map"></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // ---- Configuración: pon aquí la URL de tu webhook por defecto ----
+  const DEFAULT_WEBHOOK_URL = "https://TU-N8N.com/webhook/isochrone";
+
+  const map = L.map('map').setView([4.65, -74.1], 11);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors',
+    maxZoom: 19
+  }).addTo(map);
+
+  const durationInput = document.getElementById('duration');
+  const statusEl = document.getElementById('status');
+  const btn = document.getElementById('generar');
+  const webhookUrlInput = document.getElementById('webhookUrl');
+  const baseListEl = document.getElementById('baseList');
+
+  webhookUrlInput.value = localStorage.getItem('isochrone_webhook_url') || DEFAULT_WEBHOOK_URL;
+
+  document.getElementById('toggleConfig').addEventListener('click', () => {
+    const f = document.getElementById('webhookField');
+    f.style.display = f.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // ---- Bases: cada una con su propio color, checkbox y capa en el mapa ----
+  let bases = [
+    { id: 'base1', name: 'Base 1 · Suba/Usaquén', lat: 4.7093, lon: -74.0688, color: '#F15A2B', active: true, layer: null, marker: null },
+    { id: 'base2', name: 'Base 2 · Kennedy/P.Aranda', lat: 4.6245, lon: -74.1340, color: '#279bb0', active: true, layer: null, marker: null },
+  ];
+  let customCounter = 0;
+
+  // ---- Grúas arrastrables ----
+  const CRANE_SVG = `<svg width="26" height="20" viewBox="0 0 26 20" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M1 14V9h8V5h4l3 4h2v5" fill="white" fill-opacity=".25"/>
+      <path d="M18 14h3V9l-5-6-4 1"/>
+      <path d="M21 3v4.5a1.5 1.5 0 0 1-3 0"/>
+      <circle cx="5" cy="15.5" r="2.2" fill="white"/><circle cx="15" cy="15.5" r="2.2" fill="white"/>
+    </svg>`;
+
+  function craneIcon(b, loading) {
+    return L.divIcon({
+      className: 'crane-icon',
+      html: `<div class="crane-badge${loading ? ' loading' : ''}" style="background:${b.color}">${CRANE_SVG}</div>`,
+      iconSize: [42, 42], iconAnchor: [21, 21], tooltipAnchor: [0, -22]
+    });
+  }
+
+  function craneTooltip(b) {
+    return `<b>${b.name}</b><br>${b.lat.toFixed(5)}, ${b.lon.toFixed(5)}`;
+  }
+
+  function ensureMarker(b) {
+    if (b.marker) return;
+    b.marker = L.marker([b.lat, b.lon], { icon: craneIcon(b, false), draggable: true, autoPan: true })
+      .addTo(map).bindTooltip(craneTooltip(b), { direction: 'top' });
+    b.marker.on('dragstart', () => {
+      if (b.layer) b.layer.setStyle({ fillOpacity: 0.06, opacity: 0.3 });
+    });
+    b.marker.on('dragend', () => {
+      const ll = b.marker.getLatLng();
+      b.lat = ll.lat; b.lon = ll.lng;
+      b.marker.setTooltipContent(craneTooltip(b));
+      recalcularBase(b);
+    });
+  }
+
+  function syncMarkers() {
+    bases.forEach(b => {
+      if (b.active) ensureMarker(b);
+      else if (b.marker) { map.removeLayer(b.marker); b.marker = null; }
+    });
+  }
+
+  function renderBaseList() {
+    syncMarkers();
+    baseListEl.innerHTML = '';
+    bases.forEach(b => {
+      const btn = document.createElement('button');
+      btn.className = 'base-btn' + (b.active ? ' active' : '');
+      btn.style.color = b.color;
+      btn.dataset.id = b.id;
+      btn.innerHTML = `<span class="swatch" style="background:${b.color}"></span>${b.name}${b.custom ? ' <span class="remove" data-id="' + b.id + '">✕</span>' : ''}`;
+      baseListEl.appendChild(btn);
+    });
+
+    baseListEl.querySelectorAll('.base-btn').forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove')) return; // el click de eliminar se maneja aparte
+        const b = bases.find(x => x.id === el.dataset.id);
+        b.active = !b.active;
+        if (!b.active) {
+          if (b.layer) { map.removeLayer(b.layer); b.layer = null; }
+          if (b.marker) { map.removeLayer(b.marker); b.marker = null; }
+          b.geojson = null;
+        }
+        renderBaseList();
+        renderDemand();
+      });
+    });
+    baseListEl.querySelectorAll('.remove').forEach(r => {
+      r.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = e.target.dataset.id;
+        const b = bases.find(x => x.id === id);
+        if (b.layer) map.removeLayer(b.layer);
+        if (b.marker) map.removeLayer(b.marker);
+        bases = bases.filter(x => x.id !== id);
+        renderBaseList();
+        renderDemand();
+      });
+    });
+  }
+
+  document.getElementById('addCustomBtn').addEventListener('click', () => {
+    const raw = document.getElementById('newCoords').value.trim();
+    const parts = raw.split(',').map(s => s.trim()).filter(Boolean);
+    if (parts.length !== 2) { alert('Formato esperado: lat, lon — ej. 4.7139292598496265, -74.10916948685907'); return; }
+    const lat = parseFloat(parts[0]), lon = parseFloat(parts[1]);
+    if (isNaN(lat) || isNaN(lon)) { alert('No pude leer esas coordenadas. Formato esperado: lat, lon'); return; }
+    customCounter++;
+    const palette = ['#ffb000', '#9fd1a4', '#7c5cff', '#e0578a'];
+    bases.push({
+      id: 'custom' + customCounter,
+      name: 'Personalizada ' + customCounter,
+      lat, lon,
+      color: palette[(customCounter - 1) % palette.length],
+      active: true, custom: true, layer: null, marker: null
+    });
+    document.getElementById('newCoords').value = '';
+    renderBaseList();
+  });
+
+  document.getElementById('newCoords').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') document.getElementById('addCustomBtn').click();
+  });
+
+  renderBaseList();
+
+  function setStatus(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  async function generarUnaBase(b, minutes, webhookUrl) {
+    const resp = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ lat: b.lat, lon: b.lon, duration: Math.round(minutes * 60) })
+    });
+    if (!resp.ok) {
+      const text = await resp.text();
+      throw new Error(`${b.name}: HTTP ${resp.status}: ${text.slice(0, 150)}`);
+    }
+    const geoJson = await resp.json();
+    b.geojson = geoJson;
+
+    if (b.layer) map.removeLayer(b.layer);
+
+    b.layer = L.geoJSON(geoJson, {
+      style: { color: b.color, weight: 2, fillColor: b.color, fillOpacity: 0.25 }
+    }).addTo(map);
+    ensureMarker(b);
+  }
+
+  function getWebhookUrl() {
+    const url = webhookUrlInput.value.trim();
+    if (!url || url.includes('TU-N8N')) {
+      setStatus('Configura primero la URL del webhook (⚙️ abajo).', 'error');
+      document.getElementById('webhookField').style.display = 'block';
+      return null;
+    }
+    localStorage.setItem('isochrone_webhook_url', url);
+    return url;
+  }
+
+  async function recalcularBase(b) {
+    const url = getWebhookUrl();
+    if (!url) { if (b.layer) b.layer.setStyle({ fillOpacity: 0.25, opacity: 1 }); return; }
+    const minutes = parseFloat(durationInput.value);
+    b.marker.setIcon(craneIcon(b, true));
+    setStatus(`Recalculando ${b.name}...`, '');
+    try {
+      await generarUnaBase(b, minutes, url);
+      renderDemand();
+      setStatus(`${b.name} movida — isochrone de ${minutes} min actualizado.`, 'ok');
+    } catch (err) {
+      if (b.layer) { map.removeLayer(b.layer); b.layer = null; }
+      b.geojson = null;
+      renderDemand();
+      setStatus(err.message, 'error');
+    } finally {
+      if (b.marker) b.marker.setIcon(craneIcon(b, false));
+    }
+  }
+
+  async function generarIsochrone() {
+    const minutes = parseFloat(durationInput.value);
+    const activas = bases.filter(b => b.active);
+    if (activas.length === 0) { setStatus('Activa al menos una base.', 'error'); return; }
+    const webhookUrl = getWebhookUrl();
+    if (!webhookUrl) return;
+    activas.forEach(b => b.marker && b.marker.setIcon(craneIcon(b, true)));
+
+    btn.disabled = true;
+    setStatus(`Consultando ${activas.length} base(s)... esto puede tardar unos segundos.`, '');
+
+    try {
+      const results = await Promise.allSettled(activas.map(b => generarUnaBase(b, minutes, webhookUrl)));
+      const errores = results.filter(r => r.status === 'rejected');
+      renderDemand();
+
+      const allLayers = bases.filter(b => b.layer).map(b => b.layer);
+      if (allLayers.length) {
+        const group = L.featureGroup(allLayers);
+        map.fitBounds(group.getBounds(), { padding: [30, 30] });
+      }
+
+      if (errores.length) {
+        setStatus('Algunas bases fallaron: ' + errores.map(e => e.reason.message).join(' | '), 'error');
+      } else {
+        setStatus(`Listo — ${activas.length} base(s) generadas para ${minutes} min.`, 'ok');
+      }
+    } finally {
+      btn.disabled = false;
+      activas.forEach(b => b.marker && b.marker.setIcon(craneIcon(b, false)));
+    }
+  }
+
+  btn.addEventListener('click', generarIsochrone);
+
+  // =====================================================================
+  //  DEMANDA HISTÓRICA POR ZONA (migrado del "Mapa de calor por zona y bloque horario")
+  //  Fuente: histórico Cube abr–sep 2026, sin towExtraction. Centroide por localidad/comuna.
+  // =====================================================================
+  const DEMAND = {"cities": {"BOGOTA": {"points": [{"name": "Suba", "lat": 4.7207926, "lon": -74.074768, "total": 179, "by_block": [33, 39, 33, 26, 25, 17, 5, 1], "by_block_semana": [29, 35, 29, 18, 17, 16, 2, 1], "by_block_finde": [4, 4, 4, 8, 8, 1, 3, 0]}, {"name": "Engativ\u00e1", "lat": 4.7072598, "lon": -74.1094635, "total": 106, "by_block": [21, 24, 17, 16, 16, 4, 4, 4], "by_block_semana": [17, 21, 11, 12, 13, 2, 2, 3], "by_block_finde": [4, 3, 6, 4, 3, 2, 2, 1]}, {"name": "Kennedy", "lat": 4.630387, "lon": -74.1376756, "total": 98, "by_block": [13, 27, 18, 14, 12, 6, 7, 1], "by_block_semana": [13, 21, 15, 12, 7, 3, 3, 0], "by_block_finde": [0, 6, 3, 2, 5, 3, 4, 1]}, {"name": "Fontib\u00f3n", "lat": 4.6739145, "lon": -74.1433169, "total": 93, "by_block": [13, 20, 19, 14, 7, 13, 4, 3], "by_block_semana": [11, 19, 17, 10, 6, 12, 0, 2], "by_block_finde": [2, 1, 2, 4, 1, 1, 4, 1]}, {"name": "Puente Aranda", "lat": 4.6149019, "lon": -74.1140962, "total": 81, "by_block": [16, 19, 12, 17, 9, 4, 2, 2], "by_block_semana": [15, 16, 7, 14, 5, 3, 1, 1], "by_block_finde": [1, 3, 5, 3, 4, 1, 1, 1]}, {"name": "Usaqu\u00e9n", "lat": 4.7033367, "lon": -74.0328803, "total": 80, "by_block": [17, 21, 11, 16, 7, 7, 0, 1], "by_block_semana": [13, 17, 9, 15, 6, 5, 0, 1], "by_block_finde": [4, 4, 2, 1, 1, 2, 0, 0]}, {"name": "Chapinero", "lat": 4.6548153, "lon": -74.0552684, "total": 50, "by_block": [6, 12, 12, 10, 7, 2, 0, 1], "by_block_semana": [6, 11, 12, 7, 5, 2, 0, 0], "by_block_finde": [0, 1, 0, 3, 2, 0, 0, 1]}, {"name": "Teusaquillo", "lat": 4.6422765, "lon": -74.0907071, "total": 43, "by_block": [1, 9, 14, 8, 8, 3, 0, 0], "by_block_semana": [1, 9, 7, 5, 3, 2, 0, 0], "by_block_finde": [0, 0, 7, 3, 5, 1, 0, 0]}, {"name": "Barrios Unidos", "lat": 4.6745159, "lon": -74.0719936, "total": 34, "by_block": [3, 12, 9, 5, 2, 3, 0, 0], "by_block_semana": [3, 10, 7, 4, 1, 1, 0, 0], "by_block_finde": [0, 2, 2, 1, 1, 2, 0, 0]}, {"name": "Bosa", "lat": 4.6086644, "lon": -74.1813364, "total": 28, "by_block": [5, 5, 4, 8, 1, 3, 1, 1], "by_block_semana": [5, 3, 4, 8, 1, 2, 1, 0], "by_block_finde": [0, 2, 0, 0, 0, 1, 0, 1]}, {"name": "Santa F\u00e9", "lat": 4.6121433, "lon": -74.0708166, "total": 23, "by_block": [0, 7, 7, 5, 3, 1, 0, 0], "by_block_semana": [0, 7, 6, 5, 3, 1, 0, 0], "by_block_finde": [0, 0, 1, 0, 0, 0, 0, 0]}, {"name": "Rafael Uribe Uribe", "lat": 4.5762835, "lon": -74.1173688, "total": 23, "by_block": [3, 2, 5, 3, 8, 1, 0, 1], "by_block_semana": [3, 2, 5, 3, 1, 0, 0, 1], "by_block_finde": [0, 0, 0, 0, 7, 1, 0, 0]}, {"name": "Tunjuelito", "lat": 4.5867775, "lon": -74.1444068, "total": 19, "by_block": [4, 4, 2, 1, 2, 3, 0, 3], "by_block_semana": [4, 4, 2, 1, 0, 3, 0, 3], "by_block_finde": [0, 0, 0, 0, 2, 0, 0, 0]}, {"name": "Cdad. Bol\u00edvar", "lat": 4.579524, "lon": -74.1574289, "total": 17, "by_block": [2, 5, 2, 4, 2, 0, 1, 1], "by_block_semana": [1, 4, 2, 3, 2, 0, 1, 1], "by_block_finde": [1, 1, 0, 1, 0, 0, 0, 0]}, {"name": "Antonio Nari\u00f1o", "lat": 4.5900603, "lon": -74.103441, "total": 15, "by_block": [1, 1, 6, 2, 2, 1, 1, 1], "by_block_semana": [1, 0, 6, 1, 2, 0, 1, 0], "by_block_finde": [0, 1, 0, 1, 0, 1, 0, 1]}, {"name": "Usme", "lat": 4.508056, "lon": -74.1140039, "total": 15, "by_block": [4, 5, 2, 0, 2, 0, 1, 1], "by_block_semana": [4, 4, 2, 0, 1, 0, 1, 1], "by_block_finde": [0, 1, 0, 0, 1, 0, 0, 0]}, {"name": "Los M\u00e1rtires", "lat": 4.6066345, "lon": -74.0881945, "total": 15, "by_block": [1, 6, 2, 3, 1, 2, 0, 0], "by_block_semana": [1, 5, 2, 3, 1, 2, 0, 0], "by_block_finde": [0, 1, 0, 0, 0, 0, 0, 0]}, {"name": "San Crist\u00f3bal", "lat": 4.5591989, "lon": -74.091471, "total": 14, "by_block": [1, 3, 2, 5, 1, 2, 0, 0], "by_block_semana": [1, 1, 2, 3, 0, 1, 0, 0], "by_block_finde": [0, 2, 0, 2, 1, 1, 0, 0]}], "total_all": 3322, "total_geocoded": 933}, "MEDELLIN": {"points": [{"name": "Guayabal", "lat": 6.2102931, "lon": -75.5887989, "total": 114, "by_block": [7, 24, 20, 31, 14, 11, 6, 1], "by_block_semana": [6, 23, 17, 28, 12, 8, 6, 1], "by_block_finde": [1, 1, 3, 3, 2, 3, 0, 0]}, {"name": "El Poblado", "lat": 6.2090645, "lon": -75.5676977, "total": 108, "by_block": [8, 27, 13, 27, 16, 8, 6, 3], "by_block_semana": [8, 23, 12, 20, 14, 7, 6, 3], "by_block_finde": [0, 4, 1, 7, 2, 1, 0, 0]}, {"name": "La Candelaria", "lat": 6.2462333, "lon": -75.5669162, "total": 72, "by_block": [6, 17, 17, 13, 14, 3, 1, 1], "by_block_semana": [4, 16, 12, 11, 10, 3, 1, 0], "by_block_finde": [2, 1, 5, 2, 4, 0, 0, 1]}, {"name": "Laureles - Estadio", "lat": 6.2515938, "lon": -75.5887989, "total": 46, "by_block": [3, 8, 7, 11, 9, 5, 1, 2], "by_block_semana": [3, 6, 6, 5, 9, 3, 1, 1], "by_block_finde": [0, 2, 1, 6, 0, 2, 0, 1]}, {"name": "Aranjuez", "lat": 6.28306, "lon": -75.56748, "total": 25, "by_block": [5, 9, 1, 5, 2, 2, 0, 1], "by_block_semana": [3, 7, 0, 5, 1, 2, 0, 1], "by_block_finde": [2, 2, 1, 0, 1, 0, 0, 0]}, {"name": "San Antonio de Prado", "lat": 6.1852672, "lon": -75.6561304, "total": 18, "by_block": [5, 5, 2, 0, 5, 1, 0, 0], "by_block_semana": [4, 4, 1, 0, 5, 1, 0, 0], "by_block_finde": [1, 1, 1, 0, 0, 0, 0, 0]}, {"name": "Castilla", "lat": 6.2911827, "lon": -75.5727914, "total": 14, "by_block": [1, 2, 1, 0, 3, 5, 0, 2], "by_block_semana": [1, 2, 0, 0, 3, 3, 0, 1], "by_block_finde": [0, 0, 1, 0, 0, 2, 0, 1]}, {"name": "Santa Margarita", "lat": 6.2832382, "lon": -75.6120795, "total": 12, "by_block": [1, 0, 4, 2, 1, 3, 1, 0], "by_block_semana": [1, 0, 4, 2, 1, 3, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 1, 0]}, {"name": "El Cucaracho", "lat": 6.2816621, "lon": -75.6018947, "total": 10, "by_block": [0, 5, 1, 3, 1, 0, 0, 0], "by_block_semana": [0, 5, 1, 3, 1, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 0, 0]}, {"name": "Pilarica", "lat": 6.2735058, "lon": -75.5873438, "total": 8, "by_block": [2, 0, 0, 1, 3, 0, 0, 2], "by_block_semana": [2, 0, 0, 1, 2, 0, 0, 2], "by_block_finde": [0, 0, 0, 0, 1, 0, 0, 0]}, {"name": "Robledo", "lat": 6.2769988, "lon": -75.596802, "total": 8, "by_block": [0, 0, 3, 2, 1, 1, 0, 1], "by_block_semana": [0, 0, 2, 2, 1, 0, 0, 0], "by_block_finde": [0, 0, 1, 0, 0, 1, 0, 1]}, {"name": "San Crist\u00f3bal", "lat": 6.2776861, "lon": -75.6355018, "total": 7, "by_block": [1, 1, 3, 2, 0, 0, 0, 0], "by_block_semana": [0, 1, 3, 1, 0, 0, 0, 0], "by_block_finde": [1, 0, 0, 1, 0, 0, 0, 0]}, {"name": "Calasanz", "lat": 6.2609158, "lon": -75.5989846, "total": 7, "by_block": [2, 0, 0, 1, 3, 1, 0, 0], "by_block_semana": [2, 0, 0, 1, 2, 1, 0, 0], "by_block_finde": [0, 0, 0, 0, 1, 0, 0, 0]}, {"name": "Santa Elena", "lat": 6.2091026, "lon": -75.497758, "total": 6, "by_block": [2, 0, 0, 2, 2, 0, 0, 0], "by_block_semana": [2, 0, 0, 2, 2, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 0, 0]}, {"name": "Santa Monica", "lat": 6.2489119, "lon": -75.6084421, "total": 5, "by_block": [1, 0, 1, 1, 2, 0, 0, 0], "by_block_semana": [1, 0, 1, 1, 2, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 0, 0]}, {"name": "Nazaret", "lat": 6.2787194, "lon": -75.6353564, "total": 5, "by_block": [1, 0, 3, 1, 0, 0, 0, 0], "by_block_semana": [1, 0, 3, 1, 0, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 0, 0]}], "total_all": 1080, "total_geocoded": 465}, "CALI": {"points": [{"name": "Ciudad Jard\u00edn", "lat": 3.3647946, "lon": -76.5372525, "total": 26, "by_block": [6, 3, 5, 6, 4, 2, 0, 0], "by_block_semana": [6, 3, 4, 5, 4, 0, 0, 0], "by_block_finde": [0, 0, 1, 1, 0, 2, 0, 0]}, {"name": "Quintas De Don Simon", "lat": 3.393311, "lon": -76.5358173, "total": 21, "by_block": [4, 10, 2, 4, 1, 0, 0, 0], "by_block_semana": [3, 10, 2, 4, 0, 0, 0, 0], "by_block_finde": [1, 0, 0, 0, 1, 0, 0, 0]}, {"name": "Barrio Pance", "lat": 3.3406085, "lon": -76.5430429, "total": 17, "by_block": [8, 1, 2, 4, 2, 0, 0, 0], "by_block_semana": [8, 1, 2, 4, 2, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 0, 0, 0, 0]}, {"name": "Los Cambulos", "lat": 3.4185565, "lon": -76.5394302, "total": 15, "by_block": [1, 5, 4, 4, 0, 1, 0, 0], "by_block_semana": [1, 4, 4, 2, 0, 1, 0, 0], "by_block_finde": [0, 1, 0, 2, 0, 0, 0, 0]}, {"name": "Ca\u00f1asgordas", "lat": 3.3575204, "lon": -76.5303514, "total": 14, "by_block": [3, 1, 3, 1, 4, 2, 0, 0], "by_block_semana": [3, 1, 3, 1, 3, 1, 0, 0], "by_block_finde": [0, 0, 0, 0, 1, 1, 0, 0]}, {"name": "Las Vegas", "lat": 3.3786508, "lon": -76.5415978, "total": 13, "by_block": [4, 3, 4, 1, 0, 0, 1, 0], "by_block_semana": [4, 1, 4, 1, 0, 0, 1, 0], "by_block_finde": [0, 2, 0, 0, 0, 0, 0, 0]}, {"name": "Lleras Restrepo", "lat": 3.4418173, "lon": -76.4895637, "total": 13, "by_block": [7, 4, 1, 0, 1, 0, 0, 0], "by_block_semana": [7, 3, 0, 0, 1, 0, 0, 0], "by_block_finde": [0, 1, 1, 0, 0, 0, 0, 0]}, {"name": "Normandia Sebastian de Belalcazar", "lat": 3.455062, "lon": -76.5416701, "total": 11, "by_block": [4, 3, 1, 3, 0, 0, 0, 0], "by_block_semana": [3, 3, 1, 2, 0, 0, 0, 0], "by_block_finde": [1, 0, 0, 1, 0, 0, 0, 0]}, {"name": "Acopi", "lat": 3.4974589, "lon": -76.5083562, "total": 11, "by_block": [5, 2, 3, 1, 0, 0, 0, 0], "by_block_semana": [4, 2, 2, 0, 0, 0, 0, 0], "by_block_finde": [1, 0, 1, 1, 0, 0, 0, 0]}, {"name": "El Sindicato", "lat": 3.4352688, "lon": -76.5473781, "total": 10, "by_block": [1, 1, 1, 1, 3, 3, 0, 0], "by_block_semana": [1, 0, 1, 1, 1, 3, 0, 0], "by_block_finde": [0, 1, 0, 0, 2, 0, 0, 0]}, {"name": "Granada", "lat": 3.4554084, "lon": -76.5365399, "total": 9, "by_block": [2, 1, 1, 3, 1, 1, 0, 0], "by_block_semana": [2, 1, 1, 3, 0, 0, 0, 0], "by_block_finde": [0, 0, 0, 0, 1, 1, 0, 0]}, {"name": "Pampa Linda", "lat": 3.4051589, "lon": -76.5481006, "total": 9, "by_block": [1, 3, 3, 0, 2, 0, 0, 0], "by_block_semana": [1, 3, 2, 0, 2, 0, 0, 0], "by_block_finde": [0, 0, 1, 0, 0, 0, 0, 0]}], "total_all": 1172, "total_geocoded": 169}}, "block_labels": ["06:00\u201309:00", "09:00\u201312:00", "12:00\u201315:00", "15:00\u201318:00", "18:00\u201321:00", "21:00\u201300:00", "00:00\u201303:00", "03:00\u201306:00"]};
+  const CITY_LABELS = { BOGOTA: 'Bogotá', MEDELLIN: 'Medellín', CALI: 'Cali' };
+  const BLOCKS = DEMAND.block_labels;
+  const demandState = { visible: true, city: 'BOGOTA', day: 'todos', block: -1 };
+
+  map.createPane('demand');
+  map.getPane('demand').style.zIndex = 450; // por encima de los polígonos de isochrone
+  const demandLayer = L.layerGroup().addTo(map);
+
+  function zoneValue(p) {
+    const arr = demandState.day === 'semana' ? p.by_block_semana
+              : demandState.day === 'finde'  ? p.by_block_finde
+              : p.by_block;
+    return demandState.block === -1 ? arr.reduce((a, b) => a + b, 0) : arr[demandState.block];
+  }
+
+  function heatColor(t) {
+    const stops = [[0, [255,176,0,0.55]], [0.5, [241,90,43,0.75]], [1, [0,29,61,0.9]]];
+    let i = 0; while (i < stops.length - 2 && t > stops[i + 1][0]) i++;
+    const [p0, c0] = stops[i], [p1, c1] = stops[i + 1];
+    const f = Math.min(1, Math.max(0, (t - p0) / (p1 - p0)));
+    const c = c0.map((v, k) => v + (c1[k] - v) * f);
+    return `rgba(${Math.round(c[0])},${Math.round(c[1])},${Math.round(c[2])},${c[3].toFixed(2)})`;
+  }
+
+  // --- Punto dentro de polígono (GeoJSON Polygon / MultiPolygon, con huecos) ---
+  function collectPolygons(g, out = []) {
+    if (!g) return out;
+    if (g.type === 'FeatureCollection') g.features.forEach(f => collectPolygons(f, out));
+    else if (g.type === 'Feature') collectPolygons(g.geometry, out);
+    else if (g.type === 'GeometryCollection') g.geometries.forEach(x => collectPolygons(x, out));
+    else if (g.type === 'Polygon') out.push(g.coordinates);
+    else if (g.type === 'MultiPolygon') g.coordinates.forEach(c => out.push(c));
+    return out;
+  }
+  function inRing(lon, lat, ring) {
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if (((yi > lat) !== (yj > lat)) && (lon < (xj - xi) * (lat - yi) / (yj - yi) + xi)) inside = !inside;
+    }
+    return inside;
+  }
+  function inPolygon(lon, lat, rings) {
+    if (!inRing(lon, lat, rings[0])) return false;
+    for (let k = 1; k < rings.length; k++) if (inRing(lon, lat, rings[k])) return false;
+    return true;
+  }
+  function coveringBases(p) {
+    return bases.filter(b => b.geojson && collectPolygons(b.geojson).some(r => inPolygon(p.lon, p.lat, r)));
+  }
+
+  function filterLabel() {
+    const d = { todos: 'toda la semana', semana: 'entre semana (L–V)', finde: 'fin de semana (S–D)' }[demandState.day];
+    const blk = demandState.block === -1 ? 'todas las franjas' : BLOCKS[demandState.block];
+    return `${d}, ${blk}`;
+  }
+
+  function renderDemand() {
+    demandLayer.clearLayers();
+    const cd = DEMAND.cities[demandState.city];
+    const zones = cd.points.map(p => ({ p, v: zoneValue(p) })).filter(z => z.v > 0);
+    const maxV = Math.max(1, ...zones.map(z => z.v));
+    const hasIso = bases.some(b => b.geojson);
+
+    let total = 0, covered = 0;
+    zones.forEach(z => {
+      z.cov = hasIso ? coveringBases(z.p) : [];
+      total += z.v;
+      if (z.cov.length) covered += z.v;
+    });
+
+    if (demandState.visible) {
+      zones.slice().sort((a, b) => b.v - a.v).reverse().forEach(z => { // grandes abajo, chicas arriba
+        const t = z.v / maxV;
+        const uncovered = hasIso && !z.cov.length;
+        const m = L.circleMarker([z.p.lat, z.p.lon], {
+          pane: 'demand',
+          radius: 6 + Math.sqrt(t) * 24,
+          fillColor: heatColor(t), fillOpacity: 1,
+          color: uncovered ? '#c0392b' : '#ffffff',
+          weight: uncovered ? 2.5 : 1.5,
+          dashArray: uncovered ? '4 3' : null
+        });
+        const covTxt = !hasIso ? '' : (z.cov.length ? `<br>✅ Cubierta por: ${z.cov.map(b => b.name).join(', ')}` : '<br>⚠️ Fuera de los isochrones generados');
+        m.bindTooltip(`<b>${z.p.name}</b><br>${z.v} servicios · ${filterLabel()}${covTxt}`, { direction: 'top' });
+        z.marker = m;
+        demandLayer.addLayer(m);
+      });
+    }
+
+    // Caja de cobertura
+    const box = document.getElementById('coverageBox');
+    if (!total) {
+      box.innerHTML = 'No hay servicios ubicados para este filtro.';
+    } else if (!hasIso) {
+      box.innerHTML = `<div class="big">${total}</div>servicios ubicados en ${CITY_LABELS[demandState.city]} · ${filterLabel()}.<br><span style="color:var(--text-muted)">Genera isochrones para ver qué parte de esta demanda cubren tus bases.</span>`;
+    } else {
+      const pct = Math.round(covered / total * 100);
+      const cls = pct >= 90 ? 'good' : (pct < 70 ? 'bad' : '');
+      box.innerHTML = `<div class="big ${cls}">${pct}%</div>de la demanda (${covered} de ${total} servicios) cae dentro de los isochrones activos · ${filterLabel()}.`;
+    }
+
+    // Top zonas
+    const list = document.getElementById('zoneList');
+    list.innerHTML = '';
+    zones.slice().sort((a, b) => b.v - a.v).slice(0, 8).forEach(z => {
+      const li = document.createElement('li');
+      const flag = !hasIso ? '' : (z.cov.length ? '✅' : '⚠️');
+      li.innerHTML = `<span class="zflag">${flag}</span><span class="zname">${z.p.name}</span><span class="zcnt">${z.v}</span>`;
+      li.addEventListener('click', () => {
+        map.flyTo([z.p.lat, z.p.lon], 13, { duration: 0.6 });
+        if (z.marker) setTimeout(() => z.marker.openTooltip(), 650);
+      });
+      list.appendChild(li);
+    });
+
+    const covPct = Math.round(cd.total_geocoded / cd.total_all * 100);
+    document.getElementById('demandNote').innerHTML =
+      `Cada burbuja es el centroide de la localidad/comuna, no el punto exacto del servicio. Solo el ${covPct}% de los servicios de ${CITY_LABELS[demandState.city]} (${cd.total_geocoded} de ${cd.total_all}) traía una zona identificable en la dirección. Fuente: histórico Cube abr–sep 2026, sin towExtraction.`;
+  }
+
+  function fitCity() {
+    const pts = DEMAND.cities[demandState.city].points.map(p => [p.lat, p.lon]);
+    map.fitBounds(L.latLngBounds(pts), { padding: [40, 40] });
+  }
+
+  function renderPills(elId, items, isActive, onPick, extraClass = '') {
+    const el = document.getElementById(elId);
+    el.innerHTML = '';
+    items.forEach(([val, label]) => {
+      const b = document.createElement('button');
+      b.className = 'pill ' + extraClass + (isActive(val) ? ' active' : '');
+      b.textContent = label;
+      b.addEventListener('click', () => { onPick(val); renderAllPills(); renderDemand(); });
+      el.appendChild(b);
+    });
+  }
+
+  function renderAllPills() {
+    renderPills('cityPills', Object.entries(CITY_LABELS), v => v === demandState.city,
+      v => { if (v !== demandState.city) { demandState.city = v; fitCity(); } });
+    renderPills('dayPills', [['todos', 'Toda la semana'], ['semana', 'L–V'], ['finde', 'S–D']],
+      v => v === demandState.day, v => { demandState.day = v; });
+    const blockItems = [[-1, 'Todas'], ...BLOCKS.map((l, i) => [i, l.replace(/:00/g, '')])];
+    renderPills('blockPills', blockItems, v => v === demandState.block, v => { demandState.block = v; }, 'small');
+  }
+
+  document.getElementById('demandToggle').addEventListener('click', (e) => {
+    demandState.visible = !demandState.visible;
+    e.target.classList.toggle('on', demandState.visible);
+    e.target.textContent = demandState.visible ? 'Visible' : 'Oculta';
+    renderDemand();
+  });
+
+  renderAllPills();
+  renderDemand();
+</script>
+
+</body>
+</html>
