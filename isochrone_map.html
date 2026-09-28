@@ -183,7 +183,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   // ---- Configuración: pon aquí la URL de tu webhook por defecto ----
-  const DEFAULT_WEBHOOK_URL = "https://TU-N8N.com/webhook/isochrone";
+  const DEFAULT_WEBHOOK_URL = "https://connect-road-co-iagb.app.n8n.cloud/webhook/isochrone";
 
   const map = L.map('map', {
     zoomSnap: 0.25,             // permite niveles intermedios (11.25, 11.5...)
@@ -202,7 +202,7 @@
   const webhookUrlInput = document.getElementById('webhookUrl');
   const baseListEl = document.getElementById('baseList');
 
-  webhookUrlInput.value = localStorage.getItem('isochrone_webhook_url') || DEFAULT_WEBHOOK_URL;
+  webhookUrlInput.value = localStorage.getItem('isochrone_webhook_url_v2') || DEFAULT_WEBHOOK_URL;
 
   document.getElementById('toggleConfig').addEventListener('click', () => {
     const f = document.getElementById('webhookField');
@@ -377,7 +377,7 @@
       document.getElementById('webhookField').style.display = 'block';
       return null;
     }
-    localStorage.setItem('isochrone_webhook_url', url);
+    localStorage.setItem('isochrone_webhook_url_v2', url);
     return url;
   }
 
