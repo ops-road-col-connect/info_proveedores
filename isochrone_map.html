@@ -108,6 +108,29 @@
   .coords-toggle { font-size: 11px; color: var(--text-muted); cursor: pointer; margin-top: 8px; text-decoration: underline; }
   .empty-cranes { font-size: 12px; color: var(--text-muted); }
   .drag-hint { font-size: 11.5px; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
+  .sim-clock { display: flex; align-items: baseline; justify-content: space-between; margin: 4px 0 10px; }
+  .sim-clock .time { font-size: 28px; font-weight: 800; color: var(--navy); font-variant-numeric: tabular-nums; letter-spacing: .5px; }
+  .sim-clock .count { font-size: 12px; color: var(--text-muted); text-align: right; }
+  .sim-bar { height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; margin-bottom: 12px; }
+  .sim-bar > div { height: 100%; width: 0; background: var(--orange); }
+  .sim-controls { display: flex; gap: 6px; margin-bottom: 10px; }
+  .sim-controls .btn { margin: 0; padding: 9px; font-size: 13px; }
+  .sim-controls .btn.secondary { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); flex: 0 0 auto; width: auto; padding: 9px 12px; }
+  .sim-card {
+    margin-top: 10px; padding: 12px; border-radius: 10px; border: 2px solid var(--orange); background: #fff7f3; font-size: 12.5px; line-height: 1.5;
+  }
+  .sim-card h4 { margin: 0 0 4px; font-size: 14px; color: var(--navy); }
+  .sim-card .ok { color: #2e7d32; font-weight: 700; }
+  .sim-card .bad { color: #c0392b; font-weight: 700; }
+  .sim-card .btn { margin-top: 10px; }
+  .sim-card.summary { border-color: var(--navy); background: var(--bg); }
+  .sim-pin { background: none; border: none; }
+  .sim-pin .dot {
+    width: 22px; height: 22px; border-radius: 50%; background: #c0392b; border: 3px solid white;
+    box-shadow: 0 0 0 0 rgba(192,57,43,.6); animation: simPing 1.2s ease-out infinite;
+  }
+  @keyframes simPing { 100% { box-shadow: 0 0 0 18px rgba(192,57,43,0); } }
+  @media (prefers-reduced-motion: reduce) { .sim-pin .dot { animation: none; } }
   .config-toggle { font-size: 11px; color: var(--text-muted); cursor: pointer; margin-top: 16px; text-decoration: underline; }
 </style>
 </head>
@@ -165,6 +188,33 @@
     <ul class="zone-list" id="zoneList"></ul>
 
     <div class="demand-note" id="demandNote"></div>
+
+    <div class="section-title">
+      <span>Simulación · lunes promedio</span>
+    </div>
+    <div class="sim-clock">
+      <div class="time" id="simTime">00:00</div>
+      <div class="count" id="simCount"></div>
+    </div>
+    <div class="sim-bar"><div id="simProgress"></div></div>
+    <div class="sim-controls">
+      <button class="btn" id="simPlay">▶ Iniciar</button>
+      <button class="btn secondary" id="simReset" title="Nuevo lunes (otra muestra aleatoria)">⟲ Nuevo lunes</button>
+    </div>
+    <div class="field">
+      <label>Velocidad (1 hora simulada =)</label>
+      <div class="pills" id="simSpeedPills"></div>
+    </div>
+    <div class="field">
+      <label>Empezar a las</label>
+      <div class="pills" id="simStartPills"></div>
+    </div>
+    <div class="field">
+      <label>Al llegar un servicio</label>
+      <div class="pills" id="simStopPills"></div>
+    </div>
+    <div id="simCard"></div>
+    <div class="demand-note" id="simNote"></div>
 
     <div class="legend">
       El polígono muestra el área que la grúa puede alcanzar en el tiempo indicado, según tráfico en vivo (TRAFFIC_AWARE). Recuerda: el resultado cambia según la hora real en la que generes el mapa.
@@ -590,7 +640,7 @@
 
   function renderAllPills() {
     renderPills('cityPills', Object.entries(CITY_LABELS), v => v === demandState.city,
-      v => { if (v !== demandState.city) { demandState.city = v; fitCity(); } });
+      v => { if (v !== demandState.city) { demandState.city = v; fitCity(); simReset(); } });
     renderPills('dayPills', [['todos', 'Toda la semana'], ['semana', 'L–V'], ['finde', 'S–D']],
       v => v === demandState.day, v => { demandState.day = v; });
     const nowBlock = currentBlock();
@@ -607,6 +657,221 @@
 
   renderAllPills();
   renderDemand();
+
+  // =====================================================================
+  //  SIMULACIÓN: LUNES PROMEDIO
+  //  Volumen por hora: servicios de lunes del histórico (3 abr – 11 sep 2026, 23 lunes, sin towExtraction)
+  //  dividido entre 23. Cada hora se sortea un número de servicios (Poisson) con ese promedio.
+  //  Ubicación: se sortea la zona según la demanda entre semana de esa franja, y el punto se dispersa
+  //  alrededor del centroide de la zona (no es la dirección real).
+  // =====================================================================
+  const MONDAY_AVG = {"BOGOTA": [0.3043, 0.0435, 0.0, 0.0, 0.1304, 0.3913, 0.6522, 1.4348, 1.913, 2.087, 1.5652, 1.7391, 2.4348, 1.2609, 2.1739, 1.6522, 1.2609, 1.4348, 1.4348, 0.6957, 0.9565, 0.7391, 0.3478, 0.6087], "CALI": [0.087, 0.0, 0.087, 0.0, 0.0, 0.0, 0.3478, 0.3913, 0.9565, 0.8696, 1.0435, 1.0435, 0.6522, 0.6957, 0.4348, 0.3913, 0.7391, 0.6087, 0.2609, 0.4783, 0.1304, 0.1304, 0.087, 0.1304], "MEDELLIN": [0.1304, 0.0, 0.0, 0.0435, 0.1304, 0.0435, 0.087, 0.3043, 0.6522, 0.5652, 0.4783, 0.913, 0.4783, 0.2609, 0.3043, 0.3478, 0.3478, 0.6522, 0.2609, 0.3478, 0.3043, 0.3043, 0.1304, 0.087]};
+  const SPEEDS = [[4000, '4 s'], [12000, '12 s'], [30000, '30 s']];
+  const sim = {
+    running: false, paused: false, done: false, minutes: 0, startMin: 0,
+    msPerHour: 12000, stopOnEach: true, events: [], next: 0, seed: Date.now() % 100000,
+    pins: L.layerGroup().addTo(map), current: null, lastTs: null, log: []
+  };
+  map.createPane('simPane');
+  map.getPane('simPane').style.zIndex = 460;
+
+  function rng(seed) { // mulberry32: reproducible por "lunes"
+    let a = seed >>> 0;
+    return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  }
+  function poisson(lambda, r) {
+    const L0 = Math.exp(-lambda); let k = 0, p = 1;
+    do { k++; p *= r(); } while (p > L0);
+    return k - 1;
+  }
+  function gauss(r) { return Math.sqrt(-2 * Math.log(r() || 1e-9)) * Math.cos(2 * Math.PI * r()); }
+  const hourToBlock = h => Math.floor(((h - 6 + 24) % 24) / 3);
+  const fmt = m => { const h = Math.floor(m / 60) % 24, mm = Math.floor(m % 60); return `${String(h).padStart(2,'0')}:${String(mm).padStart(2,'0')}`; };
+
+  function buildMonday() {
+    const r = rng(sim.seed);
+    const city = demandState.city;
+    const pts = DEMAND.cities[city].points;
+    const lam = MONDAY_AVG[city];
+    const evs = [];
+    for (let h = 0; h < 24; h++) {
+      const n = poisson(lam[h], r);
+      const blk = hourToBlock(h);
+      let weights = pts.map(p => p.by_block_semana[blk]);
+      if (weights.reduce((a, b) => a + b, 0) === 0) weights = pts.map(p => p.by_block[blk]);
+      if (weights.reduce((a, b) => a + b, 0) === 0) weights = pts.map(p => p.total);
+      const W = weights.reduce((a, b) => a + b, 0);
+      for (let i = 0; i < n; i++) {
+        let x = r() * W, z = 0;
+        while (x > weights[z] && z < pts.length - 1) { x -= weights[z]; z++; }
+        const p = pts[z];
+        const dLat = Math.max(-2.2, Math.min(2.2, gauss(r))) * 0.0075;   // ~800 m de dispersión
+        const dLon = Math.max(-2.2, Math.min(2.2, gauss(r))) * 0.0075;
+        evs.push({ t: h * 60 + r() * 60, zone: p.name, lat: p.lat + dLat, lon: p.lon + dLon });
+      }
+    }
+    evs.sort((a, b) => a.t - b.t);
+    evs.forEach((e, i) => e.n = i + 1);
+    return evs;
+  }
+
+  function expectedTotal() { return MONDAY_AVG[demandState.city].reduce((a, b) => a + b, 0); }
+
+  function simReset(newSeed) {
+    if (newSeed) sim.seed = Math.floor(Math.random() * 1e9);
+    sim.running = false; sim.paused = false; sim.done = false;
+    sim.minutes = sim.startMin; sim.lastTs = null; sim.log = [];
+    sim.pins.clearLayers();
+    if (sim.current) { map.removeLayer(sim.current); sim.current = null; }
+    sim.events = buildMonday();
+    sim.next = sim.events.findIndex(e => e.t >= sim.startMin);
+    if (sim.next === -1) sim.next = sim.events.length;
+    document.getElementById('simCard').innerHTML = '';
+    updateSimUI();
+  }
+
+  function updateSimUI() {
+    document.getElementById('simTime').textContent = sim.done ? '24:00' : fmt(sim.minutes);
+    const shown = sim.log.length;
+    const dayTotal = sim.events.filter(e => e.t >= sim.startMin).length;
+    document.getElementById('simCount').innerHTML =
+      `<b>${shown}</b> servicio${shown === 1 ? '' : 's'} hasta ahora<br>este lunes: ${dayTotal} · promedio ≈ ${Math.round(expectedTotal())}`;
+    document.getElementById('simProgress').style.width = (Math.min(1440, sim.minutes) / 1440 * 100) + '%';
+    const pb = document.getElementById('simPlay');
+    pb.textContent = sim.done ? '▶ Repetir' : sim.paused ? '▶ Continuar' : sim.running ? '⏸ Pausar' : (sim.minutes > sim.startMin ? '▶ Continuar' : '▶ Iniciar');
+    document.getElementById('simNote').innerHTML =
+      `Volumen por hora: promedio de los 23 lunes del histórico de ${CITY_LABELS[demandState.city]} (abr–sep 2026, sin towExtraction), con variación aleatoria. El punto se ubica alrededor del centroide de la zona según la demanda entre semana de la franja: es aproximado, no una dirección real.`;
+  }
+
+  function nearestCrane(lat, lon) {
+    let best = null;
+    bases.filter(b => b.active).forEach(b => {
+      const d = map.distance([lat, lon], [b.lat, b.lon]);
+      if (!best || d < best.d) best = { b, d };
+    });
+    return best;
+  }
+
+  function showService(e) {
+    if (sim.current) { map.removeLayer(sim.current); sim.current = null; }
+    // pin permanente, pequeño, numerado
+    L.circleMarker([e.lat, e.lon], { pane: 'simPane', radius: 6, color: 'white', weight: 2, fillColor: '#c0392b', fillOpacity: 0.85 })
+      .bindTooltip(`#${e.n} · ${fmt(e.t)} · ${e.zone}`, { direction: 'top' }).addTo(sim.pins);
+    // pin destacado del servicio actual
+    sim.current = L.marker([e.lat, e.lon], {
+      icon: L.divIcon({ className: 'sim-pin', html: '<div class="dot"></div>', iconSize: [22, 22], iconAnchor: [11, 11] }),
+      zIndexOffset: 1000, interactive: false
+    }).addTo(map);
+    if (!map.getBounds().pad(-0.15).contains([e.lat, e.lon])) map.panTo([e.lat, e.lon], { animate: true, duration: 0.5 });
+
+    const cov = coveringBases(e);
+    const hasIso = bases.some(b => b.geojson);
+    const near = nearestCrane(e.lat, e.lon);
+    e.covered = cov.length > 0; e.hasIso = hasIso; e.near = near ? near.b.name : null;
+    sim.log.push(e);
+
+    let lines = '';
+    if (near) {
+      const km = near.d / 1000;
+      lines += `Grúa más cercana: <b>${near.b.name}</b> · ${km.toFixed(1).replace('.', ',')} km en línea recta (≈ ${Math.round(km / 15 * 60)} min a 15 km/h)<br>`;
+    } else {
+      lines += '<span style="color:var(--text-muted)">Agrega grúas para ver cuál quedaría más cerca.</span><br>';
+    }
+    if (hasIso) {
+      lines += cov.length
+        ? `<span class="ok">✅ Dentro del isochrone de ${cov.map(b => b.name).join(', ')}</span>`
+        : `<span class="bad">⚠️ Fuera de todos los isochrones</span>`;
+    }
+    document.getElementById('simCard').innerHTML = `
+      <div class="sim-card">
+        <h4>🚨 Servicio #${e.n} · ${fmt(e.t)}</h4>
+        Zona: <b>${e.zone}</b> (aprox.)<br>
+        ${lines}
+        ${sim.stopOnEach ? '<button class="btn" id="simContinue">▶ Continuar <span style="opacity:.7;font-weight:400">(espacio)</span></button>' : ''}
+      </div>`;
+    const c = document.getElementById('simContinue');
+    if (c) c.addEventListener('click', simPlayPause);
+  }
+
+  function showSummary() {
+    if (sim.current) { map.removeLayer(sim.current); sim.current = null; }
+    const n = sim.log.length;
+    const withIso = sim.log.filter(e => e.hasIso);
+    const cov = withIso.filter(e => e.covered).length;
+    const byCrane = {};
+    sim.log.forEach(e => { if (e.near) byCrane[e.near] = (byCrane[e.near] || 0) + 1; });
+    const craneTxt = Object.keys(byCrane).length
+      ? '<br>Grúa más cercana: ' + Object.entries(byCrane).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join(' · ')
+      : '';
+    const covTxt = withIso.length ? `<br>Dentro de algún isochrone: <b>${cov} de ${withIso.length}</b> (${Math.round(cov / withIso.length * 100)}%)` : '';
+    document.getElementById('simCard').innerHTML = `
+      <div class="sim-card summary">
+        <h4>🏁 Fin del lunes</h4>
+        <b>${n}</b> servicios simulados${covTxt}${craneTxt}
+      </div>`;
+  }
+
+  function tick(ts) {
+    if (!sim.running || sim.paused) return;
+    if (sim.lastTs == null) sim.lastTs = ts;
+    const dt = Math.min(200, ts - sim.lastTs); sim.lastTs = ts;
+    const target = sim.minutes + dt * 60 / sim.msPerHour;
+    const e = sim.events[sim.next];
+    if (e && e.t <= target) {
+      sim.minutes = e.t; sim.next++;
+      showService(e);
+      if (sim.stopOnEach) { sim.paused = true; sim.lastTs = null; updateSimUI(); return; }
+    } else {
+      sim.minutes = target;
+    }
+    if (sim.minutes >= 1440) {
+      sim.minutes = 1440; sim.running = false; sim.done = true;
+      updateSimUI(); showSummary(); return;
+    }
+    updateSimUI();
+    requestAnimationFrame(tick);
+  }
+
+  function simPlayPause() {
+    if (sim.done) { simReset(false); }
+    if (sim.running && !sim.paused) { sim.paused = true; sim.lastTs = null; updateSimUI(); return; }
+    if (sim.paused && sim.current && sim.stopOnEach) { map.removeLayer(sim.current); sim.current = null; }
+    sim.running = true; sim.paused = false; sim.lastTs = null;
+    updateSimUI();
+    requestAnimationFrame(tick);
+  }
+
+  function renderSimPills() {
+    const mk = (id, items, isOn, pick) => {
+      const el = document.getElementById(id); el.innerHTML = '';
+      items.forEach(([v, label]) => {
+        const b = document.createElement('button');
+        b.className = 'pill small' + (isOn(v) ? ' active' : '');
+        b.textContent = label;
+        b.addEventListener('click', () => { pick(v); renderSimPills(); });
+        el.appendChild(b);
+      });
+    };
+    mk('simSpeedPills', SPEEDS, v => v === sim.msPerHour, v => { sim.msPerHour = v; });
+    mk('simStartPills', [[0, '00:00'], [360, '06:00'], [-1, 'Hora actual']],
+      v => v === -1 ? sim.startMin === nowMinutes() && sim.startFromNow : (sim.startMin === v && !sim.startFromNow),
+      v => { sim.startFromNow = v === -1; sim.startMin = v === -1 ? nowMinutes() : v; simReset(false); });
+    mk('simStopPills', [[true, 'Detener y mostrar'], [false, 'Seguir corriendo']],
+      v => v === sim.stopOnEach, v => { sim.stopOnEach = v; });
+  }
+  function nowMinutes() { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+
+  document.getElementById('simPlay').addEventListener('click', simPlayPause);
+  document.getElementById('simReset').addEventListener('click', () => simReset(true));
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && document.activeElement.tagName !== 'INPUT' && sim.running && sim.paused) {
+      e.preventDefault(); simPlayPause();
+    }
+  });
+
+  renderSimPills();
+  simReset(false);
 </script>
 
 </body>
