@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Análisis de Barrido de Proveedores — Bogotá, Cali y Medellín</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 <style>
   :root{
     --connect-navy:#0B2545;
@@ -449,6 +450,13 @@ const PALETTE = {
 };
 
 // Estado mutable entre renders
+// Plugin de etiquetas de valor: registrado globalmente pero apagado por defecto,
+// para no saturar los demás gráficos — solo se activa explícitamente donde se necesita.
+if(typeof ChartDataLabels !== 'undefined'){
+  Chart.register(ChartDataLabels);
+  Chart.defaults.set('plugins.datalabels', { display:false });
+}
+
 let DATA = null;      // lo que se está mostrando ahora mismo (puede ser el original o una versión filtrada)
 let RAW_DATA = null;  // el JSON original tal cual llegó de n8n — nunca se muta, sirve para "Quitar filtro"
 let charts = { ciudadBar: null, ciudadPct: null, semanal: null, semanalPrio: null };
@@ -976,6 +984,11 @@ function renderBrandeadasView(){
             label: s.nombre,
             data: s.totales,
             backgroundColor: PALETA_GRUAS[i % PALETA_GRUAS.length],
+            datalabels:{
+              display:(ctx)=> ctx.dataset.data[ctx.dataIndex] > 0, // no mostrar el "0" sobre barras vacías
+              anchor:'end', align:'top', offset:2,
+              color:getTextColor(), font:{ size:11, weight:'600' },
+            }
           })),
           {
             type:'line',
@@ -986,6 +999,7 @@ function renderBrandeadasView(){
             borderWidth:2,
             pointRadius:0,
             fill:false,
+            datalabels:{ display:false },
           }
         ]
       },
