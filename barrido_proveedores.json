@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T03:37:03.800Z",
+  "updatedAt": "2026-10-02T03:46:13.115Z",
   "total_po": 671,
   "city": {
     "BOGOTÁ, D.C.": 406,
@@ -4756,5 +4756,420 @@
         "2_19": 1
       }
     }
-  }
+  },
+  "debug_raw_servicios": [
+    {
+      "row_number": 2,
+      "PONumber": 5517139,
+      "CiudadInicio": "VILLAPINZÓN",
+      "Programado": "No",
+      "FechaViajeLLegada": "9/4/2026 20:08:21",
+      "FechaViajeAceptado": "9/4/2026 17:13:22",
+      "DireccionInicialSituacion": "Peaje Albarracín, Villapinzón, Cundinamarca, Colombia",
+      "TipoServicio": "towBreakdown",
+      "FechaHoraCreacion": "9/4/2026 17:10:43",
+      "Proveedor": "GRUAS TECNIYAMAR -VENTAQUEMADA"
+    },
+    {
+      "row_number": 3,
+      "PONumber": 5515488,
+      "CiudadInicio": "CÚCUTA",
+      "Programado": "No",
+      "FechaViajeLLegada": "9/4/2026 10:03:37",
+      "FechaViajeAceptado": "9/4/2026 9:21:08",
+      "DireccionInicialSituacion": "Calle 10 & Diagonal Santander, Cl. 10 & Dg. Santander, Cúcuta, Norte de Santander, Colombia",
+      "TipoServicio": "towBreakdown",
+      "FechaHoraCreacion": "9/4/2026 9:13:40",
+      "Proveedor": "SSP ASISTENCIAS S.A.S."
+    },
+    {
+      "row_number": 4,
+      "PONumber": 5517787,
+      "CiudadInicio": "BOGOTÁ, D.C.",
+      "Programado": "Si",
+      "FechaViajeLLegada": "9/5/2026 6:12:16",
+      "FechaViajeAceptado": "9/4/2026 20:38:28",
+      "DireccionInicialSituacion": "Cl. 127 Bis #88-10, Cl. 127 Bis #88-10, Bogotá, Colombia",
+      "TipoServicio": "towBreakdown",
+      "FechaHoraCreacion": "9/4/2026 20:37:23",
+      "Proveedor": "MSB MULTY SERVICIOS BOGOTA S A S"
+    },
+    {
+      "row_number": 5,
+      "PONumber": 5516602,
+      "CiudadInicio": "BOGOTÁ, D.C.",
+      "Programado": "No",
+      "FechaViajeLLegada": "9/4/2026 17:39:09",
+      "FechaViajeAceptado": "9/4/2026 15:17:02",
+      "DireccionInicialSituacion": "Cra. 72D #22A-51, Cra. 72D #22A-51, Fontibón, Bogotá, Cundinamarca, Colombia",
+      "TipoServicio": "towBreakdown",
+      "FechaHoraCreacion": "9/4/2026 14:34:51",
+      "Proveedor": "MSB MULTY SERVICIOS BOGOTA S A S"
+    },
+    {
+      "row_number": 6,
+      "PONumber": 5517745,
+      "CiudadInicio": "NUNCHÍA",
+      "Programado": "Si",
+      "FechaViajeLLegada": "9/4/2026 22:05:13",
+      "FechaViajeAceptado": "9/4/2026 20:35:48",
+      "DireccionInicialSituacion": "La Redencion, La Redencion, Nunchía, Casanare, Colombia",
+      "TipoServicio": "towBreakdown",
+      "FechaHoraCreacion": "9/4/2026 20:21:50",
+      "Proveedor": "GRUAS DEL CASANARE SAS"
+    }
+  ],
+  "debug_anomalias_fechas": [
+    {
+      "PONumber": "5522260",
+      "ProveedorFinalNorm": "QUINTERO POVEDA ASISTENCIA S.A.S.",
+      "FechaCreacion": "2026-06-09T22:31:07.000Z",
+      "FechaViajeAceptado": "2026-06-09T22:44:06.000Z",
+      "FechaViajeLLegada": "2026-07-09T07:13:23.000Z",
+      "min_desde_creacion": 42282.3,
+      "min_desde_aceptado": 42269.3
+    },
+    {
+      "PONumber": "5538158",
+      "ProveedorFinalNorm": "ATLAS ASISTENCIA VIAL S.A.S",
+      "FechaCreacion": "2026-11-09T23:24:59.000Z",
+      "FechaViajeAceptado": "2026-11-09T23:26:04.000Z",
+      "FechaViajeLLegada": "2026-12-09T00:15:11.000Z",
+      "min_desde_creacion": 41810.2,
+      "min_desde_aceptado": 41809.1
+    },
+    {
+      "PONumber": "5560119",
+      "ProveedorFinalNorm": "AUTOCARGA PRO S.A.S BOGOTA",
+      "FechaCreacion": "2027-07-09T23:28:14.000Z",
+      "FechaViajeAceptado": "2027-07-09T23:29:22.000Z",
+      "FechaViajeLLegada": "2027-08-09T08:23:13.000Z",
+      "min_desde_creacion": 43735,
+      "min_desde_aceptado": 43733.9
+    },
+    {
+      "PONumber": "5547852",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T16:44:06.000Z",
+      "FechaViajeAceptado": "2027-04-09T17:59:48.000Z",
+      "FechaViajeLLegada": "2027-04-09T17:59:52.000Z",
+      "min_desde_creacion": 44715.8,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5547894",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T16:54:55.000Z",
+      "FechaViajeAceptado": "2027-04-09T17:51:54.000Z",
+      "FechaViajeLLegada": "2027-04-09T17:52:00.000Z",
+      "min_desde_creacion": 44697.1,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5547863",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T16:46:16.000Z",
+      "FechaViajeAceptado": "2027-04-09T17:54:57.000Z",
+      "FechaViajeLLegada": "2027-04-09T17:55:03.000Z",
+      "min_desde_creacion": 44708.8,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5547955",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T17:20:25.000Z",
+      "FechaViajeAceptado": "2027-04-09T16:15:17.000Z",
+      "FechaViajeLLegada": "2027-04-09T16:15:23.000Z",
+      "min_desde_creacion": 44575,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5547962",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T17:22:46.000Z",
+      "FechaViajeAceptado": "2027-04-09T16:07:24.000Z",
+      "FechaViajeLLegada": "2027-04-09T16:07:29.000Z",
+      "min_desde_creacion": 44564.7,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5547972",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-03-09T17:26:54.000Z",
+      "FechaViajeAceptado": "2027-04-09T16:00:03.000Z",
+      "FechaViajeLLegada": "2027-04-09T16:00:22.000Z",
+      "min_desde_creacion": 44553.5,
+      "min_desde_aceptado": 0.3
+    },
+    {
+      "PONumber": "5546434",
+      "ProveedorFinalNorm": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA",
+      "FechaCreacion": "2027-03-09T09:38:09.000Z",
+      "FechaViajeAceptado": "2027-04-09T00:03:12.000Z",
+      "FechaViajeLLegada": "2027-04-09T00:03:34.000Z",
+      "min_desde_creacion": 44065.4,
+      "min_desde_aceptado": 0.4
+    },
+    {
+      "PONumber": "5557756",
+      "ProveedorFinalNorm": "AUTO GRUAS LA SEXTA 24 HORAS Y CIA LTDA",
+      "FechaCreacion": "2027-06-09T23:32:13.000Z",
+      "FechaViajeAceptado": "2027-06-09T23:50:53.000Z",
+      "FechaViajeLLegada": "2027-07-09T00:55:11.000Z",
+      "min_desde_creacion": 41843,
+      "min_desde_aceptado": 41824.3
+    },
+    {
+      "PONumber": "5551336",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-04-09T20:51:14.000Z",
+      "FechaViajeAceptado": "2027-05-09T09:48:43.000Z",
+      "FechaViajeLLegada": "2027-05-09T09:48:48.000Z",
+      "min_desde_creacion": 42537.6,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5510888",
+      "ProveedorFinalNorm": "SOLUCIONES SHADDAI JYL S.A.S",
+      "FechaCreacion": "2026-02-09T16:13:26.000Z",
+      "FechaViajeAceptado": "2026-02-09T16:14:06.000Z",
+      "FechaViajeLLegada": "2026-03-09T07:47:51.000Z",
+      "min_desde_creacion": 39814.4,
+      "min_desde_aceptado": 39813.8
+    },
+    {
+      "PONumber": "5510920",
+      "ProveedorFinalNorm": "SOLUCIONES SHADDAI JYL S.A.S",
+      "FechaCreacion": "2026-02-09T16:24:16.000Z",
+      "FechaViajeAceptado": "2026-02-09T16:24:24.000Z",
+      "FechaViajeLLegada": "2026-03-09T13:23:09.000Z",
+      "min_desde_creacion": 40138.9,
+      "min_desde_aceptado": 40138.8
+    },
+    {
+      "PONumber": "5510925",
+      "ProveedorFinalNorm": "SOLUCIONES SHADDAI JYL S.A.S",
+      "FechaCreacion": "2026-02-09T16:25:37.000Z",
+      "FechaViajeAceptado": "2026-02-09T16:26:34.000Z",
+      "FechaViajeLLegada": "2026-03-09T16:02:57.000Z",
+      "min_desde_creacion": 40297.3,
+      "min_desde_aceptado": 40296.4
+    },
+    {
+      "PONumber": "5510917",
+      "ProveedorFinalNorm": "SOLUCIONES SHADDAI JYL S.A.S",
+      "FechaCreacion": "2026-02-09T16:22:49.000Z",
+      "FechaViajeAceptado": "2026-02-09T16:24:05.000Z",
+      "FechaViajeLLegada": "2026-03-09T10:56:21.000Z",
+      "min_desde_creacion": 39993.5,
+      "min_desde_aceptado": 39992.3
+    },
+    {
+      "PONumber": "5560308",
+      "ProveedorFinalNorm": "GRUAS RYL - CARTAGENA",
+      "FechaCreacion": "2027-08-09T06:45:51.000Z",
+      "FechaViajeAceptado": "2027-11-09T02:16:04.000Z",
+      "FechaViajeLLegada": "2027-11-09T02:16:11.000Z",
+      "min_desde_creacion": 132210.3,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5527964",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T17:25:47.000Z",
+      "FechaViajeAceptado": "2026-09-09T04:38:29.000Z",
+      "FechaViajeLLegada": "2026-09-09T04:38:32.000Z",
+      "min_desde_creacion": 43872.8,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5528049",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T17:49:01.000Z",
+      "FechaViajeAceptado": "2026-09-09T05:02:48.000Z",
+      "FechaViajeLLegada": "2026-09-09T05:02:51.000Z",
+      "min_desde_creacion": 43873.8,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5528054",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T17:50:16.000Z",
+      "FechaViajeAceptado": "2026-09-09T05:09:41.000Z",
+      "FechaViajeLLegada": "2026-09-09T05:09:46.000Z",
+      "min_desde_creacion": 43879.5,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5527798",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T16:38:58.000Z",
+      "FechaViajeAceptado": "2026-09-09T03:50:16.000Z",
+      "FechaViajeLLegada": "2026-09-09T03:50:22.000Z",
+      "min_desde_creacion": 43871.4,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5528057",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T17:51:41.000Z",
+      "FechaViajeAceptado": "2026-09-09T04:54:34.000Z",
+      "FechaViajeLLegada": "2026-09-09T04:54:39.000Z",
+      "min_desde_creacion": 43863,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5528100",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T18:09:29.000Z",
+      "FechaViajeAceptado": "2026-09-09T05:12:53.000Z",
+      "FechaViajeLLegada": "2026-09-09T05:12:57.000Z",
+      "min_desde_creacion": 43863.5,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5528059",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2026-08-09T17:53:03.000Z",
+      "FechaViajeAceptado": "2026-09-09T05:10:55.000Z",
+      "FechaViajeLLegada": "2026-09-09T05:10:58.000Z",
+      "min_desde_creacion": 43877.9,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5551905",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-05-09T07:28:53.000Z",
+      "FechaViajeAceptado": "2027-11-09T02:24:15.000Z",
+      "FechaViajeLLegada": "2027-11-09T02:24:19.000Z",
+      "min_desde_creacion": 264655.4,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5554072",
+      "ProveedorFinalNorm": "GRUAS AL RESCATE S.A.S. - CALI",
+      "FechaCreacion": "2027-05-09T18:43:02.000Z",
+      "FechaViajeAceptado": "2027-07-09T11:51:20.000Z",
+      "FechaViajeLLegada": "2027-07-09T11:51:26.000Z",
+      "min_desde_creacion": 87428.4,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5574875",
+      "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
+      "FechaCreacion": "2027-12-09T23:20:57.000Z",
+      "FechaViajeAceptado": "2027-12-09T23:25:23.000Z",
+      "FechaViajeLLegada": "2028-01-09T00:03:47.000Z",
+      "min_desde_creacion": 43242.8,
+      "min_desde_aceptado": 43238.4
+    },
+    {
+      "PONumber": "5574577",
+      "ProveedorFinalNorm": "TRANSGROUP SAS",
+      "FechaCreacion": "2027-12-09T21:03:32.000Z",
+      "FechaViajeAceptado": "2027-12-09T23:37:55.000Z",
+      "FechaViajeLLegada": "2028-01-09T00:21:55.000Z",
+      "min_desde_creacion": 43398.4,
+      "min_desde_aceptado": 43244
+    },
+    {
+      "PONumber": "5574663",
+      "ProveedorFinalNorm": "YADIEL SAS",
+      "FechaCreacion": "2027-12-09T22:15:53.000Z",
+      "FechaViajeAceptado": "2027-12-09T22:39:01.000Z",
+      "FechaViajeLLegada": "2028-01-09T06:49:15.000Z",
+      "min_desde_creacion": 43713.4,
+      "min_desde_aceptado": 43690.2
+    },
+    {
+      "PONumber": "5579809",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2028-02-09T17:34:53.000Z",
+      "FechaViajeAceptado": "2028-02-09T19:43:17.000Z",
+      "FechaViajeLLegada": "2028-05-09T03:11:55.000Z",
+      "min_desde_creacion": 128737,
+      "min_desde_aceptado": 128608.6
+    },
+    {
+      "PONumber": "5580369",
+      "ProveedorFinalNorm": "YADIEL SAS",
+      "FechaCreacion": "2028-02-09T22:16:03.000Z",
+      "FechaViajeAceptado": "2028-02-09T22:21:45.000Z",
+      "FechaViajeLLegada": "2028-03-09T09:10:18.000Z",
+      "min_desde_creacion": 40974.3,
+      "min_desde_aceptado": 40968.6
+    },
+    {
+      "PONumber": "5568231",
+      "ProveedorFinalNorm": "TRANSGROUP SAS",
+      "FechaCreacion": "2027-10-09T19:36:59.000Z",
+      "FechaViajeAceptado": "2027-10-09T20:28:34.000Z",
+      "FechaViajeLLegada": "2027-11-09T03:04:16.000Z",
+      "min_desde_creacion": 43647.3,
+      "min_desde_aceptado": 43595.7
+    },
+    {
+      "PONumber": "5567761",
+      "ProveedorFinalNorm": "SOLUCIONES IDONEAS E INTEGRALES SAS",
+      "FechaCreacion": "2027-10-09T16:48:14.000Z",
+      "FechaViajeAceptado": "2027-10-09T16:58:17.000Z",
+      "FechaViajeLLegada": "2027-11-09T06:14:52.000Z",
+      "min_desde_creacion": 44006.6,
+      "min_desde_aceptado": 43996.6
+    },
+    {
+      "PONumber": "5562875",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2027-09-09T10:06:01.000Z",
+      "FechaViajeAceptado": null,
+      "FechaViajeLLegada": "2027-10-09T04:54:56.000Z",
+      "min_desde_creacion": 42888.9,
+      "min_desde_aceptado": null
+    },
+    {
+      "PONumber": "5565422",
+      "ProveedorFinalNorm": "ASISTENCIA VIAL SANTANA SAS",
+      "FechaCreacion": "2027-09-09T23:17:40.000Z",
+      "FechaViajeAceptado": "2027-10-09T04:30:21.000Z",
+      "FechaViajeLLegada": "2027-10-09T04:30:25.000Z",
+      "min_desde_creacion": 42072.8,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5588878",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2028-05-09T23:01:29.000Z",
+      "FechaViajeAceptado": "2028-06-09T01:45:41.000Z",
+      "FechaViajeLLegada": "2028-06-09T01:45:44.000Z",
+      "min_desde_creacion": 43364.3,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5588881",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2028-05-09T23:03:06.000Z",
+      "FechaViajeAceptado": "2028-06-09T00:38:14.000Z",
+      "FechaViajeLLegada": "2028-06-09T00:38:18.000Z",
+      "min_desde_creacion": 43295.2,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5588880",
+      "ProveedorFinalNorm": "AREA DE PROVEEDORES",
+      "FechaCreacion": "2028-05-09T23:02:50.000Z",
+      "FechaViajeAceptado": "2028-06-09T01:59:40.000Z",
+      "FechaViajeLLegada": "2028-06-09T01:59:43.000Z",
+      "min_desde_creacion": 43376.9,
+      "min_desde_aceptado": 0.1
+    },
+    {
+      "PONumber": "5592000",
+      "ProveedorFinalNorm": "QUINTERO POVEDA ASISTENCIA S.A.S.",
+      "FechaCreacion": "2028-06-09T21:46:05.000Z",
+      "FechaViajeAceptado": "2028-06-09T22:20:11.000Z",
+      "FechaViajeLLegada": "2026-01-10T01:28:46.000Z",
+      "min_desde_creacion": -1269857.3,
+      "min_desde_aceptado": -1269891.4
+    }
+  ]
 }
