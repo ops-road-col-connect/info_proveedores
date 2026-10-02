@@ -114,6 +114,16 @@
   tbody tr:hover{ background: rgba(21,101,192,.05); }
   .num-cell{ text-align:right; font-variant-numeric:tabular-nums; }
   .table-scroll{ max-height:560px; overflow:auto; border:1px solid var(--border); border-radius:10px; }
+
+  .clickable-row{ cursor:pointer; }
+  .clickable-row:hover{ background:rgba(255,255,255,.04); }
+  .toggle-arrow{ display:inline-block; width:14px; color:var(--text-muted); }
+  .detail-row{ display:none; }
+  .detail-row.open{ display:table-row; }
+  .detail-wrap{ max-height:260px; overflow:auto; background:rgba(0,0,0,.2); }
+  .detail-table{ width:100%; font-size:12px; }
+  .detail-table th{ position:sticky; top:0; background:var(--card-bg); padding:6px 10px; text-align:left; border-bottom:1px solid var(--border); }
+  .detail-table td{ padding:6px 10px; white-space:nowrap; border-bottom:1px solid rgba(255,255,255,.04); }
   .prov-name{ display:flex; align-items:center; gap:6px; font-weight:600; }
   .star{ color:var(--connect-orange); font-size:13px; }
   tr.priority{ background: rgba(255,122,41,.07); }
@@ -417,9 +427,11 @@
       <div id="brandeadasStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-top:12px; font-size:13px;"></div>
 
       <h3 style="margin-top:14px;">% de cumplimiento ≤60 min, por grúa</h3>
+      <div class="desc">Solo servicios NO programados (misma definición que el resto del dashboard)</div>
       <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadas"></canvas></div>
 
       <h3 style="margin-top:24px;">Cantidad de servicios por grúa, vs. meta</h3>
+      <div class="desc">Incluye programados y no programados</div>
       <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadasVolumen"></canvas></div>
     </div>
     <div class="card" style="margin-top:16px;">
@@ -884,6 +896,14 @@ function renderArriboView(){
 }
 
 // ---------- Grúas brandeadas (misma lógica de cumplimiento, filtrada a is_grua_brandeada) ----------
+function toggleBrandeadaDetalle(rid, rowEl){
+  const detailRow = document.getElementById(rid);
+  if(!detailRow) return;
+  const isOpen = detailRow.classList.toggle('open');
+  const arrow = rowEl.querySelector('.toggle-arrow');
+  if(arrow) arrow.textContent = isOpen ? '▾' : '▸';
+}
+
 let chartBrandeadas = null;
 let chartBrandeadasVolumen = null;
 const PALETA_GRUAS = ['#2E9E6C','#1565C0','#FF7A29','#E53935','#9B59B6','#00A6A6','#C2A000','#E91E8C','#5D4037','#607D8B'];
@@ -891,27 +911,61 @@ function metaServiciosPorGranularidad(g){ return g==='dia' ? 4 : g==='semana' ? 
 
 // Agrupa por período Y por grúa a la vez: sirve tanto para el % de cumplimiento ≤60min
 // (línea por grúa) como para la cantidad de servicios por grúa (barras + meta).
-function computeCumplimientoPorGrua(pos, ciudad, granularidad){
-  const periodos = new Map();       // key período -> {label, sortKey}
-  const celdas = new Map();         // key "grua|período" -> {total, c60}
+// posConteo: universo para "cantidad de servicios" (incluye programados, posTodos).
+// posArribo: universo para "% cumplimiento ≤60min" (solo NO programados, pos) — misma
+// definición que usa el resto del dashboard. Se combinan en una sola grilla período×grúa.
+function computeCumplimientoPorGrua(posConteo, posArribo, ciudad, granularidad){
+  const periodos = new Map();         // key período -> {label, sortKey}
+  const conteoCeldas = new Map();     // key "grua|período" -> cantidad (programados + no programados)
+  const arriboCeldas = new Map();     // key "grua|período" -> {total, c60} (solo NO programados)
+  const detalleCeldas = new Map();    // key "grua|período" -> [registros individuales, para el detalle al hacer clic]
   const gruasSet = new Set();
 
-  for(const p of pos){
+  function registrarPeriodo(creacion){
+    const { key, label, sortKey } = claveYLabelPeriodo(creacion, granularidad);
+    if(!periodos.has(key)) periodos.set(key, { label, sortKey });
+    return key;
+  }
+
+  for(const p of posConteo){
     if(!p.FechaCreacion || !p.GrupoGrua) continue;
     if(ciudad && ciudad !== 'TODAS' && p.CiudadInicio !== ciudad) continue;
     const creacion = new Date(p.FechaCreacion);
-    const { key, label, sortKey } = claveYLabelPeriodo(creacion, granularidad);
-    if(!periodos.has(key)) periodos.set(key, { label, sortKey });
+    const key = registrarPeriodo(creacion);
     gruasSet.add(p.GrupoGrua);
-
     const compKey = p.GrupoGrua + '|' + key;
-    if(!celdas.has(compKey)) celdas.set(compKey, { total:0, c60:0 });
-    const c = celdas.get(compKey);
-    c.total += 1;
+    conteoCeldas.set(compKey, (conteoCeldas.get(compKey) || 0) + 1);
+
+    let minutos = null, cumple60 = null;
     if(p.FechaViajeLLegada){
-      const minutos = (new Date(p.FechaViajeLLegada) - creacion) / 60000;
-      if(isFinite(minutos) && minutos >= 0 && minutos <= 60) c.c60 += 1;
+      const m = (new Date(p.FechaViajeLLegada) - creacion) / 60000;
+      if(isFinite(m) && m >= 0){ minutos = Math.round(m*10)/10; cumple60 = m <= 60; }
     }
+    if(!detalleCeldas.has(compKey)) detalleCeldas.set(compKey, []);
+    detalleCeldas.get(compKey).push({
+      PONumber: p.PONumber,
+      FechaCreacion: p.FechaCreacion,
+      CiudadInicio: p.CiudadInicio,
+      TipoServicio: p.TipoServicio,
+      Programado: p.Programado,
+      minutos,
+      cumple60,
+    });
+  }
+
+  for(const p of posArribo){
+    if(!p.FechaCreacion || !p.GrupoGrua || !p.FechaViajeLLegada) continue;
+    if(ciudad && ciudad !== 'TODAS' && p.CiudadInicio !== ciudad) continue;
+    const creacion = new Date(p.FechaCreacion);
+    const minutos = (new Date(p.FechaViajeLLegada) - creacion) / 60000;
+    if(!isFinite(minutos) || minutos < 0) continue;
+    const key = registrarPeriodo(creacion);
+    gruasSet.add(p.GrupoGrua);
+    const compKey = p.GrupoGrua + '|' + key;
+    if(!arriboCeldas.has(compKey)) arriboCeldas.set(compKey, { total:0, c60:0 });
+    const c = arriboCeldas.get(compKey);
+    c.total += 1;
+    if(minutos <= 60) c.c60 += 1;
   }
 
   const periodosOrdenados = Array.from(periodos.entries()).sort((a,b)=>a[1].sortKey.localeCompare(b[1].sortKey));
@@ -919,12 +973,14 @@ function computeCumplimientoPorGrua(pos, ciudad, granularidad){
   const gruas = Array.from(gruasSet).sort();
 
   const series = gruas.map(grua => {
-    const totales = periodosOrdenados.map(([key]) => (celdas.get(grua+'|'+key)||{total:0}).total);
+    const totales = periodosOrdenados.map(([key]) => conteoCeldas.get(grua+'|'+key) || 0);
+    const totalArribo = periodosOrdenados.map(([key]) => (arriboCeldas.get(grua+'|'+key)||{total:0}).total);
     const pct60 = periodosOrdenados.map(([key]) => {
-      const c = celdas.get(grua+'|'+key);
+      const c = arriboCeldas.get(grua+'|'+key);
       return (c && c.total>0) ? Math.round((c.c60/c.total*100)*10)/10 : null;
     });
-    return { nombre: grua, totales, pct60 };
+    const detalle = periodosOrdenados.map(([key]) => detalleCeldas.get(grua+'|'+key) || []);
+    return { nombre: grua, totales, totalArribo, pct60, detalle };
   });
 
   return { labels, series };
@@ -934,9 +990,9 @@ function renderBrandeadasView(){
   const msgEl = document.getElementById('brandeadasStatusMsg');
   const tbody = document.getElementById('brandeadasTbody');
 
-  if(!RAW_DATA || !Array.isArray(RAW_DATA.pos) || RAW_DATA.pos.length === 0){
+  if(!RAW_DATA || !Array.isArray(RAW_DATA.posTodos) || RAW_DATA.posTodos.length === 0){
     msgEl.style.display = '';
-    msgEl.textContent = '⚠️ El JSON cargado no trae el campo "pos" — corre el workflow de n8n con la versión actualizada y recarga esta página.';
+    msgEl.textContent = '⚠️ El JSON cargado no trae el campo "posTodos" — corre el workflow de n8n con la versión actualizada y recarga esta página.';
     if(chartBrandeadas){ chartBrandeadas.destroy(); chartBrandeadas = null; }
     tbody.innerHTML = '';
     document.getElementById('brandeadasKpis').innerHTML = '';
@@ -945,7 +1001,12 @@ function renderBrandeadasView(){
 
   const ciudad = document.getElementById('brandeadasCiudad').value;
   const granularidad = document.getElementById('brandeadasGranularidad').value;
-  const posBrandeadas = RAW_DATA.pos.filter(p => p.is_grua_brandeada);
+  // Cantidad de servicios: SÍ incluye programados (posTodos) — el objetivo es medir todo
+  // lo que prestan las grúas brandeadas. Cumplimiento de arribo: solo NO programados (pos),
+  // igual definición que usa el resto del dashboard.
+  const posBrandeadasTodos = RAW_DATA.posTodos.filter(p => p.is_grua_brandeada);
+  const posBrandeadasNoProg = (RAW_DATA.pos || []).filter(p => p.is_grua_brandeada);
+  const posBrandeadas = posBrandeadasTodos; // usado abajo para el KPI de cantidad
 
   // KPI: cantidad de servicios de grúas brandeadas (respetando el filtro de ciudad)
   const posBrandeadasCiudad = ciudad === 'TODAS' ? posBrandeadas : posBrandeadas.filter(p => p.CiudadInicio === ciudad);
@@ -953,7 +1014,7 @@ function renderBrandeadasView(){
     <div class="kpi-card">
       <div class="label">Servicios de grúas brandeadas</div>
       <div class="value">${posBrandeadasCiudad.length}</div>
-      <div class="foot">${ciudad === 'TODAS' ? 'Todas las ciudades' : ciudad} · del total de servicios en el período</div>
+      <div class="foot">${ciudad === 'TODAS' ? 'Todas las ciudades' : ciudad} · incluye programados y no programados</div>
     </div>
   `;
 
@@ -965,7 +1026,7 @@ function renderBrandeadasView(){
     return;
   }
 
-  const { labels, series } = computeCumplimientoPorGrua(posBrandeadas, ciudad, granularidad);
+  const { labels, series } = computeCumplimientoPorGrua(posBrandeadasTodos, posBrandeadasNoProg, ciudad, granularidad);
 
   if(labels.length === 0 || series.length === 0){
     msgEl.style.display = '';
@@ -997,7 +1058,7 @@ function renderBrandeadasView(){
         plugins:{
           legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
           tooltip:{ callbacks:{ label:(ctx)=> {
-            const tot = series[ctx.datasetIndex].totales[ctx.dataIndex];
+            const tot = series[ctx.datasetIndex].totalArribo[ctx.dataIndex]; // tamaño de muestra NO programados
             return `${ctx.dataset.label}: ${ctx.raw===null?'sin datos':ctx.raw+'%'} (de ${tot} servicios)`;
           } } }
         },
@@ -1057,15 +1118,44 @@ function renderBrandeadasView(){
 
   // --- Tabla: desglose por grúa y período ---
   let filas = '';
+  let rowIdx = 0;
   series.forEach(s=>{
     labels.forEach((lab,i)=>{
       if(s.totales[i] === 0) return; // no mostrar celdas sin servicio para esa grúa/período
-      filas += `<tr>
-        <td>${s.nombre}</td>
-        <td>${lab}</td>
-        <td class="num-cell">${s.totales[i]}</td>
-        <td class="num-cell">${s.pct60[i]===null?'—':s.pct60[i]+'%'}</td>
-      </tr>`;
+      const rid = 'brandeada-detalle-' + (rowIdx++);
+      const detalle = s.detalle[i] || [];
+      filas += `
+        <tr class="clickable-row" onclick="toggleBrandeadaDetalle('${rid}', this)">
+          <td><span class="toggle-arrow">▸</span>${s.nombre}</td>
+          <td>${lab}</td>
+          <td class="num-cell">${s.totales[i]}</td>
+          <td class="num-cell">${s.pct60[i]===null?'—':s.pct60[i]+'%'}</td>
+        </tr>
+        <tr class="detail-row" id="${rid}">
+          <td colspan="4" style="padding:0;">
+            <div class="detail-wrap">
+              <table class="detail-table">
+                <thead><tr>
+                  <th>Fecha</th><th>PO</th><th>Ciudad</th><th>Tipo de servicio</th><th>Programado</th>
+                  <th class="num-cell">Min. arribo</th><th class="num-cell">¿Cumple ≤60min?</th>
+                </tr></thead>
+                <tbody>
+                  ${detalle.map(d => `
+                    <tr>
+                      <td>${d.FechaCreacion ? new Date(d.FechaCreacion).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'}) : '—'}</td>
+                      <td>${d.PONumber}</td>
+                      <td>${d.CiudadInicio || '—'}</td>
+                      <td>${d.TipoServicio || '—'}</td>
+                      <td>${d.Programado === 'SI' ? 'Sí' : 'No'}</td>
+                      <td class="num-cell">${d.minutos !== null ? d.minutos : '—'}</td>
+                      <td class="num-cell">${d.cumple60 === null ? '—' : (d.cumple60 ? '✅' : '❌')}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </td>
+        </tr>`;
     });
   });
   tbody.innerHTML = filas;
