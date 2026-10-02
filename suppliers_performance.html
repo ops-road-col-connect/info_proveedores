@@ -184,6 +184,9 @@
       <span>📍 Bogotá D.C. · Cali · Medellín</span>
       <span>🚫 Solo servicios NO programados</span>
       <span id="scope-po">🔧 — servicios analizados</span>
+      <span id="scope-tipos" style="display:none;"></span>
+      <span id="scope-rango-servicios" style="display:none;"></span>
+      <span id="scope-rango-barrido" style="display:none;"></span>
       <span id="scope-updated">🔄 Cargando...</span>
     </div>
   </header>
@@ -469,6 +472,41 @@ function getGridColor(){
 }
 
 // ---------- Carga de datos ----------
+// Badges de alcance en el header: tipos de servicio y rangos de fecha. Se calculan UNA vez
+// sobre el dataset completo (RAW_DATA.pos) — no cambian con el filtro de fechas del dashboard,
+// porque describen el alcance general de la data, no la vista filtrada actual.
+function renderScopeBadges(raw){
+  const pos = raw.pos || [];
+
+  const tipos = Array.from(new Set(pos.map(p=>p.TipoServicio).filter(Boolean))).sort();
+  const elTipos = document.getElementById('scope-tipos');
+  if(tipos.length){
+    elTipos.style.display = '';
+    elTipos.textContent = '🏷️ ' + tipos.join(', ');
+  }
+
+  function formatRango(fechasISO){
+    if(!fechasISO.length) return null;
+    const ts = fechasISO.map(f=>new Date(f).getTime());
+    const fmt = (t)=> new Date(t).toLocaleDateString('es-CO', { day:'numeric', month:'short', year:'2-digit' });
+    return fmt(Math.min(...ts)) + ' – ' + fmt(Math.max(...ts));
+  }
+
+  const rangoServicios = formatRango(pos.map(p=>p.FechaCreacion).filter(Boolean));
+  const elRS = document.getElementById('scope-rango-servicios');
+  if(rangoServicios){
+    elRS.style.display = '';
+    elRS.textContent = '📅 Servicios: ' + rangoServicios;
+  }
+
+  const rangoBarrido = formatRango(pos.filter(p=>p.TuvoBarrido).map(p=>p.FechaCreacion).filter(Boolean));
+  const elRB = document.getElementById('scope-rango-barrido');
+  if(rangoBarrido){
+    elRB.style.display = '';
+    elRB.textContent = '🧹 Barrido: ' + rangoBarrido;
+  }
+}
+
 async function cargarDatos(){
   const banner = document.getElementById('errorBanner');
   const scopeUpdated = document.getElementById('scope-updated');
@@ -481,6 +519,7 @@ async function cargarDatos(){
     banner.style.display = 'none';
     renderAll(DATA);
     configurarFiltroFechas(RAW_DATA);
+    renderScopeBadges(RAW_DATA);
     const updated = data.updatedAt ? new Date(data.updatedAt) : new Date();
     scopeUpdated.textContent = '🔄 Actualizado: ' + updated.toLocaleString('es-CO', { dateStyle:'short', timeStyle:'short' });
   }catch(err){
