@@ -149,6 +149,17 @@
   }
   .filters label{ font-size:12.5px; color:var(--text-muted); display:flex; align-items:center; gap:6px; cursor:pointer; }
   .filters input[type=checkbox]{ flex:none; min-width:auto; width:16px; height:16px; }
+  .filters input[type=date]{
+    flex:none; min-width:auto; padding:8px 10px; border-radius:8px; border:1px solid var(--border);
+    background:var(--bg); color:var(--text-main); font-size:13px;
+  }
+  .btn{
+    padding:9px 16px; border-radius:8px; border:1px solid var(--border); font-size:13px; font-weight:600;
+    cursor:pointer; background:var(--card-bg); color:var(--text-main);
+  }
+  .btn-primary{ background:var(--connect-blue); color:#fff; border-color:var(--connect-blue); }
+  .btn-primary:hover{ opacity:.9; }
+  .btn-ghost:hover{ background:var(--bg); }
 
   footer{ text-align:center; color:var(--text-muted); font-size:12px; margin-top:50px; }
 </style>
@@ -168,6 +179,23 @@
     </div>
   </header>
   <div id="errorBanner" style="display:none; background:rgba(229,57,53,.15); border:1px solid var(--connect-red); color:var(--connect-red); padding:14px 18px; border-radius:10px; margin-bottom:20px; font-size:13px;"></div>
+
+  <!-- FILTRO POR RANGO DE FECHAS -->
+  <div class="card" style="margin-bottom:20px;">
+    <h3>Filtrar por rango de fechas</h3>
+    <div class="desc">Al aplicar, todo el dashboard (KPIs, gráficos, tabla de proveedores y heatmaps) se recalcula usando solo los servicios creados dentro del rango elegido.</div>
+    <div class="filters">
+      <label style="min-width:auto;">Desde:
+        <input type="date" id="filterFrom" style="margin-left:6px; width:auto; flex:none;">
+      </label>
+      <label style="min-width:auto;">Hasta:
+        <input type="date" id="filterTo" style="margin-left:6px; width:auto; flex:none;">
+      </label>
+      <button id="btnAplicarFiltro" class="btn btn-primary">Aplicar filtro</button>
+      <button id="btnQuitarFiltro" class="btn btn-ghost">Quitar filtro</button>
+      <span id="filterStatus" style="font-size:12.5px; color:var(--text-muted); margin-left:4px;"></span>
+    </div>
+  </div>
 
   <!-- 1. MACRO: TOTALES -->
   <div class="section-title"><div class="num">1</div><h2>Cantidad de servicios totales</h2><span class="sub">Vista macro del volumen</span></div>
@@ -302,7 +330,8 @@ const PALETTE = {
 };
 
 // Estado mutable entre renders
-let DATA = null;
+let DATA = null;      // lo que se está mostrando ahora mismo (puede ser el original o una versión filtrada)
+let RAW_DATA = null;  // el JSON original tal cual llegó de n8n — nunca se muta, sirve para "Quitar filtro"
 let charts = { ciudadBar: null, ciudadPct: null, semanal: null, semanalPrio: null };
 
 function getTextColor(){
@@ -320,9 +349,11 @@ async function cargarDatos(){
     const res = await fetch(WEBHOOK_URL, { cache: 'no-store' });
     if(!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
+    RAW_DATA = data;
     DATA = data;
     banner.style.display = 'none';
     renderAll(DATA);
+    configurarFiltroFechas(RAW_DATA);
     const updated = data.updatedAt ? new Date(data.updatedAt) : new Date();
     scopeUpdated.textContent = '🔄 Actualizado: ' + updated.toLocaleString('es-CO', { dateStyle:'short', timeStyle:'short' });
   }catch(err){
@@ -331,6 +362,242 @@ async function cargarDatos(){
     banner.textContent = '⚠️ No se pudo cargar la data más reciente (' + err.message + '). Mostrando la última versión disponible en esta pestaña.';
     scopeUpdated.textContent = '🔄 Error de actualización';
   }
+}
+
+// ---------- Filtro por rango de fechas (recalcula TODO en el navegador) ----------
+function configurarFiltroFechas(raw){
+  const pos = raw.pos || [];
+  const fechas = pos.map(p=>p.FechaCreacion).filter(Boolean).map(f=>f.slice(0,10)).sort();
+  const inputFrom = document.getElementById('filterFrom');
+  const inputTo = document.getElementById('filterTo');
+  if(fechas.length){
+    inputFrom.min = inputTo.min = fechas[0];
+    inputFrom.max = inputTo.max = fechas[fechas.length-1];
+  }
+
+  document.getElementById('btnAplicarFiltro').onclick = () => {
+    const fromStr = inputFrom.value;
+    const toStr = inputTo.value;
+    if(!fromStr && !toStr){
+      document.getElementById('filterStatus').textContent = 'Elige al menos una fecha.';
+      return;
+    }
+    const fromDate = fromStr ? new Date(fromStr + 'T00:00:00') : null;
+    const toDate = toStr ? new Date(toStr + 'T23:59:59.999') : null;
+    const filtrado = computeAggregates(raw.pos, raw.lineas, fromDate, toDate);
+    filtrado.updatedAt = raw.updatedAt;
+    DATA = filtrado;
+    renderAll(DATA);
+    document.getElementById('filterStatus').textContent =
+      `Filtro activo: ${filtrado.total_po} de ${raw.total_po} servicios`;
+  };
+
+  document.getElementById('btnQuitarFiltro').onclick = () => {
+    inputFrom.value = '';
+    inputTo.value = '';
+    DATA = RAW_DATA;
+    renderAll(DATA);
+    document.getElementById('filterStatus').textContent = '';
+  };
+}
+
+// Recalcula city, city_barrido, weekly, weekly_priorizados, proveedores_efectivos,
+// providers, heatmap y heatmap_volumen a partir de los registros crudos (pos/lineas),
+// restringidos al rango [fromDate, toDate]. Replica exactamente la lógica del nodo
+// "Armar Respuesta" de n8n, pero ya no repite la normalización/alias/prioridad —
+// esos campos ya vienen resueltos en cada registro.
+function computeAggregates(allPos, allLineas, fromDate, toDate){
+  const CIUDADES_OBJETIVO = ['BOGOTÁ, D.C.', 'CALI', 'MEDELLÍN'];
+  const DIAS_ES = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+  function round1(n){ return n===null||n===undefined ? null : Math.round(n*10)/10; }
+  function avg(arr){ return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : null; }
+  function pctUnder60(arr){ return arr.length ? (arr.filter(x=>x<60).length/arr.length)*100 : null; }
+
+  function enRango(iso){
+    if(!iso) return false;
+    const d = new Date(iso);
+    if(fromDate && d < fromDate) return false;
+    if(toDate && d > toDate) return false;
+    return true;
+  }
+  const pos = allPos.filter(p => enRango(p.FechaCreacion));
+  const poIds = new Set(pos.map(p=>p.PONumber));
+  const lineas = allLineas.filter(l => poIds.has(l.PONumber));
+
+  // --- ciudad ---
+  const cityCount = {}, cityBarridoCount = {};
+  for(const po of pos){
+    cityCount[po.CiudadInicio] = (cityCount[po.CiudadInicio]||0)+1;
+    if(po.TuvoBarrido) cityBarridoCount[po.CiudadInicio] = (cityBarridoCount[po.CiudadInicio]||0)+1;
+  }
+  const city = {}, city_barrido = {};
+  for(const c of CIUDADES_OBJETIVO){
+    const total = cityCount[c]||0;
+    city[c] = total;
+    const con = cityBarridoCount[c]||0;
+    city_barrido[c] = total>0 ? round1(con/total*100) : 0;
+  }
+
+  // --- tabla por proveedor ---
+  const provStats = new Map();
+  function getProv(nombre){
+    if(!provStats.has(nombre)) provStats.set(nombre, {
+      Proveedor: nombre, Servicios_Sin_Barrido:0, Servicios_Fuera_De_Su_Barrido:0, Gano_En_Barrido:0,
+      Sin_Respuesta:0, Sin_Disponibilidad:0, Perdio_Ante_Otro:0, _arriboCreacion:[], _arriboAceptado:[], is_priority:false,
+    });
+    return provStats.get(nombre);
+  }
+  const poConProveedorFinal = pos.filter(p=>p.ProveedorFinalNorm);
+  const lineasPorPO = new Map();
+  for(const l of lineas){
+    if(!lineasPorPO.has(l.PONumber)) lineasPorPO.set(l.PONumber, []);
+    lineasPorPO.get(l.PONumber).push(l);
+  }
+  for(const po of poConProveedorFinal){
+    const st = getProv(po.ProveedorFinalNorm);
+    st.is_priority = po.is_priority;
+    const lineasDelPO = lineasPorPO.get(po.PONumber) || [];
+    const participoEnSuPropioBarrido = lineasDelPO.some(l=>l.ProveedorBarridoNorm===po.ProveedorFinalNorm);
+    if(!po.TuvoBarrido) st.Servicios_Sin_Barrido += 1;
+    else if(!participoEnSuPropioBarrido) st.Servicios_Fuera_De_Su_Barrido += 1;
+  }
+  const poYaContadoGano = new Set();
+  for(const l of lineas){
+    const st = getProv(l.ProveedorBarridoNorm);
+    st.is_priority = st.is_priority || l.is_priority;
+    if(l.Gano){
+      const key = l.PONumber+'|'+l.ProveedorBarridoNorm;
+      if(!poYaContadoGano.has(key)){ st.Gano_En_Barrido += 1; poYaContadoGano.add(key); }
+    } else {
+      if(l.Status==='Sin respuesta') st.Sin_Respuesta += 1;
+      else if(l.Status==='Sin disponibilidad') st.Sin_Disponibilidad += 1;
+      else st.Perdio_Ante_Otro += 1;
+    }
+  }
+  for(const po of poConProveedorFinal){
+    const st = getProv(po.ProveedorFinalNorm);
+    if(po.FechaViajeLLegada && po.FechaCreacion){
+      const min1 = (new Date(po.FechaViajeLLegada) - new Date(po.FechaCreacion))/60000;
+      if(isFinite(min1)) st._arriboCreacion.push(min1);
+    }
+    if(po.FechaViajeLLegada && po.FechaViajeAceptado){
+      const min2 = (new Date(po.FechaViajeLLegada) - new Date(po.FechaViajeAceptado))/60000;
+      if(isFinite(min2)) st._arriboAceptado.push(min2);
+    }
+  }
+  const providers = Array.from(provStats.values()).map(st=>{
+    const total_prestados = st.Servicios_Sin_Barrido+st.Servicios_Fuera_De_Su_Barrido+st.Gano_En_Barrido;
+    const total_participaciones = st.Gano_En_Barrido+st.Sin_Respuesta+st.Sin_Disponibilidad+st.Perdio_Ante_Otro;
+    const total_ofertados = st.Servicios_Sin_Barrido+st.Servicios_Fuera_De_Su_Barrido+total_participaciones;
+    return {
+      Proveedor: st.Proveedor,
+      Servicios_Sin_Barrido: st.Servicios_Sin_Barrido,
+      Servicios_Fuera_De_Su_Barrido: st.Servicios_Fuera_De_Su_Barrido,
+      Gano_En_Barrido: st.Gano_En_Barrido,
+      Sin_Respuesta: st.Sin_Respuesta,
+      Sin_Disponibilidad: st.Sin_Disponibilidad,
+      Perdio_Ante_Otro: st.Perdio_Ante_Otro,
+      Total_Servicios_Prestados: total_prestados,
+      Total_Participaciones_Barrido: total_participaciones,
+      Pct_Ganado_Sobre_Ofrecido_Barrido: total_participaciones>0 ? round1(st.Gano_En_Barrido/total_participaciones*100) : null,
+      Total_Ofertados: total_ofertados,
+      Pct_Prestados_Sobre_Ofertados: total_ofertados>0 ? round1(total_prestados/total_ofertados*100) : null,
+      Prom_Tiempo_Arribo_1: round1(avg(st._arriboCreacion)),
+      Pct_Cumplimiento_Arribo_1: round1(pctUnder60(st._arriboCreacion)),
+      Prom_Tiempo_Arribo_2: round1(avg(st._arriboAceptado)),
+      Pct_Cumplimiento_Arribo_2: round1(pctUnder60(st._arriboAceptado)),
+      is_priority: st.is_priority,
+    };
+  }).sort((a,b)=>b.Total_Servicios_Prestados-a.Total_Servicios_Prestados);
+
+  // --- semanal ---
+  function isoWeekInfo(date){
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = (d.getUTCDay()+6)%7;
+    d.setUTCDate(d.getUTCDate()-dayNum+3);
+    const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
+    const week = 1+Math.round(((d-firstThursday)/86400000 - 3 + ((firstThursday.getUTCDay()+6)%7))/7);
+    const monday = new Date(date);
+    monday.setDate(date.getDate()-dayNum);
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const label = String(monday.getDate()).padStart(2,'0')+'-'+meses[monday.getMonth()];
+    return {year:d.getUTCFullYear(), week, label};
+  }
+  const weeklyMap = new Map();
+  for(const po of pos){
+    if(!po.FechaCreacion) continue;
+    const d = new Date(po.FechaCreacion);
+    const wi = isoWeekInfo(d);
+    const key = wi.year+'_'+wi.week;
+    if(!weeklyMap.has(key)) weeklyMap.set(key, {Anio:wi.year, Semana:wi.week, SemanaLabel:wi.label, Total:0, Con_Barrido:0, Priorizados:0});
+    const w = weeklyMap.get(key);
+    w.Total += 1;
+    if(po.TuvoBarrido) w.Con_Barrido += 1;
+    if(po.is_priority) w.Priorizados += 1;
+  }
+  const weekly = Array.from(weeklyMap.values())
+    .map(w=>({...w, Pct_Barrido: round1(w.Con_Barrido/w.Total*100)}))
+    .sort((a,b)=>a.Anio-b.Anio || a.Semana-b.Semana);
+  const weekly_priorizados = Array.from(weeklyMap.values())
+    .map(w=>({SemanaLabel:w.SemanaLabel, Total:w.Total, Priorizados:w.Priorizados, Pct_Priorizados: round1(w.Priorizados/w.Total*100)}))
+    .sort((a,b)=>a.SemanaLabel.localeCompare(b.SemanaLabel));
+
+  // --- proveedores efectivos ---
+  const provsConServicio = new Set(poConProveedorFinal.map(p=>p.ProveedorFinalNorm));
+  const porCiudadProv = {};
+  for(const c of CIUDADES_OBJETIVO){
+    const set = new Set(poConProveedorFinal.filter(p=>p.CiudadInicio===c).map(p=>p.ProveedorFinalNorm));
+    porCiudadProv[c] = set.size;
+  }
+  const proveedores_efectivos = {total: provsConServicio.size, por_ciudad: porCiudadProv};
+
+  // --- heatmap gamificación ---
+  function buildHeatmapGano(rows){
+    const cells = {};
+    for(const r of rows){
+      if(!r._fecha) continue;
+      const dow = (r._fecha.getDay()+6)%7;
+      const hour = r._fecha.getHours();
+      const key = dow+'_'+hour;
+      if(!cells[key]) cells[key] = {n:0, ganados:0};
+      cells[key].n += 1;
+      if(r.Gano) cells[key].ganados += 1;
+    }
+    const out = {};
+    for(const [k,v] of Object.entries(cells)) out[k] = {n:v.n, ganados:v.ganados, pct: round1(v.ganados/v.n*100)};
+    return out;
+  }
+  const fechaPorPO = new Map(pos.map(p=>[p.PONumber, p.FechaCreacion ? new Date(p.FechaCreacion) : null]));
+  const lineasConFecha = lineas.map(l=>({...l, _fecha: fechaPorPO.get(l.PONumber) || null}));
+  const lineasGami = lineasConFecha.filter(l=>l.is_priority);
+  const heatmap = {dias:DIAS_ES, heatmaps:{GLOBAL: buildHeatmapGano(lineasGami)}};
+  for(const provName of new Set(lineasGami.map(l=>l.ProveedorBarridoNorm))){
+    heatmap.heatmaps[provName] = buildHeatmapGano(lineasGami.filter(l=>l.ProveedorBarridoNorm===provName));
+  }
+
+  // --- heatmap volumen ---
+  function buildHeatmapVolumen(poList){
+    const cells = {};
+    for(const po of poList){
+      if(!po.FechaCreacion) continue;
+      const d = new Date(po.FechaCreacion);
+      const dow = (d.getDay()+6)%7;
+      const hour = d.getHours();
+      const key = dow+'_'+hour;
+      cells[key] = (cells[key]||0)+1;
+    }
+    return cells;
+  }
+  const poConFecha = pos.filter(p=>p.FechaCreacion);
+  const heatmap_volumen = {dias:DIAS_ES, heatmaps:{GLOBAL: buildHeatmapVolumen(poConFecha)}};
+  for(const c of CIUDADES_OBJETIVO){
+    heatmap_volumen.heatmaps[c] = buildHeatmapVolumen(poConFecha.filter(p=>p.CiudadInicio===c));
+  }
+
+  return {
+    total_po: pos.length,
+    city, city_barrido, weekly, weekly_priorizados, proveedores_efectivos, providers, heatmap, heatmap_volumen,
+  };
 }
 
 // ---------- Render principal ----------
@@ -357,7 +624,7 @@ function renderKPIs(DATA){
     {label:'Servicios totales', value: totalPO, foot:'PO únicos en Bogotá, Cali y Medellín'},
     {label:'% con barrido', value: pctBarridoGlobal+'%', foot: totalConBarrido + ' de ' + totalPO + ' servicios'},
     {label:'Proveedores en el ecosistema', value: provs.length, foot: 'Con servicio prestado y/o participación en barrido'},
-    {label:'Proveedores priorizados', value: priorityProvs.length + ' / 11', foot: 'Grupo bajo seguimiento especial'},
+    {label:'Proveedores priorizados', value: priorityProvs.length, foot: 'Estuvieron priorizados en al menos 1 servicio de este período'},
   ];
 
   const provEfectivos = DATA.proveedores_efectivos;
