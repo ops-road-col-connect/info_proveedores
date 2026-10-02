@@ -1,27 +1,2302 @@
 {
-  "updatedAt": "2026-10-02T03:11:18.200Z",
-  "total_po": 0,
+  "updatedAt": "2026-10-02T03:14:34.143Z",
+  "total_po": 671,
   "city": {
-    "BOGOTÁ, D.C.": 0,
-    "CALI": 0,
-    "MEDELLÍN": 0
+    "BOGOTÁ, D.C.": 406,
+    "CALI": 144,
+    "MEDELLÍN": 121
   },
   "city_barrido": {
-    "BOGOTÁ, D.C.": 0,
-    "CALI": 0,
-    "MEDELLÍN": 0
+    "BOGOTÁ, D.C.": 23.9,
+    "CALI": 36.1,
+    "MEDELLÍN": 38
   },
-  "weekly": [],
-  "weekly_priorizados": [],
+  "weekly": [
+    {
+      "Anio": 2026,
+      "Semana": 32,
+      "SemanaLabel": "03-Ago",
+      "Total": 31,
+      "Con_Barrido": 4,
+      "Priorizados": 10,
+      "Pct_Barrido": 12.9
+    },
+    {
+      "Anio": 2026,
+      "Semana": 37,
+      "SemanaLabel": "07-Sep",
+      "Total": 24,
+      "Con_Barrido": 8,
+      "Priorizados": 4,
+      "Pct_Barrido": 33.3
+    }
+  ],
+  "weekly_priorizados": [
+    {
+      "SemanaLabel": "03-Ago",
+      "Total": 31,
+      "Priorizados": 10,
+      "Pct_Priorizados": 32.3
+    },
+    {
+      "SemanaLabel": "07-Sep",
+      "Total": 24,
+      "Priorizados": 4,
+      "Pct_Priorizados": 16.7
+    }
+  ],
   "proveedores_efectivos": {
-    "total": 0,
+    "total": 83,
     "por_ciudad": {
-      "BOGOTÁ, D.C.": 0,
-      "CALI": 0,
-      "MEDELLÍN": 0
+      "BOGOTÁ, D.C.": 43,
+      "CALI": 19,
+      "MEDELLÍN": 25
     }
   },
-  "providers": [],
+  "providers": [
+    {
+      "Proveedor": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA",
+      "Servicios_Sin_Barrido": 57,
+      "Servicios_Fuera_De_Su_Barrido": 4,
+      "Gano_En_Barrido": 13,
+      "Sin_Respuesta": 21,
+      "Sin_Disponibilidad": 28,
+      "Perdio_Ante_Otro": 5,
+      "Total_Servicios_Prestados": 74,
+      "Total_Participaciones_Barrido": 67,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 19.4,
+      "Total_Ofertados": 128,
+      "Pct_Prestados_Sobre_Ofertados": 57.8,
+      "Prom_Tiempo_Arribo_1": 687,
+      "Pct_Cumplimiento_Arribo_1": 43.1,
+      "Prom_Tiempo_Arribo_2": 56,
+      "Pct_Cumplimiento_Arribo_2": 66.2,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "YADIEL SAS",
+      "Servicios_Sin_Barrido": 24,
+      "Servicios_Fuera_De_Su_Barrido": 12,
+      "Gano_En_Barrido": 3,
+      "Sin_Respuesta": 3,
+      "Sin_Disponibilidad": 7,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 39,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 21.4,
+      "Total_Ofertados": 50,
+      "Pct_Prestados_Sobre_Ofertados": 78,
+      "Prom_Tiempo_Arribo_1": 2503.4,
+      "Pct_Cumplimiento_Arribo_1": 2.8,
+      "Prom_Tiempo_Arribo_2": 2485,
+      "Pct_Cumplimiento_Arribo_2": 8.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SOLUCIONES IDONEAS E INTEGRALES SAS",
+      "Servicios_Sin_Barrido": 26,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 9,
+      "Sin_Respuesta": 20,
+      "Sin_Disponibilidad": 12,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 36,
+      "Total_Participaciones_Barrido": 42,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 21.4,
+      "Total_Ofertados": 69,
+      "Pct_Prestados_Sobre_Ofertados": 52.2,
+      "Prom_Tiempo_Arribo_1": 1325.7,
+      "Pct_Cumplimiento_Arribo_1": 16.7,
+      "Prom_Tiempo_Arribo_2": 1305.5,
+      "Pct_Cumplimiento_Arribo_2": 25,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "GRUAS FRANCO SAS",
+      "Servicios_Sin_Barrido": 32,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 6,
+      "Sin_Disponibilidad": 22,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 35,
+      "Total_Participaciones_Barrido": 30,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 3.3,
+      "Total_Ofertados": 64,
+      "Pct_Prestados_Sobre_Ofertados": 54.7,
+      "Prom_Tiempo_Arribo_1": 98.7,
+      "Pct_Cumplimiento_Arribo_1": 45.8,
+      "Prom_Tiempo_Arribo_2": 82.1,
+      "Pct_Cumplimiento_Arribo_2": 58.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "MULTIASISTENCIA COLOMBIA S.A.S. - CALI FREDY",
+      "Servicios_Sin_Barrido": 21,
+      "Servicios_Fuera_De_Su_Barrido": 4,
+      "Gano_En_Barrido": 7,
+      "Sin_Respuesta": 3,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 32,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 50,
+      "Total_Ofertados": 39,
+      "Pct_Prestados_Sobre_Ofertados": 82.1,
+      "Prom_Tiempo_Arribo_1": 55.5,
+      "Pct_Cumplimiento_Arribo_1": 62.5,
+      "Prom_Tiempo_Arribo_2": 35.9,
+      "Pct_Cumplimiento_Arribo_2": 96.9,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS",
+      "Servicios_Sin_Barrido": 32,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 33,
+      "Sin_Disponibilidad": 39,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 32,
+      "Total_Participaciones_Barrido": 74,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 106,
+      "Pct_Prestados_Sobre_Ofertados": 30.2,
+      "Prom_Tiempo_Arribo_1": 63.4,
+      "Pct_Cumplimiento_Arribo_1": 56.3,
+      "Prom_Tiempo_Arribo_2": 47,
+      "Pct_Cumplimiento_Arribo_2": 84.4,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "QUINTERO POVEDA ASISTENCIA S.A.S.",
+      "Servicios_Sin_Barrido": 22,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 7,
+      "Sin_Respuesta": 10,
+      "Sin_Disponibilidad": 19,
+      "Perdio_Ante_Otro": 9,
+      "Total_Servicios_Prestados": 29,
+      "Total_Participaciones_Barrido": 45,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 15.6,
+      "Total_Ofertados": 67,
+      "Pct_Prestados_Sobre_Ofertados": 43.3,
+      "Prom_Tiempo_Arribo_1": -42250.2,
+      "Pct_Cumplimiento_Arribo_1": 20.7,
+      "Prom_Tiempo_Arribo_2": -43785.4,
+      "Pct_Cumplimiento_Arribo_2": 46.4,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "RODAR PREMIUM S.A.S",
+      "Servicios_Sin_Barrido": 21,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 7,
+      "Sin_Respuesta": 7,
+      "Sin_Disponibilidad": 8,
+      "Perdio_Ante_Otro": 7,
+      "Total_Servicios_Prestados": 28,
+      "Total_Participaciones_Barrido": 29,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 24.1,
+      "Total_Ofertados": 50,
+      "Pct_Prestados_Sobre_Ofertados": 56,
+      "Prom_Tiempo_Arribo_1": 82.6,
+      "Pct_Cumplimiento_Arribo_1": 22.2,
+      "Prom_Tiempo_Arribo_2": 68.3,
+      "Pct_Cumplimiento_Arribo_2": 42.3,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "AREA DE PROVEEDORES",
+      "Servicios_Sin_Barrido": 27,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 27,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 27,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 45572.4,
+      "Pct_Cumplimiento_Arribo_1": 11.5,
+      "Prom_Tiempo_Arribo_2": 5144.9,
+      "Pct_Cumplimiento_Arribo_2": 96,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "HOLDING MYN INVERSIONES SAS",
+      "Servicios_Sin_Barrido": 21,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 4,
+      "Sin_Respuesta": 8,
+      "Sin_Disponibilidad": 21,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 26,
+      "Total_Participaciones_Barrido": 34,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 11.8,
+      "Total_Ofertados": 56,
+      "Pct_Prestados_Sobre_Ofertados": 46.4,
+      "Prom_Tiempo_Arribo_1": 48,
+      "Pct_Cumplimiento_Arribo_1": 76.9,
+      "Prom_Tiempo_Arribo_2": 38,
+      "Pct_Cumplimiento_Arribo_2": 92.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA DE GRUAS EXPRESS",
+      "Servicios_Sin_Barrido": 15,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 6,
+      "Sin_Respuesta": 27,
+      "Sin_Disponibilidad": 33,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 21,
+      "Total_Participaciones_Barrido": 67,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 9,
+      "Total_Ofertados": 82,
+      "Pct_Prestados_Sobre_Ofertados": 25.6,
+      "Prom_Tiempo_Arribo_1": 126.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 104.6,
+      "Pct_Cumplimiento_Arribo_2": 9.5,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "TURBO GRUAS SAS",
+      "Servicios_Sin_Barrido": 12,
+      "Servicios_Fuera_De_Su_Barrido": 4,
+      "Gano_En_Barrido": 5,
+      "Sin_Respuesta": 13,
+      "Sin_Disponibilidad": 18,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 21,
+      "Total_Participaciones_Barrido": 36,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 13.9,
+      "Total_Ofertados": 52,
+      "Pct_Prestados_Sobre_Ofertados": 40.4,
+      "Prom_Tiempo_Arribo_1": 80.5,
+      "Pct_Cumplimiento_Arribo_1": 28.6,
+      "Prom_Tiempo_Arribo_2": 56.4,
+      "Pct_Cumplimiento_Arribo_2": 55,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS DEL VALLE S.A.S.",
+      "Servicios_Sin_Barrido": 7,
+      "Servicios_Fuera_De_Su_Barrido": 7,
+      "Gano_En_Barrido": 6,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 4,
+      "Total_Servicios_Prestados": 20,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 42.9,
+      "Total_Ofertados": 28,
+      "Pct_Prestados_Sobre_Ofertados": 71.4,
+      "Prom_Tiempo_Arribo_1": 122.2,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 92.3,
+      "Pct_Cumplimiento_Arribo_2": 22.2,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIFULL VIAL S.A.S",
+      "Servicios_Sin_Barrido": 11,
+      "Servicios_Fuera_De_Su_Barrido": 3,
+      "Gano_En_Barrido": 5,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 15,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 19,
+      "Total_Participaciones_Barrido": 22,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 22.7,
+      "Total_Ofertados": 36,
+      "Pct_Prestados_Sobre_Ofertados": 52.8,
+      "Prom_Tiempo_Arribo_1": 80.4,
+      "Pct_Cumplimiento_Arribo_1": 22.2,
+      "Prom_Tiempo_Arribo_2": 65.9,
+      "Pct_Cumplimiento_Arribo_2": 52.9,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SOLUCIONES SHADDAI JYL S.A.S",
+      "Servicios_Sin_Barrido": 14,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 34,
+      "Sin_Disponibilidad": 32,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 17,
+      "Total_Participaciones_Barrido": 68,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 2.9,
+      "Total_Ofertados": 83,
+      "Pct_Prestados_Sobre_Ofertados": 20.5,
+      "Prom_Tiempo_Arribo_1": 9497.2,
+      "Pct_Cumplimiento_Arribo_1": 23.5,
+      "Prom_Tiempo_Arribo_2": 9487.8,
+      "Pct_Cumplimiento_Arribo_2": 47.1,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "LOGIC ASSISTANCE SAS-JAVI",
+      "Servicios_Sin_Barrido": 13,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 11,
+      "Sin_Disponibilidad": 18,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 15,
+      "Total_Participaciones_Barrido": 33,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 6.1,
+      "Total_Ofertados": 46,
+      "Pct_Prestados_Sobre_Ofertados": 32.6,
+      "Prom_Tiempo_Arribo_1": 71.7,
+      "Pct_Cumplimiento_Arribo_1": 33.3,
+      "Prom_Tiempo_Arribo_2": 51.5,
+      "Pct_Cumplimiento_Arribo_2": 66.7,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "RED-MA ASIST SAS - ,MEDELLIN",
+      "Servicios_Sin_Barrido": 11,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 14,
+      "Total_Participaciones_Barrido": 5,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 20,
+      "Total_Ofertados": 18,
+      "Pct_Prestados_Sobre_Ofertados": 77.8,
+      "Prom_Tiempo_Arribo_1": 3700.7,
+      "Pct_Cumplimiento_Arribo_1": 8.3,
+      "Prom_Tiempo_Arribo_2": 3997.7,
+      "Pct_Cumplimiento_Arribo_2": 27.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRÚAS COSMOS SAS - MEDELLIN",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 8,
+      "Total_Participaciones_Barrido": 5,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 40,
+      "Total_Ofertados": 11,
+      "Pct_Prestados_Sobre_Ofertados": 72.7,
+      "Prom_Tiempo_Arribo_1": 76.7,
+      "Pct_Cumplimiento_Arribo_1": 37.5,
+      "Prom_Tiempo_Arribo_2": 59,
+      "Pct_Cumplimiento_Arribo_2": 75,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTO GRUAS LA SEXTA 24 HORAS Y CIA LTDA",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 3,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 8,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 50,
+      "Total_Ofertados": 9,
+      "Pct_Prestados_Sobre_Ofertados": 88.9,
+      "Prom_Tiempo_Arribo_1": 5325.6,
+      "Pct_Cumplimiento_Arribo_1": 25,
+      "Prom_Tiempo_Arribo_2": 5285,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS AL RESCATE S.A.S. - CALI",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 3,
+      "Sin_Respuesta": 12,
+      "Sin_Disponibilidad": 18,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 7,
+      "Total_Participaciones_Barrido": 33,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 9.1,
+      "Total_Ofertados": 37,
+      "Pct_Prestados_Sobre_Ofertados": 18.9,
+      "Prom_Tiempo_Arribo_1": 12587.8,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 72.6,
+      "Pct_Cumplimiento_Arribo_2": 28.6,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS CG - LUIS ALBERTO CAÑAVERAL GARCIA",
+      "Servicios_Sin_Barrido": 5,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 8,
+      "Sin_Disponibilidad": 22,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 7,
+      "Total_Participaciones_Barrido": 31,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 3.2,
+      "Total_Ofertados": 37,
+      "Pct_Prestados_Sobre_Ofertados": 18.9,
+      "Prom_Tiempo_Arribo_1": 80.5,
+      "Pct_Cumplimiento_Arribo_1": 28.6,
+      "Prom_Tiempo_Arribo_2": 54.5,
+      "Pct_Cumplimiento_Arribo_2": 85.7,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "SERVI GRUAS JF SAS",
+      "Servicios_Sin_Barrido": 5,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 7,
+      "Total_Participaciones_Barrido": 7,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 28.6,
+      "Total_Ofertados": 12,
+      "Pct_Prestados_Sobre_Ofertados": 58.3,
+      "Prom_Tiempo_Arribo_1": 102.8,
+      "Pct_Cumplimiento_Arribo_1": 14.3,
+      "Prom_Tiempo_Arribo_2": 74.4,
+      "Pct_Cumplimiento_Arribo_2": 42.9,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "MEGA GRUAS MG-BOGOTA",
+      "Servicios_Sin_Barrido": 5,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 10,
+      "Sin_Disponibilidad": 14,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 7,
+      "Total_Participaciones_Barrido": 26,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 3.8,
+      "Total_Ofertados": 32,
+      "Pct_Prestados_Sobre_Ofertados": 21.9,
+      "Prom_Tiempo_Arribo_1": 81.5,
+      "Pct_Cumplimiento_Arribo_1": 28.6,
+      "Prom_Tiempo_Arribo_2": 40.1,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "INDUSTRIAS SOLOCAR SAS - MOSQUERA",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 7,
+      "Total_Participaciones_Barrido": 3,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 33.3,
+      "Total_Ofertados": 9,
+      "Pct_Prestados_Sobre_Ofertados": 77.8,
+      "Prom_Tiempo_Arribo_1": 121.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 98.7,
+      "Pct_Cumplimiento_Arribo_2": 14.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA VIAL SANTANA SAS",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 6,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 50,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 85.7,
+      "Prom_Tiempo_Arribo_1": 7081.6,
+      "Pct_Cumplimiento_Arribo_1": 16.7,
+      "Prom_Tiempo_Arribo_2": 51.3,
+      "Pct_Cumplimiento_Arribo_2": 66.7,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS ELITE Y TORO VEHICULOS S.A.S - MEDELLIN",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 6,
+      "Total_Participaciones_Barrido": 5,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 11,
+      "Pct_Prestados_Sobre_Ofertados": 54.5,
+      "Prom_Tiempo_Arribo_1": 159.3,
+      "Pct_Cumplimiento_Arribo_1": 16.7,
+      "Prom_Tiempo_Arribo_2": 132.7,
+      "Pct_Cumplimiento_Arribo_2": 16.7,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SMART ASSISTANCE S.A.S - MEDELLIN",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 8,
+      "Sin_Disponibilidad": 19,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 6,
+      "Total_Participaciones_Barrido": 28,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 3.6,
+      "Total_Ofertados": 33,
+      "Pct_Prestados_Sobre_Ofertados": 18.2,
+      "Prom_Tiempo_Arribo_1": 79.4,
+      "Pct_Cumplimiento_Arribo_1": 33.3,
+      "Prom_Tiempo_Arribo_2": 60.8,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "SOLUCIONES EL DORADO S.A.S / P&P",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 3,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 5,
+      "Total_Participaciones_Barrido": 8,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 25,
+      "Total_Ofertados": 11,
+      "Pct_Prestados_Sobre_Ofertados": 45.5,
+      "Prom_Tiempo_Arribo_1": 219.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 162,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ATLAS ASISTENCIA VIAL S.A.S",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 8,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 5,
+      "Total_Participaciones_Barrido": 9,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 14,
+      "Pct_Prestados_Sobre_Ofertados": 35.7,
+      "Prom_Tiempo_Arribo_1": 8446.8,
+      "Pct_Cumplimiento_Arribo_1": 40,
+      "Prom_Tiempo_Arribo_2": 8406.1,
+      "Pct_Cumplimiento_Arribo_2": 60,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS MONO DIAZ & SERVICIOS S.A.S",
+      "Servicios_Sin_Barrido": 5,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 9,
+      "Perdio_Ante_Otro": 4,
+      "Total_Servicios_Prestados": 5,
+      "Total_Participaciones_Barrido": 15,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 20,
+      "Pct_Prestados_Sobre_Ofertados": 25,
+      "Prom_Tiempo_Arribo_1": 66.7,
+      "Pct_Cumplimiento_Arribo_1": 40,
+      "Prom_Tiempo_Arribo_2": 55.7,
+      "Pct_Cumplimiento_Arribo_2": 60,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "TRANSGROUP SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 5,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 5,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 5,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 17531.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 17404.6,
+      "Pct_Cumplimiento_Arribo_2": 40,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "MSB MULTY SERVICIOS BOGOTA S A S",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 5,
+      "Pct_Prestados_Sobre_Ofertados": 80,
+      "Prom_Tiempo_Arribo_1": 125.5,
+      "Pct_Cumplimiento_Arribo_1": 25,
+      "Prom_Tiempo_Arribo_2": 91.6,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ANDRES FELIPE GUERRERO BAHAMON - SERVI - BIKER",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 4,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 9,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 11.1,
+      "Total_Ofertados": 12,
+      "Pct_Prestados_Sobre_Ofertados": 33.3,
+      "Prom_Tiempo_Arribo_1": 137.2,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 102.3,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "RAPIVIAL SAS",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 6,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 7,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 14.3,
+      "Total_Ofertados": 10,
+      "Pct_Prestados_Sobre_Ofertados": 40,
+      "Prom_Tiempo_Arribo_1": 84.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 66.1,
+      "Pct_Cumplimiento_Arribo_2": 25,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIGRUAS ELITE SAS - BOGOTA",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 4,
+      "Sin_Disponibilidad": 5,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 11,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 18.2,
+      "Total_Ofertados": 13,
+      "Pct_Prestados_Sobre_Ofertados": 30.8,
+      "Prom_Tiempo_Arribo_1": 77.8,
+      "Pct_Cumplimiento_Arribo_1": 25,
+      "Prom_Tiempo_Arribo_2": 48.2,
+      "Pct_Cumplimiento_Arribo_2": 75,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTOCARGA PRO S.A.S BOGOTA",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 4,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 8,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 10992.8,
+      "Pct_Cumplimiento_Arribo_1": 25,
+      "Prom_Tiempo_Arribo_2": 10953.3,
+      "Pct_Cumplimiento_Arribo_2": 75,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "MULTISTRADA SAS",
+      "Servicios_Sin_Barrido": 4,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 21,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 21,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 25,
+      "Pct_Prestados_Sobre_Ofertados": 16,
+      "Prom_Tiempo_Arribo_1": 101.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 71,
+      "Pct_Cumplimiento_Arribo_2": 25,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "LOGIC ASSISTANCE SAS",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 4,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 4,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 80.6,
+      "Pct_Cumplimiento_Arribo_1": 25,
+      "Prom_Tiempo_Arribo_2": 66.4,
+      "Pct_Cumplimiento_Arribo_2": 25,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "FLASH ASISTENCIA VIAL & MENSAJERIA S.A.S.",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 11,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 13,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 16,
+      "Pct_Prestados_Sobre_Ofertados": 18.8,
+      "Prom_Tiempo_Arribo_1": 108.1,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 76.7,
+      "Pct_Cumplimiento_Arribo_2": 33.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "RED TEAM SAS",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 3,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 130.5,
+      "Pct_Cumplimiento_Arribo_1": 33.3,
+      "Prom_Tiempo_Arribo_2": 125,
+      "Pct_Cumplimiento_Arribo_2": 33.3,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "PRO ASISTENCIA SAS",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 5,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 20,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 42.9,
+      "Prom_Tiempo_Arribo_1": 100,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 80.9,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTTEC LTDA",
+      "Servicios_Sin_Barrido": 3,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 368,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 45.4,
+      "Pct_Cumplimiento_Arribo_2": 66.7,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "BIA S.A.S JULIA",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 290.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 223,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "MULTIASISTENCIA K&J SAS",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 3,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 136.5,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 107.9,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "TRANSESPITIA SAS",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 2,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 5,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 9,
+      "Pct_Prestados_Sobre_Ofertados": 33.3,
+      "Prom_Tiempo_Arribo_1": 89.1,
+      "Pct_Cumplimiento_Arribo_1": 33.3,
+      "Prom_Tiempo_Arribo_2": 66.1,
+      "Pct_Cumplimiento_Arribo_2": 66.7,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTOGRUAS B&C SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 3,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 3,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 164.8,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 108,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS BUFFALO S.A.S",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 6,
+      "Sin_Disponibilidad": 6,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 13,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 7.7,
+      "Total_Ofertados": 14,
+      "Pct_Prestados_Sobre_Ofertados": 14.3,
+      "Prom_Tiempo_Arribo_1": 71.3,
+      "Pct_Cumplimiento_Arribo_1": 50,
+      "Prom_Tiempo_Arribo_2": 55.6,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS HR7 S.A.S - MEDELLIN",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 173.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 136.5,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA ORIENTE S.A.S.",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 5,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 16.7,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 28.6,
+      "Prom_Tiempo_Arribo_1": 144.1,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 94.8,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "ASISTENCIA MK S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 2,
+      "Sin_Respuesta": 14,
+      "Sin_Disponibilidad": 12,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 28,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 7.1,
+      "Total_Ofertados": 28,
+      "Pct_Prestados_Sobre_Ofertados": 7.1,
+      "Prom_Tiempo_Arribo_1": 92.4,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 58.8,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTIGROUP COLOMBIA SAS",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 9,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 10,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 12,
+      "Pct_Prestados_Sobre_Ofertados": 16.7,
+      "Prom_Tiempo_Arribo_1": 62.4,
+      "Pct_Cumplimiento_Arribo_1": 50,
+      "Prom_Tiempo_Arribo_2": 43.5,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS ZURITA S.A.S.",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 66.7,
+      "Prom_Tiempo_Arribo_1": 70.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 65.4,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ALINEACIONES Y SUSPENSIONES GRM S.A.S",
+      "Servicios_Sin_Barrido": 2,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 5,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 28.6,
+      "Prom_Tiempo_Arribo_1": 62,
+      "Pct_Cumplimiento_Arribo_1": 50,
+      "Prom_Tiempo_Arribo_2": 61.6,
+      "Pct_Cumplimiento_Arribo_2": 50,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SUPER GRUAS SOLO NORTE BOGOTA",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 2,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 4,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 88.1,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 71.3,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SURA-GRUAS MONO DIAZ & SERVICIOS S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 141,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 126,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASSI ASISTENCIA SERVICIOS Y SOLUCIONES INTEGRALES",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 67.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 40,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS DUMA SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 7,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 14.3,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 14.3,
+      "Prom_Tiempo_Arribo_1": 184.8,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 170,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ANTIOQUEÑA DE ASISTENCIA S.A.S",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 33.3,
+      "Prom_Tiempo_Arribo_1": 255.5,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 0.1,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTOCAMIONES JR SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 33.3,
+      "Prom_Tiempo_Arribo_1": 84.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 61.9,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "2M GLOBAL COMPANY S.A.S.",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 100,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 120.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ANDRES FELIPE JIMENEZ MANCILLA-AF ASISTENCIA 24",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 30,
+      "Sin_Disponibilidad": 7,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 37,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 38,
+      "Pct_Prestados_Sobre_Ofertados": 2.6,
+      "Prom_Tiempo_Arribo_1": 107.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 85.7,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": true
+    },
+    {
+      "Proveedor": "GRUAS LA COOR SERVICIOS DE TRANSPORTE Y PARQUEADEROS S.A.S",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 105.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 100.9,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AFS ASISTENCIA FERNANDO SANCHEZ S.A.S",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 140.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 124.5,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "OPEN INVESTMENT COLOMBIA S.A.S.",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 199.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 183.4,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GN ASISTENCIA SAS - PESADO MEDELLIN",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 124.1,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 104.3,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "DRIVER V.I.P SAS",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 116.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 45.3,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS 7-24 LTDA -BOGOTÁ",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 4,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 5,
+      "Pct_Prestados_Sobre_Ofertados": 20,
+      "Prom_Tiempo_Arribo_1": 142.2,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 111.8,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS RYL - CARTAGENA",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 132210.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 0.1,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AR S.A.S RIO NEGRO",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 198.1,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 185.4,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "INVERSIONES HERNANDEZ CONTRERAS SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 135.3,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 11.3,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "REEMBOLSOS CO",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS ASISTIR COLOMBIA SAS - LA MESA",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 0.6,
+      "Pct_Cumplimiento_Arribo_1": 100,
+      "Prom_Tiempo_Arribo_2": 0.3,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS SERVICOL COLOMBIA S.A.S.- CALI",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 33.3,
+      "Prom_Tiempo_Arribo_1": 69.4,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SUARCARD TRANSPORTES SAS - JIMY CALI",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 138.7,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 102.7,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUPO EMPRESARIA GRUAS OLAYA S.A.S.",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 75.9,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 59.5,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "TRANSGRUAS C&A SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 4,
+      "Sin_Disponibilidad": 8,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 12,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 13,
+      "Pct_Prestados_Sobre_Ofertados": 7.7,
+      "Prom_Tiempo_Arribo_1": 51.9,
+      "Pct_Cumplimiento_Arribo_1": 100,
+      "Prom_Tiempo_Arribo_2": 34,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS HURTADO CALDERON- LOS PINOS CALI",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 5,
+      "Sin_Disponibilidad": 6,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 13,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 7.7,
+      "Total_Ofertados": 13,
+      "Pct_Prestados_Sobre_Ofertados": 7.7,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SOCIEDAD HAZ ABOGADOS SAS",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 50,
+      "Prom_Tiempo_Arribo_1": 102.2,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 0.1,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "RECOBRO CO",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "CMM TRANSPORTE EMPRESARIAL SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 1,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 9,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 11.1,
+      "Total_Ofertados": 9,
+      "Pct_Prestados_Sobre_Ofertados": 11.1,
+      "Prom_Tiempo_Arribo_1": 184.5,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 120.8,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SURA-ASCAR SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 1,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 0,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": null,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 100,
+      "Prom_Tiempo_Arribo_1": 169.4,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 142.5,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS Y SOLUCIONES VIALES S.A.S. - ANDRES CALI",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 11,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 15,
+      "Pct_Prestados_Sobre_Ofertados": 6.7,
+      "Prom_Tiempo_Arribo_1": 71.6,
+      "Pct_Cumplimiento_Arribo_1": 0,
+      "Prom_Tiempo_Arribo_2": 60.3,
+      "Pct_Cumplimiento_Arribo_2": 0,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS ELENA DIAZ SAS",
+      "Servicios_Sin_Barrido": 1,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 2,
+      "Total_Servicios_Prestados": 1,
+      "Total_Participaciones_Barrido": 8,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 9,
+      "Pct_Prestados_Sobre_Ofertados": 11.1,
+      "Prom_Tiempo_Arribo_1": 51.4,
+      "Pct_Cumplimiento_Arribo_1": 100,
+      "Prom_Tiempo_Arribo_2": 40.8,
+      "Pct_Cumplimiento_Arribo_2": 100,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTOGRUAS B&C",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 7,
+      "Perdio_Ante_Otro": 5,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 14,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AJ GRUAS S.A.S. MEDELLIN",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 6,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS OLAYA S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 15,
+      "Sin_Disponibilidad": 17,
+      "Perdio_Ante_Otro": 3,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 35,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 35,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ELECTROGRUAS Y TRANSPORTES SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "JUPITER PESADOS BOGOTA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 2,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AMERICAN SERVICE SOLUTION SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 10,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 12,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 12,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "BLUE ASSIST SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 5,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASSISTRANS MA S.A.S.",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 13,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 14,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVI GRUAS ZAPATA S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 3,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 7,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 7,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AR SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "VIP AUTO CENTER SAS - CALI",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "LUIS ALBERTO CAÑAVERAL GARCIA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTO GRUAS EXPRESS SAS-PALMIRA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 3,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "300 MULMULTISTRADA SASTISTRADA SAS1585151",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA Y SERVICIOS PAR S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GLOBAL TRANSPORT GROUP SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS HR7 S.A.S (MILENA)",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "W GRUAS S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 3,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 3,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 3,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS LEGADO JA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "PYP",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS HR7 S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS Y MONTAJES SERVIEXPRESS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "GRUAS & TRANSPORTES LET SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ROUTE 22 ASISTENCIA VIAL S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIGRUAS JGL SOLUCIONES EN TRANSPORTES SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIFULL VIAL",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "TRANSPORTE Y GRUAS THOMAS S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AGEX",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVICIO",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA MAITE",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO HAROLD",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA DE GRUAS EXPRESS JESUS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "LOGI ASISTENCIA Y TRANSPORTE SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 2,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 2,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 2,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTO GRUAS R&R SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AUTOGRUAS B&C SOLO GANCHO",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    }
+  ],
   "heatmap": {
     "dias": [
       "Lun",
@@ -33,7 +2308,2375 @@
       "Dom"
     ],
     "heatmaps": {
-      "GLOBAL": {}
+      "GLOBAL": {
+        "3_19": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 8,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 12,
+          "ganados": 1,
+          "pct": 8.3
+        },
+        "4_17": {
+          "n": 8,
+          "ganados": 1,
+          "pct": 12.5
+        },
+        "2_17": {
+          "n": 6,
+          "ganados": 1,
+          "pct": 16.7
+        },
+        "1_11": {
+          "n": 8,
+          "ganados": 1,
+          "pct": 12.5
+        },
+        "1_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_4": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 10,
+          "ganados": 2,
+          "pct": 20
+        },
+        "5_8": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 12,
+          "ganados": 3,
+          "pct": 25
+        },
+        "5_18": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "4_0": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 9,
+          "ganados": 1,
+          "pct": 11.1
+        },
+        "3_10": {
+          "n": 23,
+          "ganados": 5,
+          "pct": 21.7
+        },
+        "1_7": {
+          "n": 6,
+          "ganados": 1,
+          "pct": 16.7
+        },
+        "1_10": {
+          "n": 6,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_8": {
+          "n": 9,
+          "ganados": 3,
+          "pct": 33.3
+        },
+        "1_9": {
+          "n": 16,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "5_14": {
+          "n": 6,
+          "ganados": 1,
+          "pct": 16.7
+        },
+        "6_18": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 10,
+          "ganados": 3,
+          "pct": 30
+        },
+        "6_12": {
+          "n": 8,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 14,
+          "ganados": 2,
+          "pct": 14.3
+        },
+        "0_5": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "2_14": {
+          "n": 6,
+          "ganados": 1,
+          "pct": 16.7
+        },
+        "3_17": {
+          "n": 4,
+          "ganados": 1,
+          "pct": 25
+        },
+        "4_7": {
+          "n": 14,
+          "ganados": 2,
+          "pct": 14.3
+        },
+        "2_20": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_14": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "2_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "1_16": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_15": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 4,
+          "ganados": 1,
+          "pct": 25
+        },
+        "3_18": {
+          "n": 6,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_22": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_16": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 11,
+          "ganados": 1,
+          "pct": 9.1
+        },
+        "5_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 10,
+          "ganados": 1,
+          "pct": 10
+        },
+        "5_9": {
+          "n": 4,
+          "ganados": 1,
+          "pct": 25
+        },
+        "3_7": {
+          "n": 9,
+          "ganados": 1,
+          "pct": 11.1
+        },
+        "2_18": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 5,
+          "ganados": 1,
+          "pct": 20
+        },
+        "0_13": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_16": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "0_10": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_19": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_6": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "0_7": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "6_9": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "6_17": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_6": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_16": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "3_13": {
+          "n": 6,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 5,
+          "ganados": 1,
+          "pct": 20
+        },
+        "2_11": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_17": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "5_11": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "GRUAS CG - LUIS ALBERTO CAÑAVERAL GARCIA": {
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "SMART ASSISTANCE S.A.S - MEDELLIN": {
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ASISTENCIA DE GRUAS EXPRESS": {
+        "2_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_17": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "1_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS": {
+        "2_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "SOLUCIONES IDONEAS E INTEGRALES SAS": {
+        "3_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 3,
+          "ganados": 2,
+          "pct": 66.7
+        },
+        "5_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_14": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_16": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_6": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "1_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "QUINTERO POVEDA ASISTENCIA S.A.S.": {
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_18": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "1_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "5_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ANDRES FELIPE JIMENEZ MANCILLA-AF ASISTENCIA 24": {
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "RODAR PREMIUM S.A.S": {
+        "4_17": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_14": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "2_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA": {
+        "2_17": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "5_4": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "3_10": {
+          "n": 4,
+          "ganados": 2,
+          "pct": 50
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "1_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_10": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_6": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_16": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_6": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "SOLUCIONES SHADDAI JYL S.A.S": {
+        "5_4": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_11": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ASISTENCIA ORIENTE S.A.S.": {
+        "4_8": {
+          "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "0_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      }
     }
   },
   "heatmap_volumen": {
@@ -47,10 +4690,71 @@
       "Dom"
     ],
     "heatmaps": {
-      "GLOBAL": {},
-      "BOGOTÁ, D.C.": {},
-      "CALI": {},
-      "MEDELLÍN": {}
+      "GLOBAL": {
+        "6_11": 1,
+        "6_12": 3,
+        "6_8": 3,
+        "6_17": 7,
+        "6_16": 3,
+        "6_18": 2,
+        "6_7": 2,
+        "6_9": 2,
+        "6_10": 3,
+        "6_20": 2,
+        "6_13": 2,
+        "6_14": 1,
+        "2_10": 3,
+        "2_9": 7,
+        "2_18": 1,
+        "2_20": 1,
+        "2_19": 2,
+        "2_7": 1,
+        "2_14": 1,
+        "2_6": 2,
+        "2_8": 1,
+        "2_11": 2,
+        "2_13": 3
+      },
+      "BOGOTÁ, D.C.": {
+        "6_11": 1,
+        "6_12": 3,
+        "6_17": 6,
+        "6_16": 2,
+        "6_18": 1,
+        "6_10": 2,
+        "6_13": 2,
+        "6_14": 1,
+        "6_7": 1,
+        "2_10": 3,
+        "2_19": 1,
+        "2_7": 1,
+        "2_14": 1,
+        "2_6": 2,
+        "2_9": 5,
+        "2_11": 1,
+        "2_13": 2
+      },
+      "CALI": {
+        "6_8": 3,
+        "6_7": 1,
+        "6_10": 1,
+        "6_17": 1,
+        "6_16": 1,
+        "6_9": 1,
+        "2_20": 1,
+        "2_8": 1,
+        "2_9": 1,
+        "2_13": 1
+      },
+      "MEDELLÍN": {
+        "6_9": 1,
+        "6_20": 2,
+        "6_18": 1,
+        "2_9": 1,
+        "2_18": 1,
+        "2_11": 1,
+        "2_19": 1
+      }
     }
   }
 }
