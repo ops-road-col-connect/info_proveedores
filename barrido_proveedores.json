@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T03:14:34.143Z",
+  "updatedAt": "2026-10-02T03:31:11.194Z",
   "total_po": 671,
   "city": {
     "BOGOTÁ, D.C.": 406,
@@ -1651,131 +1651,17 @@
       "is_priority": false
     },
     {
-      "Proveedor": "AJ GRUAS S.A.S. MEDELLIN",
+      "Proveedor": "GLOBAL TRANSPORT GROUP SAS",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
       "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 6,
+      "Sin_Disponibilidad": 1,
       "Perdio_Ante_Otro": 0,
       "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 6,
+      "Total_Participaciones_Barrido": 1,
       "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 6,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "GRUAS OLAYA S.A.S",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 15,
-      "Sin_Disponibilidad": 17,
-      "Perdio_Ante_Otro": 3,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 35,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 35,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "ELECTROGRUAS Y TRANSPORTES SAS",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 4,
-      "Perdio_Ante_Otro": 1,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 6,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 6,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "JUPITER PESADOS BOGOTA",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 2,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 2,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 2,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "AMERICAN SERVICE SOLUTION SAS",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 10,
-      "Perdio_Ante_Otro": 1,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 12,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 12,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "BLUE ASSIST SAS",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 5,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 6,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 6,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "ASSISTRANS MA S.A.S.",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 13,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 14,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 14,
+      "Total_Ofertados": 1,
       "Pct_Prestados_Sobre_Ofertados": 0,
       "Prom_Tiempo_Arribo_1": null,
       "Pct_Cumplimiento_Arribo_1": null,
@@ -1803,55 +1689,17 @@
       "is_priority": false
     },
     {
-      "Proveedor": "AR SAS",
+      "Proveedor": "GRUAS OLAYA S.A.S",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
+      "Sin_Respuesta": 15,
+      "Sin_Disponibilidad": 17,
+      "Perdio_Ante_Otro": 3,
       "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
+      "Total_Participaciones_Barrido": 35,
       "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "VIP AUTO CENTER SAS - CALI",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "LUIS ALBERTO CAÑAVERAL GARCIA",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
+      "Total_Ofertados": 35,
       "Pct_Prestados_Sobre_Ofertados": 0,
       "Prom_Tiempo_Arribo_1": null,
       "Pct_Cumplimiento_Arribo_1": null,
@@ -1879,17 +1727,17 @@
       "is_priority": false
     },
     {
-      "Proveedor": "300 MULMULTISTRADA SASTISTRADA SAS1585151",
+      "Proveedor": "JUPITER PESADOS BOGOTA",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
       "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
+      "Sin_Disponibilidad": 2,
       "Perdio_Ante_Otro": 0,
       "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
+      "Total_Participaciones_Barrido": 2,
       "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
+      "Total_Ofertados": 2,
       "Pct_Prestados_Sobre_Ofertados": 0,
       "Prom_Tiempo_Arribo_1": null,
       "Pct_Cumplimiento_Arribo_1": null,
@@ -1898,88 +1746,145 @@
       "is_priority": false
     },
     {
-      "Proveedor": "ASISTENCIA Y SERVICIOS PAR S.A.S",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "GLOBAL TRANSPORT GROUP SAS",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "GRUAS HR7 S.A.S (MILENA)",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "W GRUAS S.A.S",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 3,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 3,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 3,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "GRUAS LEGADO JA",
+      "Proveedor": "ELECTROGRUAS Y TRANSPORTES SAS",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
       "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 0,
+      "Sin_Disponibilidad": 4,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AMERICAN SERVICE SOLUTION SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 10,
+      "Perdio_Ante_Otro": 1,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 12,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 12,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASSISTRANS MA S.A.S.",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 13,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 14,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 14,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AJ GRUAS S.A.S. MEDELLIN",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 6,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA MAITE",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO HAROLD",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA DE GRUAS EXPRESS JESUS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIFULL VIAL",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
       "Perdio_Ante_Otro": 0,
       "Total_Servicios_Prestados": 0,
       "Total_Participaciones_Barrido": 1,
@@ -2069,26 +1974,7 @@
       "is_priority": false
     },
     {
-      "Proveedor": "ROUTE 22 ASISTENCIA VIAL S.A.S",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 1,
-      "Sin_Disponibilidad": 0,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "SERVIGRUAS JGL SOLUCIONES EN TRANSPORTES SAS",
+      "Proveedor": "AUTOGRUAS B&C SOLO GANCHO",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
@@ -2107,36 +1993,17 @@
       "is_priority": false
     },
     {
-      "Proveedor": "SERVIFULL VIAL",
+      "Proveedor": "W GRUAS S.A.S",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
       "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
+      "Sin_Disponibilidad": 3,
       "Perdio_Ante_Otro": 0,
       "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
+      "Total_Participaciones_Barrido": 3,
       "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
-      "Pct_Prestados_Sobre_Ofertados": 0,
-      "Prom_Tiempo_Arribo_1": null,
-      "Pct_Cumplimiento_Arribo_1": null,
-      "Prom_Tiempo_Arribo_2": null,
-      "Pct_Cumplimiento_Arribo_2": null,
-      "is_priority": false
-    },
-    {
-      "Proveedor": "TRANSPORTE Y GRUAS THOMAS S.A.S",
-      "Servicios_Sin_Barrido": 0,
-      "Servicios_Fuera_De_Su_Barrido": 0,
-      "Gano_En_Barrido": 0,
-      "Sin_Respuesta": 0,
-      "Sin_Disponibilidad": 1,
-      "Perdio_Ante_Otro": 0,
-      "Total_Servicios_Prestados": 0,
-      "Total_Participaciones_Barrido": 1,
-      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
-      "Total_Ofertados": 1,
+      "Total_Ofertados": 3,
       "Pct_Prestados_Sobre_Ofertados": 0,
       "Prom_Tiempo_Arribo_1": null,
       "Pct_Cumplimiento_Arribo_1": null,
@@ -2183,7 +2050,7 @@
       "is_priority": false
     },
     {
-      "Proveedor": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA MAITE",
+      "Proveedor": "GRUAS HR7 S.A.S (MILENA)",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
@@ -2202,7 +2069,26 @@
       "is_priority": false
     },
     {
-      "Proveedor": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO HAROLD",
+      "Proveedor": "BLUE ASSIST SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 5,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 6,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 6,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "AR SAS",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
@@ -2221,7 +2107,26 @@
       "is_priority": false
     },
     {
-      "Proveedor": "ASISTENCIA DE GRUAS EXPRESS JESUS",
+      "Proveedor": "300 MULMULTISTRADA SASTISTRADA SAS1585151",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ASISTENCIA Y SERVICIOS PAR S.A.S",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
@@ -2259,6 +2164,63 @@
       "is_priority": false
     },
     {
+      "Proveedor": "GRUAS LEGADO JA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "SERVIGRUAS JGL SOLUCIONES EN TRANSPORTES SAS",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "VIP AUTO CENTER SAS - CALI",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
       "Proveedor": "AUTO GRUAS R&R SAS",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
@@ -2278,12 +2240,50 @@
       "is_priority": false
     },
     {
-      "Proveedor": "AUTOGRUAS B&C SOLO GANCHO",
+      "Proveedor": "TRANSPORTE Y GRUAS THOMAS S.A.S",
       "Servicios_Sin_Barrido": 0,
       "Servicios_Fuera_De_Su_Barrido": 0,
       "Gano_En_Barrido": 0,
       "Sin_Respuesta": 0,
       "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "LUIS ALBERTO CAÑAVERAL GARCIA",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 0,
+      "Sin_Disponibilidad": 1,
+      "Perdio_Ante_Otro": 0,
+      "Total_Servicios_Prestados": 0,
+      "Total_Participaciones_Barrido": 1,
+      "Pct_Ganado_Sobre_Ofrecido_Barrido": 0,
+      "Total_Ofertados": 1,
+      "Pct_Prestados_Sobre_Ofertados": 0,
+      "Prom_Tiempo_Arribo_1": null,
+      "Pct_Cumplimiento_Arribo_1": null,
+      "Prom_Tiempo_Arribo_2": null,
+      "Pct_Cumplimiento_Arribo_2": null,
+      "is_priority": false
+    },
+    {
+      "Proveedor": "ROUTE 22 ASISTENCIA VIAL S.A.S",
+      "Servicios_Sin_Barrido": 0,
+      "Servicios_Fuera_De_Su_Barrido": 0,
+      "Gano_En_Barrido": 0,
+      "Sin_Respuesta": 1,
+      "Sin_Disponibilidad": 0,
       "Perdio_Ante_Otro": 0,
       "Total_Servicios_Prestados": 0,
       "Total_Participaciones_Barrido": 1,
@@ -2309,63 +2309,28 @@
     ],
     "heatmaps": {
       "GLOBAL": {
-        "3_19": {
-          "n": 5,
+        "1_20": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "2_7": {
-          "n": 8,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
-          "n": 12,
-          "ganados": 1,
-          "pct": 8.3
-        },
-        "4_17": {
-          "n": 8,
-          "ganados": 1,
-          "pct": 12.5
-        },
-        "2_17": {
+        "2_14": {
           "n": 6,
           "ganados": 1,
           "pct": 16.7
         },
-        "1_11": {
-          "n": 8,
-          "ganados": 1,
-          "pct": 12.5
-        },
-        "1_14": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_4": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_13": {
-          "n": 10,
-          "ganados": 2,
-          "pct": 20
-        },
-        "5_8": {
+        "0_13": {
           "n": 5,
           "ganados": 0,
           "pct": 0
         },
-        "6_11": {
-          "n": 7,
+        "1_9": {
+          "n": 16,
           "ganados": 0,
           "pct": 0
         },
-        "2_9": {
-          "n": 7,
+        "4_22": {
+          "n": 4,
           "ganados": 0,
           "pct": 0
         },
@@ -2374,15 +2339,20 @@
           "ganados": 3,
           "pct": 25
         },
-        "5_18": {
-          "n": 7,
-          "ganados": 1,
-          "pct": 14.3
-        },
-        "4_0": {
+        "6_19": {
           "n": 5,
           "ganados": 0,
           "pct": 0
+        },
+        "6_20": {
+          "n": 10,
+          "ganados": 1,
+          "pct": 10
+        },
+        "4_15": {
+          "n": 5,
+          "ganados": 1,
+          "pct": 20
         },
         "0_8": {
           "n": 9,
@@ -2399,43 +2369,118 @@
           "ganados": 1,
           "pct": 16.7
         },
-        "1_10": {
+        "3_12": {
+          "n": 12,
+          "ganados": 1,
+          "pct": 8.3
+        },
+        "4_9": {
+          "n": 4,
+          "ganados": 1,
+          "pct": 25
+        },
+        "2_7": {
+          "n": 8,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
           "n": 6,
           "ganados": 0,
           "pct": 0
         },
-        "0_14": {
-          "n": 2,
+        "3_17": {
+          "n": 4,
           "ganados": 1,
-          "pct": 50
+          "pct": 25
         },
-        "4_8": {
-          "n": 9,
-          "ganados": 3,
-          "pct": 33.3
-        },
-        "1_9": {
-          "n": 16,
+        "5_8": {
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
-        "1_15": {
-          "n": 7,
-          "ganados": 1,
+        "4_7": {
+          "n": 14,
+          "ganados": 2,
           "pct": 14.3
         },
-        "5_14": {
+        "2_17": {
           "n": 6,
           "ganados": 1,
           "pct": 16.7
         },
-        "6_18": {
+        "6_12": {
+          "n": 8,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "2_10": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_17": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
           "n": 7,
           "ganados": 0,
           "pct": 0
         },
-        "2_19": {
-          "n": 5,
+        "1_11": {
+          "n": 8,
+          "ganados": 1,
+          "pct": 12.5
+        },
+        "1_18": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "6_17": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_20": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 14,
+          "ganados": 2,
+          "pct": 14.3
+        },
+        "0_10": {
+          "n": 4,
           "ganados": 0,
           "pct": 0
         },
@@ -2444,27 +2489,22 @@
           "ganados": 3,
           "pct": 30
         },
-        "6_12": {
-          "n": 8,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_15": {
+        "0_16": {
           "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "3_22": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "3_14": {
-          "n": 7,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_10": {
-          "n": 14,
+        "1_13": {
+          "n": 10,
           "ganados": 2,
-          "pct": 14.3
+          "pct": 20
         },
-        "0_5": {
+        "3_21": {
           "n": 4,
           "ganados": 0,
           "pct": 0
@@ -2474,8 +2514,48 @@
           "ganados": 0,
           "pct": 0
         },
-        "0_9": {
+        "6_7": {
           "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_14": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 5,
+          "ganados": 1,
+          "pct": 20
+        },
+        "5_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 9,
+          "ganados": 1,
+          "pct": 11.1
+        },
+        "1_15": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "5_14": {
+          "n": 6,
+          "ganados": 1,
+          "pct": 16.7
+        },
+        "6_18": {
+          "n": 7,
           "ganados": 0,
           "pct": 0
         },
@@ -2484,83 +2564,68 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_12": {
-          "n": 7,
-          "ganados": 1,
-          "pct": 14.3
-        },
-        "2_14": {
-          "n": 6,
-          "ganados": 1,
-          "pct": 16.7
-        },
-        "3_17": {
+        "1_16": {
           "n": 4,
-          "ganados": 1,
-          "pct": 25
-        },
-        "4_7": {
-          "n": 14,
-          "ganados": 2,
-          "pct": 14.3
-        },
-        "2_20": {
-          "n": 3,
           "ganados": 0,
           "pct": 0
         },
-        "6_14": {
-          "n": 7,
+        "1_12": {
+          "n": 1,
           "ganados": 1,
-          "pct": 14.3
+          "pct": 100
+        },
+        "4_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 9,
+          "ganados": 3,
+          "pct": 33.3
         },
         "2_5": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "5_20": {
-          "n": 4,
+        "4_17": {
+          "n": 8,
+          "ganados": 1,
+          "pct": 12.5
+        },
+        "2_11": {
+          "n": 3,
           "ganados": 0,
           "pct": 0
         },
-        "5_19": {
+        "2_18": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_18": {
           "n": 7,
           "ganados": 1,
           "pct": 14.3
         },
-        "1_16": {
-          "n": 4,
+        "4_0": {
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
-        "3_15": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_9": {
+        "5_9": {
           "n": 4,
           "ganados": 1,
           "pct": 25
         },
-        "3_18": {
-          "n": 6,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_20": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_22": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_16": {
-          "n": 3,
+        "3_14": {
+          "n": 7,
           "ganados": 0,
           "pct": 0
         },
@@ -2569,61 +2634,6 @@
           "ganados": 1,
           "pct": 9.1
         },
-        "5_7": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_20": {
-          "n": 10,
-          "ganados": 1,
-          "pct": 10
-        },
-        "5_9": {
-          "n": 4,
-          "ganados": 1,
-          "pct": 25
-        },
-        "3_7": {
-          "n": 9,
-          "ganados": 1,
-          "pct": 11.1
-        },
-        "2_18": {
-          "n": 5,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_15": {
-          "n": 5,
-          "ganados": 1,
-          "pct": 20
-        },
-        "0_13": {
-          "n": 5,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_16": {
-          "n": 3,
-          "ganados": 1,
-          "pct": 33.3
-        },
-        "0_10": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_19": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_19": {
-          "n": 7,
-          "ganados": 0,
-          "pct": 0
-        },
         "3_6": {
           "n": 1,
           "ganados": 1,
@@ -2634,23 +2644,88 @@
           "ganados": 1,
           "pct": 33.3
         },
-        "6_9": {
+        "2_12": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "3_13": {
+          "n": 6,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 5,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 6,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_14": {
+          "n": 7,
+          "ganados": 1,
+          "pct": 14.3
+        },
+        "0_5": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_15": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 7,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
           "n": 3,
           "ganados": 1,
           "pct": 33.3
         },
-        "6_17": {
+        "5_11": {
           "n": 4,
           "ganados": 0,
           "pct": 0
         },
-        "4_22": {
+        "5_16": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
           "n": 4,
           "ganados": 0,
           "pct": 0
         },
-        "6_19": {
-          "n": 5,
+        "6_11": {
+          "n": 7,
           "ganados": 0,
           "pct": 0
         },
@@ -2664,154 +2739,29 @@
           "ganados": 1,
           "pct": 50
         },
-        "3_13": {
-          "n": 6,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_7": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_6": {
-          "n": 5,
-          "ganados": 1,
-          "pct": 20
-        },
-        "2_11": {
+        "0_15": {
           "n": 3,
           "ganados": 0,
           "pct": 0
         },
-        "0_17": {
+        "5_4": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_19": {
           "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_13": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_14": {
-          "n": 5,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_8": {
-          "n": 7,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_18": {
-          "n": 7,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_21": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_13": {
-          "n": 3,
-          "ganados": 1,
-          "pct": 33.3
-        },
-        "5_11": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_10": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_12": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "4_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_2": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_9": {
-          "n": 4,
           "ganados": 0,
           "pct": 0
         }
       },
-      "GRUAS CG - LUIS ALBERTO CAÑAVERAL GARCIA": {
-        "3_19": {
+      "RODAR PREMIUM S.A.S": {
+        "1_20": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "4_17": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_14": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_10": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_18": {
+        "4_15": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -2821,18 +2771,53 @@
           "ganados": 0,
           "pct": 0
         },
-        "1_20": {
+        "2_10": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "2_8": {
-          "n": 2,
+        "3_12": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
         "4_7": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_10": {
           "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_14": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_17": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "2_11": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -2841,49 +2826,7 @@
           "ganados": 0,
           "pct": 0
         },
-        "6_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_16": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_14": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_13": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "3_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "SMART ASSISTANCE S.A.S - MEDELLIN": {
-        "3_19": {
+        "4_0": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -2893,27 +2836,12 @@
           "ganados": 0,
           "pct": 0
         },
-        "6_8": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "3_10": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_15": {
+        "2_8": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "6_12": {
+        "6_13": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -2928,7 +2856,34 @@
           "ganados": 0,
           "pct": 0
         },
-        "4_10": {
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "GRUAS CG - LUIS ALBERTO CAÑAVERAL GARCIA": {
+        "1_20": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -2938,28 +2893,23 @@
           "ganados": 0,
           "pct": 0
         },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
         "4_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_11": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "3_17": {
+        "0_14": {
           "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -2968,224 +2918,7 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "ASISTENCIA DE GRUAS EXPRESS": {
-        "2_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_17": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_14": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_10": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_9": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_12": {
-          "n": 2,
-          "ganados": 2,
-          "pct": 100
-        },
-        "1_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_14": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_5": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_7": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "5_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_20": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "1_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_0": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_19": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_7": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "5_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_15": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "6_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_22": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_13": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_10": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_6": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_17": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3195,304 +2928,22 @@
           "ganados": 0,
           "pct": 0
         },
-        "3_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_21": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_12": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "6_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS": {
-        "2_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_14": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_9": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_12": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_13": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_14": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_10": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_5": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "2_8": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "2_12": {
-          "n": 1,
+        "4_8": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
         "4_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_7": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "2_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_19": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_18": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_22": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_20": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_0": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_13": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_19": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_22": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_13": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_16": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_6": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_8": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_21": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_10": {
+        "2_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3507,35 +2958,70 @@
           "ganados": 0,
           "pct": 0
         },
-        "6_7": {
+        "3_19": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "3_9": {
-          "n": 2,
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         }
       },
-      "SOLUCIONES IDONEAS E INTEGRALES SAS": {
-        "3_12": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "1_11": {
-          "n": 1,
+      "ANDRES FELIPE JIMENEZ MANCILLA-AF ASISTENCIA 24": {
+        "2_14": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "1_13": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "5_18": {
+        "1_9": {
           "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -3544,13 +3030,53 @@
           "ganados": 0,
           "pct": 0
         },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
         "3_10": {
-          "n": 3,
-          "ganados": 2,
-          "pct": 66.7
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
         },
         "5_14": {
           "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -3559,18 +3085,33 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_14": {
+        "3_7": {
           "n": 2,
-          "ganados": 1,
-          "pct": 50
+          "ganados": 0,
+          "pct": 0
         },
-        "2_20": {
+        "4_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
         "6_14": {
-          "n": 3,
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -3579,8 +3120,8 @@
           "ganados": 0,
           "pct": 0
         },
-        "1_16": {
-          "n": 2,
+        "3_2": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -3594,7 +3135,12 @@
           "ganados": 0,
           "pct": 0
         },
-        "0_8": {
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3604,12 +3150,109 @@
           "ganados": 0,
           "pct": 0
         },
+        "0_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "SOLUCIONES IDONEAS E INTEGRALES SAS": {
+        "2_14": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "1_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_10": {
+          "n": 3,
+          "ganados": 2,
+          "pct": 66.7
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_16": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
         "3_7": {
           "n": 2,
           "ganados": 1,
           "pct": 50
         },
-        "0_19": {
+        "4_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3619,129 +3262,22 @@
           "ganados": 1,
           "pct": 100
         },
-        "6_9": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "1_9": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_12": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
         "2_12": {
           "n": 1,
           "ganados": 1,
           "pct": 100
         },
-        "4_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_2": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "QUINTERO POVEDA ASISTENCIA S.A.S.": {
-        "3_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_13": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_18": {
-          "n": 3,
-          "ganados": 1,
-          "pct": 33.3
-        },
-        "1_7": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "5_14": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "6_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_14": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "6_14": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
         },
         "4_7": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "1_16": {
+        "3_2": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3756,38 +3292,35 @@
           "ganados": 0,
           "pct": 0
         },
-        "0_8": {
+        "1_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "4_9": {
+        "1_8": {
           "n": 1,
-          "ganados": 1,
-          "pct": 100
+          "ganados": 0,
+          "pct": 0
         },
         "5_16": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "5_7": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_7": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
+        "1_13": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
         },
         "0_19": {
           "n": 1,
           "ganados": 0,
           "pct": 0
-        },
-        "6_9": {
-          "n": 1,
+        }
+      },
+      "QUINTERO POVEDA ASISTENCIA S.A.S.": {
+        "2_14": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -3806,22 +3339,12 @@
           "ganados": 0,
           "pct": 0
         },
-        "4_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
+        "1_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
         },
-        "3_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_8": {
+        "4_9": {
           "n": 1,
           "ganados": 1,
           "pct": 100
@@ -3832,6 +3355,26 @@
           "pct": 0
         },
         "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3846,45 +3389,23 @@
           "ganados": 0,
           "pct": 0
         },
-        "1_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_2": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "ANDRES FELIPE JIMENEZ MANCILLA-AF ASISTENCIA 24": {
-        "3_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_18": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_7": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_10": {
+        "5_7": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
         "5_14": {
           "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "1_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -3893,27 +3414,47 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_14": {
+        "3_7": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "2_20": {
+        "4_8": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_18": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "0_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
         "6_14": {
           "n": 2,
-          "ganados": 0,
-          "pct": 0
+          "ganados": 1,
+          "pct": 50
         },
         "4_7": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "1_16": {
+        "3_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_2": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3928,67 +3469,7 @@
           "ganados": 0,
           "pct": 0
         },
-        "0_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_16": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_7": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_9": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_12": {
+        "1_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -3998,156 +3479,29 @@
           "ganados": 0,
           "pct": 0
         },
-        "3_2": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        }
-      },
-      "RODAR PREMIUM S.A.S": {
-        "4_17": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "4_0": {
+        "5_16": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "1_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_14": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "3_10": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "1_15": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "6_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_10": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "2_7": {
+        "1_13": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "1_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_7": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "2_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_16": {
-          "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "3_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
+        "0_19": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         }
       },
       "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA": {
-        "2_17": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "5_4": {
+        "0_13": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "5_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_11": {
+        "4_22": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4162,37 +3516,7 @@
           "ganados": 2,
           "pct": 50
         },
-        "0_8": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "1_9": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_12": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_13": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "4_10": {
-          "n": 3,
-          "ganados": 1,
-          "pct": 33.3
-        },
-        "0_5": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "2_12": {
+        "3_12": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4203,6 +3527,131 @@
           "pct": 100
         },
         "4_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_17": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_16": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "1_9": {
           "n": 2,
           "ganados": 0,
           "pct": 0
@@ -4212,38 +3661,13 @@
           "ganados": 0,
           "pct": 0
         },
-        "5_20": {
+        "1_15": {
           "n": 1,
           "ganados": 0,
           "pct": 0
-        },
-        "5_19": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
         },
         "4_9": {
           "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_12": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_22": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_8": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_20": {
-          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -4252,32 +3676,7 @@
           "ganados": 1,
           "pct": 100
         },
-        "1_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "4_0": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_13": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4287,22 +3686,52 @@
           "ganados": 0,
           "pct": 0
         },
-        "6_12": {
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "1_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "4_15": {
+        "0_5": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "6_17": {
+        "4_14": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "4_22": {
+        "5_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4317,23 +3746,55 @@
           "ganados": 0,
           "pct": 0
         },
-        "3_18": {
+        "5_4": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "0_16": {
+        "5_8": {
           "n": 1,
-          "ganados": 1,
-          "pct": 100
-        },
-        "4_6": {
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS": {
+        "0_13": {
           "n": 2,
-          "ganados": 1,
-          "pct": 50
+          "ganados": 0,
+          "pct": 0
         },
-        "0_17": {
+        "4_22": {
           "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -4347,13 +3808,48 @@
           "ganados": 0,
           "pct": 0
         },
-        "4_14": {
+        "5_20": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "2_19": {
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
           "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -4362,7 +3858,12 @@
           "ganados": 0,
           "pct": 0
         },
-        "1_18": {
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_16": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4372,17 +3873,7 @@
           "ganados": 0,
           "pct": 0
         },
-        "5_11": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "4_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_20": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4391,10 +3882,133 @@
           "n": 1,
           "ganados": 0,
           "pct": 0
-        }
-      },
-      "SOLUCIONES SHADDAI JYL S.A.S": {
-        "5_4": {
+        },
+        "2_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 4,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4404,8 +4018,40 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_9": {
+        "1_18": {
           "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ASISTENCIA DE GRUAS EXPRESS": {
+        "0_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -4414,18 +4060,118 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_19": {
+        "5_8": {
           "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "2_17": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
         "4_12": {
           "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "1_9": {
+          "n": 3,
           "ganados": 0,
           "pct": 0
         },
-        "1_13": {
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
           "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -4434,12 +4180,72 @@
           "ganados": 0,
           "pct": 0
         },
+        "1_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
         "0_5": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "2_8": {
+        "3_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4451,6 +4257,48 @@
         },
         "4_17": {
           "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "SOLUCIONES SHADDAI JYL S.A.S": {
+        "4_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_18": {
+          "n": 2,
           "ganados": 0,
           "pct": 0
         },
@@ -4469,118 +4317,13 @@
           "ganados": 0,
           "pct": 0
         },
-        "5_20": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "5_19": {
           "n": 2,
           "ganados": 0,
           "pct": 0
         },
-        "4_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_18": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_8": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "6_20": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_9": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
         "1_9": {
           "n": 4,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_0": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_13": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_11": {
-          "n": 2,
-          "ganados": 1,
-          "pct": 50
-        },
-        "0_10": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "1_19": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "0_7": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_15": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_17": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_22": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_8": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "6_19": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "4_10": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_13": {
-          "n": 1,
           "ganados": 0,
           "pct": 0
         },
@@ -4595,6 +4338,141 @@
           "pct": 0
         },
         "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_20": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "4_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_20": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_14": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_8": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4614,12 +4492,27 @@
           "ganados": 0,
           "pct": 0
         },
-        "3_21": {
+        "5_11": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         },
-        "4_6": {
+        "2_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4629,29 +4522,94 @@
           "ganados": 0,
           "pct": 0
         },
-        "6_18": {
-          "n": 1,
-          "ganados": 0,
-          "pct": 0
-        },
-        "5_11": {
-          "n": 2,
-          "ganados": 0,
-          "pct": 0
-        },
-        "3_9": {
+        "5_4": {
           "n": 1,
           "ganados": 0,
           "pct": 0
         }
       },
-      "ASISTENCIA ORIENTE S.A.S.": {
+      "SMART ASSISTANCE S.A.S - MEDELLIN": {
+        "2_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
         "4_8": {
           "n": 2,
-          "ganados": 2,
-          "pct": 100
+          "ganados": 0,
+          "pct": 0
         },
-        "0_15": {
+        "2_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4661,7 +4619,34 @@
           "ganados": 0,
           "pct": 0
         },
-        "4_18": {
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_8": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "3_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_11": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "ASISTENCIA ORIENTE S.A.S.": {
+        "2_10": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -4671,7 +4656,22 @@
           "ganados": 0,
           "pct": 0
         },
-        "2_10": {
+        "4_8": {
+          "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_15": {
           "n": 1,
           "ganados": 0,
           "pct": 0
