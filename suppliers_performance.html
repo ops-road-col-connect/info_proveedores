@@ -411,23 +411,22 @@
         </label>
       </div>
       <div id="brandeadasStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-top:12px; font-size:13px;"></div>
-      <div class="chart-box tall" style="margin-top:14px;"><canvas id="chartBrandeadas"></canvas></div>
-      <div class="legend-row">
-        <span><span class="dot" style="background:#2E9E6C"></span> ≤60 min</span>
-        <span><span class="dot" style="background:#1565C0"></span> ≤75 min</span>
-        <span><span class="dot" style="background:#FF7A29"></span> ≤90 min</span>
-      </div>
+
+      <h3 style="margin-top:14px;">% de cumplimiento ≤60 min, por grúa</h3>
+      <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadas"></canvas></div>
+
+      <h3 style="margin-top:24px;">Cantidad de servicios por grúa, vs. meta</h3>
+      <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadasVolumen"></canvas></div>
     </div>
     <div class="card" style="margin-top:16px;">
-      <h3>Detalle por período</h3>
+      <h3>Detalle por grúa y período</h3>
       <div class="table-scroll" style="max-height:420px;">
         <table id="brandeadasTable">
           <thead><tr>
+            <th>Grúa</th>
             <th>Período</th>
-            <th class="num-cell">Servicios con dato de arribo</th>
+            <th class="num-cell">Servicios</th>
             <th class="num-cell">% ≤60 min</th>
-            <th class="num-cell">% ≤75 min</th>
-            <th class="num-cell">% ≤90 min</th>
           </tr></thead>
           <tbody id="brandeadasTbody"></tbody>
         </table>
@@ -839,6 +838,50 @@ function renderArriboView(){
 
 // ---------- Grúas brandeadas (misma lógica de cumplimiento, filtrada a is_grua_brandeada) ----------
 let chartBrandeadas = null;
+let chartBrandeadasVolumen = null;
+const PALETA_GRUAS = ['#2E9E6C','#1565C0','#FF7A29','#E53935','#9B59B6','#00A6A6','#C2A000','#E91E8C','#5D4037','#607D8B'];
+function metaServiciosPorGranularidad(g){ return g==='dia' ? 4 : g==='semana' ? 20 : 80; }
+
+// Agrupa por período Y por grúa a la vez: sirve tanto para el % de cumplimiento ≤60min
+// (línea por grúa) como para la cantidad de servicios por grúa (barras + meta).
+function computeCumplimientoPorGrua(pos, ciudad, granularidad){
+  const periodos = new Map();       // key período -> {label, sortKey}
+  const celdas = new Map();         // key "grua|período" -> {total, c60}
+  const gruasSet = new Set();
+
+  for(const p of pos){
+    if(!p.FechaCreacion || !p.GrupoGrua) continue;
+    if(ciudad && ciudad !== 'TODAS' && p.CiudadInicio !== ciudad) continue;
+    const creacion = new Date(p.FechaCreacion);
+    const { key, label, sortKey } = claveYLabelPeriodo(creacion, granularidad);
+    if(!periodos.has(key)) periodos.set(key, { label, sortKey });
+    gruasSet.add(p.GrupoGrua);
+
+    const compKey = p.GrupoGrua + '|' + key;
+    if(!celdas.has(compKey)) celdas.set(compKey, { total:0, c60:0 });
+    const c = celdas.get(compKey);
+    c.total += 1;
+    if(p.FechaViajeLLegada){
+      const minutos = (new Date(p.FechaViajeLLegada) - creacion) / 60000;
+      if(isFinite(minutos) && minutos >= 0 && minutos <= 60) c.c60 += 1;
+    }
+  }
+
+  const periodosOrdenados = Array.from(periodos.entries()).sort((a,b)=>a[1].sortKey.localeCompare(b[1].sortKey));
+  const labels = periodosOrdenados.map(([,v])=>v.label);
+  const gruas = Array.from(gruasSet).sort();
+
+  const series = gruas.map(grua => {
+    const totales = periodosOrdenados.map(([key]) => (celdas.get(grua+'|'+key)||{total:0}).total);
+    const pct60 = periodosOrdenados.map(([key]) => {
+      const c = celdas.get(grua+'|'+key);
+      return (c && c.total>0) ? Math.round((c.c60/c.total*100)*10)/10 : null;
+    });
+    return { nombre: grua, totales, pct60 };
+  });
+
+  return { labels, series };
+}
 
 function renderBrandeadasView(){
   const msgEl = document.getElementById('brandeadasStatusMsg');
@@ -875,34 +918,41 @@ function renderBrandeadasView(){
     return;
   }
 
-  const datos = computeCumplimientoArribo(posBrandeadas, ciudad, granularidad);
+  const { labels, series } = computeCumplimientoPorGrua(posBrandeadas, ciudad, granularidad);
 
-  if(datos.length === 0){
+  if(labels.length === 0 || series.length === 0){
     msgEl.style.display = '';
-    msgEl.textContent = 'No hay servicios de grúas brandeadas con fecha de creación Y llegada real para este filtro.';
+    msgEl.textContent = 'No hay servicios de grúas brandeadas con fecha de creación para este filtro.';
     if(chartBrandeadas){ chartBrandeadas.destroy(); chartBrandeadas = null; }
+    if(chartBrandeadasVolumen){ chartBrandeadasVolumen.destroy(); chartBrandeadasVolumen = null; }
     tbody.innerHTML = '';
     return;
   }
   msgEl.style.display = 'none';
 
+  // --- Gráfico 1: % de cumplimiento ≤60 min, una línea por grúa ---
   if(chartBrandeadas) chartBrandeadas.destroy();
   try{
     chartBrandeadas = new Chart(document.getElementById('chartBrandeadas'), {
       type:'line',
       data:{
-        labels: datos.map(d=>d.label),
-        datasets:[
-          { label:'% ≤60 min', data: datos.map(d=>d.pct60), borderColor:'#2E9E6C', backgroundColor:'rgba(46,158,108,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
-          { label:'% ≤75 min', data: datos.map(d=>d.pct75), borderColor:'#1565C0', backgroundColor:'rgba(21,101,192,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
-          { label:'% ≤90 min', data: datos.map(d=>d.pct90), borderColor:'#FF7A29', backgroundColor:'rgba(255,122,41,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
-        ]
+        labels,
+        datasets: series.map((s,i)=>({
+          label: s.nombre,
+          data: s.pct60,
+          borderColor: PALETA_GRUAS[i % PALETA_GRUAS.length],
+          backgroundColor: PALETA_GRUAS[i % PALETA_GRUAS.length],
+          tension:.3, pointRadius:4, borderWidth:2.5, spanGaps:true,
+        }))
       },
       options:{
         responsive:true, maintainAspectRatio:false,
         plugins:{
-          legend:{ display:false },
-          tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.raw}% (de ${datos[ctx.dataIndex].total} servicios)` } }
+          legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
+          tooltip:{ callbacks:{ label:(ctx)=> {
+            const tot = series[ctx.datasetIndex].totales[ctx.dataIndex];
+            return `${ctx.dataset.label}: ${ctx.raw===null?'sin datos':ctx.raw+'%'} (de ${tot} servicios)`;
+          } } }
         },
         scales:{
           x:{ ticks:{ color:getTextColor() }, grid:{ display:false } },
@@ -912,15 +962,60 @@ function renderBrandeadasView(){
     });
   }catch(e){ console.error('chartBrandeadas', e); }
 
-  tbody.innerHTML = datos.map(d=>`
-    <tr>
-      <td>${d.label}</td>
-      <td class="num-cell">${d.total}</td>
-      <td class="num-cell">${d.pct60}%</td>
-      <td class="num-cell">${d.pct75}%</td>
-      <td class="num-cell">${d.pct90}%</td>
-    </tr>
-  `).join('');
+  // --- Gráfico 2: cantidad de servicios por grúa (barras) + línea de meta punteada ---
+  const meta = metaServiciosPorGranularidad(granularidad);
+  if(chartBrandeadasVolumen) chartBrandeadasVolumen.destroy();
+  try{
+    chartBrandeadasVolumen = new Chart(document.getElementById('chartBrandeadasVolumen'), {
+      type:'bar',
+      data:{
+        labels,
+        datasets:[
+          ...series.map((s,i)=>({
+            type:'bar',
+            label: s.nombre,
+            data: s.totales,
+            backgroundColor: PALETA_GRUAS[i % PALETA_GRUAS.length],
+          })),
+          {
+            type:'line',
+            label: `Meta (${meta}/${granularidad==='dia'?'día':granularidad})`,
+            data: labels.map(()=>meta),
+            borderColor: 'rgba(255,255,255,.55)',
+            borderDash:[6,4],
+            borderWidth:2,
+            pointRadius:0,
+            fill:false,
+          }
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
+        },
+        scales:{
+          x:{ ticks:{ color:getTextColor() }, grid:{ display:false } },
+          y:{ ticks:{ color:getTextColor() }, grid:{ color:getGridColor() }, beginAtZero:true }
+        }
+      }
+    });
+  }catch(e){ console.error('chartBrandeadasVolumen', e); }
+
+  // --- Tabla: desglose por grúa y período ---
+  let filas = '';
+  series.forEach(s=>{
+    labels.forEach((lab,i)=>{
+      if(s.totales[i] === 0) return; // no mostrar celdas sin servicio para esa grúa/período
+      filas += `<tr>
+        <td>${s.nombre}</td>
+        <td>${lab}</td>
+        <td class="num-cell">${s.totales[i]}</td>
+        <td class="num-cell">${s.pct60[i]===null?'—':s.pct60[i]+'%'}</td>
+      </tr>`;
+    });
+  });
+  tbody.innerHTML = filas;
 }
 
 // ---------- Pestañas ----------
