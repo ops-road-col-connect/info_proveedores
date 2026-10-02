@@ -360,6 +360,7 @@
         </label>
       </div>
       <div class="desc" style="margin-top:6px;">El filtro por cuenta queda deshabilitado hasta confirmar en qué hoja/columna vive ese dato.</div>
+      <div id="arriboStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-top:12px; font-size:13px;"></div>
       <div class="chart-box tall" style="margin-top:14px;"><canvas id="chartArribo"></canvas></div>
       <div class="legend-row">
         <span><span class="dot" style="background:#2E9E6C"></span> ≤60 min</span>
@@ -723,10 +724,29 @@ function computeCumplimientoArribo(pos, ciudad, granularidad){
 }
 
 function renderArriboView(){
-  if(!RAW_DATA || !RAW_DATA.pos) return;
+  const msgEl = document.getElementById('arriboStatusMsg');
+  const tbody = document.getElementById('arriboTbody');
+
+  if(!RAW_DATA || !Array.isArray(RAW_DATA.pos) || RAW_DATA.pos.length === 0){
+    msgEl.style.display = '';
+    msgEl.textContent = '⚠️ El JSON cargado no trae el campo "pos" (o viene vacío). Esto pasa si el workflow de n8n todavía no se ha corrido con la versión del código que incluye "pos"/"lineas" — vuelve a correrlo en n8n y recarga esta página.';
+    if(chartArribo){ chartArribo.destroy(); chartArribo = null; }
+    tbody.innerHTML = '';
+    return;
+  }
+
   const ciudad = document.getElementById('arriboCiudad').value;
   const granularidad = document.getElementById('arriboGranularidad').value;
   const datos = computeCumplimientoArribo(RAW_DATA.pos, ciudad, granularidad);
+
+  if(datos.length === 0){
+    msgEl.style.display = '';
+    msgEl.textContent = 'No hay servicios con fecha de creación Y fecha de llegada real para este filtro. Prueba con "Todas" en ciudad.';
+    if(chartArribo){ chartArribo.destroy(); chartArribo = null; }
+    tbody.innerHTML = '';
+    return;
+  }
+  msgEl.style.display = 'none';
 
   if(chartArribo) chartArribo.destroy();
   try{
