@@ -97,6 +97,11 @@
   }
   .card h3{ margin:0 0 4px; font-size:15px; font-weight:700; }
   .card .desc{ color:var(--text-muted); font-size:12.5px; margin-bottom:14px; }
+  .aviso-programados{
+    display:inline-flex; align-items:center; gap:6px; background:rgba(255,122,41,.15);
+    border:1px solid var(--connect-orange); color:var(--connect-orange); padding:5px 12px;
+    border-radius:8px; font-size:12px; font-weight:600; margin:4px 0 12px;
+  }
   .chart-box{ position:relative; height:280px; overflow:hidden; }
   .chart-box.tall{ height:320px; }
 
@@ -431,11 +436,12 @@
       <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadas"></canvas></div>
 
       <h3 style="margin-top:24px;">Cantidad de servicios por grúa, vs. meta</h3>
-      <div class="desc">Incluye programados y no programados</div>
+      <div class="aviso-programados">⚠️ A diferencia del resto del reporte, aquí SÍ se incluyen servicios programados (ver franja más clara en cada barra)</div>
       <div class="chart-box tall" style="margin-top:8px;"><canvas id="chartBrandeadasVolumen"></canvas></div>
     </div>
     <div class="card" style="margin-top:16px;">
       <h3>Detalle por grúa y período</h3>
+      <div class="aviso-programados">⚠️ "Servicios" incluye programados y no programados · "% ≤60 min" se calcula SOLO sobre no programados</div>
       <div class="table-scroll" style="max-height:420px;">
         <table id="brandeadasTable">
           <thead><tr>
@@ -907,6 +913,11 @@ function toggleBrandeadaDetalle(rid, rowEl){
 let chartBrandeadas = null;
 let chartBrandeadasVolumen = null;
 const PALETA_GRUAS = ['#2E9E6C','#1565C0','#FF7A29','#E53935','#9B59B6','#00A6A6','#C2A000','#E91E8C','#5D4037','#607D8B'];
+function hexToRgba(hex, alpha){
+  const h = hex.replace('#','');
+  const r = parseInt(h.substring(0,2),16), g = parseInt(h.substring(2,4),16), b = parseInt(h.substring(4,6),16);
+  return `rgba(${r},${g},${b},${alpha})`;
+}
 function metaServiciosPorGranularidad(g){ return g==='dia' ? 4 : g==='semana' ? 20 : 80; }
 
 // Agrupa por período Y por grúa a la vez: sirve tanto para el % de cumplimiento ≤60min
@@ -917,6 +928,7 @@ function metaServiciosPorGranularidad(g){ return g==='dia' ? 4 : g==='semana' ? 
 function computeCumplimientoPorGrua(posConteo, posArribo, ciudad, granularidad){
   const periodos = new Map();         // key período -> {label, sortKey}
   const conteoCeldas = new Map();     // key "grua|período" -> cantidad (programados + no programados)
+  const conteoPorProgramado = new Map(); // key "grua|período|SI|NO" -> cantidad, para el desglose de las barras
   const arriboCeldas = new Map();     // key "grua|período" -> {total, c60} (solo NO programados)
   const detalleCeldas = new Map();    // key "grua|período" -> [registros individuales, para el detalle al hacer clic]
   const gruasSet = new Set();
@@ -935,6 +947,8 @@ function computeCumplimientoPorGrua(posConteo, posArribo, ciudad, granularidad){
     gruasSet.add(p.GrupoGrua);
     const compKey = p.GrupoGrua + '|' + key;
     conteoCeldas.set(compKey, (conteoCeldas.get(compKey) || 0) + 1);
+    const progKey = compKey + '|' + (p.Programado === 'SI' ? 'SI' : 'NO');
+    conteoPorProgramado.set(progKey, (conteoPorProgramado.get(progKey) || 0) + 1);
 
     let minutos = null, cumple60 = null;
     if(p.FechaViajeLLegada){
@@ -980,7 +994,9 @@ function computeCumplimientoPorGrua(posConteo, posArribo, ciudad, granularidad){
       return (c && c.total>0) ? Math.round((c.c60/c.total*100)*10)/10 : null;
     });
     const detalle = periodosOrdenados.map(([key]) => detalleCeldas.get(grua+'|'+key) || []);
-    return { nombre: grua, totales, totalArribo, pct60, detalle };
+    const totalesNoProg = periodosOrdenados.map(([key]) => conteoPorProgramado.get(grua+'|'+key+'|NO') || 0);
+    const totalesProg = periodosOrdenados.map(([key]) => conteoPorProgramado.get(grua+'|'+key+'|SI') || 0);
+    return { nombre: grua, totales, totalArribo, pct60, detalle, totalesNoProg, totalesProg };
   });
 
   return { labels, series };
@@ -1074,43 +1090,51 @@ function renderBrandeadasView(){
   const meta = metaServiciosPorGranularidad(granularidad);
   if(chartBrandeadasVolumen) chartBrandeadasVolumen.destroy();
   try{
+    // Cada grúa se apila en 2 segmentos (mismo "stack" id = su nombre): sólido = no programado,
+    // semitransparente = programado. La etiqueta de valor muestra el TOTAL de la barra completa.
+    const datasetsVolumen = [];
+    series.forEach((s,i)=>{
+      const color = PALETA_GRUAS[i % PALETA_GRUAS.length];
+      datasetsVolumen.push({
+        type:'bar', label: s.nombre + ' · no programado', data: s.totalesNoProg,
+        backgroundColor: color, stack: s.nombre,
+        datalabels:{ display:false },
+      });
+      datasetsVolumen.push({
+        type:'bar', label: s.nombre + ' · programado', data: s.totalesProg,
+        backgroundColor: hexToRgba(color, .4), stack: s.nombre,
+        datalabels:{
+          display:(ctx)=> (s.totalesNoProg[ctx.dataIndex] + s.totalesProg[ctx.dataIndex]) > 0,
+          anchor:'end', align:'top', offset:2,
+          color:getTextColor(), font:{ size:11, weight:'600' },
+          formatter:(v,ctx)=> s.totalesNoProg[ctx.dataIndex] + s.totalesProg[ctx.dataIndex],
+        }
+      });
+    });
+    datasetsVolumen.push({
+      type:'line',
+      label: `Meta (${meta}/${granularidad==='dia'?'día':granularidad})`,
+      data: labels.map(()=>meta),
+      borderColor: 'rgba(255,255,255,.55)',
+      borderDash:[6,4],
+      borderWidth:2,
+      pointRadius:0,
+      fill:false,
+      datalabels:{ display:false },
+    });
+
     chartBrandeadasVolumen = new Chart(document.getElementById('chartBrandeadasVolumen'), {
       type:'bar',
-      data:{
-        labels,
-        datasets:[
-          ...series.map((s,i)=>({
-            type:'bar',
-            label: s.nombre,
-            data: s.totales,
-            backgroundColor: PALETA_GRUAS[i % PALETA_GRUAS.length],
-            datalabels:{
-              display:(ctx)=> ctx.dataset.data[ctx.dataIndex] > 0, // no mostrar el "0" sobre barras vacías
-              anchor:'end', align:'top', offset:2,
-              color:getTextColor(), font:{ size:11, weight:'600' },
-            }
-          })),
-          {
-            type:'line',
-            label: `Meta (${meta}/${granularidad==='dia'?'día':granularidad})`,
-            data: labels.map(()=>meta),
-            borderColor: 'rgba(255,255,255,.55)',
-            borderDash:[6,4],
-            borderWidth:2,
-            pointRadius:0,
-            fill:false,
-            datalabels:{ display:false },
-          }
-        ]
-      },
+      data:{ labels, datasets: datasetsVolumen },
       options:{
         responsive:true, maintainAspectRatio:false,
         plugins:{
           legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
+          tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.raw}` } }
         },
         scales:{
-          x:{ ticks:{ color:getTextColor() }, grid:{ display:false } },
-          y:{ ticks:{ color:getTextColor() }, grid:{ color:getGridColor() }, beginAtZero:true }
+          x:{ ticks:{ color:getTextColor() }, grid:{ display:false }, stacked:true },
+          y:{ ticks:{ color:getTextColor() }, grid:{ color:getGridColor() }, beginAtZero:true, stacked:true }
         }
       }
     });
