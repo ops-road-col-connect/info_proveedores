@@ -192,6 +192,7 @@
   <div class="tabbar">
     <button id="tabBtnDashboard" class="tab-btn active">📊 Dashboard general</button>
     <button id="tabBtnArribo" class="tab-btn">⏱️ Cumplimiento de arribo (local)</button>
+    <button id="tabBtnBrandeadas" class="tab-btn">🚚 Grúas brandeadas</button>
   </div>
 
   <div id="viewDashboard">
@@ -380,6 +381,55 @@
             <th class="num-cell">% ≤90 min</th>
           </tr></thead>
           <tbody id="arriboTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISTA: GRÚAS BRANDEADAS -->
+  <div id="viewBrandeadas" style="display:none;">
+    <div class="section-title"><div class="num">🚚</div><h2>Grúas brandeadas</h2><span class="sub">Cantidad de servicios y cumplimiento de tiempos de arribo de los conductores brandeados</span></div>
+
+    <div class="kpi-grid" id="brandeadasKpis" style="margin-bottom:16px;"></div>
+
+    <div class="card">
+      <div class="filters">
+        <label style="min-width:auto;">Ciudad:
+          <select id="brandeadasCiudad" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;">
+            <option value="TODAS">Todas</option>
+            <option value="BOGOTÁ, D.C.">Bogotá D.C.</option>
+            <option value="CALI">Cali</option>
+            <option value="MEDELLÍN">Medellín</option>
+          </select>
+        </label>
+        <label style="min-width:auto;">Agrupar por:
+          <select id="brandeadasGranularidad" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;">
+            <option value="dia">Día</option>
+            <option value="semana" selected>Semana</option>
+            <option value="mes">Mes</option>
+          </select>
+        </label>
+      </div>
+      <div id="brandeadasStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-top:12px; font-size:13px;"></div>
+      <div class="chart-box tall" style="margin-top:14px;"><canvas id="chartBrandeadas"></canvas></div>
+      <div class="legend-row">
+        <span><span class="dot" style="background:#2E9E6C"></span> ≤60 min</span>
+        <span><span class="dot" style="background:#1565C0"></span> ≤75 min</span>
+        <span><span class="dot" style="background:#FF7A29"></span> ≤90 min</span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>Detalle por período</h3>
+      <div class="table-scroll" style="max-height:420px;">
+        <table id="brandeadasTable">
+          <thead><tr>
+            <th>Período</th>
+            <th class="num-cell">Servicios con dato de arribo</th>
+            <th class="num-cell">% ≤60 min</th>
+            <th class="num-cell">% ≤75 min</th>
+            <th class="num-cell">% ≤90 min</th>
+          </tr></thead>
+          <tbody id="brandeadasTbody"></tbody>
         </table>
       </div>
     </div>
@@ -678,7 +728,9 @@ let chartArribo = null;
 function claveYLabelPeriodo(date, granularidad){
   if(granularidad === 'dia'){
     const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    const key = date.toISOString().slice(0,10);
+    // clave y texto SIEMPRE con los mismos componentes (hora local), para que no se partan
+    // en dos grupos distintos los servicios cercanos a la medianoche UTC.
+    const key = date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0')+'-'+String(date.getDate()).padStart(2,'0');
     const label = String(date.getDate()).padStart(2,'0')+'-'+meses[date.getMonth()];
     return { key, label, sortKey: key };
   }
@@ -785,17 +837,109 @@ function renderArriboView(){
   `).join('');
 }
 
+// ---------- Grúas brandeadas (misma lógica de cumplimiento, filtrada a is_grua_brandeada) ----------
+let chartBrandeadas = null;
+
+function renderBrandeadasView(){
+  const msgEl = document.getElementById('brandeadasStatusMsg');
+  const tbody = document.getElementById('brandeadasTbody');
+
+  if(!RAW_DATA || !Array.isArray(RAW_DATA.pos) || RAW_DATA.pos.length === 0){
+    msgEl.style.display = '';
+    msgEl.textContent = '⚠️ El JSON cargado no trae el campo "pos" — corre el workflow de n8n con la versión actualizada y recarga esta página.';
+    if(chartBrandeadas){ chartBrandeadas.destroy(); chartBrandeadas = null; }
+    tbody.innerHTML = '';
+    document.getElementById('brandeadasKpis').innerHTML = '';
+    return;
+  }
+
+  const ciudad = document.getElementById('brandeadasCiudad').value;
+  const granularidad = document.getElementById('brandeadasGranularidad').value;
+  const posBrandeadas = RAW_DATA.pos.filter(p => p.is_grua_brandeada);
+
+  // KPI: cantidad de servicios de grúas brandeadas (respetando el filtro de ciudad)
+  const posBrandeadasCiudad = ciudad === 'TODAS' ? posBrandeadas : posBrandeadas.filter(p => p.CiudadInicio === ciudad);
+  document.getElementById('brandeadasKpis').innerHTML = `
+    <div class="kpi-card">
+      <div class="label">Servicios de grúas brandeadas</div>
+      <div class="value">${posBrandeadasCiudad.length}</div>
+      <div class="foot">${ciudad === 'TODAS' ? 'Todas las ciudades' : ciudad} · del total de servicios en el período</div>
+    </div>
+  `;
+
+  if(posBrandeadas.length === 0){
+    msgEl.style.display = '';
+    msgEl.textContent = 'No hay servicios marcados como grúa brandeada en este período (revisa que "Leer Grúas Brandeadas" y el campo Conductor estén llegando correctamente).';
+    if(chartBrandeadas){ chartBrandeadas.destroy(); chartBrandeadas = null; }
+    tbody.innerHTML = '';
+    return;
+  }
+
+  const datos = computeCumplimientoArribo(posBrandeadas, ciudad, granularidad);
+
+  if(datos.length === 0){
+    msgEl.style.display = '';
+    msgEl.textContent = 'No hay servicios de grúas brandeadas con fecha de creación Y llegada real para este filtro.';
+    if(chartBrandeadas){ chartBrandeadas.destroy(); chartBrandeadas = null; }
+    tbody.innerHTML = '';
+    return;
+  }
+  msgEl.style.display = 'none';
+
+  if(chartBrandeadas) chartBrandeadas.destroy();
+  try{
+    chartBrandeadas = new Chart(document.getElementById('chartBrandeadas'), {
+      type:'line',
+      data:{
+        labels: datos.map(d=>d.label),
+        datasets:[
+          { label:'% ≤60 min', data: datos.map(d=>d.pct60), borderColor:'#2E9E6C', backgroundColor:'rgba(46,158,108,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+          { label:'% ≤75 min', data: datos.map(d=>d.pct75), borderColor:'#1565C0', backgroundColor:'rgba(21,101,192,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+          { label:'% ≤90 min', data: datos.map(d=>d.pct90), borderColor:'#FF7A29', backgroundColor:'rgba(255,122,41,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{ display:false },
+          tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.raw}% (de ${datos[ctx.dataIndex].total} servicios)` } }
+        },
+        scales:{
+          x:{ ticks:{ color:getTextColor() }, grid:{ display:false } },
+          y:{ ticks:{ color:getTextColor(), callback:(v)=>v+'%' }, grid:{ color:getGridColor() }, min:0, max:100 }
+        }
+      }
+    });
+  }catch(e){ console.error('chartBrandeadas', e); }
+
+  tbody.innerHTML = datos.map(d=>`
+    <tr>
+      <td>${d.label}</td>
+      <td class="num-cell">${d.total}</td>
+      <td class="num-cell">${d.pct60}%</td>
+      <td class="num-cell">${d.pct75}%</td>
+      <td class="num-cell">${d.pct90}%</td>
+    </tr>
+  `).join('');
+}
+
 // ---------- Pestañas ----------
 function mostrarVista(vista){
   document.getElementById('viewDashboard').style.display = vista === 'dashboard' ? '' : 'none';
   document.getElementById('viewArribo').style.display = vista === 'arribo' ? '' : 'none';
+  document.getElementById('viewBrandeadas').style.display = vista === 'brandeadas' ? '' : 'none';
   document.getElementById('tabBtnDashboard').classList.toggle('active', vista === 'dashboard');
   document.getElementById('tabBtnArribo').classList.toggle('active', vista === 'arribo');
+  document.getElementById('tabBtnBrandeadas').classList.toggle('active', vista === 'brandeadas');
   if(vista === 'arribo') renderArriboView();
+  if(vista === 'brandeadas') renderBrandeadasView();
 }
 document.getElementById('tabBtnDashboard').onclick = () => mostrarVista('dashboard');
 document.getElementById('tabBtnArribo').onclick = () => mostrarVista('arribo');
+document.getElementById('tabBtnBrandeadas').onclick = () => mostrarVista('brandeadas');
 document.getElementById('arriboCiudad').onchange = renderArriboView;
+document.getElementById('brandeadasCiudad').onchange = renderBrandeadasView;
+document.getElementById('brandeadasGranularidad').onchange = renderBrandeadasView;
 document.getElementById('arriboGranularidad').onchange = renderArriboView;
 
 // ---------- Render principal ----------
