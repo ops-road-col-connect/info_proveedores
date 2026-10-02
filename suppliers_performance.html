@@ -161,6 +161,14 @@
   .btn-primary:hover{ opacity:.9; }
   .btn-ghost:hover{ background:var(--bg); }
 
+  .tabbar{ display:flex; gap:8px; margin-bottom:20px; border-bottom:1px solid var(--border); }
+  .tab-btn{
+    background:none; border:none; border-bottom:3px solid transparent; padding:10px 18px 12px;
+    font-size:14px; font-weight:600; color:var(--text-muted); cursor:pointer;
+  }
+  .tab-btn.active{ color:var(--connect-blue); border-bottom-color:var(--connect-blue); }
+  .tab-btn:hover:not(.active){ color:var(--text-main); }
+
   footer{ text-align:center; color:var(--text-muted); font-size:12px; margin-top:50px; }
 </style>
 </head>
@@ -179,6 +187,14 @@
     </div>
   </header>
   <div id="errorBanner" style="display:none; background:rgba(229,57,53,.15); border:1px solid var(--connect-red); color:var(--connect-red); padding:14px 18px; border-radius:10px; margin-bottom:20px; font-size:13px;"></div>
+
+  <!-- PESTAÑAS -->
+  <div class="tabbar">
+    <button id="tabBtnDashboard" class="tab-btn active">📊 Dashboard general</button>
+    <button id="tabBtnArribo" class="tab-btn">⏱️ Cumplimiento de arribo (local)</button>
+  </div>
+
+  <div id="viewDashboard">
 
   <!-- FILTRO POR RANGO DE FECHAS -->
   <div class="card" style="margin-bottom:20px;">
@@ -315,6 +331,59 @@
   <div class="section-title"><div class="num">6</div><h2>Análisis y hallazgos</h2><span class="sub">Lectura ejecutiva</span></div>
   <div class="analysis-grid" id="analysisGrid"></div>
 
+  </div> <!-- /viewDashboard -->
+
+  <!-- VISTA: CUMPLIMIENTO DE ARRIBO -->
+  <div id="viewArribo" style="display:none;">
+    <div class="section-title"><div class="num">⏱</div><h2>Cumplimiento de tiempos de arribo</h2><span class="sub">% de servicios que llegaron dentro de cada umbral · desde creación del PO hasta llegada real</span></div>
+    <div class="card">
+      <div class="filters">
+        <label style="min-width:auto;">Ciudad:
+          <select id="arriboCiudad" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;">
+            <option value="TODAS">Todas</option>
+            <option value="BOGOTÁ, D.C.">Bogotá D.C.</option>
+            <option value="CALI">Cali</option>
+            <option value="MEDELLÍN">Medellín</option>
+          </select>
+        </label>
+        <label style="min-width:auto;">Cuenta:
+          <select id="arriboCuenta" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;" disabled>
+            <option value="TODAS">Todas (pendiente)</option>
+          </select>
+        </label>
+        <label style="min-width:auto;">Agrupar por:
+          <select id="arriboGranularidad" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;">
+            <option value="dia">Día</option>
+            <option value="semana" selected>Semana</option>
+            <option value="mes">Mes</option>
+          </select>
+        </label>
+      </div>
+      <div class="desc" style="margin-top:6px;">El filtro por cuenta queda deshabilitado hasta confirmar en qué hoja/columna vive ese dato.</div>
+      <div class="chart-box tall" style="margin-top:14px;"><canvas id="chartArribo"></canvas></div>
+      <div class="legend-row">
+        <span><span class="dot" style="background:#2E9E6C"></span> ≤60 min</span>
+        <span><span class="dot" style="background:#1565C0"></span> ≤75 min</span>
+        <span><span class="dot" style="background:#FF7A29"></span> ≤90 min</span>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px;">
+      <h3>Detalle por período</h3>
+      <div class="table-scroll" style="max-height:420px;">
+        <table id="arriboTable">
+          <thead><tr>
+            <th>Período</th>
+            <th class="num-cell">Servicios con dato de arribo</th>
+            <th class="num-cell">% ≤60 min</th>
+            <th class="num-cell">% ≤75 min</th>
+            <th class="num-cell">% ≤90 min</th>
+          </tr></thead>
+          <tbody id="arriboTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
   <footer>Reporte en vivo — fuente: hojas "Cubo Barrido Proveedores CO" y "Cube Servicios Colombia" vía n8n · Se refresca solo cada hora · Filtrado a Bogotá, Cali y Medellín, solo NO programados</footer>
 </div>
 
@@ -406,6 +475,20 @@ function configurarFiltroFechas(raw){
 // restringidos al rango [fromDate, toDate]. Replica exactamente la lógica del nodo
 // "Armar Respuesta" de n8n, pero ya no repite la normalización/alias/prioridad —
 // esos campos ya vienen resueltos en cada registro.
+// Compartida entre computeAggregates (semanal) y el cálculo de cumplimiento de arribo.
+function isoWeekInfo(date){
+  const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = (d.getUTCDay()+6)%7;
+  d.setUTCDate(d.getUTCDate()-dayNum+3);
+  const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
+  const week = 1+Math.round(((d-firstThursday)/86400000 - 3 + ((firstThursday.getUTCDay()+6)%7))/7);
+  const monday = new Date(date);
+  monday.setDate(date.getDate()-dayNum);
+  const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const label = String(monday.getDate()).padStart(2,'0')+'-'+meses[monday.getMonth()];
+  return {year:d.getUTCFullYear(), week, label};
+}
+
 function computeAggregates(allPos, allLineas, fromDate, toDate){
   const CIUDADES_OBJETIVO = ['BOGOTÁ, D.C.', 'CALI', 'MEDELLÍN'];
   const DIAS_ES = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
@@ -511,18 +594,6 @@ function computeAggregates(allPos, allLineas, fromDate, toDate){
   }).sort((a,b)=>b.Total_Servicios_Prestados-a.Total_Servicios_Prestados);
 
   // --- semanal ---
-  function isoWeekInfo(date){
-    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-    const dayNum = (d.getUTCDay()+6)%7;
-    d.setUTCDate(d.getUTCDate()-dayNum+3);
-    const firstThursday = new Date(Date.UTC(d.getUTCFullYear(),0,4));
-    const week = 1+Math.round(((d-firstThursday)/86400000 - 3 + ((firstThursday.getUTCDay()+6)%7))/7);
-    const monday = new Date(date);
-    monday.setDate(date.getDate()-dayNum);
-    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    const label = String(monday.getDate()).padStart(2,'0')+'-'+meses[monday.getMonth()];
-    return {year:d.getUTCFullYear(), week, label};
-  }
   const weeklyMap = new Map();
   for(const po of pos){
     if(!po.FechaCreacion) continue;
@@ -599,6 +670,113 @@ function computeAggregates(allPos, allLineas, fromDate, toDate){
     city, city_barrido, weekly, weekly_priorizados, proveedores_efectivos, providers, heatmap, heatmap_volumen,
   };
 }
+
+// ---------- Cumplimiento de arribo (vista independiente) ----------
+let chartArribo = null;
+
+function claveYLabelPeriodo(date, granularidad){
+  if(granularidad === 'dia'){
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const key = date.toISOString().slice(0,10);
+    const label = String(date.getDate()).padStart(2,'0')+'-'+meses[date.getMonth()];
+    return { key, label, sortKey: key };
+  }
+  if(granularidad === 'mes'){
+    const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const key = date.getFullYear()+'-'+String(date.getMonth()+1).padStart(2,'0');
+    const label = meses[date.getMonth()]+'-'+date.getFullYear();
+    return { key, label, sortKey: key };
+  }
+  // semana (default)
+  const wi = isoWeekInfo(date);
+  const key = wi.year+'_'+String(wi.week).padStart(2,'0');
+  return { key, label: wi.label, sortKey: key };
+}
+
+function computeCumplimientoArribo(pos, ciudad, granularidad){
+  const buckets = new Map();
+  for(const p of pos){
+    if(!p.FechaCreacion || !p.FechaViajeLLegada) continue;
+    if(ciudad && ciudad !== 'TODAS' && p.CiudadInicio !== ciudad) continue;
+    const creacion = new Date(p.FechaCreacion);
+    const llegada = new Date(p.FechaViajeLLegada);
+    const minutos = (llegada - creacion) / 60000;
+    if(!isFinite(minutos) || minutos < 0) continue; // descarta datos inválidos/negativos
+
+    const { key, label, sortKey } = claveYLabelPeriodo(creacion, granularidad);
+    if(!buckets.has(key)) buckets.set(key, { label, sortKey, total:0, c60:0, c75:0, c90:0 });
+    const b = buckets.get(key);
+    b.total += 1;
+    if(minutos <= 60) b.c60 += 1;
+    if(minutos <= 75) b.c75 += 1;
+    if(minutos <= 90) b.c90 += 1;
+  }
+  return Array.from(buckets.values())
+    .sort((a,b)=> a.sortKey.localeCompare(b.sortKey))
+    .map(b => ({
+      label: b.label,
+      total: b.total,
+      pct60: Math.round((b.c60/b.total*100)*10)/10,
+      pct75: Math.round((b.c75/b.total*100)*10)/10,
+      pct90: Math.round((b.c90/b.total*100)*10)/10,
+    }));
+}
+
+function renderArriboView(){
+  if(!RAW_DATA || !RAW_DATA.pos) return;
+  const ciudad = document.getElementById('arriboCiudad').value;
+  const granularidad = document.getElementById('arriboGranularidad').value;
+  const datos = computeCumplimientoArribo(RAW_DATA.pos, ciudad, granularidad);
+
+  if(chartArribo) chartArribo.destroy();
+  try{
+    chartArribo = new Chart(document.getElementById('chartArribo'), {
+      type:'line',
+      data:{
+        labels: datos.map(d=>d.label),
+        datasets:[
+          { label:'% ≤60 min', data: datos.map(d=>d.pct60), borderColor:'#2E9E6C', backgroundColor:'rgba(46,158,108,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+          { label:'% ≤75 min', data: datos.map(d=>d.pct75), borderColor:'#1565C0', backgroundColor:'rgba(21,101,192,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+          { label:'% ≤90 min', data: datos.map(d=>d.pct90), borderColor:'#FF7A29', backgroundColor:'rgba(255,122,41,.1)', tension:.3, pointRadius:4, borderWidth:2.5 },
+        ]
+      },
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{ display:false },
+          tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${ctx.raw}% (de ${datos[ctx.dataIndex].total} servicios)` } }
+        },
+        scales:{
+          x:{ ticks:{ color:getTextColor() }, grid:{ display:false } },
+          y:{ ticks:{ color:getTextColor(), callback:(v)=>v+'%' }, grid:{ color:getGridColor() }, min:0, max:100 }
+        }
+      }
+    });
+  }catch(e){ console.error('chartArribo', e); }
+
+  document.getElementById('arriboTbody').innerHTML = datos.map(d=>`
+    <tr>
+      <td>${d.label}</td>
+      <td class="num-cell">${d.total}</td>
+      <td class="num-cell">${d.pct60}%</td>
+      <td class="num-cell">${d.pct75}%</td>
+      <td class="num-cell">${d.pct90}%</td>
+    </tr>
+  `).join('');
+}
+
+// ---------- Pestañas ----------
+function mostrarVista(vista){
+  document.getElementById('viewDashboard').style.display = vista === 'dashboard' ? '' : 'none';
+  document.getElementById('viewArribo').style.display = vista === 'arribo' ? '' : 'none';
+  document.getElementById('tabBtnDashboard').classList.toggle('active', vista === 'dashboard');
+  document.getElementById('tabBtnArribo').classList.toggle('active', vista === 'arribo');
+  if(vista === 'arribo') renderArriboView();
+}
+document.getElementById('tabBtnDashboard').onclick = () => mostrarVista('dashboard');
+document.getElementById('tabBtnArribo').onclick = () => mostrarVista('arribo');
+document.getElementById('arriboCiudad').onchange = renderArriboView;
+document.getElementById('arriboGranularidad').onchange = renderArriboView;
 
 // ---------- Render principal ----------
 function renderAll(DATA){
