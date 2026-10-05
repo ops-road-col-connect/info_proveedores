@@ -725,8 +725,8 @@ function computeAggregates(allPos, allLineas, fromDate, toDate){
     .map(w=>({...w, Pct_Barrido: round1(w.Con_Barrido/w.Total*100)}))
     .sort((a,b)=>a.Anio-b.Anio || a.Semana-b.Semana);
   const weekly_priorizados = Array.from(weeklyMap.values())
-    .map(w=>({SemanaLabel:w.SemanaLabel, Total:w.Total, Priorizados:w.Priorizados, Pct_Priorizados: round1(w.Priorizados/w.Total*100)}))
-    .sort((a,b)=>a.SemanaLabel.localeCompare(b.SemanaLabel));
+    .map(w=>({Anio:w.Anio, Semana:w.Semana, SemanaLabel:w.SemanaLabel, Total:w.Total, Priorizados:w.Priorizados, Pct_Priorizados: round1(w.Priorizados/w.Total*100)}))
+    .sort((a,b)=>a.Anio-b.Anio || a.Semana-b.Semana);
 
   // --- proveedores efectivos ---
   const provsConServicio = new Set(poConProveedorFinal.map(p=>p.ProveedorFinalNorm));
@@ -1324,7 +1324,15 @@ function renderWeeklyCharts(DATA){
     });
   }catch(e){ console.error('chartSemanal', e); }
 
-  const weeksP = DATA.weekly_priorizados;
+  // Orden cronológico. Si el registro trae Anio/Semana se usa eso; si viene de un JSON anterior
+  // (ordenado alfabéticamente por etiqueta, con "31-Ago" al final) se toma el orden de DATA.weekly.
+  const ordenSemanas = new Map((DATA.weekly || []).map((w,i)=>[w.SemanaLabel, i]));
+  const weeksP = [...DATA.weekly_priorizados].sort((a,b)=>{
+    if(a.Anio !== undefined && b.Anio !== undefined) return a.Anio - b.Anio || a.Semana - b.Semana;
+    const ia = ordenSemanas.has(a.SemanaLabel) ? ordenSemanas.get(a.SemanaLabel) : Infinity;
+    const ib = ordenSemanas.has(b.SemanaLabel) ? ordenSemanas.get(b.SemanaLabel) : Infinity;
+    return ia - ib;
+  });
   if(charts.semanalPrio) charts.semanalPrio.destroy();
   try{
     charts.semanalPrio = new Chart(document.getElementById('chartSemanalPriorizados'), {
