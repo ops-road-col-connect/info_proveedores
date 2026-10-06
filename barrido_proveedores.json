@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06T02:52:59.568Z",
+  "updatedAt": "2026-10-06T13:49:23.826Z",
   "total_po": 826,
   "city": {
     "BOGOTÁ, D.C.": 501,
@@ -18,7 +18,7 @@
       "SemanaLabel": "31-Ago",
       "Total": 113,
       "Con_Barrido": 26,
-      "Priorizados": 46,
+      "Priorizados": 56,
       "Pct_Barrido": 23
     },
     {
@@ -27,7 +27,7 @@
       "SemanaLabel": "07-Sep",
       "Total": 184,
       "Con_Barrido": 60,
-      "Priorizados": 62,
+      "Priorizados": 79,
       "Pct_Barrido": 32.6
     },
     {
@@ -36,7 +36,7 @@
       "SemanaLabel": "14-Sep",
       "Total": 177,
       "Con_Barrido": 63,
-      "Priorizados": 62,
+      "Priorizados": 75,
       "Pct_Barrido": 35.6
     },
     {
@@ -45,7 +45,7 @@
       "SemanaLabel": "21-Sep",
       "Total": 178,
       "Con_Barrido": 47,
-      "Priorizados": 70,
+      "Priorizados": 89,
       "Pct_Barrido": 26.4
     },
     {
@@ -54,7 +54,7 @@
       "SemanaLabel": "28-Sep",
       "Total": 159,
       "Con_Barrido": 42,
-      "Priorizados": 52,
+      "Priorizados": 79,
       "Pct_Barrido": 26.4
     },
     {
@@ -63,7 +63,7 @@
       "SemanaLabel": "05-Oct",
       "Total": 15,
       "Con_Barrido": 3,
-      "Priorizados": 5,
+      "Priorizados": 7,
       "Pct_Barrido": 20
     }
   ],
@@ -73,48 +73,48 @@
       "Semana": 36,
       "SemanaLabel": "31-Ago",
       "Total": 113,
-      "Priorizados": 46,
-      "Pct_Priorizados": 40.7
+      "Priorizados": 56,
+      "Pct_Priorizados": 49.6
     },
     {
       "Anio": 2026,
       "Semana": 37,
       "SemanaLabel": "07-Sep",
       "Total": 184,
-      "Priorizados": 62,
-      "Pct_Priorizados": 33.7
+      "Priorizados": 79,
+      "Pct_Priorizados": 42.9
     },
     {
       "Anio": 2026,
       "Semana": 38,
       "SemanaLabel": "14-Sep",
       "Total": 177,
-      "Priorizados": 62,
-      "Pct_Priorizados": 35
+      "Priorizados": 75,
+      "Pct_Priorizados": 42.4
     },
     {
       "Anio": 2026,
       "Semana": 39,
       "SemanaLabel": "21-Sep",
       "Total": 178,
-      "Priorizados": 70,
-      "Pct_Priorizados": 39.3
+      "Priorizados": 89,
+      "Pct_Priorizados": 50
     },
     {
       "Anio": 2026,
       "Semana": 40,
       "SemanaLabel": "28-Sep",
       "Total": 159,
-      "Priorizados": 52,
-      "Pct_Priorizados": 32.7
+      "Priorizados": 79,
+      "Pct_Priorizados": 49.7
     },
     {
       "Anio": 2026,
       "Semana": 41,
       "SemanaLabel": "05-Oct",
       "Total": 15,
-      "Priorizados": 5,
-      "Pct_Priorizados": 33.3
+      "Priorizados": 7,
+      "Pct_Priorizados": 46.7
     }
   ],
   "proveedores_efectivos": {
@@ -295,7 +295,7 @@
       "Pct_Cumplimiento_Arribo_1": 71.4,
       "Prom_Tiempo_Arribo_2": 37.1,
       "Pct_Cumplimiento_Arribo_2": 94.3,
-      "is_priority": false
+      "is_priority": true
     },
     {
       "Proveedor": "QUINTERO POVEDA ASISTENCIA S.A.S.",
@@ -333,7 +333,7 @@
       "Pct_Cumplimiento_Arribo_1": 34.4,
       "Prom_Tiempo_Arribo_2": 71.6,
       "Pct_Cumplimiento_Arribo_2": 61.3,
-      "is_priority": false
+      "is_priority": true
     },
     {
       "Proveedor": "SERVIFULL VIAL S.A.S",
@@ -409,7 +409,7 @@
       "Pct_Cumplimiento_Arribo_1": 36.8,
       "Prom_Tiempo_Arribo_2": 50.2,
       "Pct_Cumplimiento_Arribo_2": 55.6,
-      "is_priority": false
+      "is_priority": true
     },
     {
       "Proveedor": "SOLUCIONES SHADDAI JYL S.A.S",
@@ -3408,9 +3408,9 @@
     "heatmaps": {
       "GLOBAL": {
         "4_10": {
-          "n": 13,
-          "ganados": 0,
-          "pct": 0
+          "n": 18,
+          "ganados": 1,
+          "pct": 5.6
         },
         "4_7": {
           "n": 15,
@@ -3423,7 +3423,7 @@
           "pct": 0
         },
         "1_15": {
-          "n": 4,
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
@@ -3448,7 +3448,7 @@
           "pct": 0
         },
         "1_19": {
-          "n": 7,
+          "n": 9,
           "ganados": 0,
           "pct": 0
         },
@@ -3463,39 +3463,39 @@
           "pct": 25
         },
         "6_19": {
-          "n": 5,
+          "n": 9,
           "ganados": 0,
           "pct": 0
         },
         "5_14": {
-          "n": 9,
+          "n": 11,
           "ganados": 1,
-          "pct": 11.1
+          "pct": 9.1
         },
         "4_8": {
-          "n": 18,
-          "ganados": 2,
-          "pct": 11.1
+          "n": 22,
+          "ganados": 4,
+          "pct": 18.2
         },
         "5_19": {
-          "n": 7,
+          "n": 9,
           "ganados": 2,
-          "pct": 28.6
+          "pct": 22.2
         },
         "6_18": {
-          "n": 9,
+          "n": 13,
           "ganados": 0,
           "pct": 0
         },
         "0_10": {
-          "n": 23,
+          "n": 25,
           "ganados": 5,
-          "pct": 21.7
+          "pct": 20
         },
         "2_7": {
-          "n": 12,
-          "ganados": 1,
-          "pct": 8.3
+          "n": 16,
+          "ganados": 2,
+          "pct": 12.5
         },
         "4_9": {
           "n": 3,
@@ -3518,9 +3518,9 @@
           "pct": 0
         },
         "0_7": {
-          "n": 10,
+          "n": 12,
           "ganados": 2,
-          "pct": 20
+          "pct": 16.7
         },
         "5_12": {
           "n": 11,
@@ -3533,12 +3533,12 @@
           "pct": 0
         },
         "3_13": {
-          "n": 14,
+          "n": 17,
           "ganados": 1,
-          "pct": 7.1
+          "pct": 5.9
         },
         "1_9": {
-          "n": 2,
+          "n": 3,
           "ganados": 0,
           "pct": 0
         },
@@ -3548,7 +3548,7 @@
           "pct": 0
         },
         "0_9": {
-          "n": 17,
+          "n": 20,
           "ganados": 0,
           "pct": 0
         },
@@ -3558,14 +3558,14 @@
           "pct": 0
         },
         "0_8": {
-          "n": 14,
-          "ganados": 3,
-          "pct": 21.4
+          "n": 19,
+          "ganados": 4,
+          "pct": 21.1
         },
         "3_12": {
-          "n": 9,
+          "n": 10,
           "ganados": 2,
-          "pct": 22.2
+          "pct": 20
         },
         "0_12": {
           "n": 4,
@@ -3573,27 +3573,27 @@
           "pct": 25
         },
         "3_9": {
-          "n": 16,
+          "n": 18,
           "ganados": 3,
-          "pct": 18.8
+          "pct": 16.7
         },
         "4_1": {
-          "n": 3,
+          "n": 4,
           "ganados": 0,
           "pct": 0
         },
         "4_17": {
-          "n": 12,
+          "n": 16,
           "ganados": 1,
-          "pct": 8.3
+          "pct": 6.3
         },
         "6_13": {
-          "n": 4,
+          "n": 6,
           "ganados": 1,
-          "pct": 25
+          "pct": 16.7
         },
         "3_19": {
-          "n": 7,
+          "n": 9,
           "ganados": 0,
           "pct": 0
         },
@@ -3603,14 +3603,14 @@
           "pct": 0
         },
         "3_10": {
-          "n": 19,
-          "ganados": 2,
-          "pct": 10.5
+          "n": 21,
+          "ganados": 4,
+          "pct": 19
         },
         "3_7": {
-          "n": 6,
-          "ganados": 1,
-          "pct": 16.7
+          "n": 8,
+          "ganados": 2,
+          "pct": 25
         },
         "1_14": {
           "n": 5,
@@ -3618,14 +3618,14 @@
           "pct": 0
         },
         "4_18": {
-          "n": 7,
+          "n": 10,
           "ganados": 0,
           "pct": 0
         },
         "6_16": {
-          "n": 10,
-          "ganados": 0,
-          "pct": 0
+          "n": 12,
+          "ganados": 1,
+          "pct": 8.3
         },
         "4_19": {
           "n": 7,
@@ -3633,9 +3633,14 @@
           "pct": 0
         },
         "5_8": {
-          "n": 12,
+          "n": 14,
           "ganados": 1,
-          "pct": 8.3
+          "pct": 7.1
+        },
+        "4_6": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
         },
         "4_15": {
           "n": 4,
@@ -3643,12 +3648,12 @@
           "pct": 0
         },
         "4_16": {
-          "n": 5,
+          "n": 7,
           "ganados": 0,
           "pct": 0
         },
         "1_11": {
-          "n": 4,
+          "n": 6,
           "ganados": 0,
           "pct": 0
         },
@@ -3658,9 +3663,9 @@
           "pct": 0
         },
         "2_6": {
-          "n": 3,
+          "n": 6,
           "ganados": 2,
-          "pct": 66.7
+          "pct": 33.3
         },
         "5_16": {
           "n": 4,
@@ -3672,20 +3677,20 @@
           "ganados": 0,
           "pct": 0
         },
-        "4_6": {
+        "3_23": {
           "n": 1,
           "ganados": 1,
           "pct": 100
         },
         "2_19": {
-          "n": 6,
+          "n": 8,
           "ganados": 0,
           "pct": 0
         },
         "0_14": {
-          "n": 4,
-          "ganados": 0,
-          "pct": 0
+          "n": 5,
+          "ganados": 1,
+          "pct": 20
         },
         "6_21": {
           "n": 2,
@@ -3698,14 +3703,14 @@
           "pct": 10
         },
         "1_13": {
-          "n": 4,
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
         "4_12": {
-          "n": 13,
-          "ganados": 0,
-          "pct": 0
+          "n": 16,
+          "ganados": 1,
+          "pct": 6.3
         },
         "2_17": {
           "n": 5,
@@ -3728,44 +3733,44 @@
           "pct": 0
         },
         "5_6": {
-          "n": 11,
+          "n": 17,
           "ganados": 0,
           "pct": 0
         },
         "6_5": {
-          "n": 7,
+          "n": 9,
           "ganados": 1,
-          "pct": 14.3
+          "pct": 11.1
         },
         "2_10": {
-          "n": 1,
+          "n": 2,
           "ganados": 1,
-          "pct": 100
+          "pct": 50
         },
         "1_10": {
-          "n": 3,
-          "ganados": 0,
-          "pct": 0
+          "n": 4,
+          "ganados": 1,
+          "pct": 25
         },
         "3_21": {
-          "n": 6,
+          "n": 7,
           "ganados": 0,
           "pct": 0
         },
         "2_15": {
-          "n": 5,
+          "n": 6,
           "ganados": 1,
-          "pct": 20
+          "pct": 16.7
         },
         "4_14": {
-          "n": 9,
+          "n": 11,
           "ganados": 3,
-          "pct": 33.3
+          "pct": 27.3
         },
         "5_17": {
-          "n": 5,
+          "n": 7,
           "ganados": 1,
-          "pct": 20
+          "pct": 14.3
         },
         "5_18": {
           "n": 7,
@@ -3778,9 +3783,9 @@
           "pct": 50
         },
         "0_13": {
-          "n": 10,
-          "ganados": 1,
-          "pct": 10
+          "n": 14,
+          "ganados": 2,
+          "pct": 14.3
         },
         "1_16": {
           "n": 4,
@@ -3808,7 +3813,7 @@
           "pct": 25
         },
         "5_9": {
-          "n": 6,
+          "n": 8,
           "ganados": 0,
           "pct": 0
         },
@@ -3828,12 +3833,12 @@
           "pct": 0
         },
         "3_8": {
-          "n": 12,
+          "n": 17,
           "ganados": 2,
-          "pct": 16.7
+          "pct": 11.8
         },
         "2_22": {
-          "n": 4,
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
@@ -3843,12 +3848,12 @@
           "pct": 0
         },
         "3_11": {
-          "n": 7,
+          "n": 10,
           "ganados": 0,
           "pct": 0
         },
         "4_11": {
-          "n": 6,
+          "n": 8,
           "ganados": 0,
           "pct": 0
         },
@@ -3868,7 +3873,7 @@
           "pct": 0
         },
         "5_0": {
-          "n": 4,
+          "n": 5,
           "ganados": 0,
           "pct": 0
         },
@@ -5928,6 +5933,405 @@
           "pct": 0
         }
       },
+      "TURBO GRUAS SAS": {
+        "1_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 2,
+          "ganados": 2,
+          "pct": 100
+        },
+        "5_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "3_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_1": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_16": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "2_7": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_17": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "1_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_6": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_10": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_22": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_11": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_0": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "HOLDING MYN INVERSIONES SAS": {
+        "1_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_19": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_8": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_10": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_13": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_8": {
+          "n": 3,
+          "ganados": 1,
+          "pct": 33.3
+        },
+        "6_18": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_7": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_17": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_6": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "1_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_6": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_14": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_6": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_16": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "0_13": {
+          "n": 2,
+          "ganados": 1,
+          "pct": 50
+        },
+        "5_17": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_10": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "5_9": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "0_7": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_19": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_9": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_8": {
+          "n": 3,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_14": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_11": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_21": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
       "ASISTENCIA ORIENTE S.A.S.": {
         "1_8": {
           "n": 2,
@@ -5955,6 +6359,48 @@
           "pct": 0
         },
         "5_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        }
+      },
+      "RED-MA ASIST SAS - ,MEDELLIN": {
+        "6_18": {
+          "n": 2,
+          "ganados": 0,
+          "pct": 0
+        },
+        "3_23": {
+          "n": 1,
+          "ganados": 1,
+          "pct": 100
+        },
+        "6_13": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "6_5": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_10": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "2_15": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "4_12": {
+          "n": 1,
+          "ganados": 0,
+          "pct": 0
+        },
+        "5_8": {
           "n": 1,
           "ganados": 0,
           "pct": 0
@@ -6905,7 +7351,7 @@
       "FechaViajeAceptado": "2026-09-06T19:02:06.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -7003,7 +7449,7 @@
       "FechaViajeAceptado": "2026-09-02T09:25:17.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -7297,7 +7743,7 @@
       "FechaViajeAceptado": "2026-09-14T13:38:33.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 2 WOY-321"
     },
@@ -7311,7 +7757,7 @@
       "FechaViajeAceptado": "2026-09-14T16:20:53.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 2 WOY-321"
     },
@@ -7395,7 +7841,7 @@
       "FechaViajeAceptado": "2026-09-14T08:44:28.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -7507,7 +7953,7 @@
       "FechaViajeAceptado": "2026-09-14T13:47:42.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -7591,7 +8037,7 @@
       "FechaViajeAceptado": "2026-09-14T15:54:44.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -7675,7 +8121,7 @@
       "FechaViajeAceptado": "2026-09-14T07:27:25.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -7745,7 +8191,7 @@
       "FechaViajeAceptado": "2026-09-18T09:34:39.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -8109,7 +8555,7 @@
       "FechaViajeAceptado": "2026-09-09T08:25:11.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -8403,7 +8849,7 @@
       "FechaViajeAceptado": "2026-09-01T23:04:40.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -8431,7 +8877,7 @@
       "FechaViajeAceptado": null,
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JUAN CARLOS SALAZAR - LUO176"
     },
@@ -8473,7 +8919,7 @@
       "FechaViajeAceptado": "2026-09-01T11:30:20.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 2 WOY-321"
     },
@@ -8823,7 +9269,7 @@
       "FechaViajeAceptado": "2026-09-12T09:23:44.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -8893,7 +9339,7 @@
       "FechaViajeAceptado": "2026-09-12T08:51:21.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "EDUARDO ROMERO VERA -LKN204"
     },
@@ -9187,7 +9633,7 @@
       "FechaViajeAceptado": "2026-09-30T12:09:20.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 2 WOY-321"
     },
@@ -9201,7 +9647,7 @@
       "FechaViajeAceptado": "2026-09-30T13:00:11.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -9215,7 +9661,7 @@
       "FechaViajeAceptado": "2026-09-30T14:28:10.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -9593,7 +10039,7 @@
       "FechaViajeAceptado": "2026-09-22T09:05:33.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -9971,7 +10417,7 @@
       "FechaViajeAceptado": "2026-09-24T11:02:08.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -10083,7 +10529,7 @@
       "FechaViajeAceptado": "2026-09-24T23:25:23.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JONATHAN CARO - LKO144"
     },
@@ -10181,7 +10627,7 @@
       "FechaViajeAceptado": "2026-09-24T07:32:16.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -10265,7 +10711,7 @@
       "FechaViajeAceptado": "2026-09-24T09:15:48.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -10587,7 +11033,7 @@
       "FechaViajeAceptado": "2026-09-23T15:08:32.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -10629,7 +11075,7 @@
       "FechaViajeAceptado": "2026-09-23T02:39:21.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -10713,7 +11159,7 @@
       "FechaViajeAceptado": "2026-09-23T08:47:16.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -10797,7 +11243,7 @@
       "FechaViajeAceptado": "2026-09-23T09:43:37.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -10881,7 +11327,7 @@
       "FechaViajeAceptado": "2026-10-05T10:07:33.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "LEANDRO MIRANDA -WOY321"
     },
@@ -10923,7 +11369,7 @@
       "FechaViajeAceptado": "2026-10-05T08:44:42.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 1 SVB-615"
     },
@@ -10979,7 +11425,7 @@
       "FechaViajeAceptado": null,
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -11007,7 +11453,7 @@
       "FechaViajeAceptado": "2026-09-04T19:40:23.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -11049,7 +11495,7 @@
       "FechaViajeAceptado": "2026-09-04T08:50:51.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -11119,7 +11565,7 @@
       "FechaViajeAceptado": "2026-09-04T15:56:00.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JUAN CARLOS SALAZAR - LUO176"
     },
@@ -11189,7 +11635,7 @@
       "FechaViajeAceptado": "2026-09-21T11:19:54.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "LUIS MALAGÓN - CVJ332"
     },
@@ -11231,7 +11677,7 @@
       "FechaViajeAceptado": "2026-09-21T14:58:56.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -11469,7 +11915,7 @@
       "FechaViajeAceptado": "2026-09-21T08:20:08.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -11875,7 +12321,7 @@
       "FechaViajeAceptado": "2026-09-15T11:10:34.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -12113,7 +12559,7 @@
       "FechaViajeAceptado": "2026-09-15T16:28:10.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -12155,7 +12601,7 @@
       "FechaViajeAceptado": "2026-10-02T22:24:22.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -12183,7 +12629,7 @@
       "FechaViajeAceptado": "2026-10-02T14:53:14.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JUAN CARLOS SALAZAR - LUO176"
     },
@@ -12225,7 +12671,7 @@
       "FechaViajeAceptado": "2026-10-02T09:15:42.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -12239,7 +12685,7 @@
       "FechaViajeAceptado": "2026-10-02T13:22:34.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -12309,7 +12755,7 @@
       "FechaViajeAceptado": "2026-10-02T13:00:02.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -12323,7 +12769,7 @@
       "FechaViajeAceptado": "2026-10-02T08:37:01.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -12449,7 +12895,7 @@
       "FechaViajeAceptado": "2026-10-02T17:33:55.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -12491,7 +12937,7 @@
       "FechaViajeAceptado": "2026-10-02T08:01:32.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -12505,7 +12951,7 @@
       "FechaViajeAceptado": "2026-10-02T16:36:41.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -12743,7 +13189,7 @@
       "FechaViajeAceptado": "2026-09-26T09:16:19.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -12855,7 +13301,7 @@
       "FechaViajeAceptado": "2026-09-25T12:48:46.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -13051,7 +13497,7 @@
       "FechaViajeAceptado": "2026-09-25T10:28:08.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -13303,7 +13749,7 @@
       "FechaViajeAceptado": "2026-09-25T20:04:20.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JONATHAN CARO - LKO144"
     },
@@ -13345,7 +13791,7 @@
       "FechaViajeAceptado": "2026-09-10T10:57:35.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -13457,7 +13903,7 @@
       "FechaViajeAceptado": "2026-09-10T13:27:40.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -13583,7 +14029,7 @@
       "FechaViajeAceptado": "2026-09-10T14:44:35.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -13597,7 +14043,7 @@
       "FechaViajeAceptado": "2026-09-10T10:31:08.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -13639,7 +14085,7 @@
       "FechaViajeAceptado": "2026-09-10T14:01:27.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -13849,7 +14295,7 @@
       "FechaViajeAceptado": null,
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "PEDRO ROJAS - TZV187"
     },
@@ -14143,7 +14589,7 @@
       "FechaViajeAceptado": "2026-09-17T07:37:15.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 1 SVB-615"
     },
@@ -14185,7 +14631,7 @@
       "FechaViajeAceptado": "2026-09-17T22:42:52.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "EDUARDO ROMERO VERA -LKN204"
     },
@@ -14255,7 +14701,7 @@
       "FechaViajeAceptado": "2026-10-01T12:20:38.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "EDUARDO ROMERO VERA -LKN204"
     },
@@ -14325,7 +14771,7 @@
       "FechaViajeAceptado": "2026-10-01T18:38:46.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JAIR ANZOLA - JKV617"
     },
@@ -14437,7 +14883,7 @@
       "FechaViajeAceptado": "2026-10-01T15:19:17.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -14451,7 +14897,7 @@
       "FechaViajeAceptado": "2026-10-01T11:15:41.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -14661,7 +15107,7 @@
       "FechaViajeAceptado": "2026-10-03T00:50:52.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -14857,7 +15303,7 @@
       "FechaViajeAceptado": "2026-09-20T16:53:49.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -15207,7 +15653,7 @@
       "FechaViajeAceptado": "2026-09-26T10:22:22.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -15249,7 +15695,7 @@
       "FechaViajeAceptado": "2026-09-26T10:53:30.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -15291,7 +15737,7 @@
       "FechaViajeAceptado": "2026-09-11T12:04:03.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -15319,7 +15765,7 @@
       "FechaViajeAceptado": "2026-09-11T11:49:39.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -15347,7 +15793,7 @@
       "FechaViajeAceptado": "2026-09-11T07:02:55.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -15375,7 +15821,7 @@
       "FechaViajeAceptado": "2026-09-11T08:22:58.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -15529,7 +15975,7 @@
       "FechaViajeAceptado": "2026-09-11T08:09:02.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "EDUARDO ROMERO VERA -LKN204"
     },
@@ -15613,7 +16059,7 @@
       "FechaViajeAceptado": "2026-09-11T10:27:25.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -15725,7 +16171,7 @@
       "FechaViajeAceptado": "2026-09-11T15:34:40.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA PSX604"
     },
@@ -15809,7 +16255,7 @@
       "FechaViajeAceptado": "2026-09-29T13:54:44.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -15949,7 +16395,7 @@
       "FechaViajeAceptado": "2026-09-29T20:23:20.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -16075,7 +16521,7 @@
       "FechaViajeAceptado": "2026-09-29T09:08:59.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -16145,7 +16591,7 @@
       "FechaViajeAceptado": "2026-09-29T13:59:00.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "EDUARDO ROMERO VERA -LKN204"
     },
@@ -16173,7 +16619,7 @@
       "FechaViajeAceptado": "2026-09-28T13:20:26.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -16187,7 +16633,7 @@
       "FechaViajeAceptado": "2026-09-28T09:28:18.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -16201,7 +16647,7 @@
       "FechaViajeAceptado": "2026-09-28T07:03:32.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "HENRY GARCÍA - NUX793"
     },
@@ -16369,7 +16815,7 @@
       "FechaViajeAceptado": "2026-09-28T06:37:05.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "LEANDRO MIRANDA -WOY321"
     },
@@ -16537,7 +16983,7 @@
       "FechaViajeAceptado": "2026-09-28T08:16:01.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -16593,7 +17039,7 @@
       "FechaViajeAceptado": "2026-10-04T00:47:43.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": null
     },
@@ -16649,7 +17095,7 @@
       "FechaViajeAceptado": "2026-09-07T12:07:42.000Z",
       "ProveedorFinalNorm": "TURBO GRUAS SAS",
       "TuvoBarrido": true,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "ANDRÉS TOVAR - LZN790"
     },
@@ -16733,7 +17179,7 @@
       "FechaViajeAceptado": "2026-09-07T13:45:34.000Z",
       "ProveedorFinalNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "JUAN CARLOS SALAZAR - LUO176"
     },
@@ -17139,7 +17585,7 @@
       "FechaViajeAceptado": "2026-09-05T09:56:15.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA 3 GET096 -"
     },
@@ -17517,7 +17963,7 @@
       "FechaViajeAceptado": "2026-09-21T06:55:47.000Z",
       "ProveedorFinalNorm": "HOLDING MYN INVERSIONES SAS",
       "TuvoBarrido": false,
-      "is_priority": false,
+      "is_priority": true,
       "is_grua_brandeada": false,
       "GrupoGrua": "GRUA - JTZ-304"
     },
@@ -18116,7 +18562,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5547475",
@@ -18347,14 +18793,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5568231",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5568231",
@@ -18473,14 +18919,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5602532",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5602532",
@@ -18676,7 +19122,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5595862",
@@ -18704,7 +19150,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5595862",
@@ -18739,14 +19185,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5600835",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5600835",
@@ -18977,7 +19423,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5562891",
@@ -19019,7 +19465,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5568971",
@@ -19383,7 +19829,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5600059",
@@ -19404,7 +19850,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5600059",
@@ -19460,14 +19906,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596285",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596285",
@@ -19544,7 +19990,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5573176",
@@ -19558,7 +20004,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5573176",
@@ -19684,7 +20130,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5546397",
@@ -19817,7 +20263,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5562745",
@@ -19831,7 +20277,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5562745",
@@ -20125,7 +20571,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5562533",
@@ -20139,7 +20585,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5562533",
@@ -20216,7 +20662,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5573165",
@@ -20377,28 +20823,28 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5581962",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5581962",
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5581962",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5581962",
@@ -20531,7 +20977,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5535111",
@@ -20643,7 +21089,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5569674",
@@ -21000,7 +21446,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5577135",
@@ -21035,7 +21481,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5577135",
@@ -21273,14 +21719,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5561339",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5561339",
@@ -21392,7 +21838,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5529134",
@@ -21406,7 +21852,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5529134",
@@ -21434,7 +21880,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5561702",
@@ -21476,7 +21922,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598047",
@@ -21490,7 +21936,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598047",
@@ -21560,7 +22006,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5518534",
@@ -21602,7 +22048,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5532147",
@@ -21616,7 +22062,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5551866",
@@ -21672,7 +22118,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5556781",
@@ -21686,7 +22132,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5580410",
@@ -21763,7 +22209,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5595585",
@@ -22001,7 +22447,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5509327",
@@ -22085,14 +22531,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5566716",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5566716",
@@ -22162,7 +22608,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5543051",
@@ -22260,7 +22706,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5573362",
@@ -22358,7 +22804,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5535774",
@@ -22435,7 +22881,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5571305",
@@ -22463,7 +22909,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5571305",
@@ -22505,7 +22951,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598957",
@@ -22526,7 +22972,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5564134",
@@ -22624,7 +23070,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5532657",
@@ -22834,7 +23280,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5567040",
@@ -22911,14 +23357,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5589236",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5589236",
@@ -22974,7 +23420,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5601810",
@@ -23275,7 +23721,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5557957",
@@ -23317,7 +23763,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5557957",
@@ -23345,7 +23791,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5597628",
@@ -23373,7 +23819,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5597628",
@@ -23457,7 +23903,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5601288",
@@ -23688,7 +24134,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5589917",
@@ -23737,7 +24183,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5546667",
@@ -23779,14 +24225,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596279",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596279",
@@ -23821,7 +24267,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5590867",
@@ -23849,21 +24295,21 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596732",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596732",
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596732",
@@ -24486,7 +24932,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5543919",
@@ -24710,7 +25156,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598939",
@@ -24752,7 +25198,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598939",
@@ -24801,7 +25247,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5579830",
@@ -24815,7 +25261,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5579830",
@@ -25018,7 +25464,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5532774",
@@ -25249,14 +25695,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5558173",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5529396",
@@ -25361,14 +25807,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5582606",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5582606",
@@ -25536,14 +25982,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5594873",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5594873",
@@ -25753,14 +26199,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5582922",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5592829",
@@ -25788,7 +26234,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5592829",
@@ -25956,7 +26402,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552033",
@@ -25984,14 +26430,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552033",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552033",
@@ -26243,7 +26689,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5576417",
@@ -26257,7 +26703,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5576417",
@@ -26362,7 +26808,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5535365",
@@ -26397,7 +26843,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5560283",
@@ -26432,7 +26878,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5560283",
@@ -26523,14 +26969,14 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552636",
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552636",
@@ -26544,7 +26990,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5552636",
@@ -26852,7 +27298,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598916",
@@ -26894,7 +27340,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5598916",
@@ -26957,7 +27403,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5572341",
@@ -26971,7 +27417,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5572341",
@@ -27258,7 +27704,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5592623",
@@ -27454,7 +27900,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5563644",
@@ -27468,7 +27914,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5563644",
@@ -27657,7 +28103,7 @@
       "ProveedorBarridoNorm": "RED-MA ASIST SAS - ,MEDELLIN",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5599026",
@@ -27776,7 +28222,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5577008",
@@ -27790,7 +28236,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596431",
@@ -27811,14 +28257,14 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596431",
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5596431",
@@ -27881,7 +28327,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": true,
       "Status": "Asignado/Otro",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5554349",
@@ -27951,7 +28397,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5592891",
@@ -28154,7 +28600,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5544134",
@@ -28210,7 +28656,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5574577",
@@ -28245,7 +28691,7 @@
       "ProveedorBarridoNorm": "HOLDING MYN INVERSIONES SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5589374",
@@ -28266,7 +28712,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin respuesta",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5589374",
@@ -28322,7 +28768,7 @@
       "ProveedorBarridoNorm": "TURBO GRUAS SAS",
       "Gano": false,
       "Status": "Sin disponibilidad",
-      "is_priority": false
+      "is_priority": true
     },
     {
       "PONumber": "5534231",
@@ -45729,7 +46175,7 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45738,7 +46184,7 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45747,16 +46193,16 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
       "Proveedor": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS",
       "ProveedorKey": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS",
-      "Modalidad": "BASE",
-      "Tecnico": null,
-      "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Modalidad": "TECNICO",
+      "Tecnico": "CAMILO MORALES",
+      "TecnicoKey": "CAMILO MORALES",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45765,7 +46211,7 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45774,16 +46220,16 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
       "Proveedor": "SOLUCIONES SHADDAI JYL S.A.S",
       "ProveedorKey": "SOLUCIONES SHADDAI JYL S.A.S",
-      "Modalidad": "BASE",
-      "Tecnico": null,
-      "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Modalidad": "TECNICO",
+      "Tecnico": "JULIO CESAR OCHOA",
+      "TecnicoKey": "JULIO CESAR OCHOA",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45792,7 +46238,7 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45801,7 +46247,7 @@
       "Modalidad": "BASE",
       "Tecnico": null,
       "TecnicoKey": null,
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45810,7 +46256,7 @@
       "Modalidad": "TECNICO",
       "Tecnico": "ANDRES FELIPE JIMENEZ",
       "TecnicoKey": "ANDRES FELIPE JIMENEZ",
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
       "Hasta": null
     },
     {
@@ -45819,7 +46265,34 @@
       "Modalidad": "TECNICO",
       "Tecnico": "LUIS CAÑAVERAL - CGN214",
       "TecnicoKey": "LUIS CAÑAVERAL - CGN214",
-      "Desde": "2026-09-01T00:00:00.000Z",
+      "Desde": "2026-01-09T00:00:00.000Z",
+      "Hasta": null
+    },
+    {
+      "Proveedor": "HOLDING MYN INVERSIONES SAS",
+      "ProveedorKey": "HOLDING MYN INVERSIONES SAS",
+      "Modalidad": "BASE",
+      "Tecnico": null,
+      "TecnicoKey": null,
+      "Desde": "2026-01-10T00:00:00.000Z",
+      "Hasta": null
+    },
+    {
+      "Proveedor": "TURBO GRUAS SAS",
+      "ProveedorKey": "TURBO GRUAS SAS",
+      "Modalidad": "BASE",
+      "Tecnico": null,
+      "TecnicoKey": null,
+      "Desde": "2026-01-10T00:00:00.000Z",
+      "Hasta": null
+    },
+    {
+      "Proveedor": "RED-MA ASIST SAS - ,MEDELLIN",
+      "ProveedorKey": "RED-MA ASIST SAS - ,MEDELLIN",
+      "Modalidad": "BASE",
+      "Tecnico": null,
+      "TecnicoKey": null,
+      "Desde": "2026-01-10T00:00:00.000Z",
       "Hasta": null
     }
   ]
