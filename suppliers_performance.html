@@ -216,6 +216,7 @@
     <button id="tabBtnDashboard" class="tab-btn active">📊 Dashboard general</button>
     <button id="tabBtnArribo" class="tab-btn">⏱️ Cumplimiento de arribo (local)</button>
     <button id="tabBtnBrandeadas" class="tab-btn">🚚 Grúas brandeadas</button>
+    <button id="tabBtnPagos" class="tab-btn">💰 Pagos gamificación</button>
   </div>
 
   <div id="viewDashboard">
@@ -456,6 +457,77 @@
           </tr></thead>
           <tbody id="brandeadasTbody"></tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="viewPagos" style="display:none;">
+    <div class="section-title"><div class="num">💰</div><h2>Pagos de gamificación</h2><span class="sub">Estimado de lo ganado por los proveedores priorizados (base proveedor y técnicos)</span></div>
+
+    <div id="pagosStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-bottom:14px; font-size:13px;"></div>
+    <div class="kpi-grid" id="pagosKpis" style="margin-bottom:16px;"></div>
+
+    <div class="card">
+      <div class="filters">
+        <label style="min-width:auto;">Mes:
+          <select id="pagosMes" style="margin-left:6px; width:auto; flex:none; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text-main); font-size:13px;"></select>
+        </label>
+        <label style="min-width:auto; display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" id="pagosIncluirProg" checked style="width:auto;">
+          Incluir programados en el total de PO a tiempo
+        </label>
+      </div>
+      <div id="pagosParcial" class="aviso-programados" style="display:none;">⏳ Mes en curso: cifras parciales, los bonos pueden cambiar hasta el cierre del mes</div>
+      <h3 style="margin-top:14px;">Pago estimado por proveedor</h3>
+      <div class="desc">Pago por servicios ($3.000 × PO a tiempo) + bono mensual</div>
+      <div class="chart-box" id="pagosChartBox" style="margin-top:8px;"><canvas id="chartPagos"></canvas></div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3>Detalle por proveedor</h3>
+      <div class="desc">Haz clic en una fila para ver los PO que la componen.</div>
+      <div class="table-scroll" style="max-height:520px;">
+        <table id="pagosTable">
+          <thead><tr>
+            <th>Proveedor</th>
+            <th>Modalidad</th>
+            <th class="num-cell">Servicios</th>
+            <th class="num-cell">NO prog.</th>
+            <th class="num-cell">PO a tiempo</th>
+            <th class="num-cell">% cumpl. (NO prog.)</th>
+            <th>Estado</th>
+            <th class="num-cell">Pago servicios</th>
+            <th class="num-cell">Bono</th>
+            <th class="num-cell">Total</th>
+          </tr></thead>
+          <tbody id="pagosTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3>Resumen por mes</h3>
+      <div class="table-scroll" style="max-height:260px;">
+        <table>
+          <thead><tr><th>Mes</th><th class="num-cell">PO a tiempo</th><th class="num-cell">Pago servicios</th><th class="num-cell">Bonos</th><th class="num-cell">Total</th></tr></thead>
+          <tbody id="pagosResumenMes"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <h3>Cómo se calcula y qué no incluye</h3>
+      <div class="desc" style="line-height:1.7;">
+        <b>"A tiempo":</b> la llegada real ocurre en menos de 70 min desde la <b>aceptación</b> del servicio (FechaViajeAceptado → FechaViajeLLegada). Sin aceptación o sin llegada registrada no cuenta como a tiempo.<br>
+        <b>Pago por servicio:</b> $3.000 por cada PO a tiempo (aplica a base proveedor y a técnicos).<br>
+        <b>Base proveedor:</b> bono de $400.000 si el cumplimiento es ≥70%; entre 60% y 69% se mantiene en el plan sin bono; con &lt;60% sale del plan.<br>
+        <b>Técnico:</b> Nivel 1 (50–80 PO a tiempo) $200.000 · Nivel 2 (81–100) $250.000 · Nivel 3 (101+) $400.000.<br>
+        <b>% de cumplimiento:</b> se calcula solo sobre servicios NO programados. Los programados suman únicamente al total de PO a tiempo que alcanza el pago y los niveles (se puede desactivar con la casilla).<br>
+        <b>Período:</b> mes calendario según fecha de creación del servicio, y solo servicios dentro de la vigencia de priorización del proveedor (FechaDesde / FechaHasta).<br>
+        <b>Nota — requisitos operativos no validados:</b> aceptar el servicio en menos de 5 min, marcar el arribo y subir fotos son condiciones del plan que aquí <b>no se verifican</b>.<br>
+        <b>Nota — bono de entrada:</b> el bono único de $400.000 por cuenta de cobro no está incluido en estos valores.<br>
+        <b>Nota — técnicos:</b> el cruce usa coincidencia <b>exacta</b> entre la columna "tecnico (si aplica)" y el conductor de los servicios. Si el nombre difiere (por ejemplo, un apellido de más), esos servicios no se cuentan; en el detalle de cada técnico se listan los conductores del proveedor para facilitar la corrección.<br>
+        <b>Estos valores son una estimación para seguimiento, no una liquidación.</b>
       </div>
     </div>
   </div>
@@ -1226,19 +1298,242 @@ function renderBrandeadasView(){
 }
 
 // ---------- Pestañas ----------
+// ============================================================================
+// PESTAÑA: Pagos de gamificación
+// ============================================================================
+const PAGO = {
+  porPO: 3000,
+  umbralMin: 70,            // "a tiempo": < 70 min desde la aceptación hasta la llegada
+  bonoBase: 400000,         // base proveedor: cumplimiento >= 70%
+  pctGana: 70, pctSale: 60, // 60-69 se mantiene, <60 sale del plan
+  niveles: [                // técnico, según PO a tiempo del mes (incluye programados si la casilla está activa)
+    { min:101, bono:400000, nombre:'Nivel 3' },
+    { min:81,  bono:250000, nombre:'Nivel 2' },
+    { min:50,  bono:200000, nombre:'Nivel 1' },
+  ],
+};
+let chartPagos = null;
+
+function pagosEsc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function pagosMoney(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
+function pagosMinAceptLlegada(p){
+  if(!p.FechaViajeAceptado || !p.FechaViajeLLegada) return null;
+  const m = (new Date(p.FechaViajeLLegada) - new Date(p.FechaViajeAceptado)) / 60000;
+  return (isFinite(m) && m >= 0) ? m : null;
+}
+function pagosMesLabel(m){
+  const [y, mm] = m.split('-').map(Number);
+  const t = new Date(y, mm-1, 1).toLocaleDateString('es-CO', { month:'long', year:'numeric' });
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
+// Calcula una fila (proveedor/período del roster) para un mes dado.
+function pagosCalcFila(row, mes, incluirProg, parcial){
+  const delProveedor = RAW_DATA.posTodos.filter(p =>
+    p.FechaCreacion && p.FechaCreacion.slice(0,7) === mes &&
+    p.FechaCreacion >= row.Desde && (!row.Hasta || p.FechaCreacion <= row.Hasta) &&
+    p.ProveedorKey === row.ProveedorKey
+  );
+  const svcs = row.Modalidad === 'TECNICO' ? delProveedor.filter(p => p.ConductorKey === row.TecnicoKey) : delProveedor;
+
+  let noProg = 0, aTiempoNoProg = 0, aTiempoProg = 0;
+  const detalle = svcs.map(p => {
+    const min = pagosMinAceptLlegada(p);
+    const aTiempo = min !== null && min < PAGO.umbralMin;
+    const esProg = p.Programado === 'SI';
+    if(!esProg){ noProg++; if(aTiempo) aTiempoNoProg++; }
+    else if(aTiempo) aTiempoProg++;
+    return { p, min, aTiempo, esProg };
+  }).sort((a,b) => a.p.FechaCreacion.localeCompare(b.p.FechaCreacion));
+
+  const poAtiempo = aTiempoNoProg + (incluirProg ? aTiempoProg : 0);
+  const pct = noProg > 0 ? (aTiempoNoProg / noProg) * 100 : null;
+  const pagoServ = poAtiempo * PAGO.porPO;
+
+  let bono = 0, estado = '', color = 'var(--text-muted)';
+  const suf = parcial ? ' (parcial)' : '';
+  if(row.Modalidad === 'TECNICO'){
+    const nivel = PAGO.niveles.find(n => poAtiempo >= n.min);
+    if(nivel){ bono = nivel.bono; estado = nivel.nombre + suf; color = 'var(--connect-green)'; }
+    else { estado = 'Sin nivel' + suf; color = 'var(--connect-red)'; }
+  } else {
+    if(pct === null){ estado = 'Sin servicios'; }
+    else if(pct >= PAGO.pctGana){ bono = PAGO.bonoBase; estado = 'Gana bono' + suf; color = 'var(--connect-green)'; }
+    else if(pct >= PAGO.pctSale){ estado = 'Se mantiene' + suf; color = 'var(--connect-orange)'; }
+    else { estado = 'Sale del plan' + suf; color = 'var(--connect-red)'; }
+  }
+
+  // Pista para corregir coincidencias de técnico: conductores del proveedor en el período
+  let condHint = null;
+  if(row.Modalidad === 'TECNICO'){
+    const cnt = new Map();
+    for(const p of delProveedor){ const k = p.ConductorKey || '(sin conductor)'; cnt.set(k, (cnt.get(k)||0)+1); }
+    condHint = Array.from(cnt.entries()).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  }
+
+  return { row, svcs: svcs.length, noProg, poAtiempo, aTiempoProg, pct, pagoServ, bono, total: pagoServ + bono, estado, color, detalle, condHint };
+}
+
+function pagosMesesDisponibles(){
+  const set = new Set();
+  for(const p of RAW_DATA.posTodos){ if(p.FechaCreacion) set.add(p.FechaCreacion.slice(0,7)); }
+  return Array.from(set).sort();
+}
+
+function renderPagosView(){
+  const msg = document.getElementById('pagosStatusMsg');
+  const tbody = document.getElementById('pagosTbody');
+  if(!RAW_DATA || !Array.isArray(RAW_DATA.gamificacion) || RAW_DATA.gamificacion.length === 0 || !Array.isArray(RAW_DATA.posTodos)){
+    msg.style.display = '';
+    msg.textContent = '⚠️ El JSON cargado no trae el roster de gamificación ("gamificacion") o los servicios completos ("posTodos"). Corre el workflow de n8n con la versión actualizada del código y recarga la página.';
+    tbody.innerHTML = '';
+    document.getElementById('pagosKpis').innerHTML = '';
+    document.getElementById('pagosResumenMes').innerHTML = '';
+    if(chartPagos){ chartPagos.destroy(); chartPagos = null; }
+    return;
+  }
+  msg.style.display = 'none';
+
+  // Selector de mes (se llena una vez; por defecto el mes más reciente)
+  const selMes = document.getElementById('pagosMes');
+  const meses = pagosMesesDisponibles();
+  const firma = meses.join('|');
+  if(selMes.dataset.firma !== firma){
+    selMes.innerHTML = meses.slice().reverse().map(m => `<option value="${m}">${pagosMesLabel(m)}</option>`).join('');
+    selMes.dataset.firma = firma;
+    selMes.value = meses[meses.length-1];
+  }
+  const mes = selMes.value;
+  const incluirProg = document.getElementById('pagosIncluirProg').checked;
+  const mesActual = (RAW_DATA.updatedAt || '').slice(0,7);
+  const parcial = mes === mesActual;
+  document.getElementById('pagosParcial').style.display = parcial ? '' : 'none';
+
+  const filas = RAW_DATA.gamificacion.map(r => pagosCalcFila(r, mes, incluirProg, parcial))
+    .sort((a,b) => b.total - a.total);
+
+  // KPIs
+  const totalPago = filas.reduce((a,f)=>a+f.total,0);
+  const totalServ = filas.reduce((a,f)=>a+f.pagoServ,0);
+  const totalBono = filas.reduce((a,f)=>a+f.bono,0);
+  const conBono = filas.filter(f => f.bono > 0).length;
+  const poTot = filas.reduce((a,f)=>a+f.poAtiempo,0);
+  document.getElementById('pagosKpis').innerHTML = `
+    <div class="kpi-card"><div class="label">Total estimado</div><div class="value">${pagosMoney(totalPago)}</div><div class="foot">${pagosMesLabel(mes)}${parcial ? ' · parcial' : ''}</div></div>
+    <div class="kpi-card"><div class="label">Pago por servicios</div><div class="value">${pagosMoney(totalServ)}</div><div class="foot">${poTot} PO a tiempo × $3.000</div></div>
+    <div class="kpi-card"><div class="label">Bonos mensuales</div><div class="value">${pagosMoney(totalBono)}</div><div class="foot">${conBono} de ${filas.length} con bono${parcial ? ' (proyección parcial)' : ''}</div></div>
+    <div class="kpi-card"><div class="label">Proveedores en el plan</div><div class="value">${filas.length}</div><div class="foot">${filas.filter(f=>f.row.Modalidad==='BASE').length} base proveedor · ${filas.filter(f=>f.row.Modalidad==='TECNICO').length} técnico</div></div>
+  `;
+
+  // Gráfico apilado horizontal
+  const labels = filas.map(f => {
+    const nom = f.row.Modalidad === 'TECNICO' ? `${f.row.Proveedor} · ${f.row.Tecnico || ''}` : f.row.Proveedor;
+    return nom.length > 38 ? nom.slice(0,36) + '…' : nom;
+  });
+  const box = document.getElementById('pagosChartBox');
+  box.style.height = Math.max(260, filas.length * 34 + 70) + 'px';
+  if(chartPagos) chartPagos.destroy();
+  try{
+    chartPagos = new Chart(document.getElementById('chartPagos'), {
+      type:'bar',
+      data:{ labels, datasets:[
+        { label:'Pago por servicios', data: filas.map(f=>f.pagoServ), backgroundColor: PALETTE.teal },
+        { label:'Bono mensual', data: filas.map(f=>f.bono), backgroundColor: PALETTE.orange },
+      ]},
+      options:{
+        indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{
+          legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
+          tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${pagosMoney(ctx.raw)}`, footer:(items)=> 'Total: ' + pagosMoney(items.reduce((a,i)=>a+i.raw,0)) } }
+        },
+        scales:{
+          x:{ stacked:true, ticks:{ color:getTextColor(), callback:v=>pagosMoney(v) }, grid:{ color:getGridColor() } },
+          y:{ stacked:true, ticks:{ color:getTextColor(), font:{ size:11 } }, grid:{ display:false } }
+        }
+      }
+    });
+  }catch(e){ console.error('chartPagos', e); }
+
+  // Tabla expandible
+  let html = '';
+  filas.forEach((f, i) => {
+    const rid = 'pago-detalle-' + i;
+    const nomFila = f.row.Modalidad === 'TECNICO'
+      ? `${pagosEsc(f.row.Proveedor)}<div style="font-size:11px; color:var(--text-muted);">Técnico: ${pagosEsc(f.row.Tecnico || '—')}</div>`
+      : pagosEsc(f.row.Proveedor);
+    const aviso0 = (f.row.Modalidad === 'TECNICO' && f.svcs === 0)
+      ? '<div style="font-size:11px; color:var(--connect-orange);">⚠️ 0 servicios con ese conductor — revisa el nombre</div>' : '';
+    html += `
+      <tr class="clickable-row" onclick="toggleBrandeadaDetalle('${rid}', this)">
+        <td><span class="toggle-arrow">▸</span>${nomFila}${aviso0}</td>
+        <td>${f.row.Modalidad === 'TECNICO' ? 'Técnico' : 'Base proveedor'}</td>
+        <td class="num-cell">${f.svcs}</td>
+        <td class="num-cell">${f.noProg}</td>
+        <td class="num-cell">${f.poAtiempo}</td>
+        <td class="num-cell">${f.pct === null ? '—' : f.pct.toFixed(1) + '%'}</td>
+        <td style="color:${f.color}; font-weight:600;">${f.estado}</td>
+        <td class="num-cell">${pagosMoney(f.pagoServ)}</td>
+        <td class="num-cell">${pagosMoney(f.bono)}</td>
+        <td class="num-cell"><b>${pagosMoney(f.total)}</b></td>
+      </tr>
+      <tr class="detail-row" id="${rid}">
+        <td colspan="10" style="padding:0;">
+          <div class="detail-wrap">
+            ${f.condHint ? `<div style="padding:8px 10px; font-size:12px; color:var(--text-muted);">Conductores de este proveedor en el período: ${f.condHint.map(([k,n]) => `${pagosEsc(k)} (${n})`).join(' · ')}</div>` : ''}
+            <table class="detail-table">
+              <thead><tr><th>Fecha creación</th><th>PO</th><th>Ciudad</th><th>Tipo</th><th>Programado</th><th class="num-cell">Min aceptación → llegada</th><th class="num-cell">¿A tiempo?</th></tr></thead>
+              <tbody>
+                ${f.detalle.map(d => `
+                  <tr>
+                    <td>${d.p.FechaCreacion.slice(0,16).replace('T',' ')}</td>
+                    <td>${d.p.PONumber}</td>
+                    <td>${d.p.CiudadInicio || '—'}</td>
+                    <td>${d.p.TipoServicio || '—'}</td>
+                    <td>${d.esProg ? 'Sí' : 'No'}</td>
+                    <td class="num-cell">${d.min === null ? '—' : d.min.toFixed(1)}</td>
+                    <td class="num-cell">${d.min === null ? '—' : (d.aTiempo ? '✅' : '❌')}</td>
+                  </tr>`).join('') || '<tr><td colspan="7" style="padding:10px;">Sin servicios en este mes/período.</td></tr>'}
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>`;
+  });
+  tbody.innerHTML = html;
+
+  // Resumen por mes
+  document.getElementById('pagosResumenMes').innerHTML = meses.slice().reverse().map(m => {
+    const par = m === mesActual;
+    const fs = RAW_DATA.gamificacion.map(r => pagosCalcFila(r, m, incluirProg, par));
+    return `<tr>
+      <td>${pagosMesLabel(m)}${par ? ' (parcial)' : ''}</td>
+      <td class="num-cell">${fs.reduce((a,f)=>a+f.poAtiempo,0)}</td>
+      <td class="num-cell">${pagosMoney(fs.reduce((a,f)=>a+f.pagoServ,0))}</td>
+      <td class="num-cell">${pagosMoney(fs.reduce((a,f)=>a+f.bono,0))}</td>
+      <td class="num-cell"><b>${pagosMoney(fs.reduce((a,f)=>a+f.total,0))}</b></td>
+    </tr>`;
+  }).join('');
+}
+
 function mostrarVista(vista){
   document.getElementById('viewDashboard').style.display = vista === 'dashboard' ? '' : 'none';
   document.getElementById('viewArribo').style.display = vista === 'arribo' ? '' : 'none';
   document.getElementById('viewBrandeadas').style.display = vista === 'brandeadas' ? '' : 'none';
+  document.getElementById('viewPagos').style.display = vista === 'pagos' ? '' : 'none';
+  document.getElementById('tabBtnPagos').classList.toggle('active', vista === 'pagos');
   document.getElementById('tabBtnDashboard').classList.toggle('active', vista === 'dashboard');
   document.getElementById('tabBtnArribo').classList.toggle('active', vista === 'arribo');
   document.getElementById('tabBtnBrandeadas').classList.toggle('active', vista === 'brandeadas');
   if(vista === 'arribo') renderArriboView();
   if(vista === 'brandeadas') renderBrandeadasView();
+  if(vista === 'pagos') renderPagosView();
 }
 document.getElementById('tabBtnDashboard').onclick = () => mostrarVista('dashboard');
 document.getElementById('tabBtnArribo').onclick = () => mostrarVista('arribo');
 document.getElementById('tabBtnBrandeadas').onclick = () => mostrarVista('brandeadas');
+document.getElementById('tabBtnPagos').onclick = () => mostrarVista('pagos');
+document.getElementById('pagosMes').onchange = renderPagosView;
+document.getElementById('pagosIncluirProg').onchange = renderPagosView;
 document.getElementById('arriboCiudad').onchange = renderArriboView;
 document.getElementById('brandeadasCiudad').onchange = renderBrandeadasView;
 document.getElementById('brandeadasGranularidad').onchange = renderBrandeadasView;
