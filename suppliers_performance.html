@@ -383,7 +383,7 @@
           </select>
         </label>
       </div>
-      <div class="desc" style="margin-top:6px;">El filtro por cuenta queda deshabilitado hasta confirmar en qué hoja/columna vive ese dato.</div>
+      <div class="desc" id="arriboCuentaNota" style="margin-top:6px;">Filtro por cuenta deshabilitado: el JSON cargado aún no trae el campo CuentaServicio (corre el workflow de n8n con la versión actualizada).</div>
       <div id="arriboStatusMsg" style="display:none; background:rgba(255,122,41,.15); border:1px solid var(--connect-orange); color:var(--connect-orange); padding:12px 16px; border-radius:10px; margin-top:12px; font-size:13px;"></div>
       <div class="chart-box tall" style="margin-top:14px;"><canvas id="chartArribo"></canvas></div>
       <div class="legend-row">
@@ -843,6 +843,36 @@ function computeCumplimientoArribo(pos, ciudad, granularidad){
     }));
 }
 
+// Llena el desplegable de cuenta con las cuentas presentes en los datos (ordenadas por volumen).
+// Si el JSON no trae CuentaServicio (versión vieja del workflow) deja el filtro deshabilitado.
+function poblarFiltroCuentaArribo(){
+  const sel = document.getElementById('arriboCuenta');
+  const nota = document.getElementById('arriboCuentaNota');
+  const conteo = new Map();
+  let sinCuenta = 0, hayCampo = false;
+  for(const p of (RAW_DATA.pos || [])){
+    if(p.CuentaServicio !== undefined) hayCampo = true;
+    if(p.CuentaServicio) conteo.set(p.CuentaServicio, (conteo.get(p.CuentaServicio)||0) + 1);
+    else sinCuenta++;
+  }
+  if(!hayCampo || conteo.size === 0){
+    sel.disabled = true;
+    return;
+  }
+  const firma = Array.from(conteo.entries()).map(([k,v])=>k+':'+v).join('|') + '|' + sinCuenta;
+  if(sel.dataset.firma !== firma){
+    const actual = sel.value;
+    const cuentas = Array.from(conteo.entries()).sort((a,b)=>b[1]-a[1]);
+    sel.innerHTML = '<option value="TODAS">Todas</option>' +
+      cuentas.map(([c,n])=>`<option value="${c.replace(/"/g,'&quot;')}">${c} (${n})</option>`).join('') +
+      (sinCuenta ? `<option value="__SIN__">(Sin cuenta) (${sinCuenta})</option>` : '');
+    if(Array.from(sel.options).some(o => o.value === actual)) sel.value = actual;
+    sel.dataset.firma = firma;
+  }
+  sel.disabled = false;
+  nota.textContent = 'Cuenta: los números entre paréntesis son servicios NO programados en el período cargado.';
+}
+
 function renderArriboView(){
   const msgEl = document.getElementById('arriboStatusMsg');
   const tbody = document.getElementById('arriboTbody');
@@ -855,9 +885,15 @@ function renderArriboView(){
     return;
   }
 
+  poblarFiltroCuentaArribo();
   const ciudad = document.getElementById('arriboCiudad').value;
   const granularidad = document.getElementById('arriboGranularidad').value;
-  const datos = computeCumplimientoArribo(RAW_DATA.pos, ciudad, granularidad);
+  const cuenta = document.getElementById('arriboCuenta').value;
+  let posArribo = RAW_DATA.pos;
+  if(cuenta !== 'TODAS'){
+    posArribo = RAW_DATA.pos.filter(p => cuenta === '__SIN__' ? !p.CuentaServicio : p.CuentaServicio === cuenta);
+  }
+  const datos = computeCumplimientoArribo(posArribo, ciudad, granularidad);
 
   if(datos.length === 0){
     msgEl.style.display = '';
@@ -1207,6 +1243,7 @@ document.getElementById('arriboCiudad').onchange = renderArriboView;
 document.getElementById('brandeadasCiudad').onchange = renderBrandeadasView;
 document.getElementById('brandeadasGranularidad').onchange = renderBrandeadasView;
 document.getElementById('arriboGranularidad').onchange = renderArriboView;
+document.getElementById('arriboCuenta').onchange = renderArriboView;
 
 // ---------- Render principal ----------
 function renderAll(DATA){
