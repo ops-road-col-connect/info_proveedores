@@ -119,6 +119,24 @@
   tbody td{ padding:9px 10px; border-bottom:1px solid var(--border); white-space:nowrap; }
   tbody td:first-child{ position:sticky; left:0; z-index:1; background:var(--card-bg); border-right:1px solid var(--border); }
   tr.priority td:first-child{ background:var(--priority-tint); }
+  /* Columnas clave de la tabla de proveedores */
+  #provTable th.key-col{
+    background: linear-gradient(rgba(21,101,192,.32), rgba(21,101,192,.32)), var(--bg);
+    color: var(--text-main); font-weight:800;
+    border-top:3px solid var(--connect-blue);
+    border-left:2px solid var(--connect-blue); border-right:2px solid var(--connect-blue);
+  }
+  #provTable th.key-col::before{ content:'★ '; color:var(--connect-blue); }
+  #provTable td.key-col{
+    background: rgba(21,101,192,.16);
+    border-left:2px solid var(--connect-blue); border-right:2px solid var(--connect-blue);
+    font-weight:800; font-size:14px;
+  }
+  #provTable td.key-col .pill{ font-size:13.5px; font-weight:800; padding:4px 10px; }
+  #provTable tbody tr:last-child td.key-col{ border-bottom:2px solid var(--connect-blue); }
+  #provTable tbody tr:hover td.key-col{ background: rgba(21,101,192,.26); }
+  .key-col-legend{ display:inline-block; width:14px; height:14px; border-radius:3px; vertical-align:-2px;
+    background: rgba(21,101,192,.18); border:2px solid var(--connect-blue); }
   tbody tr:hover{ background: rgba(21,101,192,.05); }
   .num-cell{ text-align:right; font-variant-numeric:tabular-nums; }
   .table-scroll{ max-height:560px; overflow:auto; border:1px solid var(--border); border-radius:10px; }
@@ -189,6 +207,28 @@
   .tab-btn.active{ color:var(--connect-blue); border-bottom-color:var(--connect-blue); }
   .tab-btn:hover:not(.active){ color:var(--text-main); }
 
+  /* Filtro por cuenta (multiselección) */
+  .cuenta-ms{ position:relative; }
+  .cuenta-ms-btn{
+    display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; border:1px solid var(--border);
+    background:var(--bg); color:var(--text-main); font-size:13px; cursor:pointer; min-width:220px; justify-content:space-between;
+  }
+  .cuenta-ms-btn .chev{ font-size:10px; color:var(--text-muted); }
+  .cuenta-ms-panel{
+    display:none; position:absolute; top:calc(100% + 6px); left:0; z-index:50; min-width:300px; max-height:360px; overflow:auto;
+    background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:8px; box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  .cuenta-ms.open .cuenta-ms-panel{ display:block; }
+  .cuenta-ms-panel label{
+    display:flex; align-items:center; gap:8px; padding:6px 8px; border-radius:6px; font-size:13px; color:var(--text-main); cursor:pointer;
+  }
+  .cuenta-ms-panel label:hover{ background:var(--bg); }
+  .cuenta-ms-panel label .n{ margin-left:auto; color:var(--text-muted); font-size:12px; }
+  .cuenta-ms-panel .todas{ font-weight:700; border-bottom:1px solid var(--border); border-radius:6px 6px 0 0; margin-bottom:4px; padding-bottom:8px; }
+  .cuenta-ms-panel input[type=checkbox]{ width:16px; height:16px; flex:none; margin:0; }
+
+  a.po-link{ color:var(--connect-blue); font-weight:600; text-decoration:underline; }
+  @media (prefers-color-scheme: dark){ a.po-link{ color:#6FA8FF; } }
   footer{ text-align:center; color:var(--text-muted); font-size:12px; margin-top:50px; }
 </style>
 </head>
@@ -222,8 +262,8 @@
 
   <!-- FILTRO POR RANGO DE FECHAS -->
   <div class="card" style="margin-bottom:20px;">
-    <h3>Filtrar por rango de fechas</h3>
-    <div class="desc">Al aplicar, todo el dashboard (KPIs, gráficos, tabla de proveedores y heatmaps) se recalcula usando solo los servicios creados dentro del rango elegido.</div>
+    <h3>Filtrar por rango de fechas y cuenta</h3>
+    <div class="desc">Al aplicar, todo el dashboard (KPIs, gráficos, tabla de proveedores y heatmaps) se recalcula usando solo los servicios creados dentro del rango elegido y de las cuentas marcadas. Para excluir una cuenta, desmárcala; "Todas las cuentas" marca o desmarca todo de una vez.</div>
     <div class="filters">
       <label style="min-width:auto;">Desde:
         <input type="date" id="filterFrom" style="margin-left:6px; width:auto; flex:none;">
@@ -231,6 +271,11 @@
       <label style="min-width:auto;">Hasta:
         <input type="date" id="filterTo" style="margin-left:6px; width:auto; flex:none;">
       </label>
+      <div class="cuenta-ms" id="cuentaMs" style="display:flex; align-items:center; gap:6px;">
+        <label style="min-width:auto;">Cuenta:</label>
+        <button type="button" class="cuenta-ms-btn" id="cuentaMsBtn"><span id="cuentaMsLabel">Todas las cuentas</span><span class="chev">▼</span></button>
+        <div class="cuenta-ms-panel" id="cuentaMsPanel"></div>
+      </div>
       <button id="btnAplicarFiltro" class="btn btn-primary">Aplicar filtro</button>
       <button id="btnQuitarFiltro" class="btn btn-ghost">Quitar filtro</button>
       <span id="filterStatus" style="font-size:12.5px; color:var(--text-muted); margin-left:4px;"></span>
@@ -321,6 +366,7 @@
     </div>
     <div class="legend-row">
       <span><span class="dot" style="background:var(--connect-orange)"></span> ★ Proveedor priorizado</span>
+      <span style="margin-left:16px;"><span class="key-col-legend"></span> Columnas clave: Total prestados y % Cumplim. arribo 2</span>
     </div>
     <div class="table-scroll" style="margin-top:12px;">
       <table id="provTable">
@@ -333,7 +379,7 @@
             <th class="num-cell" title="Veces que el proveedor fue contactado en un barrido y no dio ninguna respuesta, y no terminó prestando ese servicio.">Sin respuesta</th>
             <th class="num-cell" title="Veces que el proveedor respondió en un barrido indicando que no tenía disponibilidad, y no terminó prestando ese servicio.">Sin disponibilidad</th>
             <th class="num-cell" title="Veces que el proveedor respondió con una oferta (tiempo/tarifa) en el barrido, pero el servicio terminó siendo prestado por otro proveedor.">Perdió ante otro</th>
-            <th class="num-cell" title="Total de servicios que el proveedor prestó efectivamente: Sin barrido + Fuera de su barrido + Ganó en barrido.">Total prestados</th>
+            <th class="num-cell key-col" title="Total de servicios que el proveedor prestó efectivamente: Sin barrido + Fuera de su barrido + Ganó en barrido.">Total prestados</th>
             <th class="num-cell" title="Total de veces que el proveedor apareció listado en un barrido, sin importar el resultado: Ganó + Sin respuesta + Sin disponibilidad + Perdió ante otro.">Participaciones barrido</th>
             <th class="num-cell" title="Ganó en barrido / Participaciones en barrido. Ej: 8/36 = 22.2%. Solo mide conversión dentro de barridos, no incluye servicios sin barrido.">% Ganado / Ofrecido en barrido</th>
             <th class="num-cell" title="Total de veces que el proveedor tuvo la oportunidad de prestar un servicio, de cualquier forma: Sin barrido + Fuera de su barrido + Participaciones en barrido.">Total ofertados</th>
@@ -342,7 +388,7 @@
             <th class="num-cell" title="Promedio de minutos entre la creación del PO (FechaHoraCreacion) y la llegada real del proveedor (FechaViajeLLegada), sobre los servicios que ese proveedor prestó.">Prom. arribo 1 (creación→llegada)</th>
             <th class="num-cell" title="% de servicios prestados por el proveedor en los que la llegada real ocurrió antes de 60 min desde la creación del PO. Color: verde ≥80%, amarillo 50–80%, rojo &lt;50%.">% Cumplim. arribo 1 (&lt;60 min)</th>
             <th class="num-cell" title="Promedio de minutos entre que el servicio fue aceptado (FechaViajeAceptado) y la llegada real del proveedor (FechaViajeLLegada), sobre los servicios que ese proveedor prestó.">Prom. arribo 2 (aceptado→llegada)</th>
-            <th class="num-cell" title="% de servicios prestados por el proveedor en los que la llegada real ocurrió antes de 60 min desde que se aceptó el servicio. Color: verde ≥80%, amarillo 50–80%, rojo &lt;50%.">% Cumplim. arribo 2 (&lt;60 min)</th>
+            <th class="num-cell key-col" title="% de servicios prestados por el proveedor en los que la llegada real ocurrió antes de 60 min desde que se aceptó el servicio. Color: verde ≥80%, amarillo 50–80%, rojo &lt;50%.">% Cumplim. arribo 2 (&lt;60 min)</th>
           </tr>
         </thead>
         <tbody id="provTbody"></tbody>
@@ -473,7 +519,7 @@
         </label>
         <label style="min-width:auto; display:flex; align-items:center; gap:6px; cursor:pointer;">
           <input type="checkbox" id="pagosIncluirProg" checked style="width:auto;">
-          Incluir programados en el total de PO a tiempo
+          Incluir programados como PO válidos (pago y volumen)
         </label>
       </div>
       <div id="pagosParcial" class="aviso-programados" style="display:none;">⏳ Mes en curso: cifras parciales, los bonos pueden cambiar hasta el cierre del mes</div>
@@ -491,8 +537,9 @@
             <th>Proveedor</th>
             <th>Modalidad</th>
             <th class="num-cell">Servicios</th>
-            <th class="num-cell">NO prog.</th>
-            <th class="num-cell">PO a tiempo</th>
+            <th class="num-cell" title="Servicios NO programados del proveedor en el mes (base del % de cumplimiento).">NO prog.</th>
+            <th class="num-cell" title="Servicios programados del proveedor en el mes. Servicios = NO prog. + Prog.">Prog.</th>
+            <th class="num-cell" title="PO que se pagan a $3.000: NO programados con llegada &lt; 70 min desde la aceptación + todos los programados (la llegada no se mide en programados). Desmarca la casilla para excluir programados.">PO válidos</th>
             <th class="num-cell">% cumpl. (NO prog.)</th>
             <th>Estado</th>
             <th class="num-cell">Pago servicios</th>
@@ -508,7 +555,7 @@
       <h3>Resumen por mes</h3>
       <div class="table-scroll" style="max-height:260px;">
         <table>
-          <thead><tr><th>Mes</th><th class="num-cell">PO a tiempo</th><th class="num-cell">Pago servicios</th><th class="num-cell">Bonos</th><th class="num-cell">Total</th></tr></thead>
+          <thead><tr><th>Mes</th><th class="num-cell">PO válidos</th><th class="num-cell">Pago servicios</th><th class="num-cell">Bonos</th><th class="num-cell">Total</th></tr></thead>
           <tbody id="pagosResumenMes"></tbody>
         </table>
       </div>
@@ -517,11 +564,12 @@
     <div class="card" style="margin-top:16px;">
       <h3>Cómo se calcula y qué no incluye</h3>
       <div class="desc" style="line-height:1.7;">
-        <b>"A tiempo":</b> la llegada real ocurre en menos de 70 min desde la <b>aceptación</b> del servicio (FechaViajeAceptado → FechaViajeLLegada). Sin aceptación o sin llegada registrada no cuenta como a tiempo.<br>
-        <b>Pago por servicio:</b> $3.000 por cada PO a tiempo (aplica a base proveedor y a técnicos).<br>
-        <b>Base proveedor:</b> bono de $400.000 si el cumplimiento es ≥70%; entre 60% y 69% se mantiene en el plan sin bono; con &lt;60% sale del plan.<br>
-        <b>Técnico:</b> Nivel 1 (50–80 PO a tiempo) $200.000 · Nivel 2 (81–100) $250.000 · Nivel 3 (101+) $400.000.<br>
-        <b>% de cumplimiento:</b> se calcula solo sobre servicios NO programados. Los programados suman únicamente al total de PO a tiempo que alcanza el pago y los niveles (se puede desactivar con la casilla).<br>
+        <b>"A tiempo":</b> solo se mide en servicios <b>NO programados</b> (inmediatos): la llegada real ocurre en menos de 70 min desde la <b>aceptación</b> (FechaViajeAceptado → FechaViajeLLegada). Sin aceptación o sin llegada registrada no cuenta como a tiempo. En programados la llegada <b>no se mide</b>.<br>
+        <b>Pago por servicio:</b> $3.000 por cada PO válido = NO programados a tiempo + programados (estos últimos solo si se alcanza el mínimo de 50 PO y la casilla está activa). Aplica a base proveedor y a técnicos.<br>
+        <b>Mínimo de volumen:</b> para tener bono mensual (en ambas modalidades) el proveedor/técnico necesita al menos <b>50 PO en el mes</b> (NO programados + programados si la casilla está activa). Por debajo de 50 no hay bono mensual y solo se paga $3.000 por cada servicio <b>NO programado que llegó a tiempo</b>; los programados no pagan.<br>
+        <b>Base proveedor:</b> bono de $400.000 si tiene ≥50 PO y cumplimiento ≥70%; con 60%–69% se mantiene en el plan sin bono; con &lt;60% sale del plan.<br>
+        <b>Técnico:</b> el nivel se define por el <b>total de PO del mes, sin importar el tiempo</b> (NO programados + programados si la casilla está activa): Nivel 1 (50–80 PO) $200.000 · Nivel 2 (81–100) $250.000 · Nivel 3 (101+) $400.000.<br>
+        <b>% de cumplimiento:</b> se calcula solo sobre servicios NO programados.<br>
         <b>Período:</b> mes calendario según fecha de creación del servicio, y solo servicios dentro de la vigencia de priorización del proveedor (FechaDesde / FechaHasta).<br>
         <b>Nota — requisitos operativos no validados:</b> aceptar el servicio en menos de 5 min, marcar el arribo y subir fotos son condiciones del plan que aquí <b>no se verifican</b>.<br>
         <b>Nota — bono de entrada:</b> el bono único de $400.000 por cuenta de cobro no está incluido en estos valores.<br>
@@ -623,7 +671,88 @@ async function cargarDatos(){
   }
 }
 
-// ---------- Filtro por rango de fechas (recalcula TODO en el navegador) ----------
+// ---------- Filtro por rango de fechas + cuenta (recalcula TODO en el navegador) ----------
+const SIN_CUENTA = '__SIN__';
+let CUENTAS_TODAS = [];          // [{valor, etiqueta, n}] ordenadas por volumen
+let CUENTAS_SEL = new Set();     // cuentas marcadas (por defecto todas)
+
+function cuentaDe(p){ return p.CuentaServicio ? p.CuentaServicio : SIN_CUENTA; }
+
+function configurarFiltroCuenta(raw){
+  const pos = raw.pos || [];
+  const conteo = new Map();
+  for(const p of pos){ const c = cuentaDe(p); conteo.set(c, (conteo.get(c)||0)+1); }
+  CUENTAS_TODAS = Array.from(conteo.entries())
+    .sort((a,b)=> (a[0]===SIN_CUENTA) - (b[0]===SIN_CUENTA) || b[1]-a[1])
+    .map(([valor,n])=>({valor, etiqueta: valor===SIN_CUENTA ? '(Sin cuenta)' : valor, n}));
+  // conserva la selección previa si ya existía (p. ej. en una recarga); cuentas nuevas entran marcadas
+  if(!CUENTAS_SEL.size) CUENTAS_SEL = new Set(CUENTAS_TODAS.map(c=>c.valor));
+  else for(const c of CUENTAS_TODAS) if(!conteo.has(c.valor)) CUENTAS_SEL.delete(c.valor);
+
+  const panel = document.getElementById('cuentaMsPanel');
+  const esc = t => String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+  panel.innerHTML =
+    `<label class="todas"><input type="checkbox" id="cuentaTodas"> Todas las cuentas <span class="n">${pos.length}</span></label>` +
+    CUENTAS_TODAS.map(c=>`<label><input type="checkbox" class="cuenta-chk" value="${esc(c.valor)}"${CUENTAS_SEL.has(c.valor)?' checked':''}> ${esc(c.etiqueta)} <span class="n">${c.n}</span></label>`).join('');
+
+  const chkTodas = document.getElementById('cuentaTodas');
+  const chks = Array.from(panel.querySelectorAll('.cuenta-chk'));
+  function sync(){
+    const marcadas = chks.filter(c=>c.checked).length;
+    chkTodas.checked = marcadas === chks.length;
+    chkTodas.indeterminate = marcadas > 0 && marcadas < chks.length;
+    CUENTAS_SEL = new Set(chks.filter(c=>c.checked).map(c=>c.value));
+    actualizarEtiquetaCuenta();
+  }
+  chkTodas.onchange = () => { chks.forEach(c=>c.checked = chkTodas.checked); sync(); aplicarFiltros(); };
+  chks.forEach(c => c.onchange = () => { sync(); aplicarFiltros(); });
+  sync();
+
+  const ms = document.getElementById('cuentaMs');
+  document.getElementById('cuentaMsBtn').onclick = (e) => { e.stopPropagation(); ms.classList.toggle('open'); };
+  panel.onclick = e => e.stopPropagation();
+  document.addEventListener('click', () => ms.classList.remove('open'));
+}
+
+function actualizarEtiquetaCuenta(){
+  const total = CUENTAS_TODAS.length, sel = CUENTAS_SEL.size;
+  const lbl = document.getElementById('cuentaMsLabel');
+  if(sel === total) lbl.textContent = 'Todas las cuentas';
+  else if(sel === 0) lbl.textContent = 'Ninguna cuenta';
+  else if(total - sel <= 2) lbl.textContent = 'Todas excepto: ' + CUENTAS_TODAS.filter(c=>!CUENTAS_SEL.has(c.valor)).map(c=>c.etiqueta).join(', ');
+  else if(sel <= 2) lbl.textContent = CUENTAS_TODAS.filter(c=>CUENTAS_SEL.has(c.valor)).map(c=>c.etiqueta).join(', ');
+  else lbl.textContent = `${sel} de ${total} cuentas`;
+}
+
+function hayFiltroCuenta(){ return CUENTAS_SEL.size < CUENTAS_TODAS.length; }
+
+// Aplica fecha + cuenta juntas. Se llama desde "Aplicar filtro" y al cambiar cuentas.
+function aplicarFiltros(){
+  const raw = RAW_DATA;
+  if(!raw) return;
+  const fromStr = document.getElementById('filterFrom').value;
+  const toStr = document.getElementById('filterTo').value;
+  const status = document.getElementById('filterStatus');
+
+  if(!fromStr && !toStr && !hayFiltroCuenta()){
+    DATA = RAW_DATA; renderAll(DATA); status.textContent = ''; return;
+  }
+  if(CUENTAS_SEL.size === 0){
+    status.textContent = 'Marca al menos una cuenta.'; return;
+  }
+  const fromDate = fromStr ? new Date(fromStr + 'T00:00:00') : null;
+  const toDate = toStr ? new Date(toStr + 'T23:59:59.999') : null;
+  const posCuenta = hayFiltroCuenta() ? raw.pos.filter(p => CUENTAS_SEL.has(cuentaDe(p))) : raw.pos;
+  const filtrado = computeAggregates(posCuenta, raw.lineas, fromDate, toDate);
+  filtrado.updatedAt = raw.updatedAt;
+  DATA = filtrado;
+  renderAll(DATA);
+  const partes = [];
+  if(fromStr || toStr) partes.push('fechas');
+  if(hayFiltroCuenta()) partes.push(`${CUENTAS_SEL.size} de ${CUENTAS_TODAS.length} cuentas`);
+  status.textContent = `Filtro activo (${partes.join(' + ')}): ${filtrado.total_po} de ${raw.total_po} servicios`;
+}
+
 function configurarFiltroFechas(raw){
   const pos = raw.pos || [];
   const fechas = pos.map(p=>p.FechaCreacion).filter(Boolean).map(f=>f.slice(0,10)).sort();
@@ -633,27 +762,15 @@ function configurarFiltroFechas(raw){
     inputFrom.min = inputTo.min = fechas[0];
     inputFrom.max = inputTo.max = fechas[fechas.length-1];
   }
+  configurarFiltroCuenta(raw);
 
-  document.getElementById('btnAplicarFiltro').onclick = () => {
-    const fromStr = inputFrom.value;
-    const toStr = inputTo.value;
-    if(!fromStr && !toStr){
-      document.getElementById('filterStatus').textContent = 'Elige al menos una fecha.';
-      return;
-    }
-    const fromDate = fromStr ? new Date(fromStr + 'T00:00:00') : null;
-    const toDate = toStr ? new Date(toStr + 'T23:59:59.999') : null;
-    const filtrado = computeAggregates(raw.pos, raw.lineas, fromDate, toDate);
-    filtrado.updatedAt = raw.updatedAt;
-    DATA = filtrado;
-    renderAll(DATA);
-    document.getElementById('filterStatus').textContent =
-      `Filtro activo: ${filtrado.total_po} de ${raw.total_po} servicios`;
-  };
+  document.getElementById('btnAplicarFiltro').onclick = aplicarFiltros;
 
   document.getElementById('btnQuitarFiltro').onclick = () => {
     inputFrom.value = '';
     inputTo.value = '';
+    CUENTAS_SEL = new Set(CUENTAS_TODAS.map(c=>c.valor));
+    configurarFiltroCuenta(raw);
     DATA = RAW_DATA;
     renderAll(DATA);
     document.getElementById('filterStatus').textContent = '';
@@ -1278,7 +1395,7 @@ function renderBrandeadasView(){
                   ${detalle.map(d => `
                     <tr>
                       <td>${d.FechaCreacion ? new Date(d.FechaCreacion).toLocaleString('es-CO',{dateStyle:'short',timeStyle:'short'}) : '—'}</td>
-                      <td>${d.PONumber}</td>
+                      <td>${poLink(d.PONumber)}</td>
                       <td>${d.CiudadInicio || '—'}</td>
                       <td>${d.TipoServicio || '—'}</td>
                       <td>${d.Programado === 'SI' ? 'Sí' : 'No'}</td>
@@ -1303,15 +1420,24 @@ function renderBrandeadasView(){
 const PAGO = {
   porPO: 3000,
   umbralMin: 70,            // "a tiempo": < 70 min desde la aceptación hasta la llegada
-  bonoBase: 400000,         // base proveedor: cumplimiento >= 70%
+  bonoBase: 400000,         // base proveedor: cumplimiento >= 70% Y volumen >= minPO
+  minPO: 50,                // volumen mínimo del mes (ambas modalidades) para bono mensual y para que los programados paguen
   pctGana: 70, pctSale: 60, // 60-69 se mantiene, <60 sale del plan
-  niveles: [                // técnico, según PO a tiempo del mes (incluye programados si la casilla está activa)
-    { min:101, bono:400000, nombre:'Nivel 3' },
-    { min:81,  bono:250000, nombre:'Nivel 2' },
-    { min:50,  bono:200000, nombre:'Nivel 1' },
+  niveles: [                // técnico, según el TOTAL de PO del mes, sin importar el tiempo (programados si la casilla está activa)
+    { min:101, bono:400000, nombre:'Nivel 3', rango:'101+ PO' },
+    { min:81,  bono:250000, nombre:'Nivel 2', rango:'81–100 PO' },
+    { min:50,  bono:200000, nombre:'Nivel 1', rango:'50–80 PO' },
   ],
 };
 let chartPagos = null;
+// Link a Helios por PO. Pega aquí el patrón de la URL de un PO usando {PO} donde va el número,
+// ej. 'https://helios-web.connect.pr/.../{PO}'. Si queda vacío, el PO se muestra como texto.
+const HELIOS_PO_URL = '';
+function poLink(po){
+  if(!HELIOS_PO_URL) return pagosEsc(po);
+  const url = HELIOS_PO_URL.replace('{PO}', encodeURIComponent(po));
+  return `<a href="${url}" target="_blank" rel="noopener" class="po-link" onclick="event.stopPropagation()">${pagosEsc(po)}</a>`;
+}
 
 function pagosEsc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function pagosMoney(n){ return '$' + Math.round(n).toLocaleString('es-CO'); }
@@ -1335,28 +1461,45 @@ function pagosCalcFila(row, mes, incluirProg, parcial){
   );
   const svcs = row.Modalidad === 'TECNICO' ? delProveedor.filter(p => p.ConductorKey === row.TecnicoKey) : delProveedor;
 
-  let noProg = 0, aTiempoNoProg = 0, aTiempoProg = 0;
+  // La llegada a tiempo SOLO se mide en NO programados. Los programados no se miden:
+  // si la casilla está activa cuentan como PO válido (pago y volumen) sin importar el tiempo.
+  let noProg = 0, prog = 0, aTiempoNoProg = 0;
   const detalle = svcs.map(p => {
     const min = pagosMinAceptLlegada(p);
-    const aTiempo = min !== null && min < PAGO.umbralMin;
     const esProg = p.Programado === 'SI';
-    if(!esProg){ noProg++; if(aTiempo) aTiempoNoProg++; }
-    else if(aTiempo) aTiempoProg++;
+    const aTiempo = !esProg && min !== null && min < PAGO.umbralMin;
+    if(esProg) prog++;
+    else { noProg++; if(aTiempo) aTiempoNoProg++; }
     return { p, min, aTiempo, esProg };
   }).sort((a,b) => a.p.FechaCreacion.localeCompare(b.p.FechaCreacion));
 
-  const poAtiempo = aTiempoNoProg + (incluirProg ? aTiempoProg : 0);
+  const volumenNivel = noProg + (incluirProg ? prog : 0); // total de PO del mes (rango mínimo / nivel)
+  const alcanzaMin = volumenNivel >= PAGO.minPO;
+  // Bajo el mínimo de 50 PO: solo se paga cada NO programado a tiempo (los programados no pagan).
+  const progValidos = (incluirProg && alcanzaMin) ? prog : 0;
+  const poAtiempo = aTiempoNoProg + progValidos;          // PO que se pagan a $3.000
   const pct = noProg > 0 ? (aTiempoNoProg / noProg) * 100 : null;
   const pagoServ = poAtiempo * PAGO.porPO;
 
   let bono = 0, estado = '', color = 'var(--text-muted)';
   const suf = parcial ? ' (parcial)' : '';
   if(row.Modalidad === 'TECNICO'){
-    const nivel = PAGO.niveles.find(n => poAtiempo >= n.min);
-    if(nivel){ bono = nivel.bono; estado = nivel.nombre + suf; color = 'var(--connect-green)'; }
-    else { estado = 'Sin nivel' + suf; color = 'var(--connect-red)'; }
+    const nivel = PAGO.niveles.find(n => volumenNivel >= n.min);
+    const n1 = PAGO.niveles[PAGO.niveles.length-1];
+    if(nivel){
+      bono = nivel.bono; color = 'var(--connect-green)';
+      const idx = PAGO.niveles.indexOf(nivel), sig = idx > 0 ? PAGO.niveles[idx-1] : null;
+      estado = `${nivel.nombre} (${nivel.rango})${suf}` +
+        (sig ? `<div style="font-size:11px; color:var(--text-muted); font-weight:400;">Faltan ${sig.min - volumenNivel} PO para ${sig.nombre}</div>` : '');
+    } else {
+      color = 'var(--connect-red)';
+      estado = `Sin nivel (&lt;${n1.min} PO)${suf}<div style="font-size:11px; color:var(--text-muted); font-weight:400;">Faltan ${n1.min - volumenNivel} PO para ${n1.nombre}</div>`;
+    }
   } else {
+    const faltanMin = `<div style="font-size:11px; color:var(--text-muted); font-weight:400;">${volumenNivel} PO · faltan ${PAGO.minPO - volumenNivel} para el mínimo de ${PAGO.minPO}</div>`;
     if(pct === null){ estado = 'Sin servicios'; }
+    else if(pct < PAGO.pctSale){ estado = 'Sale del plan' + suf; color = 'var(--connect-red)'; }
+    else if(!alcanzaMin){ estado = `Sin bono (&lt;${PAGO.minPO} PO)${suf}` + faltanMin; color = 'var(--connect-orange)'; }
     else if(pct >= PAGO.pctGana){ bono = PAGO.bonoBase; estado = 'Gana bono' + suf; color = 'var(--connect-green)'; }
     else if(pct >= PAGO.pctSale){ estado = 'Se mantiene' + suf; color = 'var(--connect-orange)'; }
     else { estado = 'Sale del plan' + suf; color = 'var(--connect-red)'; }
@@ -1370,7 +1513,7 @@ function pagosCalcFila(row, mes, incluirProg, parcial){
     condHint = Array.from(cnt.entries()).sort((a,b)=>b[1]-a[1]).slice(0,8);
   }
 
-  return { row, svcs: svcs.length, noProg, poAtiempo, aTiempoProg, pct, pagoServ, bono, total: pagoServ + bono, estado, color, detalle, condHint };
+  return { row, svcs: svcs.length, noProg, prog, progValidos, alcanzaMin, poAtiempo, volumenNivel, aTiempoNoProg, incluirProg, pct, pagoServ, bono, total: pagoServ + bono, estado, color, detalle, condHint };
 }
 
 function pagosMesesDisponibles(){
@@ -1419,7 +1562,7 @@ function renderPagosView(){
   const poTot = filas.reduce((a,f)=>a+f.poAtiempo,0);
   document.getElementById('pagosKpis').innerHTML = `
     <div class="kpi-card"><div class="label">Total estimado</div><div class="value">${pagosMoney(totalPago)}</div><div class="foot">${pagosMesLabel(mes)}${parcial ? ' · parcial' : ''}</div></div>
-    <div class="kpi-card"><div class="label">Pago por servicios</div><div class="value">${pagosMoney(totalServ)}</div><div class="foot">${poTot} PO a tiempo × $3.000</div></div>
+    <div class="kpi-card"><div class="label">Pago por servicios</div><div class="value">${pagosMoney(totalServ)}</div><div class="foot">${poTot} PO válidos × $3.000</div></div>
     <div class="kpi-card"><div class="label">Bonos mensuales</div><div class="value">${pagosMoney(totalBono)}</div><div class="foot">${conBono} de ${filas.length} con bono${parcial ? ' (proyección parcial)' : ''}</div></div>
     <div class="kpi-card"><div class="label">Proveedores en el plan</div><div class="value">${filas.length}</div><div class="foot">${filas.filter(f=>f.row.Modalidad==='BASE').length} base proveedor · ${filas.filter(f=>f.row.Modalidad==='TECNICO').length} técnico</div></div>
   `;
@@ -1437,10 +1580,18 @@ function renderPagosView(){
       type:'bar',
       data:{ labels, datasets:[
         { label:'Pago por servicios', data: filas.map(f=>f.pagoServ), backgroundColor: PALETTE.teal },
-        { label:'Bono mensual', data: filas.map(f=>f.bono), backgroundColor: PALETTE.orange },
+        { label:'Bono mensual', data: filas.map(f=>f.bono), backgroundColor: PALETTE.orange,
+          // Etiqueta con el TOTAL (servicios + bono) al final de la barra apilada
+          datalabels:{
+            display: true,
+            anchor:'end', align:'end', offset:6, clamp:true,
+            color: getTextColor(), font:{ weight:'bold', size:12 },
+            formatter: (v, ctx) => pagosMoney(filas[ctx.dataIndex].total),
+          } },
       ]},
       options:{
         indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        layout:{ padding:{ right:90 } },
         plugins:{
           legend:{ display:true, position:'bottom', labels:{ color:getTextColor() } },
           tooltip:{ callbacks:{ label:(ctx)=> `${ctx.dataset.label}: ${pagosMoney(ctx.raw)}`, footer:(items)=> 'Total: ' + pagosMoney(items.reduce((a,i)=>a+i.raw,0)) } }
@@ -1468,7 +1619,8 @@ function renderPagosView(){
         <td>${f.row.Modalidad === 'TECNICO' ? 'Técnico' : 'Base proveedor'}</td>
         <td class="num-cell">${f.svcs}</td>
         <td class="num-cell">${f.noProg}</td>
-        <td class="num-cell">${f.poAtiempo}</td>
+        <td class="num-cell">${f.prog}</td>
+        <td class="num-cell"><b>${f.poAtiempo}</b><div style="font-size:11px; color:var(--text-muted); white-space:nowrap;">${f.aTiempoNoProg} a tiempo (no prog.) + ${f.progValidos === f.prog && f.incluirProg ? f.prog + ' prog.' : '<s>' + f.prog + ' prog.</s>'}${f.incluirProg && !f.alcanzaMin && f.prog > 0 ? '<br><span style="color:var(--connect-orange);">prog. no pagan (&lt;' + PAGO.minPO + ' PO)</span>' : ''}</div></td>
         <td class="num-cell">${f.pct === null ? '—' : f.pct.toFixed(1) + '%'}</td>
         <td style="color:${f.color}; font-weight:600;">${f.estado}</td>
         <td class="num-cell">${pagosMoney(f.pagoServ)}</td>
@@ -1476,7 +1628,7 @@ function renderPagosView(){
         <td class="num-cell"><b>${pagosMoney(f.total)}</b></td>
       </tr>
       <tr class="detail-row" id="${rid}">
-        <td colspan="10" style="padding:0;">
+        <td colspan="11" style="padding:0;">
           <div class="detail-wrap">
             ${f.condHint ? `<div style="padding:8px 10px; font-size:12px; color:var(--text-muted);">Conductores de este proveedor en el período: ${f.condHint.map(([k,n]) => `${pagosEsc(k)} (${n})`).join(' · ')}</div>` : ''}
             <table class="detail-table">
@@ -1485,12 +1637,12 @@ function renderPagosView(){
                 ${f.detalle.map(d => `
                   <tr>
                     <td>${d.p.FechaCreacion.slice(0,16).replace('T',' ')}</td>
-                    <td>${d.p.PONumber}</td>
+                    <td>${poLink(d.p.PONumber)}</td>
                     <td>${d.p.CiudadInicio || '—'}</td>
                     <td>${d.p.TipoServicio || '—'}</td>
                     <td>${d.esProg ? 'Sí' : 'No'}</td>
                     <td class="num-cell">${d.min === null ? '—' : d.min.toFixed(1)}</td>
-                    <td class="num-cell">${d.min === null ? '—' : (d.aTiempo ? '✅' : '❌')}</td>
+                    <td class="num-cell">${d.esProg ? '<span style="color:var(--text-muted);">No aplica</span>' : (d.min === null ? '—' : (d.aTiempo ? '✅' : '❌'))}</td>
                   </tr>`).join('') || '<tr><td colspan="7" style="padding:10px;">Sin servicios en este mes/período.</td></tr>'}
               </tbody>
             </table>
@@ -1816,7 +1968,7 @@ function renderTablaProveedores(DATA){
         <td class="num-cell">${p.Sin_Respuesta}</td>
         <td class="num-cell">${p.Sin_Disponibilidad}</td>
         <td class="num-cell">${p.Perdio_Ante_Otro}</td>
-        <td class="num-cell" style="font-weight:700;">${p.Total_Servicios_Prestados}</td>
+        <td class="num-cell key-col">${p.Total_Servicios_Prestados}</td>
         <td class="num-cell">${p.Total_Participaciones_Barrido}</td>
         <td class="num-cell">${p.Total_Participaciones_Barrido>0 ? p.Gano_En_Barrido+'/'+p.Total_Participaciones_Barrido+' ('+p.Pct_Ganado_Sobre_Ofrecido_Barrido+'%)' : '—'}</td>
         <td class="num-cell">${p.Total_Ofertados}</td>
@@ -1825,7 +1977,7 @@ function renderTablaProveedores(DATA){
         <td class="num-cell">${p.Prom_Tiempo_Arribo_1!=null ? p.Prom_Tiempo_Arribo_1+' min' : '—'}</td>
         <td class="num-cell">${cumplimientoPill(p.Pct_Cumplimiento_Arribo_1)}</td>
         <td class="num-cell">${p.Prom_Tiempo_Arribo_2!=null ? p.Prom_Tiempo_Arribo_2+' min' : '—'}</td>
-        <td class="num-cell">${cumplimientoPill(p.Pct_Cumplimiento_Arribo_2)}</td>
+        <td class="num-cell key-col">${cumplimientoPill(p.Pct_Cumplimiento_Arribo_2)}</td>
       </tr>`;
     }).join('');
   }
