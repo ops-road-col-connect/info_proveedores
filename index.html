@@ -1336,6 +1336,11 @@ function getCuentasPriorizadas(){
   if(PROVIDERS.length) _cuentasPriorizadasCache = [...vistas.values()];
   return _cuentasPriorizadasCache || [];
 }
+// "A, B y C" — une una lista con comas y una "y" final.
+function joinY(arr){
+  if(arr.length <= 1) return arr.join('');
+  return arr.slice(0, -1).join(', ') + ' y ' + arr[arr.length - 1];
+}
 function buildLegalNote(p){
   if(p.legal !== 'SI' || !activeServices.has('legal')) return '';
   const propias = parseCuentas(p);
@@ -1344,7 +1349,8 @@ function buildLegalNote(p){
   }
   const todas = getCuentasPriorizadas();
   if(!todas.length) return ''; // el dato aún no llega desde el Sheet: mejor no afirmar nada
-  return `<div class="legal-note no-aplica"><span class="legal-note-icon">⚠</span><span>No aplica para las cuentas: ${todas.join(', ')}</span></div>`;
+  const priorizados = [...new Set(PROVIDERS.filter(x => parseCuentas(x).length).map(x => x.n))];
+  return `<div class="legal-note no-aplica"><span class="legal-note-icon">⚠</span><span>Para ${joinY(todas)}, validar primero con ${joinY(priorizados)}</span></div>`;
 }
 
 function buildCard(p, distInfo){
