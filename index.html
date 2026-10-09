@@ -783,6 +783,14 @@
     border:1px solid #E2E5ED;
   }
   .tag.on{background:#FEEEE7;color:#C7431A;border-color:#F9CFBB;font-weight:600;}
+  /* Nota de cuentas para proveedores de asistencia legal */
+  .legal-note{
+    display:flex;align-items:flex-start;gap:8px;padding:7px 12px;border-radius:8px;
+    font-size:12.5px;font-weight:600;line-height:1.4;border:1px solid;
+  }
+  .legal-note .legal-note-icon{flex-shrink:0;font-size:14px;line-height:1.3;}
+  .legal-note.no-aplica{background:#FEF2F2;color:#B91C1C;border-color:#EF4444;}
+  .legal-note.prioridad{background:#ECFDF5;color:#047857;border-color:#10B981;}
   .card-contact{
     font-size:12px;
     color:var(--ink-soft);
@@ -1308,6 +1316,37 @@ function railNum(pr){
 const RADIO_KM = 150;
 const TIER1_KM = 50;
 
+// Cuentas de cliente (ej. PepsiCo, Syngenta) para las que un proveedor tiene prioridad.
+// Viene de la columna "Cuenta priorizada para el proveedor" del Sheet (campo `cuentas`).
+function parseCuentas(p){
+  const raw = p.cuentas;
+  if(Array.isArray(raw)) return raw.map(s => String(s).trim()).filter(Boolean);
+  return String(raw === undefined || raw === null ? '' : raw).split(',').map(s => s.trim()).filter(Boolean);
+}
+// Todas las cuentas priorizadas que existen en la base (para decir "no aplica para X, Y"
+// en los proveedores que no las tienen). Si ningún proveedor trae el dato, queda vacío.
+let _cuentasPriorizadasCache = null;
+function getCuentasPriorizadas(){
+  if(_cuentasPriorizadasCache) return _cuentasPriorizadasCache;
+  const vistas = new Map();
+  PROVIDERS.forEach(p => parseCuentas(p).forEach(c => {
+    const k = c.toLowerCase();
+    if(!vistas.has(k)) vistas.set(k, c);
+  }));
+  if(PROVIDERS.length) _cuentasPriorizadasCache = [...vistas.values()];
+  return _cuentasPriorizadasCache || [];
+}
+function buildLegalNote(p){
+  if(p.legal !== 'SI' || !activeServices.has('legal')) return '';
+  const propias = parseCuentas(p);
+  if(propias.length){
+    return `<div class="legal-note prioridad"><span class="legal-note-icon">★</span><span>Tiene prioridad para las cuentas: ${propias.join(', ')}</span></div>`;
+  }
+  const todas = getCuentasPriorizadas();
+  if(!todas.length) return ''; // el dato aún no llega desde el Sheet: mejor no afirmar nada
+  return `<div class="legal-note no-aplica"><span class="legal-note-icon">⚠</span><span>No aplica para las cuentas: ${todas.join(', ')}</span></div>`;
+}
+
 function buildCard(p, distInfo){
   const card = document.createElement('div');
   card.className = 'pv-card';
@@ -1388,6 +1427,7 @@ function buildCard(p, distInfo){
         <div class="tags">${tagsHtml}</div>
         <div class="card-contact">${tel1}${tel2}${waLink}</div>
       </div>
+      ${buildLegalNote(p)}
       <div class="drivers-panel" id="${panelId}">
         ${arrivalHtml}
         ${hasMetrics ? `
@@ -1678,7 +1718,7 @@ function computeDistanceScore(p, distKm){
 }
 
 
-const N8N_WEBHOOK_URL = 'https://connect-road-co-iagb.app.n8n.cloud/webhook/5e59271d-be10-40c0-b52f-898c9561f0b3';
+const N8N_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/5e59271d-be10-40c0-b52f-898c9561f0b3';
 
 const refreshBtn = document.getElementById('refreshBtn');
 refreshBtn.addEventListener('click', async ()=>{
@@ -1712,6 +1752,7 @@ async function loadData(){
     const res = await fetch('./providers.json?_=' + Date.now());
     if(!res.ok) throw new Error('HTTP ' + res.status);
     PROVIDERS = await res.json();
+    _cuentasPriorizadasCache = null;
     computeScores(PROVIDERS);
 
     if(PROVIDERS.length && PROVIDERS[0]._updated_at){
@@ -2562,7 +2603,7 @@ loadData();
   // ---------- registrar acceso a la herramienta (IP + hora) ----------
   // Igual patrón que las zonas manuales: se envía a un webhook de n8n que agrega la fila
   // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
-  const ACCESOS_WEBHOOK_URL = 'https://connect-road-co-iagb.app.n8n.cloud/webhook/registrar-acceso';
+  const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
 
   async function registrarAcceso(email){
     if(!ACCESOS_WEBHOOK_URL) return;
@@ -2583,7 +2624,7 @@ loadData();
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
   // del Sheet — así le llega a todo el equipo por igual, sin depender de lo que cada
   // persona tenga guardado en su propio navegador.
-  const ZONAS_WEBHOOK_URL = 'https://connect-road-co-iagb.app.n8n.cloud/webhook/guardar-zona-especial';
+  const ZONAS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/guardar-zona-especial';
 
   // Deduplicación solo para esta sesión (en memoria, se pierde al recargar la página) —
   // evita mandar la misma zona repetida si le dan "Copiar" varias veces a la misma ruta.
