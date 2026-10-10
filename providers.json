@@ -30,7 +30,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "2M GLOBAL COMPANY S.A.S.",
@@ -76,7 +76,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "2M GLOBAL COMPANY S.A.S.",
@@ -122,7 +122,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "A&J CONSULTING SAS - CE",
@@ -164,7 +164,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "A&J CONSULTING SAS - CE",
@@ -206,7 +206,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ABILITY GRÚAS MZL S.A.S - MANIZALES",
@@ -252,7 +252,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AFS ASISTENCIA FERNANDO SANCHEZ S.A.S",
@@ -281,16 +281,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 125.8,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 140.9,
         "n": 1
+      },
+      "jumpstart": {
+        "promedio_min": 125.8,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AJ GRUAS S.A.S. MEDELLIN",
@@ -319,7 +319,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AJ GRUAS S.A.S. MEDELLIN",
@@ -348,7 +348,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ALINEACIONES Y SUSPENSIONES GRM S.A.S",
@@ -369,7 +369,7 @@
     "t2": "301 2747148",
     "wa": "317 8527228",
     "cuentas": "",
-    "servicios_30d": 14,
+    "servicios_30d": 13,
     "conductores_30d": [
       {
         "nombre": "DANI CARO  - OMG467",
@@ -381,7 +381,7 @@
       },
       {
         "nombre": "Luis Carlos Londoño Ortega  - WMR450",
-        "servicios": 4
+        "servicios": 3
       }
     ],
     "arribo_30d": {
@@ -390,7 +390,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AMERICAN SERVICE SOLUTION SAS",
@@ -436,7 +436,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AMERICAN SERVICE SOLUTION SAS",
@@ -482,7 +482,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ANDRES FELIPE GUERRERO BAHAMON - Servi - biker",
@@ -520,7 +520,7 @@
         "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ANGELES DEL CAMINO ASISTENCIA VIAL S.A.S. CE",
@@ -544,7 +544,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ANTIOQUEÑA DE ASISTENCIA S.A.S",
@@ -586,7 +586,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AR S.A.S RIO NEGRO",
@@ -620,7 +620,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ARG GRUAS S.A.S - ARMENIA",
@@ -658,7 +658,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASINSPEC SAS",
@@ -700,7 +700,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA DE GRUAS EXPRESS",
@@ -721,7 +721,7 @@
     "t2": "310 7551157",
     "wa": "317 4052527-310 7551157",
     "cuentas": "",
-    "servicios_30d": 19,
+    "servicios_30d": 18,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -738,10 +738,6 @@
       {
         "nombre": "Grua Planchon Liviano 2",
         "servicios": 1
-      },
-      {
-        "nombre": "Grua Planchon Pesado 1",
-        "servicios": 1
       }
     ],
     "arribo_30d": {
@@ -750,7 +746,7 @@
         "n": 15
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA MARIN S.A.S.",
@@ -788,7 +784,7 @@
         "n": 7
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA MK S.A.S",
@@ -822,11 +818,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 74.6,
-        "n": 1
+        "promedio_min": 136.7,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA ORIENTE S.A.S.",
@@ -847,7 +843,7 @@
     "t2": "311 7210427",
     "wa": "311 7210427",
     "cuentas": "",
-    "servicios_30d": 34,
+    "servicios_30d": 32,
     "conductores_30d": [
       {
         "nombre": "DANIELA  ACEVEDO - FIU082",
@@ -855,11 +851,11 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 11
+        "servicios": 8
       },
       {
         "nombre": "walter oriente",
-        "servicios": 4
+        "servicios": 5
       },
       {
         "nombre": "santiago jimenez -  QON 354",
@@ -876,19 +872,19 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 91.2,
+        "promedio_min": 84.1,
         "n": 11
-      },
-      "jumpstart": {
-        "promedio_min": 50,
-        "n": 1
       },
       "flattire": {
         "promedio_min": 66.8,
         "n": 1
+      },
+      "jumpstart": {
+        "promedio_min": 50,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA VIAL RT SAS - rocio y carlos rescates bog",
@@ -912,7 +908,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA Y SERVICIOS PAR S.A.S",
@@ -936,7 +932,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA TRANSPORT VALDES SA",
@@ -957,28 +953,28 @@
     "t2": "3244093645",
     "wa": "313 5984048",
     "cuentas": "",
-    "servicios_30d": 22,
+    "servicios_30d": 16,
     "conductores_30d": [
       {
-        "nombre": "CARLOS VALDES",
-        "servicios": 11
+        "nombre": "Sin conductor asignado",
+        "servicios": 9
       },
       {
-        "nombre": "Sin conductor asignado",
-        "servicios": 11
+        "nombre": "CARLOS VALDES",
+        "servicios": 7
       }
     ],
     "arribo_30d": {
+      "grua": {
+        "promedio_min": 127.8,
+        "n": 5
+      },
       "jumpstart": {
         "promedio_min": 62.6,
         "n": 2
-      },
-      "grua": {
-        "promedio_min": 115.5,
-        "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIAS DEL EJE SAS",
@@ -1002,7 +998,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIAS Y GRUAS NACIONALES DE COLOMBIA S.A.S",
@@ -1026,7 +1022,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTIGROUP COLOMBIA SAS",
@@ -1060,7 +1056,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTIMOTOS SEGUROS SAS",
@@ -1089,7 +1085,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISVEH J&H S.A.S",
@@ -1110,7 +1106,7 @@
     "t2": "3043912396",
     "wa": "3043912396-3244031440-3011987668-3145302384",
     "cuentas": "",
-    "servicios_30d": 30,
+    "servicios_30d": 31,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -1118,14 +1114,14 @@
       },
       {
         "nombre": "EDILBER BUENDIA - BASE",
-        "servicios": 7
+        "servicios": 8
       },
       {
         "nombre": "JOVANNI - NHR871-LIVIANO",
         "servicios": 4
       },
       {
-        "nombre": "Danei buendia -  CT",
+        "nombre": "STIVEN SUAREZ - KOS590 - TRANSPORTE",
         "servicios": 3
       },
       {
@@ -1133,11 +1129,11 @@
         "servicios": 2
       },
       {
-        "nombre": "STIVEN SUAREZ - KOS590 - TRANSPORTE",
+        "nombre": "Leonardo Celin",
         "servicios": 2
       },
       {
-        "nombre": "Leonardo Celin",
+        "nombre": "Danei buendia -  CT",
         "servicios": 2
       }
     ],
@@ -1146,20 +1142,20 @@
         "promedio_min": 108.4,
         "n": 5
       },
+      "locksmith": {
+        "promedio_min": 60.3,
+        "n": 1
+      },
       "jumpstart": {
-        "promedio_min": 65.4,
+        "promedio_min": 70.3,
         "n": 5
       },
       "flattire": {
         "promedio_min": 28.1,
         "n": 1
-      },
-      "locksmith": {
-        "promedio_min": 60.3,
-        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASSI ASISTENCIA SERVICIOS Y SOLUCIONES INTEGRALES",
@@ -1197,7 +1193,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASSIST GRUAS CARTAGO SAS",
@@ -1235,7 +1231,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASSISTRANS MA S.A.S.",
@@ -1256,7 +1252,7 @@
     "t2": "-",
     "wa": "300 4965559",
     "cuentas": "",
-    "servicios_30d": 10,
+    "servicios_30d": 9,
     "conductores_30d": [
       {
         "nombre": "CRISTIAN CAMILO ALZATE",
@@ -1265,10 +1261,6 @@
       {
         "nombre": "Sin conductor asignado",
         "servicios": 3
-      },
-      {
-        "nombre": "Edgar Muñoz -  FQK302",
-        "servicios": 1
       }
     ],
     "arribo_30d": {
@@ -1277,7 +1269,7 @@
         "n": 5
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ATLAS ASISTENCIA VIAL S.A.S",
@@ -1298,12 +1290,8 @@
     "t2": "301 1475542",
     "wa": "311 3569350-301 1475542",
     "cuentas": "",
-    "servicios_30d": 22,
+    "servicios_30d": 21,
     "conductores_30d": [
-      {
-        "nombre": "FREDY QUINTERO -  LKO044",
-        "servicios": 5
-      },
       {
         "nombre": "LUIS BAENA",
         "servicios": 4
@@ -1313,27 +1301,31 @@
         "servicios": 4
       },
       {
-        "nombre": "JAIME SALDARRIAGA",
-        "servicios": 2
+        "nombre": "FREDY QUINTERO -  LKO044",
+        "servicios": 4
       },
       {
         "nombre": "MIGUEL ARDILA",
         "servicios": 2
       },
       {
-        "nombre": "CESAR ESCOBAR",
-        "servicios": 1
+        "nombre": "JAIME SALDARRIAGA",
+        "servicios": 2
       },
       {
         "nombre": "LUIS BARRERA - AAI58G",
         "servicios": 1
       },
       {
-        "nombre": "STIVEN DAVILA",
+        "nombre": "CESAR ESCOBAR",
         "servicios": 1
       },
       {
         "nombre": "ALBEIRO GIRALDO",
+        "servicios": 1
+      },
+      {
+        "nombre": "STIVEN DAVILA",
         "servicios": 1
       },
       {
@@ -1355,7 +1347,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ATO GROUP S.A.S BARRANQUILLA",
@@ -1395,23 +1387,19 @@
         "servicios": 2
       },
       {
-        "nombre": "EDER DE JESUS TOLENTINO ZARCO - WGX103",
-        "servicios": 1
-      },
-      {
         "nombre": "BERNARDO SALAS GUZMAN - SDU962",
         "servicios": 1
       },
       {
         "nombre": "HAROLD RAFAEL SALCEDO NIEBLES - CARRO TALLER",
         "servicios": 1
+      },
+      {
+        "nombre": "EDER DE JESUS TOLENTINO ZARCO - WGX103",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 55.6,
-        "n": 6
-      },
       "grua": {
         "promedio_min": 138.8,
         "n": 15
@@ -1420,12 +1408,16 @@
         "promedio_min": 175.8,
         "n": 3
       },
+      "jumpstart": {
+        "promedio_min": 55.6,
+        "n": 6
+      },
       "flattire": {
         "promedio_min": 75.5,
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO ASISTENCIA DE COLOMBIA S.A.S. CALI",
@@ -1449,7 +1441,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS EXPRESS SAS-PALMIRA",
@@ -1478,7 +1470,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS EXPRESS SAS-PALMIRA",
@@ -1507,7 +1499,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS GARCIA S.A.S.- UBATE",
@@ -1541,7 +1533,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS JR S.A.S.",
@@ -1565,7 +1557,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS LA SAS",
@@ -1586,11 +1578,11 @@
     "t2": "-",
     "wa": "314 2574913",
     "cuentas": "",
-    "servicios_30d": 9,
+    "servicios_30d": 10,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 7
+        "servicios": 8
       },
       {
         "nombre": "Leidy Lizeth Rincon Guzman -  ZIW596",
@@ -1602,16 +1594,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 70.8,
-        "n": 2
-      },
       "grua": {
         "promedio_min": 81.5,
         "n": 2
+      },
+      "jumpstart": {
+        "promedio_min": 70.8,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS R&R SAS",
@@ -1635,7 +1627,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CENTRO DE ENSEÑANZA AUTOMOVILISTICA INTEGRAL AUTO RAMOS SAS - LA VEGA",
@@ -1669,7 +1661,7 @@
         "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOCAMIONES JR SAS",
@@ -1703,7 +1695,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOCARGA PRO S.A.S BOGOTA",
@@ -1724,7 +1716,7 @@
     "t2": "300 9781623",
     "wa": "3112288793-300 9781623",
     "cuentas": "",
-    "servicios_30d": 6,
+    "servicios_30d": 7,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -1732,7 +1724,7 @@
       },
       {
         "nombre": "Juan Diego Rodríguez - PIN059",
-        "servicios": 2
+        "servicios": 3
       },
       {
         "nombre": "Kevin Rios - NOS943",
@@ -1745,7 +1737,7 @@
         "n": 8
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS ANTIOQUIA S.A.S",
@@ -1783,7 +1775,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS CAQUEZA R2 SAS",
@@ -1804,11 +1796,11 @@
     "t2": "-",
     "wa": "321 9691650",
     "cuentas": "",
-    "servicios_30d": 4,
+    "servicios_30d": 5,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 2
+        "servicios": 3
       },
       {
         "nombre": "Edwar fabian alvarez -  Wpq013",
@@ -1825,7 +1817,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS FENIX - CAJICA/BOGOTA",
@@ -1849,7 +1841,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS LA SEXTA 24 HORAS Y CIA LTDA",
@@ -1870,11 +1862,11 @@
     "t2": "-",
     "wa": "3125055999",
     "cuentas": "",
-    "servicios_30d": 14,
+    "servicios_30d": 15,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 10
+        "servicios": 11
       },
       {
         "nombre": "autogruas la sexta",
@@ -1887,7 +1879,7 @@
         "n": 10
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS MELGAR S.A.S",
@@ -1925,7 +1917,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS SESQUILE SAS",
@@ -1959,7 +1951,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTO GRUAS Y FRENOS RAMIREZ S.A.S",
@@ -1980,7 +1972,7 @@
     "t2": "-",
     "wa": "321 4597492",
     "cuentas": "",
-    "servicios_30d": 8,
+    "servicios_30d": 7,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -1993,10 +1985,6 @@
       {
         "nombre": "Jorge Tibocha - GWU153",
         "servicios": 1
-      },
-      {
-        "nombre": "ANDRES JOYA- IHM338",
-        "servicios": 1
       }
     ],
     "arribo_30d": {
@@ -2005,7 +1993,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUXIGRUAS SAS",
@@ -2029,7 +2017,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA VIAL DEL CARIBE SAS - BARRANQUILLA",
@@ -2066,7 +2054,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS Y TRANSPORTES PRONTO S.A.S.",
@@ -2108,7 +2096,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AYC CONSULTORES LOGISTICOS SAS",
@@ -2132,7 +2120,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AYUDA A TIEMPO ASITENCIA SAS",
@@ -2156,7 +2144,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BENITEZ NEGOCIOS S.A.S.",
@@ -2189,7 +2177,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BESTCAR S.A.S - IBAGUE",
@@ -2213,7 +2201,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2234,32 +2222,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2280,32 +2272,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2326,32 +2322,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2372,32 +2372,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2418,32 +2422,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2464,32 +2472,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BIA S.A.S JULIA",
@@ -2510,32 +2522,36 @@
     "t2": "301 4605220",
     "wa": "324 4057413- 301 4605220",
     "cuentas": "",
-    "servicios_30d": 127,
+    "servicios_30d": 134,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 104
+        "servicios": 110
       },
       {
         "nombre": "Ana Milena Lasso Aldana - ZFR65G",
         "servicios": 23
+      },
+      {
+        "nombre": "BARRETO JATIB KAUSMAN AMIN",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 122.9,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 127.6,
         "n": 4
+      },
+      "jumpstart": {
+        "promedio_min": 122.9,
+        "n": 1
       },
       "locksmith": {
         "promedio_min": 113.7,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "BLUE ASSIST SAS",
@@ -2559,7 +2575,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CAG CENTRAL DE ASISTENCIA SAS - CARRO TALLER CALI",
@@ -2583,11 +2599,11 @@
     "servicios_30d": 20,
     "conductores_30d": [
       {
-        "nombre": "Juan Felipe Carmona Saldarriaga",
+        "nombre": "Jhon Brainer Torres Rodriguez",
         "servicios": 8
       },
       {
-        "nombre": "Jhon Brainer Torres Rodriguez",
+        "nombre": "Juan Felipe Carmona Saldarriaga",
         "servicios": 8
       },
       {
@@ -2605,7 +2621,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CAMACHO VILLALBA Y CARDONA S.A.S - TECONDUZCO CARTEGENA",
@@ -2639,7 +2655,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CARIBE ASESORES LEGALES S.A.S. LEGAL COSTA",
@@ -2660,11 +2676,11 @@
     "t2": "-",
     "wa": "3228960877",
     "cuentas": "",
-    "servicios_30d": 26,
+    "servicios_30d": 24,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 22
+        "servicios": 20
       },
       {
         "nombre": "ADRIAN SANCHEZ",
@@ -2676,7 +2692,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CARREÑO & ROCHA GRUAS Y TRANSPORTES SOCIEDAD POR ACCIONES SIMPLIFICADA",
@@ -2700,7 +2716,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CARS SERVICES SERVICIOS DE ASISTENCIA EN CARRETERA S.A.S - SOGAMOSO - SOGAMOSO",
@@ -2724,7 +2740,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CENTRAL LOGISTICA URBANA S.A.S",
@@ -2757,7 +2773,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CERRAJERIA METROPOLIS S.A",
@@ -2781,7 +2797,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CG GARZON SAS",
@@ -2802,11 +2818,11 @@
     "t2": "3244826017",
     "wa": "324 4826015",
     "cuentas": "",
-    "servicios_30d": 14,
+    "servicios_30d": 12,
     "conductores_30d": [
       {
         "nombre": "CG GARZON SAS",
-        "servicios": 10
+        "servicios": 8
       },
       {
         "nombre": "Sin conductor asignado",
@@ -2815,11 +2831,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 91.4,
-        "n": 7
+        "promedio_min": 93.9,
+        "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CMM TRANSPORTE EMPRESARIAL SAS",
@@ -2855,11 +2871,11 @@
         "servicios": 2
       },
       {
-        "nombre": "JUAN ALBERTO TEJADA CARDONA - NNN111",
+        "nombre": "OSCAR JAVIER RAMIREZ - KTN060",
         "servicios": 1
       },
       {
-        "nombre": "OSCAR JAVIER RAMIREZ - KTN060",
+        "nombre": "JUAN ALBERTO TEJADA CARDONA - NNN111",
         "servicios": 1
       }
     ],
@@ -2869,7 +2885,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "COMERCIALIZADORA Y DISTRIBUIDORA LA OCTAVA LTDA",
@@ -2890,15 +2906,15 @@
     "t2": "301 6332788",
     "wa": "321 7654576- 301 6332788",
     "cuentas": "",
-    "servicios_30d": 116,
+    "servicios_30d": 113,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 51
+        "servicios": 49
       },
       {
         "nombre": "LA OCTAVA  - JUY046",
-        "servicios": 38
+        "servicios": 39
       },
       {
         "nombre": "LA OCTAVA  -  LLQ247",
@@ -2921,25 +2937,21 @@
         "servicios": 2
       },
       {
-        "nombre": "LA OCTAVA  - LLQ246",
-        "servicios": 2
-      },
-      {
         "nombre": "Angelo Hernandez - FST060",
         "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 87.2,
-        "n": 66
+        "promedio_min": 87.1,
+        "n": 61
       },
       "flattire": {
         "promedio_min": 1311.3,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CON ARMANI S.A.S. - CALI",
@@ -2972,7 +2984,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CONDUCTORES ELEGIDOS DEL VALLE S.A.S.",
@@ -3001,7 +3013,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "COOPERATIVA MULTIACTIVA DE TAXISTAS Y TRANSPORTADORES UNIDOS (COTAXI)",
@@ -3025,7 +3037,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "D RIOS S.A.S PEREIRA",
@@ -3059,7 +3071,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIAS G - BUCARAMANGA",
@@ -3097,7 +3109,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "DRIVER V.I.P SAS",
@@ -3121,7 +3133,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "E.D.A ASISTENCIA SAS -ELISEO",
@@ -3142,11 +3154,11 @@
     "t2": "-",
     "wa": "312 4764438",
     "cuentas": "",
-    "servicios_30d": 137,
+    "servicios_30d": 136,
     "conductores_30d": [
       {
         "nombre": "Eliseo Arbeláez Castaño-RAW80C -  BRANDEO CARRO TALLER",
-        "servicios": 40
+        "servicios": 42
       },
       {
         "nombre": "Eliseo Arbeláez Castaño -  BRANDEO CARRO TALLER",
@@ -3154,7 +3166,7 @@
       },
       {
         "nombre": "BRANDEO CARRO TALLER -Cesar Augusto Gomez Correa-SUH46F",
-        "servicios": 19
+        "servicios": 17
       },
       {
         "nombre": "EDDY JULIAN CACERES SALAMANCA-YSO91H",
@@ -3162,7 +3174,7 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 13
+        "servicios": 12
       },
       {
         "nombre": "MANUEL ANDRES MALAVER CASTAÑEDA-SCN77F",
@@ -3202,24 +3214,24 @@
       }
     ],
     "arribo_30d": {
+      "grua": {
+        "promedio_min": 0.8,
+        "n": 6
+      },
+      "flattire": {
+        "promedio_min": 48.5,
+        "n": 17
+      },
       "jumpstart": {
-        "promedio_min": 42.6,
+        "promedio_min": 43.9,
         "n": 46
       },
       "locksmith": {
         "promedio_min": 40.3,
         "n": 4
-      },
-      "flattire": {
-        "promedio_min": 49.9,
-        "n": 16
-      },
-      "grua": {
-        "promedio_min": 0.8,
-        "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "EFISERVICIOS DEL CAFE S.A.S",
@@ -3257,7 +3269,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ELECTROGRUAS Y TRANSPORTES SAS",
@@ -3286,7 +3298,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "FIRMA DE ABOGADOS JACQUELINE ROMERO ESTRADA S.A.S .- CALI",
@@ -3307,11 +3319,11 @@
     "t2": "3182115503",
     "wa": "317 6921134",
     "cuentas": "",
-    "servicios_30d": 50,
+    "servicios_30d": 53,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 17
       },
       {
         "nombre": "JUAN JOSE ROJAS GARZON",
@@ -3330,6 +3342,10 @@
         "servicios": 4
       },
       {
+        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
+        "servicios": 3
+      },
+      {
         "nombre": "SEBASTIAN DIOSA",
         "servicios": 3
       },
@@ -3338,24 +3354,24 @@
         "servicios": 2
       },
       {
-        "nombre": "MICHELLE GIERBOLINI REVELO",
-        "servicios": 2
+        "nombre": "DIANA JIMENA PEREA CACERES",
+        "servicios": 1
+      },
+      {
+        "nombre": "JEANINE ALEXANDRA TRUJILLO GOMEZ-DSL896",
+        "servicios": 1
       },
       {
         "nombre": "ALEJANDRO VARGAS HOSTOS",
-        "servicios": 2
+        "servicios": 1
       },
       {
-        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
-        "servicios": 2
-      },
-      {
-        "nombre": "DIANA JIMENA PEREA CACERES",
+        "nombre": "MICHELLE GIERBOLINI REVELO",
         "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "FIRMA DE ABOGADOS JACQUELINE ROMERO ESTRADA S.A.S .- CALI",
@@ -3376,11 +3392,11 @@
     "t2": "3182115503",
     "wa": "317 6921134",
     "cuentas": "",
-    "servicios_30d": 50,
+    "servicios_30d": 53,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 17
       },
       {
         "nombre": "JUAN JOSE ROJAS GARZON",
@@ -3399,6 +3415,10 @@
         "servicios": 4
       },
       {
+        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
+        "servicios": 3
+      },
+      {
         "nombre": "SEBASTIAN DIOSA",
         "servicios": 3
       },
@@ -3407,24 +3427,24 @@
         "servicios": 2
       },
       {
-        "nombre": "MICHELLE GIERBOLINI REVELO",
-        "servicios": 2
+        "nombre": "DIANA JIMENA PEREA CACERES",
+        "servicios": 1
+      },
+      {
+        "nombre": "JEANINE ALEXANDRA TRUJILLO GOMEZ-DSL896",
+        "servicios": 1
       },
       {
         "nombre": "ALEJANDRO VARGAS HOSTOS",
-        "servicios": 2
+        "servicios": 1
       },
       {
-        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
-        "servicios": 2
-      },
-      {
-        "nombre": "DIANA JIMENA PEREA CACERES",
+        "nombre": "MICHELLE GIERBOLINI REVELO",
         "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "FIRMA DE ABOGADOS JACQUELINE ROMERO ESTRADA S.A.S .- CALI",
@@ -3445,11 +3465,11 @@
     "t2": "3182115503",
     "wa": "317 6921134",
     "cuentas": "",
-    "servicios_30d": 50,
+    "servicios_30d": 53,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 17
       },
       {
         "nombre": "JUAN JOSE ROJAS GARZON",
@@ -3468,6 +3488,10 @@
         "servicios": 4
       },
       {
+        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
+        "servicios": 3
+      },
+      {
         "nombre": "SEBASTIAN DIOSA",
         "servicios": 3
       },
@@ -3476,24 +3500,24 @@
         "servicios": 2
       },
       {
-        "nombre": "MICHELLE GIERBOLINI REVELO",
-        "servicios": 2
+        "nombre": "DIANA JIMENA PEREA CACERES",
+        "servicios": 1
+      },
+      {
+        "nombre": "JEANINE ALEXANDRA TRUJILLO GOMEZ-DSL896",
+        "servicios": 1
       },
       {
         "nombre": "ALEJANDRO VARGAS HOSTOS",
-        "servicios": 2
+        "servicios": 1
       },
       {
-        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
-        "servicios": 2
-      },
-      {
-        "nombre": "DIANA JIMENA PEREA CACERES",
+        "nombre": "MICHELLE GIERBOLINI REVELO",
         "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "FIRMA DE ABOGADOS JACQUELINE ROMERO ESTRADA S.A.S .- CALI",
@@ -3514,11 +3538,11 @@
     "t2": "3182115503",
     "wa": "317 6921134",
     "cuentas": "",
-    "servicios_30d": 50,
+    "servicios_30d": 53,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 17
       },
       {
         "nombre": "JUAN JOSE ROJAS GARZON",
@@ -3537,6 +3561,10 @@
         "servicios": 4
       },
       {
+        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
+        "servicios": 3
+      },
+      {
         "nombre": "SEBASTIAN DIOSA",
         "servicios": 3
       },
@@ -3545,24 +3573,24 @@
         "servicios": 2
       },
       {
-        "nombre": "MICHELLE GIERBOLINI REVELO",
-        "servicios": 2
+        "nombre": "DIANA JIMENA PEREA CACERES",
+        "servicios": 1
+      },
+      {
+        "nombre": "JEANINE ALEXANDRA TRUJILLO GOMEZ-DSL896",
+        "servicios": 1
       },
       {
         "nombre": "ALEJANDRO VARGAS HOSTOS",
-        "servicios": 2
+        "servicios": 1
       },
       {
-        "nombre": "CAMILA VALENTINA CONDE OSPINA-YND43H",
-        "servicios": 2
-      },
-      {
-        "nombre": "DIANA JIMENA PEREA CACERES",
+        "nombre": "MICHELLE GIERBOLINI REVELO",
         "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "FLASH ASISTENCIA VIAL & MENSAJERIA S.A.S.",
@@ -3583,15 +3611,15 @@
     "t2": "321 7767338",
     "wa": "302 7699992-321 7767338",
     "cuentas": "",
-    "servicios_30d": 197,
+    "servicios_30d": 190,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 99
+        "servicios": 96
       },
       {
         "nombre": "JHONATAN ARIZA-LKQ038 -3027699992",
-        "servicios": 46
+        "servicios": 45
       },
       {
         "nombre": "Carlos Andrés Hernández- UGJ85H- BRANDEO CARRO TALLER",
@@ -3599,7 +3627,7 @@
       },
       {
         "nombre": "FABIAN ENRIQUE SIERRA-LVE51B-3145510194",
-        "servicios": 12
+        "servicios": 11
       },
       {
         "nombre": "Haiberth Francisco Velandia - BRANDEO CARRO TALLER",
@@ -3610,41 +3638,41 @@
         "servicios": 7
       },
       {
-        "nombre": "HAIBERT VELANDIA",
-        "servicios": 3
-      },
-      {
         "nombre": "MARLON AGUDELO-  LWM88H - 3024052020",
         "servicios": 3
       },
       {
-        "nombre": "EDWIN ORJUELA -",
+        "nombre": "HAIBERT VELANDIA",
         "servicios": 2
       },
       {
         "nombre": "JUAN STEVEN JARAMILLO -  FEB96F - 3015596445",
         "servicios": 1
+      },
+      {
+        "nombre": "EDWIN ORJUELA -",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 79,
-        "n": 53
-      },
-      "locksmith": {
-        "promedio_min": 63.7,
-        "n": 9
-      },
-      "grua": {
-        "promedio_min": 144,
-        "n": 5
-      },
       "flattire": {
         "promedio_min": 165.4,
         "n": 18
+      },
+      "jumpstart": {
+        "promedio_min": 80.2,
+        "n": 51
+      },
+      "locksmith": {
+        "promedio_min": 69.7,
+        "n": 7
+      },
+      "grua": {
+        "promedio_min": 156.7,
+        "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3668,7 +3696,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3692,7 +3720,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3716,7 +3744,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3740,7 +3768,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3764,7 +3792,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3788,7 +3816,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3812,7 +3840,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3836,7 +3864,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASESORANDO JURIDICA INTEGRAL S.A.S.",
@@ -3860,7 +3888,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SMI LOGISTICA SAS-G 10 SOLUCIONES",
@@ -3910,7 +3938,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "G&M ASITENCIA SAS",
@@ -3934,7 +3962,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GOMOVAL INGENIERIA Y CONSTRUCCIÓN S.A.S.",
@@ -3958,7 +3986,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GLOBAL TRANSPORT GROUP SAS",
@@ -3995,7 +4023,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y TRANSPORTES SEALVE J&D S.A.S - IBAGUE",
@@ -4019,7 +4047,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GO ASISTENCIA S.A.S",
@@ -4047,16 +4075,16 @@
         "servicios": 2
       },
       {
-        "nombre": "PAULA OBANDO -JBD03H",
+        "nombre": "BRANDON GALINDO -DJN36G",
         "servicios": 1
       },
       {
-        "nombre": "BRANDON GALINDO -DJN36G",
+        "nombre": "PAULA OBANDO -JBD03H",
         "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS & SERVICIOS SVG S.A.S. - BARRANQUILLA",
@@ -4077,11 +4105,11 @@
     "t2": "-",
     "wa": "313 5726099",
     "cuentas": "",
-    "servicios_30d": 6,
+    "servicios_30d": 5,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 3
+        "servicios": 2
       },
       {
         "nombre": "Jorge Alberto Liñan  -  JPP409",
@@ -4094,11 +4122,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 231.1,
-        "n": 3
+        "promedio_min": 192.5,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS & TRANSPORTES LET SAS",
@@ -4119,15 +4147,15 @@
     "t2": "-",
     "wa": "310 7789780",
     "cuentas": "",
-    "servicios_30d": 5,
+    "servicios_30d": 4,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 5
+        "servicios": 4
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "Gruas 7/24 express NEIVA- HUILA",
@@ -4160,7 +4188,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS 7-24 LTDA -BOGOTÁ",
@@ -4184,7 +4212,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS AGUIRRE SS - MANIZALES",
@@ -4222,7 +4250,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS AL RESCATE S.A.S. -  CALI",
@@ -4243,19 +4271,19 @@
     "t2": "-",
     "wa": "310 4011584",
     "cuentas": "",
-    "servicios_30d": 56,
+    "servicios_30d": 57,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 39
+        "servicios": 40
       },
       {
         "nombre": "Brandon Morales Lopez-KLK111",
-        "servicios": 7
+        "servicios": 8
       },
       {
         "nombre": "Cesar Tulio Varela Ruiz-VCU553",
-        "servicios": 5
+        "servicios": 4
       },
       {
         "nombre": "Luis Hernando Castañeda-MHO290",
@@ -4271,10 +4299,6 @@
         "promedio_min": 122,
         "n": 5
       },
-      "locksmith": {
-        "promedio_min": 334.3,
-        "n": 3
-      },
       "jumpstart": {
         "promedio_min": 94,
         "n": 9
@@ -4282,9 +4306,13 @@
       "flattire": {
         "promedio_min": 97.1,
         "n": 11
+      },
+      "locksmith": {
+        "promedio_min": 334.3,
+        "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ARAGON SANTA S.A.S.",
@@ -4317,7 +4345,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ARAGON SANTA S.A.S.",
@@ -4350,7 +4378,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ASISTIR COLOMBIA SAS - LA MESA",
@@ -4371,7 +4399,7 @@
     "t2": "-",
     "wa": "322 2917154",
     "cuentas": "",
-    "servicios_30d": 13,
+    "servicios_30d": 14,
     "conductores_30d": [
       {
         "nombre": "GRUAS ASISTIR COLOMBIA SAS",
@@ -4379,20 +4407,20 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 5
+        "servicios": 6
       }
     ],
     "arribo_30d": {
-      "grua": {
-        "promedio_min": 168,
-        "n": 4
-      },
       "jumpstart": {
         "promedio_min": 152.2,
         "n": 1
+      },
+      "grua": {
+        "promedio_min": 168,
+        "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ASOCIADOS S.A.S",
@@ -4416,7 +4444,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES GRUAS BLANCAS S.A.S.",
@@ -4441,11 +4469,11 @@
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 82
+        "servicios": 83
       },
       {
         "nombre": "CORONELL HERNANDEZ  ALBERTO JUNIOR - UZC717",
-        "servicios": 14
+        "servicios": 13
       },
       {
         "nombre": "DUQUE CORDERO DEIBY ENRIQUE -  WGW025",
@@ -4472,19 +4500,23 @@
         "servicios": 2
       },
       {
-        "nombre": "ACUÑA DE LA HOZ ALDAIR SEBASTIAN -  LGU832",
-        "servicios": 1
-      },
-      {
-        "nombre": "ARIZA MARTINEZ JUAN FRANCISCO - EQY842",
-        "servicios": 1
-      },
-      {
         "nombre": "CANTILLO RIVERA JUAN CARLOS - NOS506",
         "servicios": 1
       },
       {
+        "nombre": "ACUÑA DE LA HOZ ALDAIR SEBASTIAN -  LGU832",
+        "servicios": 1
+      },
+      {
         "nombre": "PATERNINA DONADO ANGELLO ENRIQUE - JMQ642",
+        "servicios": 1
+      },
+      {
+        "nombre": "VENGOECHEA MELENDEZ JULIO CESAR - LGV174",
+        "servicios": 1
+      },
+      {
+        "nombre": "ALGARIN ACOSTA KELVIS DAVID -  LZS030",
         "servicios": 1
       },
       {
@@ -4496,33 +4528,29 @@
         "servicios": 1
       },
       {
-        "nombre": "VENGOECHEA MELENDEZ JULIO CESAR - LGV174",
-        "servicios": 1
-      },
-      {
-        "nombre": "ALGARIN ACOSTA KELVIS DAVID -  LZS030",
+        "nombre": "ARIZA MARTINEZ JUAN FRANCISCO - EQY842",
         "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 121.1,
-        "n": 64
-      },
-      "flattire": {
-        "promedio_min": 76.1,
-        "n": 8
+        "promedio_min": 113.2,
+        "n": 67
       },
       "jumpstart": {
         "promedio_min": 79.6,
         "n": 15
       },
+      "flattire": {
+        "promedio_min": 76.1,
+        "n": 8
+      },
       "locksmith": {
-        "promedio_min": 83.8,
-        "n": 1
+        "promedio_min": 101.9,
+        "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS BOYACARS TUNJA",
@@ -4556,7 +4584,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS BUFFALO S.A.S",
@@ -4577,11 +4605,11 @@
     "t2": "-",
     "wa": "322 7385720",
     "cuentas": "",
-    "servicios_30d": 12,
+    "servicios_30d": 11,
     "conductores_30d": [
       {
         "nombre": "HAROLOW JEISON VIDAL VELEZ -",
-        "servicios": 8
+        "servicios": 7
       },
       {
         "nombre": "CAMILO PATIÑO ORTEGA",
@@ -4606,7 +4634,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS CAMARGO SAS",
@@ -4630,7 +4658,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS CASTIBLANCO SAS",
@@ -4654,7 +4682,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS CLASS SAS",
@@ -4678,7 +4706,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL CASANARE SAS",
@@ -4712,7 +4740,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL CASANARE SAS",
@@ -4746,7 +4774,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL MAGDALENA MEDIO SAS",
@@ -4767,20 +4795,20 @@
     "t2": "-",
     "wa": "316 7577362",
     "cuentas": "",
-    "servicios_30d": 2,
+    "servicios_30d": 1,
     "conductores_30d": [
       {
         "nombre": "ERICK MAURICIO MUÑOZ",
-        "servicios": 2
+        "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 287.4,
-        "n": 2
+        "promedio_min": 189.1,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL ORIENTE S.A.S. -  BUCARAMANGA",
@@ -4801,11 +4829,15 @@
     "t2": "",
     "wa": "",
     "cuentas": "",
-    "servicios_30d": 4,
+    "servicios_30d": 5,
     "conductores_30d": [
       {
         "nombre": "HERMES RAMIREZ - TTT679",
         "servicios": 4
+      },
+      {
+        "nombre": "LUSBIN BELTRAN - OSE375",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
@@ -4814,7 +4846,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL SUR SAS",
@@ -4860,7 +4892,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL TOLIMA S.A.S - IBAGUE",
@@ -4902,7 +4934,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL VALLE S.A.S.",
@@ -4923,7 +4955,7 @@
     "t2": "-",
     "wa": "304 5514270",
     "cuentas": "",
-    "servicios_30d": 83,
+    "servicios_30d": 82,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -4931,11 +4963,11 @@
       },
       {
         "nombre": "FERNEY OLAYA DELGADO",
-        "servicios": 14
+        "servicios": 12
       },
       {
         "nombre": "F",
-        "servicios": 9
+        "servicios": 10
       },
       {
         "nombre": "Jose Balanta",
@@ -4944,15 +4976,15 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 188.8,
-        "n": 31
+        "promedio_min": 189,
+        "n": 30
       },
       "jumpstart": {
         "promedio_min": 0.2,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DUMA SAS",
@@ -4986,11 +5018,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 134.4,
-        "n": 3
+        "promedio_min": 285.1,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS EL CARAÑO CHOCO S.A.S",
@@ -5011,19 +5043,15 @@
     "t2": "-",
     "wa": "311 6730707",
     "cuentas": "",
-    "servicios_30d": 2,
+    "servicios_30d": 1,
     "conductores_30d": [
       {
         "nombre": "Adriana garcia - JYO705",
         "servicios": 1
-      },
-      {
-        "nombre": "Sin conductor asignado",
-        "servicios": 1
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ELENA DIAZ SAS",
@@ -5044,15 +5072,15 @@
     "t2": "-",
     "wa": "316 6163430",
     "cuentas": "",
-    "servicios_30d": 5,
+    "servicios_30d": 6,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 5
+        "servicios": 6
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ELITE Y TORO VEHICULOS S.A.S - MEDELLIN",
@@ -5088,15 +5116,15 @@
         "servicios": 3
       },
       {
+        "nombre": "GUERRA MORENO - WNQ107",
+        "servicios": 1
+      },
+      {
         "nombre": "LORENA SANABRIA MAS321",
         "servicios": 1
       },
       {
         "nombre": "JOSE ARGEMIRO  GUZMAN ZAPATA  - TDZ842",
-        "servicios": 1
-      },
-      {
-        "nombre": "GUERRA MORENO - WNQ107",
         "servicios": 1
       }
     ],
@@ -5106,7 +5134,7 @@
         "n": 9
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y MONTAJES SERVIEXPRESS",
@@ -5130,7 +5158,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS FLORENCIA",
@@ -5154,7 +5182,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS FUERTES DE NARIÑO SAS",
@@ -5178,7 +5206,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS GALLO SAS",
@@ -5202,7 +5230,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS HR7 S.A.S",
@@ -5226,7 +5254,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS JB SAS",
@@ -5247,7 +5275,7 @@
     "t2": "3043262179",
     "wa": "313 8437033-3043262179",
     "cuentas": "",
-    "servicios_30d": 7,
+    "servicios_30d": 8,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -5255,7 +5283,7 @@
       },
       {
         "nombre": "Nestor Bonilla  -  Rjx226",
-        "servicios": 1
+        "servicios": 2
       },
       {
         "nombre": "CARLOS ROBERTO ALONSO GALVIS - JOW965",
@@ -5276,7 +5304,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS JC VALLEJO S.A.S",
@@ -5310,11 +5338,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 117.5,
+        "promedio_min": 123.8,
         "n": 15
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS JLP VILLA SAN DIEGO DE UBATE SAS",
@@ -5338,7 +5366,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS JM SAS",
@@ -5362,7 +5390,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS JULIYA S.A.S",
@@ -5383,11 +5411,11 @@
     "t2": "3186126895",
     "wa": "3165375329",
     "cuentas": "",
-    "servicios_30d": 4,
+    "servicios_30d": 3,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 4
+        "servicios": 3
       }
     ],
     "arribo_30d": {
@@ -5396,7 +5424,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS KODIMOTOR S.A.S. MONTERIA",
@@ -5430,7 +5458,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS LA VALLE TUNJA",
@@ -5468,7 +5496,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS LARG S.A.S. - PEREIRA",
@@ -5501,7 +5529,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MARTINEZ MARTINEZ S.A.S",
@@ -5539,7 +5567,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MATER DEL LLANO SAS",
@@ -5572,16 +5600,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 87.7,
-        "n": 2
-      },
       "grua": {
         "promedio_min": 91.3,
         "n": 2
+      },
+      "jumpstart": {
+        "promedio_min": 87.7,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "YEISON RICARDO MONROY CANO - GRUAS MC",
@@ -5615,7 +5643,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MC",
@@ -5639,7 +5667,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MAV SAS - GARZON",
@@ -5660,11 +5688,11 @@
     "t2": "-",
     "wa": "320 2221278",
     "cuentas": "",
-    "servicios_30d": 2,
+    "servicios_30d": 4,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 2
+        "servicios": 4
       }
     ],
     "arribo_30d": {
@@ -5673,7 +5701,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS M.G. IPIALES SAS",
@@ -5697,7 +5725,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MILENIO SAS",
@@ -5718,11 +5746,11 @@
     "t2": "-",
     "wa": "3103596187",
     "cuentas": "",
-    "servicios_30d": 16,
+    "servicios_30d": 15,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 11
+        "servicios": 10
       },
       {
         "nombre": "gruas milenio",
@@ -5731,15 +5759,15 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 121.1,
-        "n": 5
+        "promedio_min": 115,
+        "n": 4
       },
       "jumpstart": {
         "promedio_min": 82.4,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MONO DIAZ & SERVICIOS S.A.S",
@@ -5771,15 +5799,15 @@
         "servicios": 1
       },
       {
+        "nombre": "YEINSON DIAZ - FOZ857",
+        "servicios": 1
+      },
+      {
         "nombre": "ANDRES QUINTERO-ONE923",
         "servicios": 1
       },
       {
         "nombre": "GERARDO PALMA-WDL692",
-        "servicios": 1
-      },
-      {
-        "nombre": "YEINSON DIAZ - FOZ857",
         "servicios": 1
       }
     ],
@@ -5793,7 +5821,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MORO S.A.S",
@@ -5835,7 +5863,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS NARIÑO SAS",
@@ -5859,7 +5887,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS OLAYA S.A.S",
@@ -5883,7 +5911,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PINTURAMA SAS",
@@ -5920,7 +5948,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PINTURAMA SAS",
@@ -5957,7 +5985,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PINTURAMA SAS",
@@ -5994,7 +6022,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PINTURAMA SAS",
@@ -6031,7 +6059,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PINTURAMA SAS",
@@ -6068,7 +6096,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS PITALITO SAS",
@@ -6097,7 +6125,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRÚAS POPE - FACATATIVA",
@@ -6121,15 +6149,15 @@
     "servicios_30d": 7,
     "conductores_30d": [
       {
+        "nombre": "HUMBERTO ZAPATA-SZT 843",
+        "servicios": 2
+      },
+      {
         "nombre": "JOHN VILLAMIL-QJK 589",
         "servicios": 2
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 2
-      },
-      {
-        "nombre": "HUMBERTO ZAPATA-SZT 843",
         "servicios": 2
       },
       {
@@ -6143,7 +6171,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS R&M LTDA",
@@ -6167,7 +6195,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS RINO S.A.S.",
@@ -6188,11 +6216,11 @@
     "t2": "-",
     "wa": "300 2645034",
     "cuentas": "",
-    "servicios_30d": 8,
+    "servicios_30d": 10,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 5
+        "servicios": 7
       },
       {
         "nombre": "Marcos Mayoria - WOS748",
@@ -6205,7 +6233,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS SANTIAGO SAS",
@@ -6226,11 +6254,11 @@
     "t2": "-",
     "wa": "",
     "cuentas": "",
-    "servicios_30d": 14,
+    "servicios_30d": 16,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 16
       }
     ],
     "arribo_30d": {
@@ -6243,7 +6271,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS RYL - CARTAGENA",
@@ -6264,11 +6292,11 @@
     "t2": "-",
     "wa": "3226354790",
     "cuentas": "",
-    "servicios_30d": 18,
+    "servicios_30d": 17,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 17
+        "servicios": 16
       },
       {
         "nombre": "JAVIER SANABRIA",
@@ -6277,11 +6305,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 146,
-        "n": 10
+        "promedio_min": 152.7,
+        "n": 9
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS SERVICOL COLOMBIA S.A.S.- CALI",
@@ -6327,7 +6355,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS SINCELEJO SAS",
@@ -6356,7 +6384,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS START SAS",
@@ -6390,7 +6418,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS HURTADO CALDERON- LOS PINOS CALI",
@@ -6411,24 +6439,15 @@
     "t2": "3158592302",
     "wa": "311 7259303-3158592302",
     "cuentas": "",
-    "servicios_30d": 2,
+    "servicios_30d": 1,
     "conductores_30d": [
       {
         "nombre": "Carlos Hernán hurtado - VKK357",
         "servicios": 1
-      },
-      {
-        "nombre": "Sin conductor asignado",
-        "servicios": 1
       }
     ],
-    "arribo_30d": {
-      "grua": {
-        "promedio_min": 123,
-        "n": 1
-      }
-    },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "arribo_30d": {},
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS TRUCK SERVICE SAS - fusagasufa",
@@ -6452,7 +6471,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS VANEGAS MANIZALES SAS",
@@ -6473,7 +6492,7 @@
     "t2": "-",
     "wa": "3117775645",
     "cuentas": "",
-    "servicios_30d": 16,
+    "servicios_30d": 17,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -6481,7 +6500,7 @@
       },
       {
         "nombre": "ADRIAN BARCO",
-        "servicios": 4
+        "servicios": 5
       }
     ],
     "arribo_30d": {
@@ -6494,7 +6513,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y HOGAR NARIÑO SAS - PASTO",
@@ -6518,7 +6537,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRÚAS Y MONTAJES SERVIEXPRESS SAS-FUSAGASUGA",
@@ -6556,7 +6575,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y PARQUEADERO SR SAS",
@@ -6602,7 +6621,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y SOLUCIONES VIALES S.A.S. - ANDRES CALI",
@@ -6626,11 +6645,11 @@
     "servicios_30d": 13,
     "conductores_30d": [
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "andres felipe orozco  - CQL492",
         "servicios": 5
       },
       {
-        "nombre": "andres felipe orozco  - CQL492",
+        "nombre": "Sin conductor asignado",
         "servicios": 5
       },
       {
@@ -6639,16 +6658,16 @@
       }
     ],
     "arribo_30d": {
-      "grua": {
-        "promedio_min": 102.7,
-        "n": 2
-      },
       "jumpstart": {
         "promedio_min": 48.9,
         "n": 2
+      },
+      "grua": {
+        "promedio_min": 102.7,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y TRANSPORTES COLOMBIA S.A.S - DOSQUEBRADAS",
@@ -6672,11 +6691,11 @@
     "servicios_30d": 6,
     "conductores_30d": [
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "Sebastian duque- planchon",
         "servicios": 2
       },
       {
-        "nombre": "Sebastian duque- planchon",
+        "nombre": "Sin conductor asignado",
         "servicios": 2
       },
       {
@@ -6694,7 +6713,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y TRANSPORTES QUINTERO SAS",
@@ -6732,7 +6751,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y TRANSPORTES RPP S.A.S - SOACHA",
@@ -6756,7 +6775,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "YUBER MOTOS RANGER",
@@ -6777,28 +6796,28 @@
     "t2": "-",
     "wa": "317 4309612",
     "cuentas": "",
-    "servicios_30d": 57,
+    "servicios_30d": 49,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 57
+        "servicios": 49
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 159.3,
-        "n": 26
-      },
-      "jumpstart": {
-        "promedio_min": 768.7,
-        "n": 1
+        "promedio_min": 138.1,
+        "n": 23
       },
       "flattire": {
         "promedio_min": 43.9,
         "n": 1
+      },
+      "jumpstart": {
+        "promedio_min": 768.7,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS ZURITA S.A.S.",
@@ -6830,15 +6849,15 @@
         "servicios": 3
       },
       {
+        "nombre": "ALEX JARAMILLO-NBI 656",
+        "servicios": 1
+      },
+      {
         "nombre": "MARIO GUEVARA-DWR 260",
         "servicios": 1
       },
       {
         "nombre": "HENRY MOSQUERA-SXI 754",
-        "servicios": 1
-      },
-      {
-        "nombre": "ALEX JARAMILLO-NBI 656",
         "servicios": 1
       }
     ],
@@ -6848,7 +6867,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUPO AVIP S.A.S. - PEREIRA",
@@ -6869,18 +6888,18 @@
     "t2": "-",
     "wa": "300 4137599",
     "cuentas": "",
-    "servicios_30d": 51,
+    "servicios_30d": 49,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 30
-      },
-      {
-        "nombre": "Jermaine Jimenez",
-        "servicios": 8
+        "servicios": 29
       },
       {
         "nombre": "Jhon Cardenas",
+        "servicios": 7
+      },
+      {
+        "nombre": "Jermaine Jimenez",
         "servicios": 6
       },
       {
@@ -6902,19 +6921,19 @@
     ],
     "arribo_30d": {
       "flattire": {
-        "promedio_min": 76,
-        "n": 6
+        "promedio_min": 71.8,
+        "n": 5
+      },
+      "jumpstart": {
+        "promedio_min": 69,
+        "n": 14
       },
       "locksmith": {
         "promedio_min": 75.5,
         "n": 1
-      },
-      "jumpstart": {
-        "promedio_min": 72.6,
-        "n": 13
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUPO AVIP S.A.S. - PEREIRA",
@@ -6935,18 +6954,18 @@
     "t2": "-",
     "wa": "300 4137599",
     "cuentas": "",
-    "servicios_30d": 51,
+    "servicios_30d": 49,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 30
-      },
-      {
-        "nombre": "Jermaine Jimenez",
-        "servicios": 8
+        "servicios": 29
       },
       {
         "nombre": "Jhon Cardenas",
+        "servicios": 7
+      },
+      {
+        "nombre": "Jermaine Jimenez",
         "servicios": 6
       },
       {
@@ -6968,19 +6987,19 @@
     ],
     "arribo_30d": {
       "flattire": {
-        "promedio_min": 76,
-        "n": 6
+        "promedio_min": 71.8,
+        "n": 5
+      },
+      "jumpstart": {
+        "promedio_min": 69,
+        "n": 14
       },
       "locksmith": {
         "promedio_min": 75.5,
         "n": 1
-      },
-      "jumpstart": {
-        "promedio_min": 72.6,
-        "n": 13
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUPO DMY SAS",
@@ -7004,7 +7023,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUPO PARKING 1 SAS BIC",
@@ -7037,7 +7056,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "H&H GRUAS Y TRANSPORTE S.A.S - BUGA",
@@ -7075,7 +7094,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HALCON - YOPAL",
@@ -7104,7 +7123,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HENIX SERVICIOS INTEGRALES SAS",
@@ -7133,7 +7152,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HENIX SERVICIOS INTEGRALES SAS",
@@ -7162,7 +7181,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HENIX SERVICIOS INTEGRALES SAS",
@@ -7191,7 +7210,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HENIX SERVICIOS INTEGRALES SAS",
@@ -7220,7 +7239,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HENIX SERVICIOS INTEGRALES SAS",
@@ -7249,7 +7268,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "HOLDING MYN INVERSIONES SAS",
@@ -7270,7 +7289,7 @@
     "t2": "-",
     "wa": "3213888887",
     "cuentas": "",
-    "servicios_30d": 59,
+    "servicios_30d": 57,
     "conductores_30d": [
       {
         "nombre": "GRUA 3 GET096 -",
@@ -7278,36 +7297,36 @@
       },
       {
         "nombre": "GRUA - JTZ-304",
-        "servicios": 12
+        "servicios": 13
       },
       {
         "nombre": "GRUA PSX604",
-        "servicios": 12
-      },
-      {
-        "nombre": "Sin conductor asignado",
-        "servicios": 8
+        "servicios": 11
       },
       {
         "nombre": "GRUA 1 SVB-615",
         "servicios": 7
       },
       {
-        "nombre": "Leandro Miranda -WOY321",
-        "servicios": 3
+        "nombre": "Sin conductor asignado",
+        "servicios": 6
       },
       {
         "nombre": "GRUA 2  WOY-321",
+        "servicios": 3
+      },
+      {
+        "nombre": "Leandro Miranda -WOY321",
         "servicios": 3
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 47.8,
-        "n": 41
+        "promedio_min": 47.2,
+        "n": 42
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INDUSTRIAS SOLOCAR SAS -  MOSQUERA",
@@ -7328,15 +7347,15 @@
     "t2": "-",
     "wa": "310 7037721",
     "cuentas": "",
-    "servicios_30d": 17,
+    "servicios_30d": 20,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 6
+        "servicios": 8
       },
       {
         "nombre": "GRUA LIVIANA",
-        "servicios": 6
+        "servicios": 7
       },
       {
         "nombre": "JORGE GUZMAN -POZ863",
@@ -7349,11 +7368,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 129.5,
-        "n": 7
+        "promedio_min": 131.9,
+        "n": 8
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INVERSIONES AUTO GRUAS PINZON",
@@ -7387,11 +7406,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 94.5,
-        "n": 3
+        "promedio_min": 141.2,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INVERSIONES GT7",
@@ -7412,11 +7431,11 @@
     "t2": "-",
     "wa": "3336026911",
     "cuentas": "",
-    "servicios_30d": 1,
+    "servicios_30d": 3,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 1
+        "servicios": 3
       }
     ],
     "arribo_30d": {
@@ -7425,7 +7444,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INVERSIONES HERNANDEZ CONTRERAS SAS",
@@ -7459,7 +7478,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INVERSIONES Y PROYECTOS JM S.A.S.",
@@ -7483,7 +7502,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "INVEX CONSULTORES S.A.S",
@@ -7507,7 +7526,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "J.A MULTISERVICIOS -IBAGUE",
@@ -7541,11 +7560,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 115.2,
-        "n": 4
+        "promedio_min": 132.8,
+        "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JAIMITO CONDUCTORES ELEGIDOS SAS",
@@ -7569,7 +7588,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JH EL PORTAL S.A.S.",
@@ -7593,7 +7612,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JP ASISTENCIA VEHICULAR S.A.S",
@@ -7631,7 +7650,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JOHAN DANIEL TABARES BOTINA - TRANSPORTE ESPECIAL",
@@ -7660,7 +7679,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JUAN CARLOS POVEDA GRUAS POTER",
@@ -7684,25 +7703,25 @@
     "servicios_30d": 2,
     "conductores_30d": [
       {
-        "nombre": "GRUAS POTER",
+        "nombre": "Gabriel Navarrete -  VEN749",
         "servicios": 1
       },
       {
-        "nombre": "Gabriel Navarrete -  VEN749",
+        "nombre": "GRUAS POTER",
         "servicios": 1
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 56.4,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 53.8,
         "n": 1
+      },
+      "jumpstart": {
+        "promedio_min": 56.4,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JULIO LLANOS / BARRANQUILLA",
@@ -7723,7 +7742,7 @@
     "t2": "304 6537858",
     "wa": "323 2896964-304 6537858",
     "cuentas": "",
-    "servicios_30d": 15,
+    "servicios_30d": 14,
     "conductores_30d": [
       {
         "nombre": "OWEN HERRERA",
@@ -7734,15 +7753,15 @@
         "servicios": 5
       },
       {
-        "nombre": "DEIVISON MOLINA",
-        "servicios": 2
-      },
-      {
-        "nombre": "EDER TOLENTINO",
+        "nombre": "JAIR ESCORCIA",
         "servicios": 1
       },
       {
-        "nombre": "JAIR ESCORCIA",
+        "nombre": "DEIVISON MOLINA",
+        "servicios": 1
+      },
+      {
+        "nombre": "EDER TOLENTINO",
         "servicios": 1
       }
     ],
@@ -7752,7 +7771,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JYJ SOLUCIONES SUMINISTROS Y ASESORIAS SAS",
@@ -7773,15 +7792,15 @@
     "t2": "-",
     "wa": "300 1585151",
     "cuentas": "",
-    "servicios_30d": 4,
+    "servicios_30d": 5,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 4
+        "servicios": 5
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JUPITER PESADOS BOGOTA",
@@ -7802,11 +7821,11 @@
     "t2": "-",
     "wa": "321 9703679",
     "cuentas": "",
-    "servicios_30d": 24,
+    "servicios_30d": 22,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 20
+        "servicios": 18
       },
       {
         "nombre": "Carlos González",
@@ -7814,7 +7833,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "KG ASISTE S.A.S",
@@ -7856,7 +7875,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "KG ASISTE S.A.S",
@@ -7898,7 +7917,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "LOGI ASISTENCIA Y TRANSPORTE SAS",
@@ -7922,7 +7941,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "LOGIC ASSISTANCE SAS-JAVI",
@@ -7964,7 +7983,7 @@
         "n": 10
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "LUZ MILA FRANCO DE BENITEZ & CIA S. EN C-PARQUEADERO Y SERVICIO DE GRUAS AUTOYOTA",
@@ -7998,7 +8017,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS FRANCO SAS",
@@ -8019,11 +8038,11 @@
     "t2": "-",
     "wa": "3024783347",
     "cuentas": "",
-    "servicios_30d": 45,
+    "servicios_30d": 41,
     "conductores_30d": [
       {
         "nombre": "Arnold franco - LZN654",
-        "servicios": 38
+        "servicios": 34
       },
       {
         "nombre": "Sin conductor asignado",
@@ -8032,11 +8051,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 66.9,
-        "n": 23
+        "promedio_min": 62.5,
+        "n": 25
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MAQUITRANS MAQUINARIA Y TRANSPORTE",
@@ -8060,7 +8079,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8084,7 +8103,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "JUAN DAVID TRUJILLO - MAX GRUAS",
@@ -8118,7 +8137,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MAZDAMOTORS S SERVICE SAS",
@@ -8160,7 +8179,7 @@
         "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MI ELEGIDO SEGURO S.A.S",
@@ -8184,7 +8203,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MI ELEGIDO VIP SAS",
@@ -8213,7 +8232,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MIASISTENCIA BGA S.A.S.",
@@ -8242,7 +8261,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MI ELEGIDO VIP SAS",
@@ -8271,7 +8290,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MINUTO 15' ASISTENCIA VEHICULAR SAS - MEDELLIN",
@@ -8309,7 +8328,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MI ELEGIDO VIP SAS",
@@ -8338,7 +8357,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PACHECO AMARIS MOISES DAVID - CE BARRANQUILLA",
@@ -8376,7 +8395,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MAURICIO- MONTALLANTAS MOVIL24H-IBAGUÉ",
@@ -8400,7 +8419,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTI ASISTENCIAS - BOGOTA- MR DRIVER",
@@ -8421,11 +8440,11 @@
     "t2": "-",
     "wa": "310 8524313",
     "cuentas": "",
-    "servicios_30d": 10,
+    "servicios_30d": 11,
     "conductores_30d": [
       {
         "nombre": "DIDIER YOANI AGUDELO AGUDELO -  KJK99H",
-        "servicios": 4
+        "servicios": 5
       },
       {
         "nombre": "Sin conductor asignado",
@@ -8441,16 +8460,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 32.3,
-        "n": 1
-      },
       "flattire": {
         "promedio_min": 64.8,
         "n": 2
+      },
+      "jumpstart": {
+        "promedio_min": 38.3,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTI ASISTENCIAS - BOGOTA- MR DRIVER",
@@ -8471,11 +8490,11 @@
     "t2": "-",
     "wa": "310 8524313",
     "cuentas": "",
-    "servicios_30d": 10,
+    "servicios_30d": 11,
     "conductores_30d": [
       {
         "nombre": "DIDIER YOANI AGUDELO AGUDELO -  KJK99H",
-        "servicios": 4
+        "servicios": 5
       },
       {
         "nombre": "Sin conductor asignado",
@@ -8491,16 +8510,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 32.3,
-        "n": 1
-      },
       "flattire": {
         "promedio_min": 64.8,
         "n": 2
+      },
+      "jumpstart": {
+        "promedio_min": 38.3,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MSB MULTY SERVICIOS BOGOTA S A S",
@@ -8538,7 +8557,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTIASISTENCIA COLOMBIA S.A.S. - CALI FREDY",
@@ -8567,7 +8586,7 @@
       },
       {
         "nombre": "EDERSON RUIZ ANY46",
-        "servicios": 23
+        "servicios": 22
       },
       {
         "nombre": "Sin conductor asignado",
@@ -8579,15 +8598,11 @@
       },
       {
         "nombre": "JHON MARIO MONCAYO -  ZNN998",
-        "servicios": 11
+        "servicios": 12
       },
       {
         "nombre": "GILDARDO VILLARRAGA  SPK438",
         "servicios": 7
-      },
-      {
-        "nombre": "LUIS ALEJANDRO VELIZ -  NQL378",
-        "servicios": 3
       },
       {
         "nombre": "GIOVANNI RODRIGUEZ  S -  ISS62F",
@@ -8596,16 +8611,20 @@
       {
         "nombre": "MAICOL GUZMAN -  CHH336",
         "servicios": 3
+      },
+      {
+        "nombre": "LUIS ALEJANDRO VELIZ -  NQL378",
+        "servicios": 3
       }
     ],
     "arribo_30d": {
-      "grua": {
-        "promedio_min": 56.2,
-        "n": 35
-      },
       "jumpstart": {
         "promedio_min": 54.9,
         "n": 34
+      },
+      "grua": {
+        "promedio_min": 56.1,
+        "n": 36
       },
       "flattire": {
         "promedio_min": 44.7,
@@ -8616,7 +8635,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTISERVICIOS BUICAR SAS - MELGAR",
@@ -8640,7 +8659,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTISERVICIOS COSMOS DE BUENAVENTURA S.A.S.",
@@ -8674,7 +8693,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTISERVICIOS TELECOYOTE SAS",
@@ -8708,7 +8727,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTISTRADA  SAS",
@@ -8729,11 +8748,11 @@
     "t2": "-",
     "wa": "3027462057",
     "cuentas": "",
-    "servicios_30d": 83,
+    "servicios_30d": 84,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 19
+        "servicios": 21
       },
       {
         "nombre": "Jose Luis quintero QOM531 - GRÚA",
@@ -8745,7 +8764,7 @@
       },
       {
         "nombre": "Jhon Jairo Pico Cifuentes YEM43F",
-        "servicios": 11
+        "servicios": 10
       },
       {
         "nombre": "Santiago Guzmán Arias",
@@ -8768,29 +8787,29 @@
         "servicios": 1
       },
       {
-        "nombre": "Mateo Ferreira Uribe - WWG72G",
+        "nombre": "Franklin Barragan",
         "servicios": 1
       },
       {
-        "nombre": "Franklin Barragan",
+        "nombre": "Mateo Ferreira Uribe - WWG72G",
         "servicios": 1
       }
     ],
     "arribo_30d": {
-      "flattire": {
-        "promedio_min": 51.3,
-        "n": 13
-      },
       "jumpstart": {
-        "promedio_min": 55.6,
-        "n": 53
+        "promedio_min": 56.4,
+        "n": 52
       },
       "locksmith": {
         "promedio_min": 56,
         "n": 13
+      },
+      "flattire": {
+        "promedio_min": 51.3,
+        "n": 13
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8814,7 +8833,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8838,7 +8857,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8862,7 +8881,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8886,7 +8905,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MLH ABOGADOS SAS",
@@ -8910,7 +8929,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ELKIN LEZCANO SAS",
@@ -8934,7 +8953,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "LUISA VELAZQUEZ ABOGADOS",
@@ -8958,7 +8977,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "NEXO SEGUROS COLOMBIA LTDA BOGOTA",
@@ -8982,7 +9001,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "OPEN INVESTMENT COLOMBIA S.A.S.",
@@ -9020,7 +9039,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ORGANIZACION EMPRESARIAL DE TRANSPORTES BARRETO SAS",
@@ -9041,11 +9060,11 @@
     "t2": "3112484419",
     "wa": "3112484419",
     "cuentas": "",
-    "servicios_30d": 67,
+    "servicios_30d": 65,
     "conductores_30d": [
       {
         "nombre": "Camilo Morales- FVM440",
-        "servicios": 41
+        "servicios": 40
       },
       {
         "nombre": "PLANCHON 4",
@@ -9053,24 +9072,24 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 12
-      },
-      {
-        "nombre": "PLANCHON 2",
-        "servicios": 1
+        "servicios": 11
       },
       {
         "nombre": "PLANCHON 1",
+        "servicios": 1
+      },
+      {
+        "nombre": "PLANCHON 2",
         "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 57.8,
-        "n": 35
+        "promedio_min": 58.2,
+        "n": 34
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO CRUZ",
@@ -9091,15 +9110,15 @@
     "t2": "-",
     "wa": "316 8872046",
     "cuentas": "",
-    "servicios_30d": 28,
+    "servicios_30d": 26,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 14
+        "servicios": 13
       },
       {
         "nombre": "PARQUEADERO CRUZ - SQY443",
-        "servicios": 7
+        "servicios": 6
       },
       {
         "nombre": "Sebastian Cruz Duque - EJZ848",
@@ -9116,15 +9135,15 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 144.5,
-        "n": 5
+        "promedio_min": 119,
+        "n": 4
       },
       "flattire": {
         "promedio_min": 80.5,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO Y PATIOS CEIBAS",
@@ -9162,7 +9181,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PAVA SERVICIOS S.A.S",
@@ -9183,24 +9202,24 @@
     "t2": "-",
     "wa": "",
     "cuentas": "",
-    "servicios_30d": 29,
+    "servicios_30d": 25,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 21
+        "servicios": 20
       },
       {
         "nombre": "HECTOR PAVA",
-        "servicios": 8
+        "servicios": 5
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 180,
-        "n": 6
+        "promedio_min": 199.7,
+        "n": 5
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PILOTOS INTERNACIONAL",
@@ -9232,11 +9251,11 @@
         "servicios": 5
       },
       {
-        "nombre": "BRAMDON STIVEN AVILA",
+        "nombre": "Deyby Sebastián niño moya",
         "servicios": 1
       },
       {
-        "nombre": "Deyby Sebastián niño moya",
+        "nombre": "BRAMDON STIVEN AVILA",
         "servicios": 1
       }
     ],
@@ -9250,7 +9269,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PRO ASISTENCIA SAS",
@@ -9278,11 +9297,11 @@
         "servicios": 2
       },
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "David Tovar -  QJL313",
         "servicios": 1
       },
       {
-        "nombre": "David Tovar -  QJL313",
+        "nombre": "Sin conductor asignado",
         "servicios": 1
       }
     ],
@@ -9292,7 +9311,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "QUALITY AND SAFETY DRIVERS SAS",
@@ -9316,7 +9335,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "QUINTERO POVEDA ASISTENCIA S.A.S.",
@@ -9337,7 +9356,7 @@
     "t2": "-",
     "wa": "3133040473",
     "cuentas": "",
-    "servicios_30d": 61,
+    "servicios_30d": 59,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -9345,20 +9364,20 @@
       },
       {
         "nombre": "Andres Felipe Jimenez Mancilla",
-        "servicios": 30
+        "servicios": 28
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 109.9,
-        "n": 36
+        "promedio_min": 109,
+        "n": 34
       },
       "locksmith": {
         "promedio_min": 0.4,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RA LOGISTICA SAS - CE",
@@ -9387,7 +9406,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RA LOGISTICA SAS - CE",
@@ -9416,7 +9435,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RA LOGISTICA SAS - CE",
@@ -9445,7 +9464,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RED-MA ASIST SAS - ,MEDELLIN",
@@ -9466,19 +9485,19 @@
     "t2": "-",
     "wa": "3052326981",
     "cuentas": "",
-    "servicios_30d": 86,
+    "servicios_30d": 89,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 51
+        "servicios": 52
+      },
+      {
+        "nombre": "Eduardo Romero Vera -LKN204",
+        "servicios": 15
       },
       {
         "nombre": "JUAN CARLOS SALAZAR - LUO176",
         "servicios": 15
-      },
-      {
-        "nombre": "Eduardo Romero Vera -LKN204",
-        "servicios": 14
       },
       {
         "nombre": "JONATHAN CARO - LKO144",
@@ -9486,12 +9505,12 @@
       },
       {
         "nombre": "Sergio Salazar-  CGA464",
-        "servicios": 1
+        "servicios": 2
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 117.6,
+        "promedio_min": 115.7,
         "n": 40
       },
       "locksmith": {
@@ -9503,7 +9522,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "REP 7 ASISTENCIA VIAL S.A.S RAFAEL PARDO",
@@ -9537,7 +9556,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "REWORK GROUP - CE JAN CARLO",
@@ -9574,7 +9593,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RODAR PREMIUM S.A.S",
@@ -9595,24 +9614,24 @@
     "t2": "-",
     "wa": "3152916450",
     "cuentas": "",
-    "servicios_30d": 74,
+    "servicios_30d": 73,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 74
+        "servicios": 73
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 141,
-        "n": 55
+        "promedio_min": 140.7,
+        "n": 54
       },
       "jumpstart": {
         "promedio_min": 57.4,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ROL PUNTUAL S.A.S",
@@ -9636,7 +9655,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERTIGRUA LIMITADA - CUCUTA",
@@ -9660,7 +9679,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "kG ASISTE S.A.S",
@@ -9702,7 +9721,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVI GRUAS JF SAS",
@@ -9740,7 +9759,7 @@
         "n": 9
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVI GRUAS ZAPATA S.A.S",
@@ -9761,11 +9780,11 @@
     "t2": "312 7634958",
     "wa": "310 2416074-312 7634958",
     "cuentas": "",
-    "servicios_30d": 33,
+    "servicios_30d": 34,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 26
+        "servicios": 27
       },
       {
         "nombre": "gruas zapata -wlw485",
@@ -9778,7 +9797,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVI-GRUAS RAMIREZ S.A.S",
@@ -9802,7 +9821,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIO DE PARQUEADERO Y TRANSPORTE DM SAS",
@@ -9836,7 +9855,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIO DE PARQUEADERO Y TRANSPORTE DM SAS",
@@ -9870,7 +9889,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIOS DE GRUAS LOS ESPECIALISTAS S.A.S",
@@ -9891,15 +9910,15 @@
     "t2": "-",
     "wa": "321 6115383",
     "cuentas": "",
-    "servicios_30d": 9,
+    "servicios_30d": 11,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 9
+        "servicios": 11
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIOS DE SALUD, EMPRESARIALES Y LOGISTICOS RENOVAR S.A.S.",
@@ -9937,7 +9956,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS LA COOR SERVICIOS DE TRANSPORTE Y PARQUEADEROS S.A.S",
@@ -9971,7 +9990,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIOS INTEGRALES JHS S.A.S - BOGOTA",
@@ -9995,7 +10014,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO Y GRUAS ARIÑO SAS",
@@ -10028,16 +10047,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 76.3,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 187.7,
         "n": 3
+      },
+      "jumpstart": {
+        "promedio_min": 76.3,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO Y GRUAS ARIÑO SAS",
@@ -10070,16 +10089,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 76.3,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 187.7,
         "n": 3
+      },
+      "jumpstart": {
+        "promedio_min": 76.3,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO Y GRUAS ARIÑO SAS",
@@ -10112,16 +10131,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 76.3,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 187.7,
         "n": 3
+      },
+      "jumpstart": {
+        "promedio_min": 76.3,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PARQUEADERO Y GRUAS ARIÑO SAS",
@@ -10154,16 +10173,16 @@
       }
     ],
     "arribo_30d": {
-      "jumpstart": {
-        "promedio_min": 76.3,
-        "n": 1
-      },
       "grua": {
         "promedio_min": 187.7,
         "n": 3
+      },
+      "jumpstart": {
+        "promedio_min": 76.3,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIFULL VIAL S.A.S",
@@ -10184,7 +10203,7 @@
     "t2": "3174571594",
     "wa": "3122028303-3174571594",
     "cuentas": "",
-    "servicios_30d": 67,
+    "servicios_30d": 64,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -10196,20 +10215,20 @@
       },
       {
         "nombre": "AUDON DE JESUS GIRALDO JIMENES-SOI236",
-        "servicios": 15
+        "servicios": 13
       },
       {
         "nombre": "HERMES GRISALES ACEVEDO-EXU908",
-        "servicios": 9
+        "servicios": 8
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 79.3,
-        "n": 25
+        "promedio_min": 75.9,
+        "n": 23
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS COLOMBIA SAS",
@@ -10243,7 +10262,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS ELITE SAS - BOGOTA",
@@ -10271,15 +10290,15 @@
         "servicios": 5
       },
       {
-        "nombre": "NICOLAS RODRIGUEZ BELTRAN -NOX 140",
-        "servicios": 2
-      },
-      {
         "nombre": "EISON ANTONIO CADENA VEGA  - LUN640",
         "servicios": 2
       },
       {
         "nombre": "Robinson Exnaider  Guevara Prieto -  NOX142",
+        "servicios": 2
+      },
+      {
+        "nombre": "NICOLAS RODRIGUEZ BELTRAN -NOX 140",
         "servicios": 2
       },
       {
@@ -10297,7 +10316,7 @@
         "n": 10
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS JGL SOLUCIONES EN TRANSPORTES SAS",
@@ -10321,7 +10340,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS JJ S.A.S",
@@ -10350,7 +10369,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RICARDO MORA VELASQUEZ - GRUAS MORSAN",
@@ -10374,7 +10393,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS SILVANIA SAS",
@@ -10398,7 +10417,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS SINCELEJO S.A.S",
@@ -10440,7 +10459,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVI ASISTENCIA EXPRESS SAS - COROZAL",
@@ -10464,11 +10483,11 @@
     "servicios_30d": 2,
     "conductores_30d": [
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "Carlos Andres Gomez Rios -  LZS064",
         "servicios": 1
       },
       {
-        "nombre": "Carlos Andres Gomez Rios -  LZS064",
+        "nombre": "Sin conductor asignado",
         "servicios": 1
       }
     ],
@@ -10478,7 +10497,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVITECA BOGOTA RYG S.A.S.- CONDU ELEGIDO",
@@ -10499,7 +10518,7 @@
     "t2": "-",
     "wa": "323 7905022",
     "cuentas": "",
-    "servicios_30d": 58,
+    "servicios_30d": 59,
     "conductores_30d": [
       {
         "nombre": "Anderson alfonso rubio lopez SCP27F",
@@ -10511,7 +10530,7 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 13
+        "servicios": 14
       },
       {
         "nombre": "YANIRA DUARTE QUIROGA  -GFB76F",
@@ -10531,20 +10550,20 @@
       }
     ],
     "arribo_30d": {
+      "flattire": {
+        "promedio_min": 376.2,
+        "n": 4
+      },
       "jumpstart": {
-        "promedio_min": 56.4,
-        "n": 16
+        "promedio_min": 54.3,
+        "n": 17
       },
       "locksmith": {
         "promedio_min": 61.9,
         "n": 1
-      },
-      "flattire": {
-        "promedio_min": 376.2,
-        "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SOLUCIONES SHADDAI JYL S.A.S",
@@ -10565,11 +10584,11 @@
     "t2": "-",
     "wa": "323 7836408",
     "cuentas": "",
-    "servicios_30d": 43,
+    "servicios_30d": 42,
     "conductores_30d": [
       {
         "nombre": "Julio Cesar Ochoa - NHQ542",
-        "servicios": 40
+        "servicios": 39
       },
       {
         "nombre": "Jeisson Andres Salas Santos - JTS845",
@@ -10582,11 +10601,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 94,
-        "n": 14
+        "promedio_min": 93.3,
+        "n": 13
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SIGMA GLOBAL ASISTENCIA S.A.S.",
@@ -10610,7 +10629,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SIN LIMITES ASISTENCIA VIAL S.A.S. - MEDELLIN",
@@ -10634,7 +10653,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SMART ASSISTANCE S.A.S  -  MEDELLIN",
@@ -10666,14 +10685,6 @@
         "servicios": 3
       },
       {
-        "nombre": "Daniel Hernandez",
-        "servicios": 1
-      },
-      {
-        "nombre": "PLANCHON -  WNP640",
-        "servicios": 1
-      },
-      {
         "nombre": "GRUA -   NNM297",
         "servicios": 1
       },
@@ -10682,11 +10693,11 @@
         "servicios": 1
       },
       {
-        "nombre": "PLANCHON - LKP162",
+        "nombre": "PLANCHON -  WNP640",
         "servicios": 1
       },
       {
-        "nombre": "PLANCHON -   ESR766",
+        "nombre": "Daniel Hernandez",
         "servicios": 1
       },
       {
@@ -10696,6 +10707,14 @@
       {
         "nombre": "PLANCHON  LKO191",
         "servicios": 1
+      },
+      {
+        "nombre": "PLANCHON - LKP162",
+        "servicios": 1
+      },
+      {
+        "nombre": "PLANCHON -   ESR766",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
@@ -10704,7 +10723,7 @@
         "n": 12
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SOCIEDAD HAZ ABOGADOS SAS",
@@ -10746,7 +10765,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SOLUCIONES EL DORADO S.A.S / P&P",
@@ -10767,15 +10786,15 @@
     "t2": "-",
     "wa": "300 7333916",
     "cuentas": "",
-    "servicios_30d": 46,
+    "servicios_30d": 41,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 32
+        "servicios": 29
       },
       {
         "nombre": "Alejandro Peláez Rodas",
-        "servicios": 12
+        "servicios": 10
       },
       {
         "nombre": "Ivan Alberto Rodas Arboleda",
@@ -10788,7 +10807,7 @@
         "n": 8
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SOLUCIONES IDONEAS E INTEGRALES SAS",
@@ -10813,11 +10832,11 @@
     "conductores_30d": [
       {
         "nombre": "BRANDEADA QYP052 - ANDRES JIMENES",
-        "servicios": 26
+        "servicios": 27
       },
       {
         "nombre": "DIEGO CAYAPU",
-        "servicios": 16
+        "servicios": 17
       },
       {
         "nombre": "Sin conductor asignado",
@@ -10825,7 +10844,7 @@
       },
       {
         "nombre": "BRANDEADA NQL626-ANDRES JIMENES",
-        "servicios": 5
+        "servicios": 3
       },
       {
         "nombre": "ANDRES JIMENEZ",
@@ -10838,19 +10857,19 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 138.2,
+        "promedio_min": 137.7,
         "n": 45
-      },
-      "jumpstart": {
-        "promedio_min": 54.8,
-        "n": 1
       },
       "flattire": {
         "promedio_min": 181.9,
         "n": 1
+      },
+      "jumpstart": {
+        "promedio_min": 54.8,
+        "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SSP ASISTENCIAS S.A.S.",
@@ -10883,16 +10902,16 @@
       }
     ],
     "arribo_30d": {
-      "grua": {
-        "promedio_min": 99.3,
-        "n": 6
-      },
       "jumpstart": {
         "promedio_min": 76.8,
         "n": 5
+      },
+      "grua": {
+        "promedio_min": 99.3,
+        "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SUARCARD TRANSPORTES SAS - JIMY CALI",
@@ -10941,7 +10960,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SUPER GRUAS SOLO NORTE BOGOTA",
@@ -10965,15 +10984,15 @@
     "servicios_30d": 3,
     "conductores_30d": [
       {
+        "nombre": "PLANCHON – EQY759",
+        "servicios": 1
+      },
+      {
         "nombre": "Sin conductor asignado",
         "servicios": 1
       },
       {
         "nombre": "PLANCHON – EQZ666",
-        "servicios": 1
-      },
-      {
-        "nombre": "PLANCHON – EQY759",
         "servicios": 1
       }
     ],
@@ -10983,7 +11002,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TJ ASISTENCIA S.A.S.",
@@ -11015,11 +11034,11 @@
         "servicios": 1
       },
       {
-        "nombre": "EDGAR SUAREZ VKU35G",
+        "nombre": "WILSON SUAREZ OEY94D",
         "servicios": 1
       },
       {
-        "nombre": "WILSON SUAREZ OEY94D",
+        "nombre": "EDGAR SUAREZ VKU35G",
         "servicios": 1
       }
     ],
@@ -11033,7 +11052,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSESPITIA SAS",
@@ -11061,19 +11080,19 @@
         "servicios": 3
       },
       {
-        "nombre": "YAIR ROA -LUM294",
-        "servicios": 2
-      },
-      {
         "nombre": "Santiago Valero García - PUO 741",
         "servicios": 2
       },
       {
-        "nombre": "Santiago Santamaria Hernandez - QJZ111",
-        "servicios": 1
+        "nombre": "YAIR ROA -LUM294",
+        "servicios": 2
       },
       {
         "nombre": "FUY640 TRANSESPITIA",
+        "servicios": 1
+      },
+      {
+        "nombre": "Santiago Santamaria Hernandez - QJZ111",
         "servicios": 1
       },
       {
@@ -11087,7 +11106,7 @@
         "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGROUP SAS",
@@ -11133,7 +11152,7 @@
         "n": 9
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11171,7 +11190,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11209,7 +11228,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS SAMCEL SAS - NEIVA",
@@ -11238,7 +11257,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPIGRUAS CSPR S.A.S",
@@ -11266,25 +11285,29 @@
         "servicios": 4
       },
       {
-        "nombre": "ANDRES FELIPE MEJÍA MARÍN  - PMV346",
-        "servicios": 2
+        "nombre": "ISMAEL RODRIGUEZ - JOU521",
+        "servicios": 1
       },
       {
-        "nombre": "ISMAEL RODRIGUEZ - JOU521",
+        "nombre": "ANDRES FELIPE MEJÍA MARÍN  - PMV346",
         "servicios": 1
       },
       {
         "nombre": "DANY FABIAN GONZÁLEZ QUITIAN  - PMV343",
         "servicios": 1
+      },
+      {
+        "nombre": "Harold Álvarez - LUM386",
+        "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 63.8,
-        "n": 1
+        "promedio_min": 157.3,
+        "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORT & DIESEL -FUSAGASUGA",
@@ -11305,18 +11328,22 @@
     "t2": "-",
     "wa": "3132156116",
     "cuentas": "",
-    "servicios_30d": 3,
+    "servicios_30d": 5,
     "conductores_30d": [
+      {
+        "nombre": "Sin conductor asignado",
+        "servicios": 2
+      },
+      {
+        "nombre": "Angie",
+        "servicios": 1
+      },
       {
         "nombre": "Miguel quevedo",
         "servicios": 1
       },
       {
-        "nombre": "Sin conductor asignado",
-        "servicios": 1
-      },
-      {
-        "nombre": "Angie",
+        "nombre": "Jhonatan Torres",
         "servicios": 1
       }
     ],
@@ -11326,7 +11353,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11364,7 +11391,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11402,7 +11429,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11440,7 +11467,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11478,7 +11505,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS C&A SAS",
@@ -11516,7 +11543,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTE Y GRUAS THOMAS S.A.S",
@@ -11540,7 +11567,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES GMH SAS",
@@ -11568,11 +11595,11 @@
         "servicios": 5
       },
       {
-        "nombre": "TRANSPORTES GMH SAS",
+        "nombre": "LINA HERNANDEZ GMH",
         "servicios": 1
       },
       {
-        "nombre": "LINA HERNANDEZ GMH",
+        "nombre": "TRANSPORTES GMH SAS",
         "servicios": 1
       }
     ],
@@ -11582,7 +11609,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES TAPILUJOS SAS",
@@ -11606,7 +11633,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES Y LOGISTICA REYES SAS zipaquira",
@@ -11627,11 +11654,11 @@
     "t2": "322 6022008",
     "wa": "310 2310636",
     "cuentas": "",
-    "servicios_30d": 15,
+    "servicios_30d": 17,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 15
+        "servicios": 17
       }
     ],
     "arribo_30d": {
@@ -11640,7 +11667,7 @@
         "n": 7
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSVIAL DE COLOMBIA SAS",
@@ -11661,15 +11688,20 @@
     "t2": "313 6158982",
     "wa": "322 8103504",
     "cuentas": "",
-    "servicios_30d": 1,
+    "servicios_30d": 2,
     "conductores_30d": [
       {
         "nombre": "TRANSVIAL DE COLOMBIA SAS",
-        "servicios": 1
+        "servicios": 2
       }
     ],
-    "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "arribo_30d": {
+      "grua": {
+        "promedio_min": 94.1,
+        "n": 1
+      }
+    },
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TURBO GRUAS SAS",
@@ -11690,15 +11722,15 @@
     "t2": "-",
     "wa": "333 0334194",
     "cuentas": "",
-    "servicios_30d": 84,
+    "servicios_30d": 79,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 40
+        "servicios": 37
       },
       {
         "nombre": "Henry García  -  Nux793",
-        "servicios": 20
+        "servicios": 18
       },
       {
         "nombre": "Andrés Tovar -  lzn790",
@@ -11713,25 +11745,25 @@
         "servicios": 2
       },
       {
+        "nombre": "Luis Carlos Saza -  Jty279",
+        "servicios": 1
+      },
+      {
         "nombre": "Luis Malagón -  Cvj332",
         "servicios": 1
       },
       {
         "nombre": "Fernando Farfan -  Wly076",
         "servicios": 1
-      },
-      {
-        "nombre": "Luis Carlos Saza -  Jty279",
-        "servicios": 1
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 99.5,
-        "n": 36
+        "promedio_min": 102.4,
+        "n": 34
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "VIALSERVI S.A.S.",
@@ -11755,7 +11787,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "VIP AUTO CENTER SAS - CALI",
@@ -11779,7 +11811,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "W GRUAS S.A.S",
@@ -11803,7 +11835,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "WAYSTAR ASISTENCIA COLOMBIA SAS",
@@ -11827,33 +11859,33 @@
     "servicios_30d": 8,
     "conductores_30d": [
       {
-        "nombre": "JORGE LUIS OSRIO - FMG592",
+        "nombre": "Sin conductor asignado",
         "servicios": 5
       },
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "JORGE LUIS OSRIO - FMG592",
         "servicios": 3
       }
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 81.4,
+        "promedio_min": 104.2,
+        "n": 3
+      },
+      "jumpstart": {
+        "promedio_min": 348.6,
         "n": 2
       },
       "flattire": {
         "promedio_min": 106.8,
         "n": 1
       },
-      "jumpstart": {
-        "promedio_min": 348.6,
-        "n": 2
-      },
       "locksmith": {
         "promedio_min": 104.9,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "WIMADA CONDUCTOR ELEGIDO-CALI",
@@ -11877,16 +11909,16 @@
     "servicios_30d": 4,
     "conductores_30d": [
       {
-        "nombre": "JOSE DAVID ALZATE ROJAS-NCR771",
+        "nombre": "Sin conductor asignado",
         "servicios": 2
       },
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "JOSE DAVID ALZATE ROJAS-NCR771",
         "servicios": 2
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CENTRO DE SERVICIOS JR S.A.S. -  PEREIRA",
@@ -11907,11 +11939,11 @@
     "t2": "-",
     "wa": "320 3179008",
     "cuentas": "",
-    "servicios_30d": 57,
+    "servicios_30d": 53,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 57
+        "servicios": 53
       }
     ],
     "arribo_30d": {
@@ -11924,7 +11956,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS NELSON RUEDA SAS",
@@ -11958,7 +11990,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERTIGRUA LIMITADA - CÚCUTA",
@@ -11982,7 +12014,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVI GRUAS JULIAN S.A.S",
@@ -12006,7 +12038,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS LEAL SAS",
@@ -12035,7 +12067,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVINOVA S.A.S",
@@ -12067,11 +12099,11 @@
         "servicios": 3
       },
       {
-        "nombre": "J",
+        "nombre": "Juan felipe carmona-MNW62H",
         "servicios": 1
       },
       {
-        "nombre": "Juan felipe carmona-MNW62H",
+        "nombre": "J",
         "servicios": 1
       }
     ],
@@ -12089,7 +12121,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TEAM C.L.A. S.A.S",
@@ -12118,7 +12150,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSECURITY SAS",
@@ -12170,29 +12202,29 @@
         "servicios": 2
       },
       {
-        "nombre": "Ivan Cano Palacios\tMOX51F",
+        "nombre": "Alexander Hernandez\tNIV427",
         "servicios": 1
       },
       {
-        "nombre": "Alexander Hernandez\tNIV427",
+        "nombre": "Ivan Cano Palacios\tMOX51F",
         "servicios": 1
       }
     ],
     "arribo_30d": {
-      "flattire": {
-        "promedio_min": 51.5,
-        "n": 12
-      },
       "jumpstart": {
         "promedio_min": 39.5,
         "n": 22
+      },
+      "flattire": {
+        "promedio_min": 51.5,
+        "n": 12
       },
       "locksmith": {
         "promedio_min": 19.8,
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "YADIEL SAS",
@@ -12217,7 +12249,7 @@
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 43
+        "servicios": 44
       },
       {
         "nombre": "Sebastián Moreno - KPP262",
@@ -12225,7 +12257,7 @@
       },
       {
         "nombre": "Eduar Morera - WNN800",
-        "servicios": 24
+        "servicios": 23
       },
       {
         "nombre": "Mery Velandia  - RCS284 transporte",
@@ -12242,15 +12274,15 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 183.8,
-        "n": 56
+        "promedio_min": 182.6,
+        "n": 57
       },
       "jumpstart": {
         "promedio_min": 7.1,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y PARQUEADERO ROLOSTYLE S.A.S.",
@@ -12292,7 +12324,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CONDUCTORES EL ELEGIDO - CALI",
@@ -12330,7 +12362,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ANDRES FELIPE JIMENEZ MANCILLA-AF ASISTENCIA 24",
@@ -12358,11 +12390,11 @@
         "servicios": 12
       },
       {
-        "nombre": "IVAN ROBERTO-NVL040",
+        "nombre": "Sin conductor asignado",
         "servicios": 2
       },
       {
-        "nombre": "Sin conductor asignado",
+        "nombre": "IVAN ROBERTO-NVL040",
         "servicios": 2
       }
     ],
@@ -12380,7 +12412,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS DEL TOLIMA S.A.S - IBAGUE",
@@ -12422,7 +12454,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "PVYS PRODUCTOS VENTAS Y SERVICIOS SAS - NEIVA",
@@ -12452,11 +12484,11 @@
     ],
     "arribo_30d": {
       "jumpstart": {
-        "promedio_min": 64.8,
-        "n": 3
+        "promedio_min": 64.5,
+        "n": 4
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIGRUAS 24/7 SAS - POPAYAN",
@@ -12480,7 +12512,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS GUTIERREZ S.A.S",
@@ -12501,11 +12533,11 @@
     "t2": "-",
     "wa": "314 8200124",
     "cuentas": "",
-    "servicios_30d": 5,
+    "servicios_30d": 7,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 5
+        "servicios": 7
       }
     ],
     "arribo_30d": {
@@ -12514,7 +12546,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA LEONCIO RODRIGUEZ SAS - BUCARAMANGA",
@@ -12543,16 +12575,16 @@
       }
     ],
     "arribo_30d": {
-      "flattire": {
-        "promedio_min": 73.5,
-        "n": 3
-      },
       "jumpstart": {
         "promedio_min": 112.1,
         "n": 2
+      },
+      "flattire": {
+        "promedio_min": 73.5,
+        "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVIAMIGO EYD SAS",
@@ -12573,7 +12605,7 @@
     "t2": "-",
     "wa": "310 7211603",
     "cuentas": "",
-    "servicios_30d": 16,
+    "servicios_30d": 17,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
@@ -12581,7 +12613,7 @@
       },
       {
         "nombre": "Danei Buendia Estrada-PXY43G",
-        "servicios": 5
+        "servicios": 6
       },
       {
         "nombre": "Elver Garcia Buendia - GZP644",
@@ -12590,15 +12622,15 @@
     ],
     "arribo_30d": {
       "jumpstart": {
-        "promedio_min": 56.5,
-        "n": 9
+        "promedio_min": 55.5,
+        "n": 10
       },
       "flattire": {
         "promedio_min": 91.3,
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES Y GRUAS TODO EXPRESS SAS - VALLEDUPAR",
@@ -12640,7 +12672,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS HACARITAMA ROMERO S.A.S.",
@@ -12674,7 +12706,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA DVK-MEDELLIN",
@@ -12698,7 +12730,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "LUXELITE EXCLUSIVE S.A.S - MEDELLIN",
@@ -12732,7 +12764,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRÚAS COSMOS SAS - MEDELLIN",
@@ -12753,7 +12785,7 @@
     "t2": "-",
     "wa": "310 6124592",
     "cuentas": "",
-    "servicios_30d": 8,
+    "servicios_30d": 10,
     "conductores_30d": [
       {
         "nombre": "ORLANDO VALLE - CCW429 - FWK900",
@@ -12761,7 +12793,7 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 2
+        "servicios": 4
       },
       {
         "nombre": "JHON JAIRO SALINAS -  EXU841",
@@ -12774,7 +12806,7 @@
         "n": 7
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "CMA GLOBAL SAS - MEDELLIN",
@@ -12798,15 +12830,15 @@
     "servicios_30d": 3,
     "conductores_30d": [
       {
-        "nombre": "Sin conductor asignado",
-        "servicios": 1
-      },
-      {
         "nombre": "Jorge Eliecer Graciano David  - HWG43G",
         "servicios": 1
       },
       {
         "nombre": "Juan Carlos Graciano David - NGW233",
+        "servicios": 1
+      },
+      {
+        "nombre": "Sin conductor asignado",
         "servicios": 1
       }
     ],
@@ -12820,7 +12852,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANS RUIZ SAS",
@@ -12854,7 +12886,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RAPIVIAL SAS",
@@ -12896,7 +12928,7 @@
         "n": 6
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSGRUAS HUGO SAN SAS - VILLAVICENCIO",
@@ -12934,7 +12966,7 @@
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RAPIGRUAS DEL LLANO SAS - VILLAVICENCIO",
@@ -12963,7 +12995,7 @@
       }
     ],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS TECNIYAMAR -VENTAQUEMADA",
@@ -13001,7 +13033,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ARG ASISTENCIA CONDUCTORES ELEGIDOS S.A.S",
@@ -13025,7 +13057,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS CG - LUIS ALBERTO CAÑAVERAL GARCIA",
@@ -13046,15 +13078,15 @@
     "t2": "-",
     "wa": "322 6672768",
     "cuentas": "",
-    "servicios_30d": 36,
+    "servicios_30d": 32,
     "conductores_30d": [
       {
         "nombre": "LUIS CAÑAVERAL - CGN214",
-        "servicios": 19
+        "servicios": 16
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 8
+        "servicios": 7
       },
       {
         "nombre": "Wuilmer Lopez",
@@ -13071,15 +13103,15 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 66.7,
-        "n": 17
+        "promedio_min": 70.7,
+        "n": 15
       },
       "jumpstart": {
         "promedio_min": 47.8,
         "n": 1
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS B&C",
@@ -13103,7 +13135,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS B&C",
@@ -13127,7 +13159,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS B&C",
@@ -13151,7 +13183,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS B&C",
@@ -13175,7 +13207,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "AUTOGRUAS B&C",
@@ -13199,7 +13231,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTIGRUAS S.A.S.",
@@ -13223,7 +13255,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "SERVICIOS, TRANSPORTE Y SUMINISTROS GMS SAS ZOMAC",
@@ -13247,7 +13279,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS CRISAUTOS",
@@ -13271,7 +13303,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TECNIGRUAS SUBIA SAS",
@@ -13305,7 +13337,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RED TEAM SAS",
@@ -13326,11 +13358,11 @@
     "t2": "",
     "wa": "320 3380996",
     "cuentas": "",
-    "servicios_30d": 33,
+    "servicios_30d": 34,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 24
+        "servicios": 25
       },
       {
         "nombre": "RED TEAM SAS (custodia)",
@@ -13338,16 +13370,16 @@
       }
     ],
     "arribo_30d": {
+      "jumpstart": {
+        "promedio_min": 777.8,
+        "n": 4
+      },
       "grua": {
         "promedio_min": 141.8,
         "n": 1
-      },
-      "jumpstart": {
-        "promedio_min": 764.6,
-        "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MEGA GRUAS MG-BOGOTA",
@@ -13368,7 +13400,7 @@
     "t2": "313 3474370",
     "wa": "300 1782198-313 3474370",
     "cuentas": "",
-    "servicios_30d": 22,
+    "servicios_30d": 20,
     "conductores_30d": [
       {
         "nombre": "GRUA LIVIANA",
@@ -13376,7 +13408,7 @@
       },
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 9
+        "servicios": 7
       },
       {
         "nombre": "GRUA SEMIPESADA",
@@ -13389,11 +13421,11 @@
     ],
     "arribo_30d": {
       "grua": {
-        "promedio_min": 91.4,
-        "n": 11
+        "promedio_min": 83.9,
+        "n": 10
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MULTIASISTENCIA K&J SAS",
@@ -13431,7 +13463,7 @@
         "n": 3
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUPO ARH SAS",
@@ -13463,11 +13495,11 @@
         "servicios": 3
       },
       {
-        "nombre": "Diego rodriguez",
+        "nombre": "Nhair Castro - GZV280",
         "servicios": 2
       },
       {
-        "nombre": "Nhair Castro - GZV280",
+        "nombre": "Diego rodriguez",
         "servicios": 2
       },
       {
@@ -13493,7 +13525,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ASISTENCIA VIAL SANTANA SAS",
@@ -13514,11 +13546,11 @@
     "t2": "",
     "wa": "304 4601610",
     "cuentas": "",
-    "servicios_30d": 8,
+    "servicios_30d": 9,
     "conductores_30d": [
       {
         "nombre": "Sin conductor asignado",
-        "servicios": 8
+        "servicios": 9
       }
     ],
     "arribo_30d": {
@@ -13527,7 +13559,7 @@
         "n": 7
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "ROUTE 22 ASISTENCIA VIAL S.A.S",
@@ -13565,7 +13597,7 @@
         "n": 2
       }
     },
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "RICARDO CASTRO",
@@ -13589,7 +13621,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS Y MONTACARGAS ALBERT SAS",
@@ -13613,7 +13645,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS BOLIVAR ( SOLO PAGO INMEDIATO)",
@@ -13637,7 +13669,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "TRANSPORTES COYOTE",
@@ -13661,7 +13693,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS LEGADO  JA",
@@ -13685,7 +13717,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "MYS ASISTENCIAS Y SOPORTES SAS",
@@ -13709,7 +13741,7 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   },
   {
     "n": "GRUAS MEMO ( SOLO PAGO INMEDIATO)",
@@ -13733,6 +13765,6 @@
     "servicios_30d": 0,
     "conductores_30d": [],
     "arribo_30d": {},
-    "_updated_at": "2026-10-09 16:55 (Bogotá)"
+    "_updated_at": "2026-10-10 05:00 (Bogotá)"
   }
 ]
