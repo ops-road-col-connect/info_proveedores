@@ -1724,7 +1724,7 @@ function computeDistanceScore(p, distKm){
 }
 
 
-const N8N_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/5e59271d-be10-40c0-b52f-898c9561f0b3';
+const N8N_WEBHOOK_URL = 'https://connect-road-ops-co.app.n8n.cloud/webhook/5e59271d-be10-40c0-b52f-898c9561f0b3';
 
 const refreshBtn = document.getElementById('refreshBtn');
 refreshBtn.addEventListener('click', async ()=>{
@@ -2609,7 +2609,7 @@ loadData();
   // ---------- registrar acceso a la herramienta (IP + hora) ----------
   // Igual patrón que las zonas manuales: se envía a un webhook de n8n que agrega la fila
   // a una pestaña del Sheet (ej. "Accesos"). Si falla o no está configurado, no bloquea nada.
-  const ACCESOS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/registrar-acceso';
+  const ACCESOS_WEBHOOK_URL = 'https://connect-road-ops-co.app.n8n.cloud/webhook/registrar-acceso';
 
   async function registrarAcceso(email){
     if(!ACCESOS_WEBHOOK_URL) return;
@@ -2630,7 +2630,7 @@ loadData();
   // Se envían directo al webhook de n8n, que agrega la fila a la pestaña "Zonas especiales"
   // del Sheet — así le llega a todo el equipo por igual, sin depender de lo que cada
   // persona tenga guardado en su propio navegador.
-  const ZONAS_WEBHOOK_URL = 'https://iagb.app.n8n.cloud/webhook/guardar-zona-especial';
+  const ZONAS_WEBHOOK_URL = 'https://connect-road-ops-co.app.n8n.cloud/webhook/guardar-zona-especial';
 
   // Deduplicación solo para esta sesión (en memoria, se pierde al recargar la página) —
   // evita mandar la misma zona repetida si le dan "Copiar" varias veces a la misma ruta.
